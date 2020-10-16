@@ -11,7 +11,7 @@ import android.widget.TextView;
 import dk.dtu.gruppeb3.broeg.app.R;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    Button knap1, knap2, knap3, knap4, knap5; //5 knapper på forisden
+    Button knap1, knap2, knap3, knap4, knap5; //5 knapper på forsiden
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

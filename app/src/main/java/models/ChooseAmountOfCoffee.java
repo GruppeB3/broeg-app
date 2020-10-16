@@ -1,14 +1,21 @@
 package models;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
-public class ChooseAmountOfCoffee extends AppCompatActivity {
+import dk.dtu.gruppeb3.broeg.app.R;
+
+public class ChooseAmountOfCoffee_frag extends Fragment {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_choose_amount_of_coffee);
-    }
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
+        String hjælpHtml = "<html><body>"
+                + "<h1>Hj&aelig;lpesk&aelig;rm</h1>"
+                + "<p>Her kunne st&aring; noget hj&aelig;lp.<br>Men den er ikke skrevet endnu.</p>";
+}
 }

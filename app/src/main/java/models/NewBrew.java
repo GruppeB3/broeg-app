@@ -22,8 +22,19 @@ public class NewBrew extends Fragment implements View.OnClickListener {
         rod = i.inflate(R.layout.activity_new_brew, container, false);
 
         knap1 = rod.findViewById(R.id.GroundCoffeeAmount);
+        knap2 = rod.findViewById(R.id.GrindSize);
+        knap3 = rod.findViewById(R.id.BrewingTemperature);
+        knap4 = rod.findViewById(R.id.BloomWater);
+        knap5 = rod.findViewById(R.id.BloomTime);
+        knap6 = rod.findViewById(R.id.Save);
+
 
         knap1.setOnClickListener(this);
+        knap2.setOnClickListener(this);
+        knap3.setOnClickListener(this);
+        knap4.setOnClickListener(this);
+        knap5.setOnClickListener(this);
+        knap6.setOnClickListener(this);
 
     }
 

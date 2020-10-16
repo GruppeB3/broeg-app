@@ -12,10 +12,10 @@ import dk.dtu.gruppeb3.broeg.app.R;
 
 public class ChooseAmountOfCoffee_frag extends Fragment {
 
+    int amountOfCoffee;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-        String hjælpHtml = "<html><body>"
-                + "<h1>Hj&aelig;lpesk&aelig;rm</h1>"
-                + "<p>Her kunne st&aring; noget hj&aelig;lp.<br>Men den er ikke skrevet endnu.</p>";
+        String hjælpHtml = "Her skal vi have tilføjet pileknapper der øger eller reducerer mængden af kaffe i gram";
 }
 }

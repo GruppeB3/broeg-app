@@ -37,6 +37,7 @@ public class NewBrew extends Fragment implements View.OnClickListener {
         knap5.setOnClickListener(this);
         knap6.setOnClickListener(this);
 
+        return null;
     }
 
     @Override
@@ -44,6 +45,12 @@ public class NewBrew extends Fragment implements View.OnClickListener {
         if (ClickButton == knap1) {
             getFragmentManager().beginTransaction()
             .replace(R.id.fragmentindhold, new ChooseAmountOfCoffee_frag())
+                    .addToBackStack(null)
+                    .commit();
+        }
+        if (ClickButton == knap2){
+            getFragmentManager().beginTransaction()
+                    .replace(R.id.fragmentindhold, new ChooseAmountOfCoffee_frag())
                     .addToBackStack(null)
                     .commit();
         }

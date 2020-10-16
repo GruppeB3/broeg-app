@@ -17,5 +17,6 @@ public class ChooseAmountOfCoffee_frag extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         String hjælpHtml = "Her skal vi have tilføjet pileknapper der øger eller reducerer mængden af kaffe i gram";
-}
+        return null;
+    }
 }

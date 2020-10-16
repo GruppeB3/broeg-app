@@ -12,11 +12,11 @@ import dk.dtu.gruppeb3.broeg.app.R;
 
 public class ChooseAmountOfCoffee_frag extends Fragment {
 
-    int amountOfCoffee;
+    int amountOfCoffee; //Denne variabel skal gemmes
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         String hjælpHtml = "Her skal vi have tilføjet pileknapper der øger eller reducerer mængden af kaffe i gram";
-        return null;
+        return null; //Der skal returneres amountOfCoffee
     }
 }

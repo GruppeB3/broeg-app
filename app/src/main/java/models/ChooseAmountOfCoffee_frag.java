@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import dk.dtu.gruppeb3.broeg.app.R;
 
@@ -34,6 +35,17 @@ public class ChooseAmountOfCoffee_frag extends Fragment implements View.OnClickL
 
     @Override
     public void onClick(View ButtonClick) {
+
+        long etTal = System.currentTimeMillis();
+
+        if (ButtonClick == knap1) {
+            TextView tv = rod.findViewById(R.id.CoffeeAmount);
+            tv.setText(" "+etTal);
+
+        } else if (ButtonClick == knap2){
+            TextView tv = rod.findViewById(R.id.CoffeeAmount);
+            //tv.setText(); Vi skal trække tal fra her, måske er setText forkert metode?
+        }
 
     }
 }

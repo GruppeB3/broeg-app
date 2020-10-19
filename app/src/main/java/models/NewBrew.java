@@ -50,7 +50,7 @@ public class NewBrew extends Fragment implements View.OnClickListener {
         }
         if (ClickButton == knap2){
             getFragmentManager().beginTransaction()
-                    .replace(R.id.fragmentindhold, new ChooseAmountOfCoffee_frag())
+                    .replace(R.id.fragmentindhold, new ChooseAmountOfCoffee_frag()) //GrindSizeFragment her
                     .addToBackStack(null)
                     .commit();
         }

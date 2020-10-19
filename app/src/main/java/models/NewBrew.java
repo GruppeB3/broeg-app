@@ -37,7 +37,7 @@ public class NewBrew extends Fragment implements View.OnClickListener {
         knap5.setOnClickListener(this);
         knap6.setOnClickListener(this);
 
-        return null;
+        return rod;
     }
 
     @Override

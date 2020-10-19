@@ -18,8 +18,9 @@ public class ChooseAmountOfCoffee_frag extends Fragment implements View.OnClickL
     private View rod;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
+    public View onCreateView(LayoutInflater i, ViewGroup container, Bundle savedInstanceState){
         String hjælpHtml = "Her skal vi have tilføjet pileknapper der øger eller reducerer mængden af kaffe i gram";
+        View rod = i.inflate(R.layout.activity_choose_amount_of_coffee, container, false);
 
         knap1 = rod.findViewById(R.id.PilOp);
         knap2 = rod.findViewById(R.id.PilNed);
@@ -43,7 +44,7 @@ public class ChooseAmountOfCoffee_frag extends Fragment implements View.OnClickL
 
         } else if (ButtonClick == knap2){
             TextView tv = rod.findViewById(R.id.CoffeeAmount);
-            //tv.setText(); Vi skal trække tal fra her, måske er setText forkert metode?
+            //tv.setText("" --etTal); Vi skal trække tal fra her, måske er setText forkert metode?
         }
 
     }

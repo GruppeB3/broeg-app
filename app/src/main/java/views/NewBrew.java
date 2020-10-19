@@ -41,7 +41,7 @@ public class NewBrew extends AppCompatActivity implements View.OnClickListener {
     @Override
     public void onClick(View ClickButton) {
         if (ClickButton == knap1){
-        getFragmentManager().beginTransaction())
+        getFragmentManager().beginTransaction()
                 .replace(R.id.fragmentindhold, new ChooseAmountOfCoffee_frag())
                 .addToBackStack(null)
                 .commit();

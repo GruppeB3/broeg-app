@@ -28,7 +28,7 @@ public class ChooseAmountOfCoffee_frag extends Fragment implements View.OnClickL
         knap1.setOnClickListener(this);
         knap2.setOnClickListener(this);
 
-        return rod; //Der skal returneres amountOfCoffee
+        return rod;e
 
 
     }

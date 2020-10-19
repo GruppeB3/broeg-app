@@ -37,6 +37,7 @@ public class NewBrew extends AppCompatActivity implements View.OnClickListener {
     public void onClick(View ClickButton) {
         if (ClickButton == knap1){
             getFragmentManager().beginTransaction()
+                    .setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
                 .replace(R.id.fragmentindhold, new ChooseAmountOfCoffee_frag())
                 .addToBackStack(null)
                 .commit();

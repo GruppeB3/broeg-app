@@ -4,36 +4,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="models.ChooseAmountOfCoffee">
+    tools:context="views.ChooseAmountOfCoffee_frag"
+    android:background="#ffffff"
+    android:clickable="true">
 
-    <Button
-        android:id="@+id/PilOp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="22dp"
-        android:layout_marginBottom="27dp"
-        android:text="PilOp"
-        app:layout_constraintBottom_toTopOf="@+id/CoffeeAmount"
-        app:layout_constraintStart_toStartOf="@+id/CoffeeAmount" />
 
     <TextView
         android:id="@+id/CoffeeAmount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="283dp"
+        android:layout_marginStart="110dp"
+        android:layout_marginTop="302dp"
         android:text="Mængde kaffe i gram"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/PilOp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginBottom="29dp"
+        android:text="PilOp"
+        app:layout_constraintBottom_toTopOf="@+id/CoffeeAmount"
+        app:layout_constraintStart_toStartOf="@+id/CoffeeAmount" />
 
     <Button
         android:id="@+id/PilNed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="23dp"
-        android:layout_marginTop="21dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="15dp"
         android:text="PilNed"
-        app:layout_constraintStart_toStartOf="@+id/CoffeeAmount"
+        app:layout_constraintEnd_toEndOf="@+id/CoffeeAmount"
         app:layout_constraintTop_toBottomOf="@+id/CoffeeAmount" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

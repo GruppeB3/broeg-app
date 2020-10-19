@@ -1,15 +1,10 @@
 package views;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
 import dk.dtu.gruppeb3.broeg.app.R;
 
@@ -41,18 +36,19 @@ public class NewBrew extends AppCompatActivity implements View.OnClickListener {
     @Override
     public void onClick(View ClickButton) {
         if (ClickButton == knap1){
-        getFragmentManager().beginTransaction()
+            getFragmentManager().beginTransaction()
                 .replace(R.id.fragmentindhold, new ChooseAmountOfCoffee_frag())
                 .addToBackStack(null)
                 .commit();
-        //if (ClickButton == knap1) {
-            //Intent i = new Intent(this, ChooseAmountOfCoffee_frag.class);
-            //startActivity(i);
+
+//        if (ClickButton == knap1) {
+//            Intent i = new Intent(this, ChooseAmountOfCoffee_frag.class);
+//            startActivity(i);
+//
+//        }
 
         }
 
     }
-
-}
 
 }

@@ -9,7 +9,7 @@ With that being said though, here's something to get us started:
 
 The `master` branch should **at all times** be production ready.
 The suggested way to handle the branches is to create a new branch per feature or bug using the naming scheme `feature/awesome-new-feature`
-or `bug/this-pesky bug` / `bug/issue-ref`.
+or `bug/this-pesky-bug` / `bug/issue-ref`.
 
 Once the code is ready for production, make a [pull request](https://docs.github.com/en/free-pro-team@latest/desktop/contributing-and-collaborating-using-github-desktop/creating-an-issue-or-pull-request#creating-a-pull-request)
 to the `master` branch. If there's any merging to do, please do so in your own branch to keep the master

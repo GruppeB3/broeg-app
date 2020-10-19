@@ -1,36 +1,36 @@
-package models;
-
-import androidx.appcompat.app.AppCompatActivity;
+package views;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import dk.dtu.gruppeb3.broeg.app.R;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    Button knap1, knap2, knap3, knap4, knap5; //5 knapper på forsiden
+
+    Button newBrewButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        knap1 = findViewById(R.id.NewBrew);
-
-        knap1.setOnClickListener(this);
+        newBrewButton = findViewById(R.id.button8);
+        newBrewButton.setOnClickListener(this);
     }
 
     @Override
-    public void onClick(View ClickButton) {
+    public void onClick(View v) {
 
-        if (ClickButton == knap1) {
+        if (v == newBrewButton) {
 
             Intent i = new Intent(this, NewBrew.class);
             startActivity(i);
 
         }
+
     }
 }

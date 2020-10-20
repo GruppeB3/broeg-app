@@ -11,7 +11,6 @@ import androidx.fragment.app.Fragment;
 
 import dk.dtu.gruppeb3.broeg.app.R;
 
-import static dk.dtu.gruppeb3.broeg.app.R.id.CoffeeAmount;
 
 public class NewBrew extends AppCompatActivity implements View.OnClickListener {
     private Button knap1, knap2, knap3, knap4, knap5, knap6;

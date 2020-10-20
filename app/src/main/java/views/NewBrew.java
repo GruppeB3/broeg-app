@@ -45,13 +45,13 @@ public class NewBrew extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     public void onClick(View ClickButton) {
-        if (ClickButton == knap1){
+        if (ClickButton == knap1) {
             getFragmentManager().beginTransaction()
                     .setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
-                .replace(R.id.fragmentindhold, new ChooseAmountOfCoffee_frag())
-                .addToBackStack(null)
-                .commit();
-        } else if (ClickButton == knap2){
+                    .replace(R.id.fragmentindhold, new ChooseAmountOfCoffee_frag())
+                    .addToBackStack(null)
+                    .commit();
+        } else if (ClickButton == knap2) {
             getFragmentManager().beginTransaction()
                     .setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
                     .replace(R.id.fragmentindhold, new ChooseGrindSize_frag())
@@ -60,5 +60,4 @@ public class NewBrew extends AppCompatActivity implements View.OnClickListener {
         }
 
     }
-
 }

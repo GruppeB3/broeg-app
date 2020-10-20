@@ -13,8 +13,8 @@ import dk.dtu.gruppeb3.broeg.app.R;
 
 public class ChooseAmountOfCoffee_frag extends Fragment implements View.OnClickListener {
 
-    int amountOfCoffee; //Denne variabel skal gemmes
-    Button knap1, knap2;
+    public int amountOfCoffee; //Denne variabel skal gemmes
+    Button knap1, knap2, knap3;
     private View rod;
 
     @Override
@@ -23,9 +23,11 @@ public class ChooseAmountOfCoffee_frag extends Fragment implements View.OnClickL
 
         knap1 = rod.findViewById(R.id.PilOp);
         knap2 = rod.findViewById(R.id.PilNed);
+        knap3 = rod.findViewById(R.id.Gem);
 
         knap1.setOnClickListener(this);
         knap2.setOnClickListener(this);
+        knap3.setOnClickListener(this);
 
         return rod;
 
@@ -39,11 +41,14 @@ public class ChooseAmountOfCoffee_frag extends Fragment implements View.OnClickL
 
         if (ButtonClick == knap1) {
             TextView tv = rod.findViewById(R.id.CoffeeAmount);
-            tv.setText(" "+etTal);
+            tv.setText("Mængde kaffe i gram (" +etTal +")");
 
         } else if (ButtonClick == knap2){
             TextView tv = rod.findViewById(R.id.CoffeeAmount);
-            //tv.setText("" --etTal); Vi skal trække tal fra her, måske er setText forkert metode?
+            tv.setText("Mængde kaffe i gram (" +(-etTal) +")");
+        } else if (ButtonClick == knap3){
+            Bundle result = new Bundle();
+            result.putInt("bundleKey", amountOfCoffee);
         }
 
     }

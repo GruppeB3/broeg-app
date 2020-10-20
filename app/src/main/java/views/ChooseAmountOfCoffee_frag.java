@@ -55,6 +55,7 @@ public class ChooseAmountOfCoffee_frag extends Fragment implements View.OnClickL
         } else if (ButtonClick == knap3){
             Bundle result = new Bundle();
             result.putInt("bundleKey", amountOfCoffee);
+            getActivity().onBackPressed();
         }
 
     }

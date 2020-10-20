@@ -47,7 +47,7 @@ public class ChooseGrindSize_frag extends Fragment implements View.OnClickListen
         } else if (ButtonClick == knap3) {
 
         } else if (ButtonClick == knap4) {
-
+            getActivity().onBackPressed();
         }
     }
 }

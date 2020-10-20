@@ -51,13 +51,12 @@ public class NewBrew extends AppCompatActivity implements View.OnClickListener {
                 .replace(R.id.fragmentindhold, new ChooseAmountOfCoffee_frag())
                 .addToBackStack(null)
                 .commit();
-
-//        if (ClickButton == knap1) {
-//            Intent i = new Intent(this, ChooseAmountOfCoffee_frag.class);
-//            startActivity(i);
-//
-//        }
-
+        } else if (ClickButton == knap2){
+            getFragmentManager().beginTransaction()
+                    .setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
+                    .replace(R.id.fragmentindhold, new ChooseGrindSize_frag())
+                    .addToBackStack(null)
+                    .commit();
         }
 
     }

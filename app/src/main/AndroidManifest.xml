@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="views.ChooseGrindSize"></activity>
+        <activity android:name="views.ChooseGrindSize_frag"></activity>
         <activity android:name="views.BrewingActivity" />
         <activity android:name="views.NewBrew" />
         <activity android:name="views.MyRecipesActivity" />

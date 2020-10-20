@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextClock;
 import android.widget.TextView;
 
 import dk.dtu.gruppeb3.broeg.app.R;
@@ -24,8 +25,7 @@ public class ChooseAmountOfCoffee_frag extends Fragment implements View.OnClickL
 
     @Override
     public View onCreateView(LayoutInflater i, ViewGroup container, Bundle savedInstanceState){
-        View rod = i.inflate(R.layout.activity_choose_amount_of_coffee, container, false);
-        
+        this.rod= i.inflate(R.layout.activity_choose_amount_of_coffee, container, false);
 
         knap1 = rod.findViewById(R.id.PilOp);
         knap2 = rod.findViewById(R.id.PilNed);
@@ -34,6 +34,7 @@ public class ChooseAmountOfCoffee_frag extends Fragment implements View.OnClickL
         knap1.setOnClickListener(this);
         knap2.setOnClickListener(this);
         knap3.setOnClickListener(this);
+
 
         return rod;
 
@@ -48,14 +49,13 @@ public class ChooseAmountOfCoffee_frag extends Fragment implements View.OnClickL
 
         if (ButtonClick == knap1) {
             TextView tv = rod.findViewById(R.id.CoffeeAmount);
-            tv.setText("Mængde kaffe i gram " +etTal);
+            tv.setText("Mængde kaffe i gram (" +etTal + ")");
 
         } else if (ButtonClick == knap2){
             TextView tv = rod.findViewById(R.id.CoffeeAmount);
-            tv.setText("Mængde kaffe i gram " +etAndetTal);
+            tv.setText("Mængde kaffe i gram (" +etAndetTal + ")");
+
         } else if (ButtonClick == knap3){
-            Bundle result = new Bundle();
-            result.putInt("bundleKey", amountOfCoffee);
             getActivity().onBackPressed();
         }
 

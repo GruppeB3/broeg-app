@@ -11,6 +11,11 @@ import android.widget.TextView;
 
 import dk.dtu.gruppeb3.broeg.app.R;
 
+/**
+ * This fragment gives the user the opportunity to choose the amount of coffee they want to brew.
+ * @Author Gustav Kirkholt
+ */
+
 public class ChooseAmountOfCoffee_frag extends Fragment implements View.OnClickListener {
 
     public int amountOfCoffee = 0; //Denne variabel skal gemmes

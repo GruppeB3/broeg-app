@@ -11,9 +11,14 @@ import android.widget.TextView;
 
 import dk.dtu.gruppeb3.broeg.app.R;
 
+/**
+ * This fragment gives the user the opportunity to choose between 3 types af grind size.
+ * @Author Gustav Kirkholt
+ */
+
 public class ChooseGrindSize_frag extends Fragment implements View.OnClickListener {
 
-    Button knap1, knap2, knap3;
+    Button knap1, knap2, knap3, knap4;
 
     @Override
     public View onCreateView(LayoutInflater i, ViewGroup container, Bundle savedInstanceState) {
@@ -22,10 +27,12 @@ public class ChooseGrindSize_frag extends Fragment implements View.OnClickListen
         knap1 = rod.findViewById(R.id.Fine);
         knap2 = rod.findViewById(R.id.Medium);
         knap3 = rod.findViewById(R.id.Coarse);
+        knap4 = rod.findViewById(R.id.Gem2);
 
         knap1.setOnClickListener(this);
         knap2.setOnClickListener(this);
         knap3.setOnClickListener(this);
+        knap4.setOnClickListener(this);
 
         return rod;
     }
@@ -38,6 +45,8 @@ public class ChooseGrindSize_frag extends Fragment implements View.OnClickListen
         } else if (ButtonClick == knap2) {
 
         } else if (ButtonClick == knap3) {
+
+        } else if (ButtonClick == knap4) {
 
         }
     }

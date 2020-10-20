@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_brown"
     tools:context="views.NewBrew">
 
     <Button
@@ -68,6 +69,8 @@
     <LinearLayout
         android:id="@+id/fragmentindhold"
         android:layout_width="match_parent"
+        android:elevation="40dp"
         android:layout_height="match_parent"
-        android:orientation="horizontal"></LinearLayout>
+        android:orientation="horizontal" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

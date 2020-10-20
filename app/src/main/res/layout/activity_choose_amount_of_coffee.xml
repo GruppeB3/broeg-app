@@ -4,10 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="views.ChooseAmountOfCoffee_frag"
-    android:background="#ffffff"
-    android:clickable="true">
-
+    android:background="@drawable/background_brown"
+    android:clickable="true"
+    tools:context="views.ChooseAmountOfCoffee_frag">
 
     <TextView
         android:id="@+id/CoffeeAmount"
@@ -23,18 +22,18 @@
         android:id="@+id/PilOp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
-        android:layout_marginBottom="29dp"
+        android:layout_marginEnd="19dp"
+        android:layout_marginBottom="26dp"
         android:text="PilOp"
         app:layout_constraintBottom_toTopOf="@+id/CoffeeAmount"
-        app:layout_constraintStart_toStartOf="@+id/CoffeeAmount" />
+        app:layout_constraintEnd_toEndOf="@+id/CoffeeAmount" />
 
     <Button
         android:id="@+id/PilNed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="15dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="19dp"
         android:text="PilNed"
         app:layout_constraintEnd_toEndOf="@+id/CoffeeAmount"
         app:layout_constraintTop_toBottomOf="@+id/CoffeeAmount" />

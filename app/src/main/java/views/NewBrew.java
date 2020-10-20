@@ -1,20 +1,31 @@
 package views;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import dk.dtu.gruppeb3.broeg.app.R;
+
+import static dk.dtu.gruppeb3.broeg.app.R.id.CoffeeAmount;
 
 public class NewBrew extends AppCompatActivity implements View.OnClickListener {
     private Button knap1, knap2, knap3, knap4, knap5, knap6;
 
     @Override
+    public void onAttachFragment(@NonNull Fragment fragment) {
+        super.onAttachFragment(fragment);
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_brew);
+
 
         knap1 = findViewById(R.id.GroundCoffeeAmount);
         knap2 = findViewById(R.id.GrindSize);

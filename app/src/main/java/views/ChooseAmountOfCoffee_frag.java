@@ -1,6 +1,7 @@
 package views;
 
 import android.app.Fragment;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,7 +19,6 @@ public class ChooseAmountOfCoffee_frag extends Fragment implements View.OnClickL
 
     @Override
     public View onCreateView(LayoutInflater i, ViewGroup container, Bundle savedInstanceState){
-        String hjælpHtml = "Her skal vi have tilføjet pileknapper der øger eller reducerer mængden af kaffe i gram";
         View rod = i.inflate(R.layout.activity_choose_amount_of_coffee, container, false);
 
         knap1 = rod.findViewById(R.id.PilOp);

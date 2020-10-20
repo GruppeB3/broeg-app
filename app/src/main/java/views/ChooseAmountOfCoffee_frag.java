@@ -22,6 +22,7 @@ public class ChooseAmountOfCoffee_frag extends Fragment implements View.OnClickL
     public int amountOfCoffee = 0; //Denne variabel skal gemmes
     Button knap1, knap2, knap3;
     private View rod;
+    int count = 0;
 
     @Override
     public View onCreateView(LayoutInflater i, ViewGroup container, Bundle savedInstanceState){
@@ -44,16 +45,17 @@ public class ChooseAmountOfCoffee_frag extends Fragment implements View.OnClickL
     @Override
     public void onClick(View ButtonClick) {
 
-        long etTal = 1;
-        long etAndetTal = -1;
+
 
         if (ButtonClick == knap1) {
+            count++;
             TextView tv = rod.findViewById(R.id.CoffeeAmount);
-            tv.setText("Mængde kaffe i gram (" +etTal + ")");
+            tv.setText("Mængde kaffe i gram (" +count + ")");
 
         } else if (ButtonClick == knap2){
+            count--;
             TextView tv = rod.findViewById(R.id.CoffeeAmount);
-            tv.setText("Mængde kaffe i gram (" +etAndetTal + ")");
+            tv.setText("Mængde kaffe i gram (" +count + ")");
 
         } else if (ButtonClick == knap3){
             getActivity().onBackPressed();

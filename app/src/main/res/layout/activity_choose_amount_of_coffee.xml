@@ -10,42 +10,33 @@
 
     <TextView
         android:id="@+id/CoffeeAmount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="110dp"
-        android:layout_marginTop="302dp"
-        android:text="Mængde kaffe i gram"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_width="145dp"
+        android:layout_height="48dp"
+        tools:layout_editor_absoluteX="133dp"
+        tools:layout_editor_absoluteY="310dp" />
 
     <Button
         android:id="@+id/PilOp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="19dp"
-        android:layout_marginBottom="26dp"
         android:text="PilOp"
-        app:layout_constraintBottom_toTopOf="@+id/CoffeeAmount"
-        app:layout_constraintEnd_toEndOf="@+id/CoffeeAmount" />
+        tools:layout_editor_absoluteX="161dp"
+        tools:layout_editor_absoluteY="228dp" />
 
     <Button
         android:id="@+id/PilNed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="19dp"
         android:text="PilNed"
-        app:layout_constraintEnd_toEndOf="@+id/CoffeeAmount"
-        app:layout_constraintTop_toBottomOf="@+id/CoffeeAmount" />
+        tools:layout_editor_absoluteX="161dp"
+        tools:layout_editor_absoluteY="379dp" />
 
     <Button
         android:id="@+id/Gem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="59dp"
         android:text="Save"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/PilNed"
-        app:layout_constraintStart_toStartOf="@+id/PilNed" />
+        tools:layout_editor_absoluteX="161dp"
+        tools:layout_editor_absoluteY="571dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -44,14 +44,15 @@ public class ChooseAmountOfCoffee_frag extends Fragment implements View.OnClickL
     public void onClick(View ButtonClick) {
 
         long etTal = 1;
+        long etAndetTal = -1;
 
         if (ButtonClick == knap1) {
             TextView tv = rod.findViewById(R.id.CoffeeAmount);
-            tv.setText("Mængde kaffe i gram "+etTal);
+            tv.setText("Mængde kaffe i gram " +etTal);
 
         } else if (ButtonClick == knap2){
             TextView tv = rod.findViewById(R.id.CoffeeAmount);
-            tv.setText("Mængde kaffe i gram " +(-etTal));
+            tv.setText("Mængde kaffe i gram " +etAndetTal);
         } else if (ButtonClick == knap3){
             Bundle result = new Bundle();
             result.putInt("bundleKey", amountOfCoffee);

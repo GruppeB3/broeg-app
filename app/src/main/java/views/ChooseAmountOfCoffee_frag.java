@@ -1,19 +1,15 @@
 package views;
 
-import android.app.Application;
 import android.app.Fragment;
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextClock;
 import android.widget.TextView;
 
 import dk.dtu.gruppeb3.broeg.app.R;
+import models.Application;
 
 /**
  * This fragment gives the user the opportunity to choose the amount of coffee they want to brew.

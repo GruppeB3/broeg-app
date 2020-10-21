@@ -38,7 +38,6 @@ public class ChooseAmountOfCoffee_frag extends Fragment implements View.OnClickL
         knap3.setOnClickListener(this);
 
         SharedPreferences preferences = this.getActivity().getSharedPreferences("pref", Context.MODE_PRIVATE);
-//        this.amountOfCoffee = Double.parseDouble(preferences.getString("amountOfCoffee", "0"));
         this.amountOfCoffee = PreferenceHelper.getDouble(preferences, "amountOfCoffee", "0");
 
         return rod;
@@ -63,12 +62,6 @@ public class ChooseAmountOfCoffee_frag extends Fragment implements View.OnClickL
 
         } else if (ButtonClick == knap3){
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-
-            // This will get a value from the preferences.
-            // int value = preferences.getInt("Key", amountOfCoffee);
-
-            // This will set a value in the preferences
-            // preferences.edit().putString("amountOfCoffee", Double.toString(this.amountOfCoffee)).apply();
             PreferenceHelper.putDouble(preferences, "amountOfCoffee", this.amountOfCoffee);
 
             getActivity().onBackPressed();

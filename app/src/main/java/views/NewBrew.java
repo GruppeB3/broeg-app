@@ -14,7 +14,6 @@ import androidx.fragment.app.Fragment;
 import dk.dtu.gruppeb3.broeg.app.R;
 /**
  * This activity contains all the fragment from which you can customise your brew.
- * @Author Gustav Kirkholt
  */
 
 public class NewBrew extends AppCompatActivity implements View.OnClickListener {

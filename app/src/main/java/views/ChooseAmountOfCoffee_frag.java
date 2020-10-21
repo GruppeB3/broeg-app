@@ -24,7 +24,8 @@ public class ChooseAmountOfCoffee_frag extends Fragment implements View.OnClickL
 
     Button knap1, knap2, knap3;
     private View rod;
-    int amountOfCoffee = 0;
+    int amountOfCoffee;
+    SharedPreferences prefs;
 
     @Override
     public View onCreateView(LayoutInflater i, ViewGroup container, Bundle savedInstanceState){
@@ -38,7 +39,7 @@ public class ChooseAmountOfCoffee_frag extends Fragment implements View.OnClickL
         knap2.setOnClickListener(this);
         knap3.setOnClickListener(this);
 
-        SharedPreferences preferences = this.getActivity().getSharedPreferences("pref", Context.MODE_PRIVATE);
+        prefs = PreferenceManager.getDefaultSharedPreferences(getActivity();
 
 
         return rod;
@@ -62,8 +63,8 @@ public class ChooseAmountOfCoffee_frag extends Fragment implements View.OnClickL
             tv.setText("Mængde kaffe i gram (" +amountOfCoffee + ")");
 
         } else if (ButtonClick == knap3){
-            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-            int value = preferences.getInt("Key", amountOfCoffee);
+            Integer gemTal = editText.getText().toString();
+            prefs.edit().putString("Mængde kaffe", String.valueOf(gemTal)).apply();
             getActivity().onBackPressed();
         }
 

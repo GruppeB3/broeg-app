@@ -3,13 +3,14 @@
     package="dk.dtu.gruppeb3.broeg.app">
 
     <application
+        android:name="models.Application"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="views.ChooseGrindSize_frag"></activity>
         <activity android:name="views.BrewingActivity" />
         <activity android:name="views.NewBrew" />
         <activity android:name="views.MyRecipesActivity" />

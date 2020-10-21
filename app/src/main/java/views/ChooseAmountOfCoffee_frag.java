@@ -1,6 +1,9 @@
 package views;
 
+import android.app.Application;
 import android.app.Fragment;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -19,10 +22,9 @@ import dk.dtu.gruppeb3.broeg.app.R;
 
 public class ChooseAmountOfCoffee_frag extends Fragment implements View.OnClickListener {
 
-    public int amountOfCoffee = 0; //Denne variabel skal gemmes
     Button knap1, knap2, knap3;
     private View rod;
-    int count = 0;
+    int amountOfCoffee = 0;
 
     @Override
     public View onCreateView(LayoutInflater i, ViewGroup container, Bundle savedInstanceState){
@@ -48,16 +50,17 @@ public class ChooseAmountOfCoffee_frag extends Fragment implements View.OnClickL
 
 
         if (ButtonClick == knap1) {
-            count++;
+            amountOfCoffee++;
             TextView tv = rod.findViewById(R.id.CoffeeAmount);
-            tv.setText("Mængde kaffe i gram (" +count + ")");
+            tv.setText("Mængde kaffe i gram (" +amountOfCoffee + ")");
 
         } else if (ButtonClick == knap2){
-            count--;
+            amountOfCoffee--;
             TextView tv = rod.findViewById(R.id.CoffeeAmount);
-            tv.setText("Mængde kaffe i gram (" +count + ")");
+            tv.setText("Mængde kaffe i gram (" +amountOfCoffee + ")");
 
         } else if (ButtonClick == knap3){
+            Application.setPreferences("Key",amountOfCoffee);
             getActivity().onBackPressed();
         }
 

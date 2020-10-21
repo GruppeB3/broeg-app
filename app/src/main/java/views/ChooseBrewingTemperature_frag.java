@@ -22,15 +22,15 @@ public class ChooseBrewingTemperature_frag extends Fragment implements View.OnCl
 
     Button knap1, knap2, knap3;
     private View rod;
-    double temperature;
+    double temperature = 80;
 
     @Override
     public View onCreateView(LayoutInflater i, ViewGroup container, Bundle savedInstanceState){
         this.rod= i.inflate(R.layout.activity_brewing_temperature_frag, container, false);
 
-        knap1 = rod.findViewById(R.id.);
-        knap2 = rod.findViewById(R.id.);
-        knap3 = rod.findViewById(R.id.);
+        knap1 = rod.findViewById(R.id.PilNedTemp);
+        knap2 = rod.findViewById(R.id.PilOpTemp);
+        knap3 = rod.findViewById(R.id.GemTemp);
 
         knap1.setOnClickListener(this);
         knap2.setOnClickListener(this);
@@ -51,17 +51,17 @@ public class ChooseBrewingTemperature_frag extends Fragment implements View.OnCl
 
         if (ButtonClick == knap1) {
             temperature++;
-            TextView tv = rod.findViewById(R.id.CoffeeAmount);
+            TextView tv = rod.findViewById(R.id.temperature);
             tv.setText("Mængde kaffe i gram (" +temperature + ")");
 
         } else if (ButtonClick == knap2){
             temperature--;
-            TextView tv = rod.findViewById(R.id.CoffeeAmount);
+            TextView tv = rod.findViewById(R.id.temperature);
             tv.setText("Mængde kaffe i gram (" +temperature + ")");
 
         } else if (ButtonClick == knap3){
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-            PreferenceHelper.putDouble(preferences, "amountOfCoffee", this.amountOfCoffee);
+            PreferenceHelper.putDouble(preferences, "temperature", this.temperature);
 
             getActivity().onBackPressed();
         }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="dk.dtu.gruppeb3.broeg.app">
 
     <uses-permission android:name="android.permission.WAKE_LOCK" />
@@ -27,8 +28,9 @@
             android:value="true" />
 
         <activity
-            android:name="views.BrewingTemperature_frag"
-            android:label="@string/title_activity_brewing_temperature_frag">
+                android:label="@string/title_activity_brewing_temperature_frag"
+                tools:ignore="Instantiatable"
+                android:name="">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

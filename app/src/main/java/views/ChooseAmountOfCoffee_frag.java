@@ -39,7 +39,7 @@ public class ChooseAmountOfCoffee_frag extends Fragment implements View.OnClickL
         knap2.setOnClickListener(this);
         knap3.setOnClickListener(this);
 
-        prefs = PreferenceManager.getDefaultSharedPreferences(getActivity();
+        prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
 
 
         return rod;

@@ -1,7 +1,11 @@
 package views;
 
 import android.app.Fragment;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.Preference;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,6 +38,8 @@ public class ChooseAmountOfCoffee_frag extends Fragment implements View.OnClickL
         knap2.setOnClickListener(this);
         knap3.setOnClickListener(this);
 
+        SharedPreferences preferences = this.getActivity().getSharedPreferences("pref", Context.MODE_PRIVATE);
+
 
         return rod;
 
@@ -56,7 +62,8 @@ public class ChooseAmountOfCoffee_frag extends Fragment implements View.OnClickL
             tv.setText("Mængde kaffe i gram (" +amountOfCoffee + ")");
 
         } else if (ButtonClick == knap3){
-            Application.setPreferences("Key",amountOfCoffee);
+            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+            int value = preferences.getInt("Key", amountOfCoffee);
             getActivity().onBackPressed();
         }
 

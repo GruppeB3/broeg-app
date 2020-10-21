@@ -63,8 +63,7 @@ public class ChooseAmountOfCoffee_frag extends Fragment implements View.OnClickL
             tv.setText("Mængde kaffe i gram (" +amountOfCoffee + ")");
 
         } else if (ButtonClick == knap3){
-            Integer gemTal = editText.getText().toString();
-            prefs.edit().putString("Mængde kaffe", String.valueOf(gemTal)).apply();
+            prefs.edit().putInt("Mængde kaffe", amountOfCoffee).apply();
             getActivity().onBackPressed();
         }
 

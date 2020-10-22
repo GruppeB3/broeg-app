@@ -30,7 +30,7 @@ public class ChooseAmountOfCoffee_frag extends Fragment implements View.OnClickL
 
         knap1 = rod.findViewById(R.id.PilOp);
         knap2 = rod.findViewById(R.id.PilNed);
-        knap3 = rod.findViewById(R.id.Gem);
+        knap3 = rod.findViewById(R.id.gemAmount);
 
         knap1.setOnClickListener(this);
         knap2.setOnClickListener(this);

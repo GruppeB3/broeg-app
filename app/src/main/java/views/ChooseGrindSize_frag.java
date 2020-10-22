@@ -3,17 +3,14 @@ package views;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 
 import dk.dtu.gruppeb3.broeg.app.R;
-import helpers.PreferenceHelper;
 
 /**
  * This fragment gives the user the opportunity to choose between 3 types af grind size.
@@ -31,7 +28,7 @@ public class ChooseGrindSize_frag extends Fragment implements View.OnClickListen
         knap1 = rod.findViewById(R.id.Fine);
         knap2 = rod.findViewById(R.id.Medium);
         knap3 = rod.findViewById(R.id.Coarse);
-        knap4 = rod.findViewById(R.id.Gem2);
+        knap4 = rod.findViewById(R.id.gemGrind);
 
         knap1.setOnClickListener(this);
         knap2.setOnClickListener(this);
@@ -47,10 +44,13 @@ public class ChooseGrindSize_frag extends Fragment implements View.OnClickListen
     public void onClick(View ButtonClick) {
 
         if (ButtonClick == knap1) {
+            grindSize="Fine";
 
         } else if (ButtonClick == knap2) {
+            grindSize="Medium";
 
         } else if (ButtonClick == knap3) {
+            grindSize="Coarse";
 
         } else if (ButtonClick == knap4) {
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());

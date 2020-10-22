@@ -11,143 +11,66 @@
         android:id="@+id/broeg_frontpagebutton"
         android:layout_width="100dp"
         android:layout_height="51dp"
-        android:layout_marginStart="155dp"
-        android:layout_marginLeft="155dp"
-        android:layout_marginTop="63dp"
-        android:layout_marginEnd="156dp"
-        android:layout_marginRight="156dp"
-        android:layout_marginBottom="23dp"
         android:background="@drawable/broeg_frontpagebutton"
-        app:layout_constraintBottom_toTopOf="@+id/button3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button6" />
+        tools:layout_editor_absoluteX="155dp"
+        tools:layout_editor_absoluteY="105dp" />
 
     <Button
         android:id="@+id/cleaning_button"
         android:layout_width="145dp"
         android:layout_height="43dp"
-        android:layout_marginStart="133dp"
-        android:layout_marginLeft="133dp"
-        android:layout_marginTop="9dp"
-        android:layout_marginEnd="133dp"
-        android:layout_marginRight="133dp"
-        android:layout_marginBottom="22dp"
         android:background="@drawable/cleaning_button"
-        app:layout_constraintBottom_toTopOf="@+id/imageView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button4" />
+        tools:layout_editor_absoluteX="133dp"
+        tools:layout_editor_absoluteY="326dp" />
 
     <Button
         android:id="@+id/button3"
         android:layout_width="240dp"
         android:layout_height="47dp"
-        android:layout_marginStart="85dp"
-        android:layout_marginLeft="85dp"
-        android:layout_marginTop="23dp"
-        android:layout_marginEnd="86dp"
-        android:layout_marginRight="86dp"
-        android:layout_marginBottom="24dp"
         android:background="@drawable/recipes_button"
-        app:layout_constraintBottom_toTopOf="@+id/button4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/broeg_frontpagebutton" />
+        tools:layout_editor_absoluteX="85dp"
+        tools:layout_editor_absoluteY="180dp" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="77dp"
         android:layout_height="190dp"
-        android:layout_marginStart="167dp"
-        android:layout_marginLeft="167dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="167dp"
-        android:layout_marginRight="167dp"
-        android:layout_marginBottom="26dp"
-        app:layout_constraintBottom_toTopOf="@+id/button8"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cleaning_button"
-        app:srcCompat="@drawable/broeg_whitelogo" />
+        app:srcCompat="@drawable/broeg_whitelogo"
+        tools:layout_editor_absoluteX="167dp"
+        tools:layout_editor_absoluteY="436dp" />
 
     <Button
         android:id="@+id/button4"
         android:layout_width="145dp"
         android:layout_height="47dp"
-        android:layout_marginStart="133dp"
-        android:layout_marginLeft="133dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="133dp"
-        android:layout_marginRight="133dp"
-        android:layout_marginBottom="21dp"
         android:background="@drawable/myprofile_button"
-        app:layout_constraintBottom_toTopOf="@+id/cleaning_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3" />
-
-    <Button
-            android:id="@+id/button6"
-            android:layout_width="414dp"
-            android:layout_height="77dp"
-            android:background="@drawable/toprectangle_button"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        tools:layout_editor_absoluteX="133dp"
+        tools:layout_editor_absoluteY="248dp" />
 
     <Button
         android:id="@+id/button5"
         android:layout_width="25dp"
         android:layout_height="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="370dp"
-        android:layout_marginRight="370dp"
-        android:layout_marginBottom="76dp"
         android:background="@drawable/menuicon_button"
         android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="@+id/button6"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="8dp"
         tools:visibility="visible" />
 
     <Button
         android:id="@+id/button7"
         android:layout_width="55dp"
         android:layout_height="24dp"
-        android:layout_marginStart="179dp"
-        android:layout_marginLeft="179dp"
-        android:layout_marginTop="90dp"
-        android:layout_marginEnd="178dp"
-        android:layout_marginRight="178dp"
-        android:layout_marginBottom="11dp"
         android:background="@drawable/broegblack_button"
-        app:layout_constraintBottom_toTopOf="@+id/broeg_frontpagebutton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/button6"
-        app:layout_constraintVertical_bias="0.571" />
+        tools:layout_editor_absoluteX="178dp"
+        tools:layout_editor_absoluteY="16dp" />
 
     <Button
         android:id="@+id/button8"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginStart="186dp"
-        android:layout_marginLeft="186dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="186dp"
-        android:layout_marginRight="186dp"
-        android:layout_marginBottom="17dp"
         android:background="@drawable/homebutton_button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        tools:layout_editor_absoluteX="185dp"
+        tools:layout_editor_absoluteY="653dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

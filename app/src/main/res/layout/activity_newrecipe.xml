@@ -18,7 +18,7 @@
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="335dp"
-        android:layout_height="73"
+        android:layout_height="73dp"
         app:srcCompat="@drawable/rectanglebroeg_button"
         tools:layout_editor_absoluteX="38dp"
         tools:layout_editor_absoluteY="238dp" />

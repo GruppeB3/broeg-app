@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/background_brown"
     android:clickable="true"
+    android:elevation="40dp"
     tools:context="views.ChooseGrindSize_frag">
 
     <Button

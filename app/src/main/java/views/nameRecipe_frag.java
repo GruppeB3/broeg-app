@@ -18,14 +18,9 @@ import helpers.PreferenceHelper;
 public class nameRecipe_frag extends Fragment {
 
     private View rod;
-    double amountOfCoffee;
-    double amountBloomTime = 45;
-    double temperature = 80;
-    double amountBloomWater = 45;
-    String grindSize;
-    Button knap1;
-    TextView opskriftNavn;
+    TextView tv;
     EditText et;
+    String opskriftNavn;
 
 
     @Override
@@ -35,9 +30,12 @@ public class nameRecipe_frag extends Fragment {
         et  = (EditText)rod.findViewById(R.id.nameRecipe);
         et.getText().toString();
 
-        opskriftNavn = (TextView)rod.findViewById(R.id.nameRecipe);
-        opskriftNavn.setText(et.getText().toString());
+        tv = (TextView)rod.findViewById(R.id.nameRecipe);
+        tv.setText(et.getText().toString());
 
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        preferences.edit().putString("GrindSize", this.opskriftNavn).apply();
+        getActivity().onBackPressed();
 
         return rod;
     }

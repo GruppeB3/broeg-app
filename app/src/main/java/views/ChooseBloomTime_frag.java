@@ -13,22 +13,50 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import dk.dtu.gruppeb3.broeg.app.R;
+import helpers.PreferenceHelper;
 
 public class ChooseBloomTime_frag extends Fragment implements View.OnClickListener {
 
+    Button knap1, knap2, knap3;
     private View rod;
+    double amountBloomTime = 45;
 
     @Override
     public View onCreateView(LayoutInflater i, ViewGroup container, Bundle savedInstanceState) {
         View rod = i.inflate(R.layout.activity_choose_bloom_time_frag, container, false);
 
+        knap1 = rod.findViewById(R.id.pilOpBloomTime);
+        knap2 = rod.findViewById(R.id.pilNedBloomTime);
+        knap3 = rod.findViewById(R.id.gemBloomTime);
 
+        knap1.setOnClickListener(this);
+        knap2.setOnClickListener(this);
+        knap3.setOnClickListener(this);
+
+        SharedPreferences preferences = this.getActivity().getSharedPreferences("pref", Context.MODE_PRIVATE);
+        this.amountBloomTime = PreferenceHelper.getDouble(preferences, "amountBloomTime", "0");
 
         return rod;
     }
 
     @Override
-    public void onClick(View v) {
+    public void onClick(View ButtonClick) {
+        if (ButtonClick == knap1) {
+            amountBloomTime++;
+            TextView tv = rod.findViewById(R.id.amountWater);
+            tv.setText("Bloomtid i sekunder (" +amountBloomTime + ")");
+
+        } else if (ButtonClick == knap2){
+            amountBloomTime--;
+            TextView tv = rod.findViewById(R.id.amountWater);
+            tv.setText("Bloomtid i sekunder (" +amountBloomTime + ")");
+
+        } else if (ButtonClick == knap3){
+            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+            PreferenceHelper.putDouble(preferences, "amountBloomTime", this.amountBloomTime);
+
+            getActivity().onBackPressed();
+        }
 
     }
 }

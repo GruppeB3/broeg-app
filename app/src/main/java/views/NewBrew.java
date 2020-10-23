@@ -76,7 +76,14 @@ public class NewBrew extends AppCompatActivity implements View.OnClickListener {
                     .replace(R.id.fragmentindhold, new ChooseBloomWaterAmount_frag())
                     .addToBackStack(null)
                     .commit();
-        } else if (ClickButton == knap5){
+        } else if (ClickButton == knap5) {
+            getFragmentManager().beginTransaction()
+                    .setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
+                    .replace(R.id.fragmentindhold, new ChooseBloomTime_frag())
+                    .addToBackStack(null)
+                    .commit();
+        } else if (ClickButton == knap6){
+            
 
         }
 

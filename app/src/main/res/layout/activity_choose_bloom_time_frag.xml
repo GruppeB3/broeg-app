@@ -20,7 +20,7 @@
       app:layout_constraintTop_toTopOf="parent" />
 
   <Button
-      android:id="@+id/pilOpBloomTime"
+      android:id="@+id/ArrowUp_BloomTime"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_marginStart="37dp"
@@ -30,7 +30,7 @@
       app:layout_constraintStart_toStartOf="@+id/bloomTime" />
 
   <Button
-      android:id="@+id/pilNedBloomTime"
+      android:id="@+id/ArrowDown_BloomTime"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_marginStart="37dp"
@@ -40,7 +40,7 @@
       app:layout_constraintTop_toBottomOf="@+id/bloomTime" />
 
   <Button
-      android:id="@+id/gemBloomTime"
+      android:id="@+id/Save_BloomTime"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_marginBottom="73dp"

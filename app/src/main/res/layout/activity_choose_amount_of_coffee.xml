@@ -10,7 +10,7 @@
     tools:context="views.ChooseAmountOfCoffee_frag">
 
     <Button
-        android:id="@+id/PilOp"
+        android:id="@+id/ArrowUp_CoffeAmount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="23dp"
@@ -20,7 +20,7 @@
         app:layout_constraintStart_toStartOf="@+id/CoffeeAmount" />
 
     <Button
-        android:id="@+id/PilNed"
+        android:id="@+id/ArrowDown_CoffeAmount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="23dp"
@@ -30,7 +30,7 @@
         app:layout_constraintTop_toBottomOf="@+id/CoffeeAmount" />
 
     <Button
-        android:id="@+id/gemAmount"
+        android:id="@+id/Save_AmountCoffee"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="103dp"

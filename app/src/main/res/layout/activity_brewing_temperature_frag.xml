@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/PilOpTemp"
+        android:id="@+id/ArrowUp_Temp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="41dp"
@@ -29,7 +29,7 @@
         app:layout_constraintStart_toStartOf="@+id/temperature" />
 
     <Button
-        android:id="@+id/PilNedTemp"
+        android:id="@+id/ArrowDown_Temp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="41dp"
@@ -39,11 +39,11 @@
         app:layout_constraintTop_toBottomOf="@+id/temperature" />
 
     <Button
-        android:id="@+id/GemTemp"
+        android:id="@+id/Save_Temp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="78dp"
         android:text="Save"
-        app:layout_constraintStart_toStartOf="@+id/PilNedTemp"
-        app:layout_constraintTop_toBottomOf="@+id/PilNedTemp" />
+        app:layout_constraintStart_toStartOf="@+id/ArrowDown_Temp"
+        app:layout_constraintTop_toBottomOf="@+id/ArrowDown_Temp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

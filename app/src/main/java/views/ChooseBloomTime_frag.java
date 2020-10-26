@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,9 +24,9 @@ public class ChooseBloomTime_frag extends Fragment implements View.OnClickListen
     public View onCreateView(LayoutInflater i, ViewGroup container, Bundle savedInstanceState) {
         View rod = i.inflate(R.layout.activity_choose_bloom_time_frag, container, false);
 
-        knap1 = rod.findViewById(R.id.pilOpBloomTime);
-        knap2 = rod.findViewById(R.id.pilNedBloomTime);
-        knap3 = rod.findViewById(R.id.gemBloomTime);
+        knap1 = rod.findViewById(R.id.ArrowUp_BloomTime);
+        knap2 = rod.findViewById(R.id.ArrowDown_BloomTime);
+        knap3 = rod.findViewById(R.id.Save_BloomTime);
 
         knap1.setOnClickListener(this);
         knap2.setOnClickListener(this);

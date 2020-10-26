@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/PilOpBloomWater"
+        android:id="@+id/ArrowUp_BloomAmount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="121dp"
@@ -30,21 +30,21 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/PilNedBloomWater"
+        android:id="@+id/ArrowDown_BloomAmount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="21dp"
         android:text="PILNED"
-        app:layout_constraintStart_toStartOf="@+id/PilOpBloomWater"
+        app:layout_constraintStart_toStartOf="@+id/ArrowUp_BloomAmount"
         app:layout_constraintTop_toBottomOf="@+id/amountWater" />
 
     <Button
-        android:id="@+id/gemBloomVand"
+        android:id="@+id/Save_BloomAmount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="111dp"
         android:text="Save"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/PilNedBloomWater"
-        app:layout_constraintStart_toStartOf="@+id/PilNedBloomWater" />
+        app:layout_constraintEnd_toEndOf="@+id/ArrowDown_BloomAmount"
+        app:layout_constraintStart_toStartOf="@+id/ArrowDown_BloomAmount" />
 </androidx.constraintlayout.widget.ConstraintLayout>

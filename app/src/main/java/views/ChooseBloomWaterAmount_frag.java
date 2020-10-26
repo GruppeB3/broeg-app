@@ -1,6 +1,5 @@
 package views;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -26,9 +25,9 @@ public class ChooseBloomWaterAmount_frag extends Fragment implements View.OnClic
     public View onCreateView(LayoutInflater i, ViewGroup container, Bundle savedInstanceState) {
         View rod = i.inflate(R.layout.activity_choose_bloom_water_amount_frag, container, false);
 
-        knap1 = rod.findViewById(R.id.PilOpBloomWater);
-        knap2 = rod.findViewById(R.id.PilNedBloomWater);
-        knap3 = rod.findViewById(R.id.gemBloomVand);
+        knap1 = rod.findViewById(R.id.ArrowUp_BloomAmount);
+        knap2 = rod.findViewById(R.id.ArrowDown_BloomAmount);
+        knap3 = rod.findViewById(R.id.Save_BloomAmount);
 
         knap1.setOnClickListener(this);
         knap2.setOnClickListener(this);

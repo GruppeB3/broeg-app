@@ -28,9 +28,9 @@ public class ChooseAmountOfCoffee_frag extends Fragment implements View.OnClickL
     public View onCreateView(LayoutInflater i, ViewGroup container, Bundle savedInstanceState){
         this.rod= i.inflate(R.layout.activity_choose_amount_of_coffee, container, false);
 
-        knap1 = rod.findViewById(R.id.PilOp);
-        knap2 = rod.findViewById(R.id.PilNed);
-        knap3 = rod.findViewById(R.id.gemAmount);
+        knap1 = rod.findViewById(R.id.ArrowUp_CoffeAmount);
+        knap2 = rod.findViewById(R.id.ArrowDown_CoffeAmount);
+        knap3 = rod.findViewById(R.id.Save_AmountCoffee);
 
         knap1.setOnClickListener(this);
         knap2.setOnClickListener(this);

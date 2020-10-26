@@ -28,9 +28,9 @@ public class ChooseBrewingTemperature_frag extends Fragment implements View.OnCl
     public View onCreateView(LayoutInflater i, ViewGroup container, Bundle savedInstanceState){
         this.rod= i.inflate(R.layout.activity_brewing_temperature_frag, container, false);
 
-        knap1 = rod.findViewById(R.id.PilNedTemp);
-        knap2 = rod.findViewById(R.id.PilOpTemp);
-        knap3 = rod.findViewById(R.id.GemTemp);
+        knap1 = rod.findViewById(R.id.ArrowDown_Temp);
+        knap2 = rod.findViewById(R.id.ArrowUp_Temp);
+        knap3 = rod.findViewById(R.id.Save_Temp);
 
         knap1.setOnClickListener(this);
         knap2.setOnClickListener(this);

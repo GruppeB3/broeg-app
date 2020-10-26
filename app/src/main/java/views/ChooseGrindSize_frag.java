@@ -28,7 +28,7 @@ public class ChooseGrindSize_frag extends Fragment implements View.OnClickListen
         knap1 = rod.findViewById(R.id.Fine);
         knap2 = rod.findViewById(R.id.Medium);
         knap3 = rod.findViewById(R.id.Coarse);
-        knap4 = rod.findViewById(R.id.gemGrind);
+        knap4 = rod.findViewById(R.id.Save_GrindSize);
 
         knap1.setOnClickListener(this);
         knap2.setOnClickListener(this);

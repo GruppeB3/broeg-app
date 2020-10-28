@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_brown"
+    android:clickable="true"
+    android:elevation="40dp"
+    tools:context="views.ChooseBloomTime_frag">
+
+  <TextView
+      android:id="@+id/bloomTime"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="340dp"
+      android:text="Vælg bloom tid i sekunder"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+  <Button
+      android:id="@+id/ArrowUp_BloomTime"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="37dp"
+      android:layout_marginBottom="44dp"
+      android:text="PILOP"
+      app:layout_constraintBottom_toTopOf="@+id/bloomTime"
+      app:layout_constraintStart_toStartOf="@+id/bloomTime" />
+
+  <Button
+      android:id="@+id/ArrowDown_BloomTime"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="37dp"
+      android:layout_marginTop="56dp"
+      android:text="PILNED"
+      app:layout_constraintStart_toStartOf="@+id/bloomTime"
+      app:layout_constraintTop_toBottomOf="@+id/bloomTime" />
+
+  <Button
+      android:id="@+id/Save_BloomTime"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="73dp"
+      android:text="Save"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_brown"
+    android:clickable="true"
+    android:elevation="40dp"
+    tools:context="views.ChooseBloomWaterAmount_frag">
+
+    <TextView
+        android:id="@+id/amountWater"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="301dp"
+        android:text="ml"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/ArrowUp_BloomAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="121dp"
+        android:layout_marginBottom="36dp"
+        android:text="PILOP"
+        app:layout_constraintBottom_toTopOf="@+id/amountWater"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/ArrowDown_BloomAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="21dp"
+        android:text="PILNED"
+        app:layout_constraintStart_toStartOf="@+id/ArrowUp_BloomAmount"
+        app:layout_constraintTop_toBottomOf="@+id/amountWater" />
+
+    <Button
+        android:id="@+id/Save_BloomAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="111dp"
+        android:text="Save"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/ArrowDown_BloomAmount"
+        app:layout_constraintStart_toStartOf="@+id/ArrowDown_BloomAmount" />
+</androidx.constraintlayout.widget.ConstraintLayout>

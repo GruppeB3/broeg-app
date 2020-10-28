@@ -21,12 +21,12 @@ public class NewRecipeActivity extends AppCompatActivity implements View.OnClick
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_newrecipe);
 
-        knap1 = findViewById(R.id.imageView2);
-        knap2 = findViewById(R.id.imageView3);
-        knap3 = findViewById(R.id.imageView4);
-        knap4 = findViewById(R.id.imageView5);
-        knap5 = findViewById(R.id.imageView6);
-        knap6 = findViewById(R.id.button6);
+        knap1 = findViewById(R.id.groundCoffeeAmtBackground);
+        knap2 = findViewById(R.id.grindSizeBackground);
+        knap3 = findViewById(R.id.brewingTempBackground);
+        knap4 = findViewById(R.id.bloomWaterBackground);
+        knap5 = findViewById(R.id.bloomTimeBackground);
+        knap6 = findViewById(R.id.saveButton);
 
         knap1.setOnClickListener(this);
         knap2.setOnClickListener(this);

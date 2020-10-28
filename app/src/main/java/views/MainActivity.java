@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        newBrewButton = findViewById(R.id.button8);
+        newBrewButton = findViewById(R.id.broeg_frontpagebutton);
         newBrewButton.setOnClickListener(this);
     }
 

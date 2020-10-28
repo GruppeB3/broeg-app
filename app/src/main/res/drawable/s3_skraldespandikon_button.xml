@@ -2,6 +2,8 @@
 <ripple xmlns:android="http://schemas.android.com/apk/res/android" android:color="@color/colorPrimary">
 
 
-<item android:drawable="@drawable/cleaning"/>
+    <item android:drawable="@drawable/s3_skraldespandikon"/>
 
 </ripple>
+
+

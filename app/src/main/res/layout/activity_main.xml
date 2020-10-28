@@ -9,72 +9,43 @@
 
     <Button
         android:id="@+id/broeg_frontpagebutton"
-        android:layout_width="0dp"
+        android:layout_width="100dp"
         android:layout_height="51dp"
-        android:layout_marginStart="155dp"
-        android:layout_marginTop="127dp"
-        android:layout_marginEnd="46dp"
-        android:layout_marginBottom="129dp"
         android:background="@drawable/broeg_frontpagebutton"
-        app:layout_constraintBottom_toTopOf="@+id/button4"
-        app:layout_constraintEnd_toStartOf="@+id/button8"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/button6" />
+        tools:layout_editor_absoluteX="155dp"
+        tools:layout_editor_absoluteY="105dp" />
 
     <Button
         android:id="@+id/cleaning_button"
         android:layout_width="145dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="34dp"
+        android:layout_height="43dp"
         android:background="@drawable/cleaning_button"
-        app:layout_constraintBottom_toTopOf="@+id/imageView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button4" />
+        tools:layout_editor_absoluteX="133dp"
+        tools:layout_editor_absoluteY="326dp" />
 
     <Button
         android:id="@+id/button3"
         android:layout_width="240dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="36dp"
+        android:layout_height="47dp"
         android:background="@drawable/recipes_button"
-        app:layout_constraintBottom_toTopOf="@+id/button4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button8" />
+        tools:layout_editor_absoluteX="85dp"
+        tools:layout_editor_absoluteY="180dp" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="77dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="80dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cleaning_button"
-        app:srcCompat="@drawable/broeg_whitelogo" />
+        android:layout_height="190dp"
+        app:srcCompat="@drawable/broeg_whitelogo"
+        tools:layout_editor_absoluteX="167dp"
+        tools:layout_editor_absoluteY="436dp" />
 
     <Button
         android:id="@+id/button4"
         android:layout_width="145dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="30dp"
+        android:layout_height="47dp"
         android:background="@drawable/myprofile_button"
-        app:layout_constraintBottom_toTopOf="@+id/cleaning_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3" />
-
-    <Button
-        android:id="@+id/button6"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="14dp"
-        android:background="@drawable/toprectangle_button"
-        app:layout_constraintBottom_toTopOf="@+id/button7"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:layout_editor_absoluteX="133dp"
+        tools:layout_editor_absoluteY="248dp" />
 
     <Button
         android:id="@+id/button5"
@@ -82,31 +53,24 @@
         android:layout_height="16dp"
         android:background="@drawable/menuicon_button"
         android:visibility="visible"
-        app:layout_constraintStart_toStartOf="@+id/button6"
-        app:layout_constraintTop_toTopOf="@+id/button6"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="8dp"
         tools:visibility="visible" />
 
     <Button
         android:id="@+id/button7"
         android:layout_width="55dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="23dp"
+        android:layout_height="24dp"
         android:background="@drawable/broegblack_button"
-        app:layout_constraintBottom_toTopOf="@+id/button8"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button6" />
+        tools:layout_editor_absoluteX="178dp"
+        tools:layout_editor_absoluteY="16dp" />
 
     <Button
         android:id="@+id/button8"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="70dp"
-        android:layout_marginBottom="46dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:background="@drawable/homebutton_button"
-        app:layout_constraintBottom_toTopOf="@+id/button3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/broeg_frontpagebutton"
-        app:layout_constraintTop_toBottomOf="@+id/button7" />
+        tools:layout_editor_absoluteX="185dp"
+        tools:layout_editor_absoluteY="653dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

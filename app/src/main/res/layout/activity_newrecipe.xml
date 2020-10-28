@@ -134,4 +134,11 @@
         android:text="Button"
         tools:layout_editor_absoluteX="307dp"
         tools:layout_editor_absoluteY="789dp" />
+
+    <LinearLayout
+            android:id="@+id/fragment_contents"
+            android:orientation="horizontal"
+            android:elevation="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

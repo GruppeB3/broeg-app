@@ -44,37 +44,37 @@ public class NewRecipeActivity extends AppCompatActivity implements View.OnClick
         if (ClickButton == knap1) {
             getFragmentManager().beginTransaction()
                     .setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
-                    .replace(R.id.fragmentindhold, new ChooseAmountOfCoffee_frag())
+                    .replace(R.id.fragment_contents, new ChooseAmountOfCoffee_frag())
                     .addToBackStack(null)
                     .commit();
         } else if (ClickButton == knap2) {
             getFragmentManager().beginTransaction()
                     .setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
-                    .replace(R.id.fragmentindhold, new ChooseGrindSize_frag())
+                    .replace(R.id.fragment_contents, new ChooseGrindSize_frag())
                     .addToBackStack(null)
                     .commit();
         } else if (ClickButton == knap3) {
             getFragmentManager().beginTransaction()
                     .setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
-                    .replace(R.id.fragmentindhold, new ChooseBrewingTemperature_frag())
+                    .replace(R.id.fragment_contents, new ChooseBrewingTemperature_frag())
                     .addToBackStack(null)
                     .commit();
         } else if (ClickButton == knap4) {
             getFragmentManager().beginTransaction()
                     .setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
-                    .replace(R.id.fragmentindhold, new ChooseBloomWaterAmount_frag())
+                    .replace(R.id.fragment_contents, new ChooseBloomWaterAmount_frag())
                     .addToBackStack(null)
                     .commit();
         } else if (ClickButton == knap5) {
             getFragmentManager().beginTransaction()
                     .setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
-                    .replace(R.id.fragmentindhold, new ChooseBloomTime_frag())
+                    .replace(R.id.fragment_contents, new ChooseBloomTime_frag())
                     .addToBackStack(null)
                     .commit();
         } else if (ClickButton == knap6){
             getFragmentManager().beginTransaction()
                     .setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
-                    .replace(R.id.fragmentindhold, new nameRecipe_frag())
+                    .replace(R.id.fragment_contents, new nameRecipe_frag())
                     .addToBackStack(null)
                     .commit();
 

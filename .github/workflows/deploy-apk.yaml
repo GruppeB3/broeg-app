@@ -2,7 +2,7 @@ name: Build and deploy APK
 
 on:
   release:
-    types: [published]
+    types: [released]
 
 jobs:
   testing:

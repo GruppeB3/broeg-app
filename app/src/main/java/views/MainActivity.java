@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         if (v == newBrewButton) {
 
-            Intent i = new Intent(this, NewBrew.class);
+            Intent i = new Intent(this, NewRecipeActivity.class);
             startActivity(i);
 
         }

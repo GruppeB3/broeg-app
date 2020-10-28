@@ -1,8 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context="views.NewRecipeActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_brown"
+    tools:context="views.NewRecipeActivity">
 
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="335dp"
+        android:layout_height="73dp"
+        app:srcCompat="@drawable/rectanglebroeg_button"
+        tools:layout_editor_absoluteX="38dp"
+        tools:layout_editor_absoluteY="420dp" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="335dp"
+        android:layout_height="73dp"
+        app:srcCompat="@drawable/rectanglebroeg_button"
+        tools:layout_editor_absoluteX="38dp"
+        tools:layout_editor_absoluteY="238dp" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="335dp"
+        android:layout_height="73dp"
+        app:srcCompat="@drawable/rectanglebroeg_button"
+        tools:layout_editor_absoluteX="38dp"
+        tools:layout_editor_absoluteY="329dp" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="335dp"
+        android:layout_height="73dp"
+        app:srcCompat="@drawable/rectanglebroeg_button"
+        tools:layout_editor_absoluteX="38dp"
+        tools:layout_editor_absoluteY="143dp" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="335dp"
+        android:layout_height="73dp"
+        app:srcCompat="@drawable/rectanglebroeg_button"
+        tools:layout_editor_absoluteX="38dp"
+        tools:layout_editor_absoluteY="51dp" />
+
+    <Button
+        android:id="@+id/button9"
+        android:layout_width="264dp"
+        android:layout_height="31dp"
+        android:background="@drawable/s2groundcoffeeamount_button"
+        tools:layout_editor_absoluteX="73dp"
+        tools:layout_editor_absoluteY="71dp" />
+
+    <Button
+        android:layout_width="120dp"
+        android:layout_height="31dp"
+        android:background="@drawable/s2grindsize_button"
+        tools:layout_editor_absoluteX="145dp"
+        tools:layout_editor_absoluteY="163dp" />
+
+    <Button
+        android:id="@+id/button11"
+        android:layout_width="242dp"
+        android:layout_height="31dp"
+        android:background="@drawable/s2brewingtemperature_button"
+        tools:layout_editor_absoluteX="84dp"
+        tools:layout_editor_absoluteY="253dp" />
+
+    <Button
+        android:id="@+id/button12"
+        android:layout_width="143dp"
+        android:layout_height="31dp"
+        android:background="@drawable/s2bloomwater_button"
+        tools:layout_editor_absoluteX="134dp"
+        tools:layout_editor_absoluteY="350dp" />
+
+    <Button
+        android:id="@+id/button13"
+        android:layout_width="129dp"
+        android:layout_height="34dp"
+        android:background="@drawable/s2bloomtime_button"
+        tools:layout_editor_absoluteX="141dp"
+        tools:layout_editor_absoluteY="434dp" />
+
+    <Button
+        android:id="@+id/button14"
+        android:layout_width="25dp"
+        android:layout_height="16dp"
+        android:background="@drawable/menuicon_button"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="8dp" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="169dp"
+        android:layout_height="166dp"
+        tools:layout_editor_absoluteX="120dp"
+        tools:layout_editor_absoluteY="523dp" />
+
+    <Button
+        android:id="@+id/button6"
+        android:layout_width="114dp"
+        android:layout_height="46dp"
+        android:background="@drawable/s2saveknap_button"
+        tools:layout_editor_absoluteX="148dp"
+        tools:layout_editor_absoluteY="713dp" />
+
+    <Button
+        android:id="@+id/button15"
+        android:layout_width="31dp"
+        android:layout_height="22dp"
+        android:background="@drawable/s2tilbageknap_button"
+        tools:layout_editor_absoluteX="73dp"
+        tools:layout_editor_absoluteY="789dp" />
+
+    <Button
+        android:id="@+id/button16"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/homebutton_button"
+        tools:layout_editor_absoluteX="185dp"
+        tools:layout_editor_absoluteY="780dp" />
+
+    <Button
+        android:id="@+id/button17"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@drawable/s2tilfoejopskriftplus_button"
+        android:text="Button"
+        tools:layout_editor_absoluteX="307dp"
+        tools:layout_editor_absoluteY="789dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

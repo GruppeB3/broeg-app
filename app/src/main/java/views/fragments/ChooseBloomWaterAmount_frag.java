@@ -23,11 +23,11 @@ public class ChooseBloomWaterAmount_frag extends Fragment implements View.OnClic
 
     @Override
     public View onCreateView(LayoutInflater i, ViewGroup container, Bundle savedInstanceState) {
-        View rod = i.inflate(R.layout.fragment_choose_bloom_water_amount, container, false);
+        this.root = i.inflate(R.layout.fragment_choose_bloom_water_amount, container, false);
 
-        plusBtn = rod.findViewById(R.id.ArrowUp_BloomAmount);
-        minusBtn = rod.findViewById(R.id.ArrowDown_BloomAmount);
-        saveBtn = rod.findViewById(R.id.Save_BloomAmount);
+        plusBtn = root.findViewById(R.id.ArrowUp_BloomAmount);
+        minusBtn = root.findViewById(R.id.ArrowDown_BloomAmount);
+        saveBtn = root.findViewById(R.id.Save_BloomAmount);
 
         plusBtn.setOnClickListener(this);
         minusBtn.setOnClickListener(this);
@@ -36,7 +36,7 @@ public class ChooseBloomWaterAmount_frag extends Fragment implements View.OnClic
         SharedPreferences preferences = this.getActivity().getSharedPreferences("pref", Context.MODE_PRIVATE);
         this.amountBloomWater = PreferenceHelper.getDouble(preferences, "amountBloomWater", "0");
 
-        return rod;
+        return root;
     }
 
     @Override

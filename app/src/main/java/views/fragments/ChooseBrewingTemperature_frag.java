@@ -20,28 +20,26 @@ import helpers.PreferenceHelper;
 
 public class ChooseBrewingTemperature_frag extends Fragment implements View.OnClickListener {
 
-    Button knap1, knap2, knap3;
-    private View rod;
+    Button plusBtn, minusBtn, saveBtn;
+    private View root;
     double temperature = 80;
 
     @Override
     public View onCreateView(LayoutInflater i, ViewGroup container, Bundle savedInstanceState){
-        this.rod= i.inflate(R.layout.fragment_brewing_temperature, container, false);
+        this.root = i.inflate(R.layout.fragment_brewing_temperature, container, false);
 
-        knap1 = rod.findViewById(R.id.ArrowDown_Temp);
-        knap2 = rod.findViewById(R.id.ArrowUp_Temp);
-        knap3 = rod.findViewById(R.id.Save_Temp);
+        plusBtn = root.findViewById(R.id.ArrowDown_Temp);
+        minusBtn = root.findViewById(R.id.ArrowUp_Temp);
+        saveBtn = root.findViewById(R.id.Save_Temp);
 
-        knap1.setOnClickListener(this);
-        knap2.setOnClickListener(this);
-        knap3.setOnClickListener(this);
+        plusBtn.setOnClickListener(this);
+        minusBtn.setOnClickListener(this);
+        saveBtn.setOnClickListener(this);
 
         SharedPreferences preferences = this.getActivity().getSharedPreferences("pref", Context.MODE_PRIVATE);
         this.temperature = PreferenceHelper.getDouble(preferences, "temperature", "0");
 
-        return rod;
-
-
+        return root;
     }
 
     @Override
@@ -49,17 +47,17 @@ public class ChooseBrewingTemperature_frag extends Fragment implements View.OnCl
 
 
 
-        if (ButtonClick == knap1) {
+        if (ButtonClick == plusBtn) {
             temperature++;
-            TextView tv = rod.findViewById(R.id.temperature);
+            TextView tv = root.findViewById(R.id.temperature);
             tv.setText("Mængde kaffe i gram (" +temperature + ")");
 
-        } else if (ButtonClick == knap2){
+        } else if (ButtonClick == minusBtn){
             temperature--;
-            TextView tv = rod.findViewById(R.id.temperature);
+            TextView tv = root.findViewById(R.id.temperature);
             tv.setText("Mængde kaffe i gram (" +temperature + ")");
 
-        } else if (ButtonClick == knap3){
+        } else if (ButtonClick == saveBtn){
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
             PreferenceHelper.putDouble(preferences, "temperature", this.temperature);
 

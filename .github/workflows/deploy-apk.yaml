@@ -40,6 +40,8 @@ jobs:
     needs: [ testing, build ]
 
     steps:
+      - name: Show file tree
+        run: tree -a app
       - name: Release
         uses: softprops/action-gh-release@v1
         with:

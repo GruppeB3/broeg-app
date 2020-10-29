@@ -28,8 +28,8 @@ public class ChooseBrewingTemperature_frag extends Fragment implements View.OnCl
     public View onCreateView(LayoutInflater i, ViewGroup container, Bundle savedInstanceState){
         this.root = i.inflate(R.layout.fragment_brewing_temperature, container, false);
 
-        plusBtn = root.findViewById(R.id.ArrowDown_Temp);
-        minusBtn = root.findViewById(R.id.ArrowUp_Temp);
+        plusBtn = root.findViewById(R.id.ArrowUp_Temp);
+        minusBtn = root.findViewById(R.id.ArrowDown_Temp);
         saveBtn = root.findViewById(R.id.Save_Temp);
 
         plusBtn.setOnClickListener(this);
@@ -68,6 +68,6 @@ public class ChooseBrewingTemperature_frag extends Fragment implements View.OnCl
 
     private void updateText() {
         TextView tv = root.findViewById(R.id.temperature);
-        tv.setText("Mængde kaffe i gram (" + temperature + ")");
+        tv.setText("Bryggetemperatur i grader celcius (" + temperature + ")");
     }
 }

@@ -18,8 +18,8 @@ import views.fragments.ChooseGrindSize_frag;
 import views.fragments.nameRecipe_frag;
 
 public class NewRecipeActivity extends AppCompatActivity implements View.OnClickListener {
-    private ImageView knap1, knap2, knap3, knap4, knap5;
-    private Button knap6;
+    private ImageView groundCoffeeAmtBtn, grindSizeBtn, brewTempBtn, bloomWaterAmtBtn, bloomTimeBtn;
+    private Button saveBtn;
     SharedPreferences prefs;
 
     @Override
@@ -27,19 +27,19 @@ public class NewRecipeActivity extends AppCompatActivity implements View.OnClick
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_newrecipe);
 
-        knap1 = findViewById(R.id.groundCoffeeAmtBackground);
-        knap2 = findViewById(R.id.grindSizeBackground);
-        knap3 = findViewById(R.id.brewingTempBackground);
-        knap4 = findViewById(R.id.bloomWaterBackground);
-        knap5 = findViewById(R.id.bloomTimeBackground);
-        knap6 = findViewById(R.id.saveButton);
+        groundCoffeeAmtBtn = findViewById(R.id.groundCoffeeAmtBackground);
+        grindSizeBtn = findViewById(R.id.grindSizeBackground);
+        brewTempBtn = findViewById(R.id.brewingTempBackground);
+        bloomWaterAmtBtn = findViewById(R.id.bloomWaterBackground);
+        bloomTimeBtn = findViewById(R.id.bloomTimeBackground);
+        saveBtn = findViewById(R.id.saveButton);
 
-        knap1.setOnClickListener(this);
-        knap2.setOnClickListener(this);
-        knap3.setOnClickListener(this);
-        knap4.setOnClickListener(this);
-        knap5.setOnClickListener(this);
-        knap6.setOnClickListener(this);
+        groundCoffeeAmtBtn.setOnClickListener(this);
+        grindSizeBtn.setOnClickListener(this);
+        brewTempBtn.setOnClickListener(this);
+        bloomWaterAmtBtn.setOnClickListener(this);
+        bloomTimeBtn.setOnClickListener(this);
+        saveBtn.setOnClickListener(this);
 
         prefs = PreferenceManager.getDefaultSharedPreferences(this);
 
@@ -47,37 +47,37 @@ public class NewRecipeActivity extends AppCompatActivity implements View.OnClick
 
     @Override
     public void onClick(View ClickButton) {
-        if (ClickButton == knap1) {
+        if (ClickButton == groundCoffeeAmtBtn) {
             getFragmentManager().beginTransaction()
                     .setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
                     .replace(R.id.fragment_contents, new ChooseAmountOfCoffee_frag())
                     .addToBackStack(null)
                     .commit();
-        } else if (ClickButton == knap2) {
+        } else if (ClickButton == grindSizeBtn) {
             getFragmentManager().beginTransaction()
                     .setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
                     .replace(R.id.fragment_contents, new ChooseGrindSize_frag())
                     .addToBackStack(null)
                     .commit();
-        } else if (ClickButton == knap3) {
+        } else if (ClickButton == brewTempBtn) {
             getFragmentManager().beginTransaction()
                     .setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
                     .replace(R.id.fragment_contents, new ChooseBrewingTemperature_frag())
                     .addToBackStack(null)
                     .commit();
-        } else if (ClickButton == knap4) {
+        } else if (ClickButton == bloomWaterAmtBtn) {
             getFragmentManager().beginTransaction()
                     .setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
                     .replace(R.id.fragment_contents, new ChooseBloomWaterAmount_frag())
                     .addToBackStack(null)
                     .commit();
-        } else if (ClickButton == knap5) {
+        } else if (ClickButton == bloomTimeBtn) {
             getFragmentManager().beginTransaction()
                     .setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
                     .replace(R.id.fragment_contents, new ChooseBloomTime_frag())
                     .addToBackStack(null)
                     .commit();
-        } else if (ClickButton == knap6){
+        } else if (ClickButton == saveBtn){
             getFragmentManager().beginTransaction()
                     .setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
                     .replace(R.id.fragment_contents, new nameRecipe_frag())

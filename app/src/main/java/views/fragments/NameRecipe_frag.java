@@ -14,7 +14,7 @@ import android.widget.TextView;
 import dk.dtu.gruppeb3.broeg.app.R;
 import views.activities.MyRecipesActivity;
 
-public class nameRecipe_frag extends Fragment implements View.OnClickListener {
+public class NameRecipe_frag extends Fragment implements View.OnClickListener {
 
     private View rod;
     TextView et;

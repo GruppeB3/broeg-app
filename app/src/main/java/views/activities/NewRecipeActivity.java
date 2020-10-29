@@ -15,7 +15,7 @@ import views.fragments.ChooseBloomTime_frag;
 import views.fragments.ChooseBloomWaterAmount_frag;
 import views.fragments.ChooseBrewingTemperature_frag;
 import views.fragments.ChooseGrindSize_frag;
-import views.fragments.nameRecipe_frag;
+import views.fragments.NameRecipe_frag;
 
 public class NewRecipeActivity extends AppCompatActivity implements View.OnClickListener {
     private ImageView groundCoffeeAmtBtn, grindSizeBtn, brewTempBtn, bloomWaterAmtBtn, bloomTimeBtn;
@@ -80,7 +80,7 @@ public class NewRecipeActivity extends AppCompatActivity implements View.OnClick
         } else if (ClickButton == saveBtn){
             getFragmentManager().beginTransaction()
                     .setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
-                    .replace(R.id.fragment_contents, new nameRecipe_frag())
+                    .replace(R.id.fragment_contents, new NameRecipe_frag())
                     .addToBackStack(null)
                     .commit();
 

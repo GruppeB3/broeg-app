@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">BROEG App</string>
+    <string name="app_name">BRØG</string>
     <string name="title_activity_brewing_temperature_frag">BrewingTemperature_frag</string>
     <!--
     This string is used for square devices and overridden by hello_world in

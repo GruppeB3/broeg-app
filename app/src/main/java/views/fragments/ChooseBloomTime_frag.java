@@ -22,7 +22,7 @@ public class ChooseBloomTime_frag extends Fragment implements View.OnClickListen
 
     @Override
     public View onCreateView(LayoutInflater i, ViewGroup container, Bundle savedInstanceState) {
-        View rod = i.inflate(R.layout.fragment_choose_bloom_time, container, false);
+        this.rod = i.inflate(R.layout.fragment_choose_bloom_time, container, false);
 
         knap1 = rod.findViewById(R.id.ArrowUp_BloomTime);
         knap2 = rod.findViewById(R.id.ArrowDown_BloomTime);
@@ -33,7 +33,7 @@ public class ChooseBloomTime_frag extends Fragment implements View.OnClickListen
         knap3.setOnClickListener(this);
 
         SharedPreferences preferences = this.getActivity().getSharedPreferences("pref", Context.MODE_PRIVATE);
-        this.amountBloomTime = PreferenceHelper.getDouble(preferences, "amountBloomTime", "0");
+        this.amountBloomTime = PreferenceHelper.getDouble(preferences, "amountBloomTime", "45");
 
         return rod;
     }
@@ -42,12 +42,12 @@ public class ChooseBloomTime_frag extends Fragment implements View.OnClickListen
     public void onClick(View ButtonClick) {
         if (ButtonClick == knap1) {
             amountBloomTime++;
-            TextView tv = rod.findViewById(R.id.amountWater);
+            TextView tv = rod.findViewById(R.id.bloomTime);
             tv.setText("Bloomtid i sekunder (" +amountBloomTime + ")");
 
         } else if (ButtonClick == knap2){
             amountBloomTime--;
-            TextView tv = rod.findViewById(R.id.amountWater);
+            TextView tv = rod.findViewById(R.id.bloomTime);
             tv.setText("Bloomtid i sekunder (" +amountBloomTime + ")");
 
         } else if (ButtonClick == knap3){

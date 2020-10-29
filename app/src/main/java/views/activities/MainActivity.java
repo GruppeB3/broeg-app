@@ -1,4 +1,4 @@
-package views;
+package views.activities;
 
 import android.content.Intent;
 import android.os.Bundle;

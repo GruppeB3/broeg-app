@@ -1,4 +1,4 @@
-package views;
+package views.activities;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -10,6 +10,12 @@ import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import dk.dtu.gruppeb3.broeg.app.R;
+import views.fragments.ChooseAmountOfCoffee_frag;
+import views.fragments.ChooseBloomTime_frag;
+import views.fragments.ChooseBloomWaterAmount_frag;
+import views.fragments.ChooseBrewingTemperature_frag;
+import views.fragments.ChooseGrindSize_frag;
+import views.fragments.nameRecipe_frag;
 
 public class NewRecipeActivity extends AppCompatActivity implements View.OnClickListener {
     private ImageView knap1, knap2, knap3, knap4, knap5;

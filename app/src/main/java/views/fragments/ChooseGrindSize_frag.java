@@ -1,4 +1,4 @@
-package views;
+package views.fragments;
 
 import android.app.Fragment;
 import android.content.Context;

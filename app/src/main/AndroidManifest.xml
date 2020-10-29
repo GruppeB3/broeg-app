@@ -10,12 +10,12 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name="views.CleaningActivity"></activity>
-        <activity android:name="views.BrewingActivity" />
-        <activity android:name="views.NewBrew" />
-        <activity android:name="views.MyRecipesActivity" />
-        <activity android:name="views.NewRecipeActivity" />
-        <activity android:name="views.MainActivity">
+        <activity android:name="views.activities.CleaningActivity"></activity>
+        <activity android:name="views.activities.BrewingActivity" />
+        <activity android:name="views.activities.NewBrew" />
+        <activity android:name="views.activities.MyRecipesActivity" />
+        <activity android:name="views.activities.NewRecipeActivity" />
+        <activity android:name="views.activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

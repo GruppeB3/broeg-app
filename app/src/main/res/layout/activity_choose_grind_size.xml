@@ -7,7 +7,7 @@
     android:background="@drawable/background_brown"
     android:clickable="true"
     android:elevation="40dp"
-    tools:context="views.ChooseGrindSize_frag">
+    tools:context="views.fragments.ChooseGrindSize_frag">
 
     <Button
         android:id="@+id/Coarse"

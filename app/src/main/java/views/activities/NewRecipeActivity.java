@@ -18,8 +18,8 @@ import views.fragments.ChooseGrindSize_frag;
 import views.fragments.NameRecipe_frag;
 
 public class NewRecipeActivity extends AppCompatActivity implements View.OnClickListener {
-    private ImageView groundCoffeeAmtBtn, grindSizeBtn, brewTempBtn, bloomWaterAmtBtn, bloomTimeBtn;
-    private Button saveBtn;
+    private ImageView groundCoffeeAmtImgView, grindSizeImgView, brewTempImgView, bloomWaterAmtImgView, bloomTimeImgView;
+    private Button groundCoffeeAmtBtn, grindSizeBtn, brewTempBtn, bloomWaterAmtBtn, bloomTimeBtn, saveBtn;
     SharedPreferences prefs;
 
     @Override
@@ -27,13 +27,24 @@ public class NewRecipeActivity extends AppCompatActivity implements View.OnClick
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_newrecipe);
 
-        groundCoffeeAmtBtn = findViewById(R.id.groundCoffeeAmtBackground);
-        grindSizeBtn = findViewById(R.id.grindSizeBackground);
-        brewTempBtn = findViewById(R.id.brewingTempBackground);
-        bloomWaterAmtBtn = findViewById(R.id.bloomWaterBackground);
-        bloomTimeBtn = findViewById(R.id.bloomTimeBackground);
+        groundCoffeeAmtImgView = findViewById(R.id.groundCoffeeAmtBackground);
+        grindSizeImgView = findViewById(R.id.grindSizeBackground);
+        brewTempImgView = findViewById(R.id.brewingTempBackground);
+        bloomWaterAmtImgView = findViewById(R.id.bloomWaterBackground);
+        bloomTimeImgView = findViewById(R.id.bloomTimeBackground);
+
+        groundCoffeeAmtBtn = findViewById(R.id.groundCoffeAmtText);
+        grindSizeBtn = findViewById(R.id.grindSizeText);
+        brewTempBtn = findViewById(R.id.brewingTempText);
+        bloomWaterAmtBtn = findViewById(R.id.bloomWaterText);
+        bloomTimeBtn = findViewById(R.id.bloomTimeText);
         saveBtn = findViewById(R.id.saveButton);
 
+        groundCoffeeAmtImgView.setOnClickListener(this);
+        grindSizeImgView.setOnClickListener(this);
+        brewTempImgView.setOnClickListener(this);
+        bloomWaterAmtImgView.setOnClickListener(this);
+        bloomTimeImgView.setOnClickListener(this);
         groundCoffeeAmtBtn.setOnClickListener(this);
         grindSizeBtn.setOnClickListener(this);
         brewTempBtn.setOnClickListener(this);
@@ -47,31 +58,31 @@ public class NewRecipeActivity extends AppCompatActivity implements View.OnClick
 
     @Override
     public void onClick(View ClickButton) {
-        if (ClickButton == groundCoffeeAmtBtn) {
+        if (ClickButton == groundCoffeeAmtImgView || ClickButton == groundCoffeeAmtBtn) {
             getFragmentManager().beginTransaction()
                     .setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
                     .replace(R.id.fragment_contents, new ChooseAmountOfCoffee_frag())
                     .addToBackStack(null)
                     .commit();
-        } else if (ClickButton == grindSizeBtn) {
+        } else if (ClickButton == grindSizeImgView || ClickButton == grindSizeBtn) {
             getFragmentManager().beginTransaction()
                     .setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
                     .replace(R.id.fragment_contents, new ChooseGrindSize_frag())
                     .addToBackStack(null)
                     .commit();
-        } else if (ClickButton == brewTempBtn) {
+        } else if (ClickButton == brewTempImgView || ClickButton == brewTempBtn) {
             getFragmentManager().beginTransaction()
                     .setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
                     .replace(R.id.fragment_contents, new ChooseBrewingTemperature_frag())
                     .addToBackStack(null)
                     .commit();
-        } else if (ClickButton == bloomWaterAmtBtn) {
+        } else if (ClickButton == bloomWaterAmtImgView || ClickButton == bloomWaterAmtBtn) {
             getFragmentManager().beginTransaction()
                     .setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
                     .replace(R.id.fragment_contents, new ChooseBloomWaterAmount_frag())
                     .addToBackStack(null)
                     .commit();
-        } else if (ClickButton == bloomTimeBtn) {
+        } else if (ClickButton == bloomTimeImgView || ClickButton == bloomTimeBtn) {
             getFragmentManager().beginTransaction()
                     .setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
                     .replace(R.id.fragment_contents, new ChooseBloomTime_frag())

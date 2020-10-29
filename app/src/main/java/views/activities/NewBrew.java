@@ -1,17 +1,23 @@
-package views;
+package views.activities;
 
-import android.graphics.Color;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
-import android.content.SharedPreferences;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import dk.dtu.gruppeb3.broeg.app.R;
+import views.fragments.ChooseAmountOfCoffee_frag;
+import views.fragments.ChooseBloomTime_frag;
+import views.fragments.ChooseBloomWaterAmount_frag;
+import views.fragments.ChooseBrewingTemperature_frag;
+import views.fragments.ChooseGrindSize_frag;
+import views.fragments.nameRecipe_frag;
+
 /**
  * This activity contains all the fragment from which you can customise your brew.
  */

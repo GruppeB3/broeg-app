@@ -7,7 +7,7 @@
     android:background="@drawable/background_brown"
     android:clickable="true"
     android:elevation="40dp"
-    tools:context="views.ChooseBloomTime_frag">
+    tools:context="views.fragments.ChooseBloomTime_frag">
 
   <TextView
       android:id="@+id/bloomTime"

@@ -1,4 +1,4 @@
-package views;
+package views.fragments;
 
 import android.app.Fragment;
 import android.content.Intent;
@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import dk.dtu.gruppeb3.broeg.app.R;
+import views.activities.MyRecipesActivity;
 
 public class nameRecipe_frag extends Fragment implements View.OnClickListener {
 

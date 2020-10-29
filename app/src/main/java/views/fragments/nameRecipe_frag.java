@@ -24,7 +24,7 @@ public class nameRecipe_frag extends Fragment implements View.OnClickListener {
 
     @Override
     public View onCreateView(LayoutInflater i, ViewGroup container, Bundle savedInstanceState) {
-        this.rod = i.inflate(R.layout.activity_name_recipe_frag, container, false);
+        this.rod = i.inflate(R.layout.fragment_name_recipe, container, false);
 
         knap1 = rod.findViewById(R.id.Save_Recipe);
 

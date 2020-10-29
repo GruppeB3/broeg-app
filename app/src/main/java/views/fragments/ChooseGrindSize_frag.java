@@ -23,7 +23,7 @@ public class ChooseGrindSize_frag extends Fragment implements View.OnClickListen
 
     @Override
     public View onCreateView(LayoutInflater i, ViewGroup container, Bundle savedInstanceState) {
-        View rod = i.inflate(R.layout.activity_choose_grind_size, container, false);
+        View rod = i.inflate(R.layout.fragment_choose_grind_size, container, false);
 
         knap1 = rod.findViewById(R.id.Fine);
         knap2 = rod.findViewById(R.id.Medium);

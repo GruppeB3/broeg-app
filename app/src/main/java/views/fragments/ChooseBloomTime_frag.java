@@ -22,7 +22,7 @@ public class ChooseBloomTime_frag extends Fragment implements View.OnClickListen
 
     @Override
     public View onCreateView(LayoutInflater i, ViewGroup container, Bundle savedInstanceState) {
-        View rod = i.inflate(R.layout.activity_choose_bloom_time_frag, container, false);
+        View rod = i.inflate(R.layout.fragment_choose_bloom_time, container, false);
 
         knap1 = rod.findViewById(R.id.ArrowUp_BloomTime);
         knap2 = rod.findViewById(R.id.ArrowDown_BloomTime);

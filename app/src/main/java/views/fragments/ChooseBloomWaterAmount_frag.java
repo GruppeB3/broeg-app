@@ -23,7 +23,7 @@ public class ChooseBloomWaterAmount_frag extends Fragment implements View.OnClic
 
     @Override
     public View onCreateView(LayoutInflater i, ViewGroup container, Bundle savedInstanceState) {
-        View rod = i.inflate(R.layout.activity_choose_bloom_water_amount_frag, container, false);
+        View rod = i.inflate(R.layout.fragment_choose_bloom_water_amount, container, false);
 
         knap1 = rod.findViewById(R.id.ArrowUp_BloomAmount);
         knap2 = rod.findViewById(R.id.ArrowDown_BloomAmount);

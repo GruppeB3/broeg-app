@@ -36,6 +36,8 @@ public class ChooseBloomWaterAmount_frag extends Fragment implements View.OnClic
         SharedPreferences preferences = this.getActivity().getSharedPreferences("pref", Context.MODE_PRIVATE);
         this.amountBloomWater = PreferenceHelper.getDouble(preferences, "amountBloomWater", "0");
 
+        updateText();
+
         return root;
     }
 
@@ -43,13 +45,11 @@ public class ChooseBloomWaterAmount_frag extends Fragment implements View.OnClic
     public void onClick(View ButtonClick) {
         if (ButtonClick == plusBtn) {
             amountBloomWater++;
-            TextView tv = root.findViewById(R.id.amountWater);
-            tv.setText("Mængde af vand i ml (" +amountBloomWater + ")");
+            updateText();
 
         } else if (ButtonClick == minusBtn){
             amountBloomWater--;
-            TextView tv = root.findViewById(R.id.amountWater);
-            tv.setText("Mængde af vand i ml (" +amountBloomWater + ")");
+            updateText();
 
         } else if (ButtonClick == saveBtn){
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
@@ -58,5 +58,10 @@ public class ChooseBloomWaterAmount_frag extends Fragment implements View.OnClic
             getActivity().onBackPressed();
         }
 
+    }
+
+    private void updateText() {
+        TextView tv = root.findViewById(R.id.amountWater);
+        tv.setText("Mængde af vand i ml (" + amountBloomWater + ")");
     }
 }

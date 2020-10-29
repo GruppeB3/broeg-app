@@ -39,25 +39,21 @@ public class ChooseAmountOfCoffee_frag extends Fragment implements View.OnClickL
         SharedPreferences preferences = this.getActivity().getSharedPreferences("pref", Context.MODE_PRIVATE);
         this.amountOfCoffee = PreferenceHelper.getDouble(preferences, "amountOfCoffee", "0");
 
+        updateText();
+
         return rod;
-
-
     }
 
     @Override
     public void onClick(View ButtonClick) {
 
-
-
         if (ButtonClick == plusBtn) {
             amountOfCoffee++;
-            TextView tv = rod.findViewById(R.id.CoffeeAmount);
-            tv.setText("Mængde kaffe i gram (" +amountOfCoffee + ")");
+            updateText();
 
         } else if (ButtonClick == minusBtn){
             amountOfCoffee--;
-            TextView tv = rod.findViewById(R.id.CoffeeAmount);
-            tv.setText("Mængde kaffe i gram (" +amountOfCoffee + ")");
+            updateText();
 
         } else if (ButtonClick == saveBtn){
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
@@ -66,5 +62,10 @@ public class ChooseAmountOfCoffee_frag extends Fragment implements View.OnClickL
             getActivity().onBackPressed();
         }
 
+    }
+
+    private void updateText() {
+        TextView tv = rod.findViewById(R.id.CoffeeAmount);
+        tv.setText("Mængde kaffe i gram (" + amountOfCoffee + ")");
     }
 }

@@ -35,6 +35,8 @@ public class ChooseBloomTime_frag extends Fragment implements View.OnClickListen
         SharedPreferences preferences = this.getActivity().getSharedPreferences("pref", Context.MODE_PRIVATE);
         this.amountBloomTime = PreferenceHelper.getDouble(preferences, "amountBloomTime", "45");
 
+        updateText();
+
         return root;
     }
 
@@ -42,13 +44,11 @@ public class ChooseBloomTime_frag extends Fragment implements View.OnClickListen
     public void onClick(View ButtonClick) {
         if (ButtonClick == plusBtn) {
             amountBloomTime++;
-            TextView tv = root.findViewById(R.id.bloomTime);
-            tv.setText("Bloomtid i sekunder (" +amountBloomTime + ")");
+            updateText();
 
         } else if (ButtonClick == minusBtn){
             amountBloomTime--;
-            TextView tv = root.findViewById(R.id.bloomTime);
-            tv.setText("Bloomtid i sekunder (" +amountBloomTime + ")");
+            updateText();
 
         } else if (ButtonClick == saveBtn){
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
@@ -57,5 +57,10 @@ public class ChooseBloomTime_frag extends Fragment implements View.OnClickListen
             getActivity().onBackPressed();
         }
 
+    }
+
+    private void updateText() {
+        TextView tv = root.findViewById(R.id.bloomTime);
+        tv.setText("Bloomtid i sekunder (" + amountBloomTime + ")");
     }
 }

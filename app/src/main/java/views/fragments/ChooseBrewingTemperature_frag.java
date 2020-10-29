@@ -39,6 +39,8 @@ public class ChooseBrewingTemperature_frag extends Fragment implements View.OnCl
         SharedPreferences preferences = this.getActivity().getSharedPreferences("pref", Context.MODE_PRIVATE);
         this.temperature = PreferenceHelper.getDouble(preferences, "temperature", "0");
 
+        updateText();
+
         return root;
     }
 
@@ -49,13 +51,11 @@ public class ChooseBrewingTemperature_frag extends Fragment implements View.OnCl
 
         if (ButtonClick == plusBtn) {
             temperature++;
-            TextView tv = root.findViewById(R.id.temperature);
-            tv.setText("Mængde kaffe i gram (" +temperature + ")");
+            updateText();
 
         } else if (ButtonClick == minusBtn){
             temperature--;
-            TextView tv = root.findViewById(R.id.temperature);
-            tv.setText("Mængde kaffe i gram (" +temperature + ")");
+            updateText();
 
         } else if (ButtonClick == saveBtn){
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
@@ -64,5 +64,10 @@ public class ChooseBrewingTemperature_frag extends Fragment implements View.OnCl
             getActivity().onBackPressed();
         }
 
+    }
+
+    private void updateText() {
+        TextView tv = root.findViewById(R.id.temperature);
+        tv.setText("Mængde kaffe i gram (" + temperature + ")");
     }
 }

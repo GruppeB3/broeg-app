@@ -14,33 +14,33 @@ import android.widget.TextView;
 import dk.dtu.gruppeb3.broeg.app.R;
 import views.activities.MyRecipesActivity;
 
-public class nameRecipe_frag extends Fragment implements View.OnClickListener {
+public class NameRecipe_frag extends Fragment implements View.OnClickListener {
 
-    private View rod;
+    private View root;
     TextView et;
-    String opskriftNavn;
-    Button knap1;
+    String recipeName;
+    Button saveBtn;
 
 
     @Override
     public View onCreateView(LayoutInflater i, ViewGroup container, Bundle savedInstanceState) {
-        this.rod = i.inflate(R.layout.activity_name_recipe_frag, container, false);
+        this.root = i.inflate(R.layout.fragment_name_recipe, container, false);
 
-        knap1 = rod.findViewById(R.id.Save_Recipe);
+        saveBtn = root.findViewById(R.id.Save_Recipe);
 
-        knap1.setOnClickListener(this);
+        saveBtn.setOnClickListener(this);
 
-        return rod;
+        return root;
     }
 
     @Override
     public void onClick(View ButtonClick) {
-        if (ButtonClick == knap1) {
-            et=rod.findViewById(R.id.nameRecipe);
-            opskriftNavn=et.getText().toString();
+        if (ButtonClick == saveBtn) {
+            et= root.findViewById(R.id.nameRecipe);
+            recipeName =et.getText().toString();
 
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-            preferences.edit().putString("OpskriftNavn",this.opskriftNavn).apply();
+            preferences.edit().putString("OpskriftNavn",this.recipeName).apply();
             Intent intent = new Intent(getActivity(), MyRecipesActivity.class);
             startActivity(intent);
         }

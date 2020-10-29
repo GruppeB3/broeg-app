@@ -16,47 +16,52 @@ import helpers.PreferenceHelper;
 
 public class ChooseBloomWaterAmount_frag extends Fragment implements View.OnClickListener {
 
-    Button knap1, knap2, knap3;
+    Button plusBtn, minusBtn, saveBtn;
     double amountBloomWater = 45;
-    private View rod;
+    private View root;
 
 
     @Override
     public View onCreateView(LayoutInflater i, ViewGroup container, Bundle savedInstanceState) {
-        View rod = i.inflate(R.layout.activity_choose_bloom_water_amount_frag, container, false);
+        this.root = i.inflate(R.layout.fragment_choose_bloom_water_amount, container, false);
 
-        knap1 = rod.findViewById(R.id.ArrowUp_BloomAmount);
-        knap2 = rod.findViewById(R.id.ArrowDown_BloomAmount);
-        knap3 = rod.findViewById(R.id.Save_BloomAmount);
+        plusBtn = root.findViewById(R.id.ArrowUp_BloomAmount);
+        minusBtn = root.findViewById(R.id.ArrowDown_BloomAmount);
+        saveBtn = root.findViewById(R.id.Save_BloomAmount);
 
-        knap1.setOnClickListener(this);
-        knap2.setOnClickListener(this);
-        knap3.setOnClickListener(this);
+        plusBtn.setOnClickListener(this);
+        minusBtn.setOnClickListener(this);
+        saveBtn.setOnClickListener(this);
 
         SharedPreferences preferences = this.getActivity().getSharedPreferences("pref", Context.MODE_PRIVATE);
         this.amountBloomWater = PreferenceHelper.getDouble(preferences, "amountBloomWater", "0");
 
-        return rod;
+        updateText();
+
+        return root;
     }
 
     @Override
     public void onClick(View ButtonClick) {
-        if (ButtonClick == knap1) {
+        if (ButtonClick == plusBtn) {
             amountBloomWater++;
-            TextView tv = rod.findViewById(R.id.amountWater);
-            tv.setText("Mængde af vand i ml (" +amountBloomWater + ")");
+            updateText();
 
-        } else if (ButtonClick == knap2){
+        } else if (ButtonClick == minusBtn){
             amountBloomWater--;
-            TextView tv = rod.findViewById(R.id.amountWater);
-            tv.setText("Mængde af vand i ml (" +amountBloomWater + ")");
+            updateText();
 
-        } else if (ButtonClick == knap3){
+        } else if (ButtonClick == saveBtn){
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
             PreferenceHelper.putDouble(preferences, "amountBloomWater", this.amountBloomWater);
 
             getActivity().onBackPressed();
         }
 
+    }
+
+    private void updateText() {
+        TextView tv = root.findViewById(R.id.amountWater);
+        tv.setText("Mængde af vand i ml (" + amountBloomWater + ")");
     }
 }

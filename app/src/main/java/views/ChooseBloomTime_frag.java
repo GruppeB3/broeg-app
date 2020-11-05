@@ -32,8 +32,6 @@ public class ChooseBloomTime_frag extends Fragment implements View.OnClickListen
         knap2.setOnClickListener(this);
         knap3.setOnClickListener(this);
 
-        SharedPreferences preferences = this.getActivity().getSharedPreferences("pref", Context.MODE_PRIVATE);
-        this.amountBloomTime = PreferenceHelper.getDouble(preferences, "amountBloomTime", "0");
 
         return rod;
     }

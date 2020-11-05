@@ -33,9 +33,6 @@ public class ChooseBloomWaterAmount_frag extends Fragment implements View.OnClic
         knap2.setOnClickListener(this);
         knap3.setOnClickListener(this);
 
-        SharedPreferences preferences = this.getActivity().getSharedPreferences("pref", Context.MODE_PRIVATE);
-        this.amountBloomWater = PreferenceHelper.getDouble(preferences, "amountBloomWater", "0");
-
         return rod;
     }
 

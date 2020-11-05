@@ -36,9 +36,6 @@ public class ChooseAmountOfCoffee_frag extends Fragment implements View.OnClickL
         knap2.setOnClickListener(this);
         knap3.setOnClickListener(this);
 
-        SharedPreferences preferences = this.getActivity().getSharedPreferences("pref", Context.MODE_PRIVATE);
-        this.amountOfCoffee = PreferenceHelper.getDouble(preferences, "amountOfCoffee", "0");
-
         return rod;
 
 

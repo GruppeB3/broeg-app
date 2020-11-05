@@ -36,8 +36,6 @@ public class ChooseBrewingTemperature_frag extends Fragment implements View.OnCl
         knap2.setOnClickListener(this);
         knap3.setOnClickListener(this);
 
-        SharedPreferences preferences = this.getActivity().getSharedPreferences("pref", Context.MODE_PRIVATE);
-        this.temperature = PreferenceHelper.getDouble(preferences, "temperature", "0");
 
         return rod;
 

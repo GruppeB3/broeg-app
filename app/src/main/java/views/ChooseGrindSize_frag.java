@@ -35,7 +35,6 @@ public class ChooseGrindSize_frag extends Fragment implements View.OnClickListen
         knap3.setOnClickListener(this);
         knap4.setOnClickListener(this);
 
-        SharedPreferences preferences = this.getActivity().getSharedPreferences("pref", Context.MODE_PRIVATE);
 
         return rod;
     }

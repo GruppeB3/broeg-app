@@ -27,9 +27,7 @@ public class ChooseAmountOfCoffee_frag extends Fragment implements View.OnClickL
     Button knap1, knap2, knap3;
     private View rod;
     double amountOfCoffee;
-    private boolean mAutoIncrement = false;
-    private boolean mAutoDecrement = false;
-    public int mValue;
+
 
     @Override
     public View onCreateView(LayoutInflater i, ViewGroup container, Bundle savedInstanceState) {
@@ -86,10 +84,11 @@ public class ChooseAmountOfCoffee_frag extends Fragment implements View.OnClickL
 
         return false;
     }
+
 }
 
 
-        //TODO få metoden til at gentage sig selv hvert 0,5 sekund knappet er holdt nede.
+//TODO få metoden til at gentage sig selv hvert 0,5 sekund knappet er holdt nede.
 
 
 

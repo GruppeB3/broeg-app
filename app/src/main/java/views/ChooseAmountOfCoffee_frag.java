@@ -7,6 +7,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -22,7 +23,7 @@ import helpers.PreferenceHelper;
  * This fragment gives the user the opportunity to choose the amount of coffee they want to brew.
  */
 
-public class ChooseAmountOfCoffee_frag extends Fragment implements View.OnClickListener, View.OnLongClickListener {
+public class ChooseAmountOfCoffee_frag extends Fragment implements View.OnClickListener, View.OnTouchListener {
 
     Button knap1, knap2, knap3;
     private View rod;
@@ -40,6 +41,9 @@ public class ChooseAmountOfCoffee_frag extends Fragment implements View.OnClickL
         knap1.setOnClickListener(this);
         knap2.setOnClickListener(this);
         knap3.setOnClickListener(this);
+
+        knap1.setOnTouchListener(this);
+        knap2.setOnClickListener(this);
 
         return rod;
 
@@ -70,22 +74,35 @@ public class ChooseAmountOfCoffee_frag extends Fragment implements View.OnClickL
 
     }
 
-    @Override
-    public boolean onLongClick(View LongButtonClick) {
 
-        //   final Timer timer = new Timer();
-        // timer.schedule(new TimerTask() {
-        //   @Override
-        // public void run() {
-        //   if (knap1 == LongButtonClick) {
-        //     amountOfCoffee++;
-        //  } else timer.cancel();
-        //  }
+        private Handler mHandler;
 
-        return false;
+        @Override public boolean onTouch(View v, MotionEvent event) {
+            switch(event.getAction()) {
+                case MotionEvent.ACTION_DOWN:
+                    if (mHandler != null) return true;
+                    mHandler = new Handler();
+                    mHandler.postDelayed(mAction, 500);
+                    break;
+                case MotionEvent.ACTION_UP:
+                    if (mHandler == null) return true;
+                    mHandler.removeCallbacks(mAction);
+                    mHandler = null;
+                    break;
+            }
+            return false;
+        }
+
+        Runnable mAction = new Runnable() {
+            @Override public void run() {
+                System.out.println("Performing action...");
+                mHandler.postDelayed(this, 500);
+            }
+        };
+
     }
 
-}
+
 
 
 //TODO få metoden til at gentage sig selv hvert 0,5 sekund knappet er holdt nede.

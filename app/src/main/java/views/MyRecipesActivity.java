@@ -8,6 +8,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.gson.Gson;
+
 import dk.dtu.gruppeb3.broeg.app.R;
 import helpers.PreferenceHelper;
 
@@ -26,8 +28,9 @@ public class MyRecipesActivity extends AppCompatActivity {
         double waterAmount = PreferenceHelper.getDouble(preferences, "amountBloomWater", "0");
         double brewingTemperature = PreferenceHelper.getDouble(preferences, "temperature", "0");
         String grindSize = PreferenceManager.getDefaultSharedPreferences(this).getString("grindSize", "defaultStringIfNothingFound");
-        String brewName = PreferenceManager.getDefaultSharedPreferences(this).getString("recipeName", "defaultStringIfNothingFound");
 
-        String [] names = PreferenceManager.getDefaultSharedPreferences(this).getString("recipeName","defaultStringIfNothingFound");
+        Gson gson = new Gson();
+        String json = preferences.getString("recipeName", "defaultStringIfNothingFound");
+        nameRecipe_frag brewName = gson.fromJson(json, nameRecipe_frag.class);
     }
 }

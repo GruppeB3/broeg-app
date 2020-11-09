@@ -59,6 +59,4 @@ public class nameRecipe_frag extends Fragment implements View.OnClickListener {
 
         }
     }
-
-    }
 }

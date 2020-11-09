@@ -83,6 +83,9 @@ public class ChooseAmountOfCoffee_frag extends Fragment implements View.OnClickL
                     if (mHandler != null) return true;
                     mHandler = new Handler();
                     mHandler.postDelayed(mAction, 500);
+                    amountOfCoffee++;
+                    TextView tv = rod.findViewById(R.id.CoffeeAmount);
+                    tv.setText("Mængde kaffe i gram (" + amountOfCoffee + ")");
                     break;
                 case MotionEvent.ACTION_UP:
                     if (mHandler == null) return true;

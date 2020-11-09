@@ -39,7 +39,7 @@ public class ChooseBloomWaterAmount_frag extends Fragment implements View.OnClic
             public void onClick(View v) {
                 amountBloomWater++;
                 TextView tv = rod.findViewById(R.id.amountWater);
-                tv.setText("Bloomtid i sekunder (" +amountBloomWater + ")");
+                tv.setText("Mængde af vand i ml (" +amountBloomWater + ")");
             }
         }));
         knap2.setOnTouchListener(new RepeatListener(400, 100, new View.OnClickListener() {
@@ -48,7 +48,7 @@ public class ChooseBloomWaterAmount_frag extends Fragment implements View.OnClic
             public void onClick(View v) {
                 amountBloomWater--;
                 TextView tv = rod.findViewById(R.id.amountWater);
-                tv.setText("Mængde kaffe i gram (" + amountBloomWater + ")");
+                tv.setText("Mængde af vand i ml (" + amountBloomWater + ")");
             }
         }));
 

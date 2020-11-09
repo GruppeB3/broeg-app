@@ -20,18 +20,14 @@ public class MyRecipesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_myrecipes);
 
 
-        SharedPreferences preferencesAmountCoffee = getSharedPreferences("pref", Context.MODE_PRIVATE);
-        double coffeeAmount = PreferenceHelper.getDouble(preferencesAmountCoffee, "amountOfCoffee", "0");
+        SharedPreferences preferences = getSharedPreferences("pref", Context.MODE_PRIVATE);
+        double coffeeAmount = PreferenceHelper.getDouble(preferences, "amountOfCoffee", "0");
+        double bloomTime = PreferenceHelper.getDouble(preferences, "amountBloomTime", "0");
+        double waterAmount = PreferenceHelper.getDouble(preferences, "amountBloomWater", "0");
+        double brewingTemperature = PreferenceHelper.getDouble(preferences, "temperature", "0");
+        String grindSize = PreferenceManager.getDefaultSharedPreferences(this).getString("grindSize", "defaultStringIfNothingFound");
+        String brewName = PreferenceManager.getDefaultSharedPreferences(this).getString("recipeName", "defaultStringIfNothingFound");
 
-        SharedPreferences preferencesBloomTime = getSharedPreferences("pref", Context.MODE_PRIVATE);
-        double bloomTime = PreferenceHelper.getDouble(preferencesBloomTime, "amountBloomTime", "0");
-
-        SharedPreferences preferencesAmountWater = getSharedPreferences("pref", Context.MODE_PRIVATE);
-        double waterAmount = PreferenceHelper.getDouble(preferencesAmountWater, "amountBloomWater", "0");
-
-        SharedPreferences preferencesTemperature = getSharedPreferences("pref", Context.MODE_PRIVATE);
-        double brewingTemperature = PreferenceHelper.getDouble(preferencesTemperature, "temperature", "0");
-
-        String grindSize = PreferenceManager.getDefaultSharedPreferences(this).getString("GrindSize", "defaultStringIfNothingFound");
+        String [] names = PreferenceManager.getDefaultSharedPreferences(this).getString("recipeName","defaultStringIfNothingFound");
     }
 }

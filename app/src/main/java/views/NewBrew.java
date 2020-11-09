@@ -18,7 +18,6 @@ import dk.dtu.gruppeb3.broeg.app.R;
 
 public class NewBrew extends AppCompatActivity implements View.OnClickListener {
     private Button knap1, knap2, knap3, knap4, knap5, knap6;
-    SharedPreferences prefs;
 
     @Override
     public void onAttachFragment(@NonNull Fragment fragment) {
@@ -46,7 +45,6 @@ public class NewBrew extends AppCompatActivity implements View.OnClickListener {
         knap5.setOnClickListener(this);
         knap6.setOnClickListener(this);
 
-        prefs = PreferenceManager.getDefaultSharedPreferences(this);
 
     }
 

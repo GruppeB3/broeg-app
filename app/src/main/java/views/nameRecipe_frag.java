@@ -11,7 +11,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import dk.dtu.gruppeb3.broeg.app.R;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class nameRecipe_frag extends Fragment implements View.OnClickListener {
 
@@ -39,9 +46,19 @@ public class nameRecipe_frag extends Fragment implements View.OnClickListener {
             opskriftNavn=et.getText().toString();
 
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-            preferences.edit().putString("OpskriftNavn",this.opskriftNavn).apply();
+            SharedPreferences.Editor prefsEditor = preferences.edit();
+            Gson gson = new Gson();
+            String json = gson.toJson(opskriftNavn);
+            prefsEditor.putString("recipeName", json);
+            prefsEditor.commit();
+
+
             Intent intent = new Intent(getActivity(), MyRecipesActivity.class);
             startActivity(intent);
+
+
         }
+    }
+
     }
 }

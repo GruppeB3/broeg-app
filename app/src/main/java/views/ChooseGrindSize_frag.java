@@ -53,7 +53,7 @@ public class ChooseGrindSize_frag extends Fragment implements View.OnClickListen
 
         } else if (ButtonClick == knap4) {
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-            preferences.edit().putString("GrindSize", this.grindSize).apply();
+            preferences.edit().putString("grindSize", this.grindSize).apply();
             getActivity().onBackPressed();
         }
     }

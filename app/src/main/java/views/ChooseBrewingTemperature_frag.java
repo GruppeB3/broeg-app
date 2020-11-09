@@ -36,6 +36,24 @@ public class ChooseBrewingTemperature_frag extends Fragment implements View.OnCl
         knap2.setOnClickListener(this);
         knap3.setOnClickListener(this);
 
+        knap1.setOnTouchListener(new RepeatListener(400, 100, new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                temperature++;
+                TextView tv = rod.findViewById(R.id.temperature);
+                tv.setText("Mængde kaffe i gram (" + temperature + ")");
+            }
+        }));
+        knap2.setOnTouchListener(new RepeatListener(400, 100, new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                temperature--;
+                TextView tv = rod.findViewById(R.id.temperature);
+                tv.setText("Mængde kaffe i gram (" + temperature + ")");
+            }
+        }));
+
 
         return rod;
 

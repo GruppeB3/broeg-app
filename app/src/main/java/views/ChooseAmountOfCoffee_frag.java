@@ -3,18 +3,12 @@ package views;
 import android.app.Fragment;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-
-import java.util.Timer;
-import java.util.TimerTask;
 
 import dk.dtu.gruppeb3.broeg.app.R;
 import helpers.PreferenceHelper;
@@ -23,7 +17,7 @@ import helpers.PreferenceHelper;
  * This fragment gives the user the opportunity to choose the amount of coffee they want to brew.
  */
 
-public class ChooseAmountOfCoffee_frag extends Fragment implements View.OnClickListener, View.OnTouchListener {
+public class ChooseAmountOfCoffee_frag extends Fragment implements View.OnClickListener {
 
     Button knap1, knap2, knap3;
     private View rod;
@@ -87,13 +81,6 @@ public class ChooseAmountOfCoffee_frag extends Fragment implements View.OnClickL
             getActivity().onBackPressed();
         }
 
-    }
-
-
-    @Override
-    public boolean onTouch(View v, MotionEvent event) {
-
-        return false;
     }
 
 }

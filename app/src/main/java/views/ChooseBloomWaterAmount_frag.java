@@ -23,7 +23,7 @@ public class ChooseBloomWaterAmount_frag extends Fragment implements View.OnClic
 
     @Override
     public View onCreateView(LayoutInflater i, ViewGroup container, Bundle savedInstanceState) {
-        View rod = i.inflate(R.layout.activity_choose_bloom_water_amount_frag, container, false);
+        this.rod = i.inflate(R.layout.activity_choose_bloom_water_amount_frag, container, false);
 
         knap1 = rod.findViewById(R.id.ArrowUp_BloomAmount);
         knap2 = rod.findViewById(R.id.ArrowDown_BloomAmount);
@@ -32,6 +32,25 @@ public class ChooseBloomWaterAmount_frag extends Fragment implements View.OnClic
         knap1.setOnClickListener(this);
         knap2.setOnClickListener(this);
         knap3.setOnClickListener(this);
+
+        knap1.setOnTouchListener(new RepeatListener(400, 100, new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                amountBloomWater++;
+                TextView tv = rod.findViewById(R.id.amountWater);
+                tv.setText("Bloomtid i sekunder (" +amountBloomWater + ")");
+            }
+        }));
+        knap2.setOnTouchListener(new RepeatListener(400, 100, new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                amountBloomWater--;
+                TextView tv = rod.findViewById(R.id.amountWater);
+                tv.setText("Mængde kaffe i gram (" + amountBloomWater + ")");
+            }
+        }));
 
         return rod;
     }

@@ -2,7 +2,6 @@ package views;
 
 import android.os.Bundle;
 import android.app.Fragment;
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
@@ -22,7 +21,7 @@ public class ChooseBloomTime_frag extends Fragment implements View.OnClickListen
 
     @Override
     public View onCreateView(LayoutInflater i, ViewGroup container, Bundle savedInstanceState) {
-        View rod = i.inflate(R.layout.activity_choose_bloom_time_frag, container, false);
+        this.rod = i.inflate(R.layout.activity_choose_bloom_time_frag, container, false);
 
         knap1 = rod.findViewById(R.id.ArrowUp_BloomTime);
         knap2 = rod.findViewById(R.id.ArrowDown_BloomTime);
@@ -32,6 +31,24 @@ public class ChooseBloomTime_frag extends Fragment implements View.OnClickListen
         knap2.setOnClickListener(this);
         knap3.setOnClickListener(this);
 
+        knap1.setOnTouchListener(new RepeatListener(400, 100, new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                amountBloomTime++;
+                TextView tv = rod.findViewById(R.id.amountWater);
+                tv.setText("Bloomtid i sekunder (" +amountBloomTime + ")");
+            }
+        }));
+        knap2.setOnTouchListener(new RepeatListener(400, 100, new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                amountBloomTime--;
+                TextView tv = rod.findViewById(R.id.amountWater);
+                tv.setText("Mængde kaffe i gram (" + amountBloomTime + ")");
+            }
+        }));
 
         return rod;
     }

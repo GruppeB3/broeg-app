@@ -36,7 +36,7 @@ public class MyRecipesActivity extends AppCompatActivity {
 
         Gson gson = new Gson();
         String json = preferences.getString("recipeName", "defaultStringIfNothingFound");
-        String brewName = gson.fromJson(json, nameRecipe_frag.class);
-        brews.add(brewName);
+        //String brewName = gson.fromJson(json, nameRecipe_frag.class);
+        //brews.add(brewName);
     }
 }

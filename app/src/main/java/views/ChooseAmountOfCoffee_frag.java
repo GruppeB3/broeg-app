@@ -42,8 +42,23 @@ public class ChooseAmountOfCoffee_frag extends Fragment implements View.OnClickL
         knap2.setOnClickListener(this);
         knap3.setOnClickListener(this);
 
-        knap1.setOnTouchListener(this);
-        knap2.setOnClickListener(this);
+        knap1.setOnTouchListener(new RepeatListener(400, 100, new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                amountOfCoffee++;
+                TextView tv = rod.findViewById(R.id.CoffeeAmount);
+                tv.setText("Mængde kaffe i gram (" + amountOfCoffee + ")");
+            }
+        }));
+        knap2.setOnTouchListener(new RepeatListener(400, 100, new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                amountOfCoffee--;
+                TextView tv = rod.findViewById(R.id.CoffeeAmount);
+                tv.setText("Mængde kaffe i gram (" + amountOfCoffee + ")");
+            }
+        }));
 
         return rod;
 
@@ -75,35 +90,13 @@ public class ChooseAmountOfCoffee_frag extends Fragment implements View.OnClickL
     }
 
 
-        private Handler mHandler;
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
 
-        @Override public boolean onTouch(View v, MotionEvent event) {
-            switch(event.getAction()) {
-                case MotionEvent.ACTION_DOWN:
-                    if (mHandler != null) return true;
-                    mHandler = new Handler();
-                    mHandler.postDelayed(mAction, 500);
-                    amountOfCoffee++;
-                    TextView tv = rod.findViewById(R.id.CoffeeAmount);
-                    tv.setText("Mængde kaffe i gram (" + amountOfCoffee + ")");
-                    break;
-                case MotionEvent.ACTION_UP:
-                    if (mHandler == null) return true;
-                    mHandler.removeCallbacks(mAction);
-                    mHandler = null;
-                    break;
-            }
-            return false;
-        }
-
-        Runnable mAction = new Runnable() {
-            @Override public void run() {
-                System.out.println("Performing action...");
-                mHandler.postDelayed(this, 500);
-            }
-        };
-
+        return false;
     }
+
+}
 
 
 

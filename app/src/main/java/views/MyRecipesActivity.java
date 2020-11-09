@@ -10,8 +10,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.gson.Gson;
 
+import java.util.ArrayList;
+
 import dk.dtu.gruppeb3.broeg.app.R;
 import helpers.PreferenceHelper;
+
 
 public class MyRecipesActivity extends AppCompatActivity {
 
@@ -20,6 +23,8 @@ public class MyRecipesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_myrecipes);
+
+        ArrayList<MyRecipesActivity> brews = new ArrayList<MyRecipesActivity>();
 
 
         SharedPreferences preferences = getSharedPreferences("pref", Context.MODE_PRIVATE);
@@ -31,6 +36,7 @@ public class MyRecipesActivity extends AppCompatActivity {
 
         Gson gson = new Gson();
         String json = preferences.getString("recipeName", "defaultStringIfNothingFound");
-        nameRecipe_frag brewName = gson.fromJson(json, nameRecipe_frag.class);
+        String brewName = gson.fromJson(json, nameRecipe_frag.class);
+        brews.add(brewName);
     }
 }

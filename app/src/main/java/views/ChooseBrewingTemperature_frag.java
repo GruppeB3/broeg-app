@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+
 import dk.dtu.gruppeb3.broeg.app.R;
 import helpers.PreferenceHelper;
 
@@ -76,8 +78,13 @@ public class ChooseBrewingTemperature_frag extends Fragment implements View.OnCl
             tv.setText("Temperatur i celcius (" +temperature + ")");
 
         } else if (ButtonClick == knap3){
+
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-            PreferenceHelper.putDouble(preferences, "temperature", this.temperature);
+            SharedPreferences.Editor prefsEditor = preferences.edit();
+            Gson gson = new Gson();
+            String json = gson.toJson(this.temperature);
+            PreferenceHelper.putDouble("temperature", json);
+            prefsEditor.commit();
 
             getActivity().onBackPressed();
         }

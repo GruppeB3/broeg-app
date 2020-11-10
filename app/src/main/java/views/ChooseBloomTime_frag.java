@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+
 import dk.dtu.gruppeb3.broeg.app.R;
 import helpers.PreferenceHelper;
 
@@ -66,8 +68,13 @@ public class ChooseBloomTime_frag extends Fragment implements View.OnClickListen
             tv.setText("Bloomtid i sekunder (" +amountBloomTime + ")");
 
         } else if (ButtonClick == knap3){
+
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-            PreferenceHelper.putDouble(preferences, "amountBloomTime", this.amountBloomTime);
+            SharedPreferences.Editor prefsEditor = preferences.edit();
+            Gson gson = new Gson();
+            String json = gson.toJson(this.amountBloomTime);
+            PreferenceHelper.putDouble("amountBloomTime", json);
+            prefsEditor.commit();
 
             getActivity().onBackPressed();
         }

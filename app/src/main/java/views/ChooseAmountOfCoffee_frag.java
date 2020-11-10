@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+
 import dk.dtu.gruppeb3.broeg.app.R;
 import helpers.PreferenceHelper;
 
@@ -75,8 +77,13 @@ public class ChooseAmountOfCoffee_frag extends Fragment implements View.OnClickL
             tv.setText("Mængde kaffe i gram (" + amountOfCoffee + ")");
 
         } else if (ButtonClick == knap3) {
+
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-            PreferenceHelper.putDouble(preferences, "amountOfCoffee", this.amountOfCoffee);
+            SharedPreferences.Editor prefsEditor = preferences.edit();
+            Gson gson = new Gson();
+            String json = gson.toJson(this.amountOfCoffee);
+            PreferenceHelper.putDouble("amountCoffee", json);
+            prefsEditor.commit();
 
             getActivity().onBackPressed();
         }

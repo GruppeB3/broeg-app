@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.google.gson.Gson;
+
 import dk.dtu.gruppeb3.broeg.app.R;
 
 /**
@@ -52,8 +54,14 @@ public class ChooseGrindSize_frag extends Fragment implements View.OnClickListen
             grindSize="Coarse";
 
         } else if (ButtonClick == knap4) {
+
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-            preferences.edit().putString("grindSize", this.grindSize).apply();
+            SharedPreferences.Editor prefsEditor = preferences.edit();
+            Gson gson = new Gson();
+            String json = gson.toJson(this.grindSize);
+            prefsEditor.putString("grindSize", json);
+            prefsEditor.commit();
+
             getActivity().onBackPressed();
         }
     }

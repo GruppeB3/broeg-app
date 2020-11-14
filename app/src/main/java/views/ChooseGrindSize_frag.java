@@ -30,12 +30,10 @@ public class ChooseGrindSize_frag extends Fragment implements View.OnClickListen
         knap1 = rod.findViewById(R.id.Fine);
         knap2 = rod.findViewById(R.id.Medium);
         knap3 = rod.findViewById(R.id.Coarse);
-        knap4 = rod.findViewById(R.id.Save_GrindSize);
 
         knap1.setOnClickListener(this);
         knap2.setOnClickListener(this);
         knap3.setOnClickListener(this);
-        knap4.setOnClickListener(this);
 
 
         return rod;
@@ -46,15 +44,6 @@ public class ChooseGrindSize_frag extends Fragment implements View.OnClickListen
 
         if (ButtonClick == knap1) {
             grindSize="Fine";
-
-        } else if (ButtonClick == knap2) {
-            grindSize="Medium";
-
-        } else if (ButtonClick == knap3) {
-            grindSize="Coarse";
-
-        } else if (ButtonClick == knap4) {
-
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
             SharedPreferences.Editor prefsEditor = preferences.edit();
             Gson gson = new Gson();
@@ -63,6 +52,30 @@ public class ChooseGrindSize_frag extends Fragment implements View.OnClickListen
             prefsEditor.commit();
 
             getActivity().onBackPressed();
+
+        } else if (ButtonClick == knap2) {
+            grindSize="Medium";
+            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+            SharedPreferences.Editor prefsEditor = preferences.edit();
+            Gson gson = new Gson();
+            String json = gson.toJson(this.grindSize);
+            prefsEditor.putString("grindSize", json);
+            prefsEditor.commit();
+
+            getActivity().onBackPressed();
+
+        } else if (ButtonClick == knap3) {
+            grindSize="Coarse";
+            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+            SharedPreferences.Editor prefsEditor = preferences.edit();
+            Gson gson = new Gson();
+            String json = gson.toJson(this.grindSize);
+            prefsEditor.putString("grindSize", json);
+            prefsEditor.commit();
+
+            getActivity().onBackPressed();
+
+
         }
     }
 }

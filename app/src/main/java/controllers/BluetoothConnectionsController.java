@@ -8,8 +8,11 @@ import android.content.pm.PackageManager;
 
 import androidx.core.app.ActivityCompat;
 
+import com.espressif.provisioning.ESPConstants;
+import com.espressif.provisioning.ESPDevice;
 import com.espressif.provisioning.ESPProvisionManager;
 import com.espressif.provisioning.listeners.BleScanListener;
+import com.espressif.provisioning.listeners.ProvisionListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,6 +54,21 @@ public class BluetoothConnectionsController {
             return;
 
         ESPProvisionManager.getInstance(context).searchBleEspDevices("PROV_", listener);
+    }
+
+    /**
+     * Send WiFi credentials to an ESP device.
+     *
+     * @param context
+     * @param device
+     * @param ssid
+     * @param pwd
+     */
+    public void sendWifiCredentialsToDevice(Context context, BluetoothDevice device, String ssid, String pwd, ProvisionListener listener) {
+        ESPDevice esp = ESPProvisionManager.getInstance(context)
+                .createESPDevice(ESPConstants.TransportType.TRANSPORT_BLE, ESPConstants.SecurityType.SECURITY_1);
+        esp.connectBLEDevice(device, device.getUuids()[0].toString());
+        esp.provision(ssid, pwd, listener);
     }
 
     /**

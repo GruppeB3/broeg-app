@@ -1,68 +1,89 @@
 package controllers;
 
-import android.app.Activity;
+import android.Manifest;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.widget.Toast;
+import android.content.pm.PackageManager;
+
+import androidx.core.app.ActivityCompat;
+
+import com.espressif.provisioning.ESPProvisionManager;
+import com.espressif.provisioning.listeners.BleScanListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
-import static androidx.core.app.ActivityCompat.startActivityForResult;
+import models.exceptions.BluetoothNotAvailableException;
+import models.exceptions.BluetoothNotEnabledException;
 
 public class BluetoothConnectionsController {
 
-    private static final int REQUEST_BT_ENABLE_CODE = 1;
+    private final BluetoothAdapter adapter;
+    private List<BluetoothDevice> devices = new ArrayList<>();
 
-    private Activity activity;
-    private BluetoothConnectionsController instance;
-    private BluetoothAdapter adapter;
-
-    public BluetoothConnectionsController() {
+    public BluetoothConnectionsController() throws BluetoothNotAvailableException, BluetoothNotEnabledException {
 
         this.adapter = BluetoothAdapter.getDefaultAdapter();
 
         if (this.adapter == null) {
             // Device doesn't support Bluetooth.
-            Toast.makeText(this.activity, "Bluetooth is not available. Please make sure that it is enabled and available on your device", Toast.LENGTH_SHORT).show();
-            return;
+            throw new BluetoothNotAvailableException();
         }
 
-        if (!adapter.isEnabled()) {
-            Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-            startActivityForResult(this.activity, enableBtIntent, REQUEST_BT_ENABLE_CODE, null);
+        if (!bluetoothIsEnabled()) {
+            // Bluetooth is not enabled for the adapter provided
+            throw new BluetoothNotEnabledException();
         }
 
     }
 
-    public ArrayList<BluetoothDevice> getDevices() {
+    /**
+     * Start a scan for Bluetooth devices nearby.<br>
+     * There's a hardcoded prefix of "PROV_" meaning that the listener will only
+     * be notified about devices where this prefix is being fulfilled.
+     *
+     * @param context
+     * @param listener
+     */
+    public void startScanForNewDevices(Context context, BleScanListener listener) {
+        if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED)
+            return;
 
-        final ArrayList<BluetoothDevice> devices = new ArrayList<>();
+        ESPProvisionManager.getInstance(context).searchBleEspDevices("PROV_", listener);
+    }
 
-        // Create a BroadcastReceiver for ACTION_FOUND.
-        final BroadcastReceiver receiver = new BroadcastReceiver() {
-            public void onReceive(Context context, Intent intent) {
-                String action = intent.getAction();
-                if (BluetoothDevice.ACTION_FOUND.equals(action)) {
-                    // Discovery has found a device. Get the BluetoothDevice
-                    // object and its info from the Intent.
-                    BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
-                    devices.add(device);
-                }
-            }
-        };
+    /**
+     * Add a bluetooth device to the list of devices
+     *
+     * @param device
+     */
+    public void addDevice(BluetoothDevice device) {
+        if (!this.devices.contains(device))
+            this.devices.add(device);
+    }
 
-        IntentFilter filter = new IntentFilter(BluetoothDevice.ACTION_FOUND);
-        activity.registerReceiver(receiver, filter);
-
-        // Don't forget to unregister again...
-        activity.unregisterReceiver(receiver);
-
+    /**
+     * Get list of devices
+     *
+     * @return List
+     */
+    public List<BluetoothDevice> getDevices() {
         return devices;
+    }
 
+    /**
+     * Aux method the check if Bluetooth is enabled for the acquired adapter.
+     * If the adapter is `null` the method will return `false`
+     *
+     * @return boolean
+     */
+    public boolean bluetoothIsEnabled() {
+        if (this.adapter != null) {
+            return adapter.isEnabled();
+        }
+
+        return false;
     }
 
 }

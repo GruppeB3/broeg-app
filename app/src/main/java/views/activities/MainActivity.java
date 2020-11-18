@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         newBrewButton.setOnClickListener(this);
         cleaningButton.setOnClickListener(this);
+        findViewById(R.id.button4).setOnClickListener(this);
     }
 
     @Override
@@ -36,6 +37,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else if (v == cleaningButton) {
 
             startActivity(new Intent(this, CleaningActivity.class));
+
+        } else if (v == findViewById(R.id.button4)) {
+
+            startActivity(new Intent(this, BluetoothConnectionsActivity.class));
 
         }
 

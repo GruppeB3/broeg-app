@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
         package="dk.dtu.gruppeb3.broeg.app">
-
     <!-- Permissions -->
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
@@ -15,7 +14,8 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name="views.activities.CleaningActivity"></activity>
+        <activity android:name="views.activities.BluetoothConnectionsActivity" />
+        <activity android:name="views.activities.CleaningActivity" />
         <activity android:name="views.activities.BrewingActivity" />
         <activity android:name="views.activities.MyRecipesActivity" />
         <activity android:name="views.activities.NewRecipeActivity" />

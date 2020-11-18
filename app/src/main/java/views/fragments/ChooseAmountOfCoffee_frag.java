@@ -5,11 +5,13 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+
 
 import dk.dtu.gruppeb3.broeg.app.R;
 import helpers.PreferenceHelper;
@@ -25,8 +27,14 @@ public class ChooseAmountOfCoffee_frag extends Fragment implements View.OnClickL
     double amountOfCoffee;
 
     @Override
-    public View onCreateView(LayoutInflater i, ViewGroup container, Bundle savedInstanceState){
+    public View onCreateView(LayoutInflater i, ViewGroup container, Bundle savedInstanceState) {
         this.rod= i.inflate(R.layout.fragment_choose_amount_of_coffee, container, false);
+
+        DisplayMetrics dm = new DisplayMetrics();
+        int width = dm.widthPixels;
+        int height = dm.heightPixels;
+
+
 
         plusBtn = rod.findViewById(R.id.ArrowUp_CoffeAmount);
         minusBtn = rod.findViewById(R.id.ArrowDown_CoffeAmount);
@@ -42,6 +50,7 @@ public class ChooseAmountOfCoffee_frag extends Fragment implements View.OnClickL
         updateText();
 
         return rod;
+
     }
 
     @Override

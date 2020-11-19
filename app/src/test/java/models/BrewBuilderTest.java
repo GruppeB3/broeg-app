@@ -15,7 +15,7 @@ public class BrewBuilderTest {
 
     @Before
     public void setUp() throws Exception {
-        this.builder = new BrewBuilder();
+        this.builder = BrewBuilder.getInstance();
         this.brew = this.builder.get();
 
         this.rand = new Random();

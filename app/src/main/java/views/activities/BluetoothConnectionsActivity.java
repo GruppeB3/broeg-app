@@ -59,7 +59,7 @@ public class BluetoothConnectionsActivity extends AppCompatActivity implements V
         } catch (BluetoothNotAvailableException e) {
             Toast.makeText(this,
                     "It doesn't seem like we can connect to the Bluetooth interface on your device." +
-                            "\nPlease make sure your device supports Bluetooth,",
+                            "\nPlease make sure your device supports Bluetooth!",
                     Toast.LENGTH_SHORT).show();
 
         } catch (BluetoothNotEnabledException e) {

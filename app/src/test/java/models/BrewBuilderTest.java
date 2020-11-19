@@ -50,7 +50,7 @@ public class BrewBuilderTest {
 
     @Test
     public void brewIsNotNull() {
-        BrewBuilder builder = new BrewBuilder();
+        BrewBuilder builder = BrewBuilder.getInstance();
         Assert.assertNotNull(builder.get());
     }
 }

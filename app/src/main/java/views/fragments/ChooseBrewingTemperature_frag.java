@@ -1,7 +1,6 @@
 package views.fragments;
 
 import android.app.Fragment;
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -42,7 +41,7 @@ public class ChooseBrewingTemperature_frag extends Fragment implements View.OnCl
             @Override
             public void onClick(View v) {
                 temperature++;
-                TextView tv = rod.findViewById(R.id.temperature);
+                TextView tv = root.findViewById(R.id.temperature);
                 tv.setText("Temperatur i celcius (" + temperature + ")");
             }
         }));
@@ -51,7 +50,7 @@ public class ChooseBrewingTemperature_frag extends Fragment implements View.OnCl
             @Override
             public void onClick(View v) {
                 temperature--;
-                TextView tv = rod.findViewById(R.id.temperature);
+                TextView tv = root.findViewById(R.id.temperature);
                 tv.setText("Temperatur i celcius (" + temperature + ")");
             }
         }));

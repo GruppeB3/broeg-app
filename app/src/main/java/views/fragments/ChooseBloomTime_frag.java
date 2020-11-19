@@ -40,7 +40,7 @@ public class ChooseBloomTime_frag extends Fragment implements View.OnClickListen
             @Override
             public void onClick(View v) {
                 amountBloomTime++;
-                TextView tv = rod.findViewById(R.id.bloomTime);
+                TextView tv = root.findViewById(R.id.bloomTime);
                 tv.setText("Bloomtid i sekunder (" +amountBloomTime + ")");
             }
         }));
@@ -49,7 +49,7 @@ public class ChooseBloomTime_frag extends Fragment implements View.OnClickListen
             @Override
             public void onClick(View v) {
                 amountBloomTime--;
-                TextView tv = rod.findViewById(R.id.bloomTime);
+                TextView tv = root.findViewById(R.id.bloomTime);
                 tv.setText("Bloomtid i sekunder (" + amountBloomTime + ")");
             }
         }));

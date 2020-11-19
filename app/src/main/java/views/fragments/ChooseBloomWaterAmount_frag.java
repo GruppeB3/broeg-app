@@ -1,7 +1,6 @@
 package views.fragments;
 
 import android.app.Fragment;
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -40,7 +39,7 @@ public class ChooseBloomWaterAmount_frag extends Fragment implements View.OnClic
             @Override
             public void onClick(View v) {
                 amountBloomWater++;
-                TextView tv = rod.findViewById(R.id.amountWater);
+                TextView tv = root.findViewById(R.id.amountWater);
                 tv.setText("Mængde af vand i ml (" +amountBloomWater + ")");
             }
         }));
@@ -49,7 +48,7 @@ public class ChooseBloomWaterAmount_frag extends Fragment implements View.OnClic
             @Override
             public void onClick(View v) {
                 amountBloomWater--;
-                TextView tv = rod.findViewById(R.id.amountWater);
+                TextView tv = root.findViewById(R.id.amountWater);
                 tv.setText("Mængde af vand i ml (" + amountBloomWater + ")");
             }
         }));

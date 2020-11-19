@@ -1,7 +1,6 @@
 package views.fragments;
 
 import android.app.Fragment;
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -23,16 +22,16 @@ import helpers.PreferenceHelper;
 public class ChooseAmountOfCoffee_frag extends Fragment implements View.OnClickListener {
 
     Button plusBtn, minusBtn, saveBtn;
-    private View rod;
+    private View root;
     double amountOfCoffee;
 
     @Override
     public View onCreateView(LayoutInflater i, ViewGroup container, Bundle savedInstanceState){
-        this.rod= i.inflate(R.layout.fragment_choose_amount_of_coffee, container, false);
+        this.root = i.inflate(R.layout.fragment_choose_amount_of_coffee, container, false);
 
-        plusBtn = rod.findViewById(R.id.ArrowUp_CoffeAmount);
-        minusBtn = rod.findViewById(R.id.ArrowDown_CoffeAmount);
-        saveBtn = rod.findViewById(R.id.Save_AmountCoffee);
+        plusBtn = root.findViewById(R.id.ArrowUp_CoffeAmount);
+        minusBtn = root.findViewById(R.id.ArrowDown_CoffeAmount);
+        saveBtn = root.findViewById(R.id.Save_AmountCoffee);
 
         plusBtn.setOnClickListener(this);
         minusBtn.setOnClickListener(this);
@@ -42,7 +41,7 @@ public class ChooseAmountOfCoffee_frag extends Fragment implements View.OnClickL
             @Override
             public void onClick(View v) {
                 amountOfCoffee++;
-                TextView tv = rod.findViewById(R.id.CoffeeAmount);
+                TextView tv = root.findViewById(R.id.CoffeeAmount);
                 tv.setText("Mængde kaffe i gram (" + amountOfCoffee + ")");
             }
         }));
@@ -51,14 +50,14 @@ public class ChooseAmountOfCoffee_frag extends Fragment implements View.OnClickL
             @Override
             public void onClick(View v) {
                 amountOfCoffee--;
-                TextView tv = rod.findViewById(R.id.CoffeeAmount);
+                TextView tv = root.findViewById(R.id.CoffeeAmount);
                 tv.setText("Mængde kaffe i gram (" + amountOfCoffee + ")");
             }
         }));
 
         updateText();
 
-        return rod;
+        return root;
 
 
     }
@@ -88,7 +87,7 @@ public class ChooseAmountOfCoffee_frag extends Fragment implements View.OnClickL
     }
 
     private void updateText() {
-        TextView tv = rod.findViewById(R.id.CoffeeAmount);
+        TextView tv = root.findViewById(R.id.CoffeeAmount);
         tv.setText("Mængde kaffe i gram (" + amountOfCoffee + ")");
     }
 }

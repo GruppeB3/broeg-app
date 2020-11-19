@@ -1,8 +1,203 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context="views.NewRecipeActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_brown"
+    tools:context="views.activities.NewRecipeActivity">
 
+    <ImageView
+        android:id="@+id/bloomTimeBackground"
+        android:layout_width="335dp"
+        android:layout_height="73dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bloomWaterBackground"
+        app:srcCompat="@drawable/rectanglebroeg_button"
+        tools:layout_editor_absoluteX="38dp"
+        tools:layout_editor_absoluteY="420dp" />
+
+    <ImageView
+        android:id="@+id/brewingTempBackground"
+        android:layout_width="335dp"
+        android:layout_height="73dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/grindSizeBackground"
+        app:srcCompat="@drawable/rectanglebroeg_button"
+        tools:layout_editor_absoluteX="38dp"
+        tools:layout_editor_absoluteY="238dp" />
+
+    <ImageView
+        android:id="@+id/bloomWaterBackground"
+        android:layout_width="335dp"
+        android:layout_height="73dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/brewingTempBackground"
+        app:srcCompat="@drawable/rectanglebroeg_button"
+        tools:layout_editor_absoluteX="38dp"
+        tools:layout_editor_absoluteY="329dp" />
+
+    <ImageView
+        android:id="@+id/grindSizeBackground"
+        android:layout_width="335dp"
+        android:layout_height="73dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/groundCoffeeAmtBackground"
+        app:srcCompat="@drawable/rectanglebroeg_button"
+        tools:layout_editor_absoluteX="38dp"
+        tools:layout_editor_absoluteY="143dp" />
+
+    <ImageView
+        android:id="@+id/groundCoffeeAmtBackground"
+        android:layout_width="335dp"
+        android:layout_height="73dp"
+        app:srcCompat="@drawable/rectanglebroeg_button"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="50dp"
+        tools:layout_editor_absoluteX="38dp"
+        tools:layout_editor_absoluteY="51dp" />
+
+    <Button
+        android:id="@+id/groundCoffeAmtText"
+        android:layout_width="264dp"
+        android:layout_height="31dp"
+        android:background="@drawable/s2groundcoffeeamount_button"
+        app:layout_constraintLeft_toLeftOf="@id/groundCoffeeAmtBackground"
+        app:layout_constraintRight_toRightOf="@id/groundCoffeeAmtBackground"
+        app:layout_constraintTop_toTopOf="@id/groundCoffeeAmtBackground"
+        app:layout_constraintBottom_toBottomOf="@id/groundCoffeeAmtBackground"
+        tools:layout_editor_absoluteX="73dp"
+        tools:layout_editor_absoluteY="71dp" />
+
+    <Button
+            android:layout_width="120dp"
+            android:layout_height="31dp"
+            android:background="@drawable/s2grindsize_button"
+            app:layout_constraintLeft_toLeftOf="@id/grindSizeBackground"
+            app:layout_constraintRight_toRightOf="@id/grindSizeBackground"
+            app:layout_constraintTop_toTopOf="@id/grindSizeBackground"
+            app:layout_constraintBottom_toBottomOf="@id/grindSizeBackground"
+            android:id="@+id/grindSizeText" />
+
+    <Button
+        android:id="@+id/brewingTempText"
+        android:layout_width="242dp"
+        android:layout_height="31dp"
+        android:background="@drawable/s2brewingtemperature_button"
+        app:layout_constraintLeft_toLeftOf="@id/brewingTempBackground"
+        app:layout_constraintRight_toRightOf="@id/brewingTempBackground"
+        app:layout_constraintTop_toTopOf="@id/brewingTempBackground"
+        app:layout_constraintBottom_toBottomOf="@id/brewingTempBackground"
+        tools:layout_editor_absoluteX="84dp"
+        tools:layout_editor_absoluteY="253dp" />
+
+    <Button
+        android:id="@+id/bloomWaterText"
+        android:layout_width="143dp"
+        android:layout_height="31dp"
+        android:background="@drawable/s2bloomwater_button"
+        app:layout_constraintLeft_toLeftOf="@id/bloomWaterBackground"
+        app:layout_constraintRight_toRightOf="@id/bloomWaterBackground"
+        app:layout_constraintTop_toTopOf="@id/bloomWaterBackground"
+        app:layout_constraintBottom_toBottomOf="@id/bloomWaterBackground"
+        tools:layout_editor_absoluteX="134dp"
+        tools:layout_editor_absoluteY="350dp" />
+
+    <Button
+        android:id="@+id/bloomTimeText"
+        android:layout_width="129dp"
+        android:layout_height="34dp"
+        android:background="@drawable/s2bloomtime_button"
+        app:layout_constraintLeft_toLeftOf="@id/bloomTimeBackground"
+        app:layout_constraintRight_toRightOf="@id/bloomTimeBackground"
+        app:layout_constraintTop_toTopOf="@id/bloomTimeBackground"
+        app:layout_constraintBottom_toBottomOf="@id/bloomTimeBackground"
+        tools:layout_editor_absoluteX="141dp"
+        tools:layout_editor_absoluteY="434dp" />
+
+    <Button
+        android:id="@+id/menuButton"
+        android:layout_width="25dp"
+        android:layout_height="16dp"
+        android:background="@drawable/menuicon_button"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="15dp" />
+
+    <!--
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="169dp"
+        android:layout_height="166dp"
+        tools:layout_editor_absoluteX="120dp"
+        tools:layout_editor_absoluteY="523dp" />
+    -->
+
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="114dp"
+        android:layout_height="46dp"
+        android:background="@drawable/s2saveknap_button"
+        android:layout_marginTop="40dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bloomTimeBackground" />
+
+    <Button
+        android:id="@+id/backButton"
+        android:layout_width="31dp"
+        android:layout_height="22dp"
+        android:background="@drawable/s2tilbageknap_button"
+        android:layout_marginBottom="40dp"
+        android:layout_marginRight="25dp"
+        app:layout_constraintRight_toLeftOf="@id/button16"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="73dp"
+        tools:layout_editor_absoluteY="789dp" />
+
+    <Button
+        android:id="@+id/button16"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/homebutton_button"
+        android:layout_marginBottom="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_editor_absoluteX="185dp"
+        tools:layout_editor_absoluteY="780dp" />
+
+    <Button
+        android:id="@+id/plusButton"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@drawable/s2tilfoejopskriftplus_button"
+        android:layout_marginBottom="37dp"
+        android:layout_marginStart="25dp"
+        app:layout_constraintLeft_toRightOf="@id/button16"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="307dp"
+        tools:layout_editor_absoluteY="789dp" />
+
+    <LinearLayout
+            android:id="@+id/fragment_contents"
+            android:orientation="horizontal"
+            android:elevation="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            tools:layout_editor_absoluteY="454dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

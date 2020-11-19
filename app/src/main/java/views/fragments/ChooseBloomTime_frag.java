@@ -1,8 +1,8 @@
-package views;
+package views.fragments;
 
-import android.os.Bundle;
 import android.app.Fragment;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,23 +17,25 @@ import helpers.PreferenceHelper;
 
 public class ChooseBloomTime_frag extends Fragment implements View.OnClickListener {
 
-    Button knap1, knap2, knap3;
-    private View rod;
+    Button plusBtn, minusBtn, saveBtn;
+    private View root;
     double amountBloomTime = 45;
 
     @Override
     public View onCreateView(LayoutInflater i, ViewGroup container, Bundle savedInstanceState) {
-        this.rod = i.inflate(R.layout.activity_choose_bloom_time_frag, container, false);
+        this.root = i.inflate(R.layout.fragment_choose_bloom_time, container, false);
 
-        knap1 = rod.findViewById(R.id.ArrowUp_BloomTime);
-        knap2 = rod.findViewById(R.id.ArrowDown_BloomTime);
-        knap3 = rod.findViewById(R.id.Save_BloomTime);
+        plusBtn = root.findViewById(R.id.ArrowUp_BloomTime);
+        minusBtn = root.findViewById(R.id.ArrowDown_BloomTime);
+        saveBtn = root.findViewById(R.id.Save_BloomTime);
 
-        knap1.setOnClickListener(this);
-        knap2.setOnClickListener(this);
-        knap3.setOnClickListener(this);
+        plusBtn.setOnClickListener(this);
+        minusBtn.setOnClickListener(this);
+        saveBtn.setOnClickListener(this);
 
-        knap1.setOnTouchListener(new RepeatListener(400, 100, new View.OnClickListener(){
+        SharedPreferences preferences = this.getActivity().getSharedPreferences("pref", Context.MODE_PRIVATE);
+        this.amountBloomTime = PreferenceHelper.getDouble(preferences, "amountBloomTime", "45");
+        plusBtn.setOnTouchListener(new RepeatListener(400, 100, new View.OnClickListener(){
 
             @Override
             public void onClick(View v) {
@@ -42,7 +44,7 @@ public class ChooseBloomTime_frag extends Fragment implements View.OnClickListen
                 tv.setText("Bloomtid i sekunder (" +amountBloomTime + ")");
             }
         }));
-        knap2.setOnTouchListener(new RepeatListener(400, 100, new View.OnClickListener() {
+        minusBtn.setOnTouchListener(new RepeatListener(400, 100, new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -52,23 +54,22 @@ public class ChooseBloomTime_frag extends Fragment implements View.OnClickListen
             }
         }));
 
-        return rod;
+        updateText();
+
+        return root;
     }
 
     @Override
     public void onClick(View ButtonClick) {
-        if (ButtonClick == knap1) {
+        if (ButtonClick == plusBtn) {
             amountBloomTime++;
-            TextView tv = rod.findViewById(R.id.amountWater);
-            tv.setText("Bloomtid i sekunder (" +amountBloomTime + ")");
+            updateText();
 
-        } else if (ButtonClick == knap2){
+        } else if (ButtonClick == minusBtn){
             amountBloomTime--;
-            TextView tv = rod.findViewById(R.id.amountWater);
-            tv.setText("Bloomtid i sekunder (" +amountBloomTime + ")");
+            updateText();
 
-        } else if (ButtonClick == knap3){
-
+        } else if (ButtonClick == saveBtn){
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
             SharedPreferences.Editor prefsEditor = preferences.edit();
             Gson gson = new Gson();
@@ -79,5 +80,10 @@ public class ChooseBloomTime_frag extends Fragment implements View.OnClickListen
             getActivity().onBackPressed();
         }
 
+    }
+
+    private void updateText() {
+        TextView tv = root.findViewById(R.id.bloomTime);
+        tv.setText("Bloomtid i sekunder (" + amountBloomTime + ")");
     }
 }

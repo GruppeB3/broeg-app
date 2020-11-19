@@ -1,4 +1,4 @@
-package views;
+package views.fragments;
 
 import android.app.Fragment;
 import android.content.Context;
@@ -20,20 +20,22 @@ import dk.dtu.gruppeb3.broeg.app.R;
 
 public class ChooseGrindSize_frag extends Fragment implements View.OnClickListener {
 
-    Button knap1, knap2, knap3, knap4;
+    Button fineBtn, mediumBtn, coarseBtn, saveBtn;
     String grindSize;
 
     @Override
     public View onCreateView(LayoutInflater i, ViewGroup container, Bundle savedInstanceState) {
-        View rod = i.inflate(R.layout.activity_choose_grind_size, container, false);
+        View rod = i.inflate(R.layout.fragment_choose_grind_size, container, false);
 
-        knap1 = rod.findViewById(R.id.Fine);
-        knap2 = rod.findViewById(R.id.Medium);
-        knap3 = rod.findViewById(R.id.Coarse);
+        fineBtn = rod.findViewById(R.id.Fine);
+        mediumBtn = rod.findViewById(R.id.Medium);
+        coarseBtn = rod.findViewById(R.id.Coarse);
+        saveBtn = rod.findViewById(R.id.Save_GrindSize);
 
-        knap1.setOnClickListener(this);
-        knap2.setOnClickListener(this);
-        knap3.setOnClickListener(this);
+        fineBtn.setOnClickListener(this);
+        mediumBtn.setOnClickListener(this);
+        coarseBtn.setOnClickListener(this);
+        saveBtn.setOnClickListener(this);
 
 
         return rod;
@@ -42,7 +44,7 @@ public class ChooseGrindSize_frag extends Fragment implements View.OnClickListen
     @Override
     public void onClick(View ButtonClick) {
 
-        if (ButtonClick == knap1) {
+        if (ButtonClick == fineBtn) {
             grindSize="Fine";
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
             SharedPreferences.Editor prefsEditor = preferences.edit();
@@ -53,7 +55,7 @@ public class ChooseGrindSize_frag extends Fragment implements View.OnClickListen
 
             getActivity().onBackPressed();
 
-        } else if (ButtonClick == knap2) {
+        } else if (ButtonClick == mediumBtn) {
             grindSize="Medium";
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
             SharedPreferences.Editor prefsEditor = preferences.edit();
@@ -64,8 +66,10 @@ public class ChooseGrindSize_frag extends Fragment implements View.OnClickListen
 
             getActivity().onBackPressed();
 
-        } else if (ButtonClick == knap3) {
+        } else if (ButtonClick == coarseBtn) {
             grindSize="Coarse";
+
+        } else if (ButtonClick == saveBtn) {
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
             SharedPreferences.Editor prefsEditor = preferences.edit();
             Gson gson = new Gson();
@@ -74,8 +78,6 @@ public class ChooseGrindSize_frag extends Fragment implements View.OnClickListen
             prefsEditor.commit();
 
             getActivity().onBackPressed();
-
-
         }
     }
 }

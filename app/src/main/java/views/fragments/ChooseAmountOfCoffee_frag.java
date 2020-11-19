@@ -1,6 +1,7 @@
-package views;
+package views.fragments;
 
 import android.app.Fragment;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -21,24 +22,23 @@ import helpers.PreferenceHelper;
 
 public class ChooseAmountOfCoffee_frag extends Fragment implements View.OnClickListener {
 
-    Button knap1, knap2, knap3;
+    Button plusBtn, minusBtn, saveBtn;
     private View rod;
     double amountOfCoffee;
 
-
     @Override
-    public View onCreateView(LayoutInflater i, ViewGroup container, Bundle savedInstanceState) {
-        this.rod = i.inflate(R.layout.activity_choose_amount_of_coffee, container, false);
+    public View onCreateView(LayoutInflater i, ViewGroup container, Bundle savedInstanceState){
+        this.rod= i.inflate(R.layout.fragment_choose_amount_of_coffee, container, false);
 
-        knap1 = rod.findViewById(R.id.ArrowUp_CoffeAmount);
-        knap2 = rod.findViewById(R.id.ArrowDown_CoffeAmount);
-        knap3 = rod.findViewById(R.id.Save_AmountCoffee);
+        plusBtn = rod.findViewById(R.id.ArrowUp_CoffeAmount);
+        minusBtn = rod.findViewById(R.id.ArrowDown_CoffeAmount);
+        saveBtn = rod.findViewById(R.id.Save_AmountCoffee);
 
-        knap1.setOnClickListener(this);
-        knap2.setOnClickListener(this);
-        knap3.setOnClickListener(this);
+        plusBtn.setOnClickListener(this);
+        minusBtn.setOnClickListener(this);
+        saveBtn.setOnClickListener(this);
 
-        knap1.setOnTouchListener(new RepeatListener(400, 100, new View.OnClickListener() {
+        plusBtn.setOnTouchListener(new RepeatListener(400, 100, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 amountOfCoffee++;
@@ -46,7 +46,7 @@ public class ChooseAmountOfCoffee_frag extends Fragment implements View.OnClickL
                 tv.setText("Mængde kaffe i gram (" + amountOfCoffee + ")");
             }
         }));
-        knap2.setOnTouchListener(new RepeatListener(400, 100, new View.OnClickListener() {
+        minusBtn.setOnTouchListener(new RepeatListener(400, 100, new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -56,28 +56,25 @@ public class ChooseAmountOfCoffee_frag extends Fragment implements View.OnClickL
             }
         }));
 
+        updateText();
+
         return rod;
 
 
     }
 
-
     @Override
     public void onClick(View ButtonClick) {
 
-
-        if (ButtonClick == knap1) {
+        if (ButtonClick == plusBtn) {
             amountOfCoffee++;
-            TextView tv = rod.findViewById(R.id.CoffeeAmount);
-            tv.setText("Mængde kaffe i gram (" + amountOfCoffee + ")");
+            updateText();
 
-        } else if (ButtonClick == knap2) {
+        } else if (ButtonClick == minusBtn){
             amountOfCoffee--;
-            TextView tv = rod.findViewById(R.id.CoffeeAmount);
-            tv.setText("Mængde kaffe i gram (" + amountOfCoffee + ")");
+            updateText();
 
-        } else if (ButtonClick == knap3) {
-
+        } else if (ButtonClick == saveBtn){
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
             SharedPreferences.Editor prefsEditor = preferences.edit();
             Gson gson = new Gson();
@@ -90,12 +87,8 @@ public class ChooseAmountOfCoffee_frag extends Fragment implements View.OnClickL
 
     }
 
+    private void updateText() {
+        TextView tv = rod.findViewById(R.id.CoffeeAmount);
+        tv.setText("Mængde kaffe i gram (" + amountOfCoffee + ")");
+    }
 }
-
-
-
-
-//TODO få metoden til at gentage sig selv hvert 0,5 sekund knappet er holdt nede.
-
-
-

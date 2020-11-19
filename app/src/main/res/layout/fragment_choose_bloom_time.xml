@@ -7,7 +7,7 @@
     android:background="@drawable/background_brown"
     android:clickable="true"
     android:elevation="40dp"
-    tools:context="views.ChooseBloomTime_frag">
+    tools:context="views.fragments.ChooseBloomTime_frag">
 
   <TextView
       android:id="@+id/bloomTime"
@@ -23,20 +23,21 @@
       android:id="@+id/ArrowUp_BloomTime"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_marginStart="37dp"
+
       android:layout_marginBottom="44dp"
       android:text="PILOP"
       app:layout_constraintBottom_toTopOf="@+id/bloomTime"
-      app:layout_constraintStart_toStartOf="@+id/bloomTime" />
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent" />
 
   <Button
       android:id="@+id/ArrowDown_BloomTime"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_marginStart="37dp"
       android:layout_marginTop="56dp"
       android:text="PILNED"
-      app:layout_constraintStart_toStartOf="@+id/bloomTime"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
       app:layout_constraintTop_toBottomOf="@+id/bloomTime" />
 
   <Button
@@ -46,6 +47,6 @@
       android:layout_marginBottom="73dp"
       android:text="Save"
       app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent" />
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintLeft_toLeftOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

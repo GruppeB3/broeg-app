@@ -7,37 +7,27 @@
     android:background="@drawable/background_brown"
     android:clickable="true"
     android:elevation="40dp"
-    tools:context="views.ChooseGrindSize_frag">
+    tools:context="views.fragments.NameRecipe_frag">
 
     <Button
-        android:id="@+id/Coarse"
+        android:id="@+id/Save_Recipe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="17dp"
-        android:layout_weight="1"
-        android:text="Coarse"
-        app:layout_constraintStart_toStartOf="@+id/Medium"
-        app:layout_constraintTop_toBottomOf="@+id/Medium" />
+        android:layout_marginBottom="77dp"
+        android:text="Save"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-        android:id="@+id/Medium"
+    <EditText
+        android:id="@+id/nameRecipe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_weight="1"
-        android:text="Medium"
-        app:layout_constraintStart_toStartOf="@+id/Fine"
-        app:layout_constraintTop_toBottomOf="@+id/Fine" />
-
-    <Button
-        android:id="@+id/Fine"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="208dp"
-        android:layout_weight="1"
-        android:text="Fine"
+        android:layout_marginTop="290dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Indtast navn på opskrift"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

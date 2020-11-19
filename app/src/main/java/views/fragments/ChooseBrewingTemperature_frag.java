@@ -1,4 +1,4 @@
-package views;
+package views.fragments;
 
 import android.app.Fragment;
 import android.content.Context;
@@ -22,23 +22,23 @@ import helpers.PreferenceHelper;
 
 public class ChooseBrewingTemperature_frag extends Fragment implements View.OnClickListener {
 
-    Button knap1, knap2, knap3;
-    private View rod;
+    Button plusBtn, minusBtn, saveBtn;
+    private View root;
     double temperature = 80;
 
     @Override
     public View onCreateView(LayoutInflater i, ViewGroup container, Bundle savedInstanceState){
-        this.rod= i.inflate(R.layout.activity_brewing_temperature_frag, container, false);
+        this.root = i.inflate(R.layout.fragment_brewing_temperature, container, false);
 
-        knap1 = rod.findViewById(R.id.ArrowUp_Temp);
-        knap2 = rod.findViewById(R.id.ArrowDown_Temp);
-        knap3 = rod.findViewById(R.id.Save_Temp);
+        plusBtn = root.findViewById(R.id.ArrowUp_Temp);
+        minusBtn = root.findViewById(R.id.ArrowDown_Temp);
+        saveBtn = root.findViewById(R.id.Save_Temp);
 
-        knap1.setOnClickListener(this);
-        knap2.setOnClickListener(this);
-        knap3.setOnClickListener(this);
+        plusBtn.setOnClickListener(this);
+        minusBtn.setOnClickListener(this);
+        saveBtn.setOnClickListener(this);
 
-        knap1.setOnTouchListener(new RepeatListener(400, 100, new View.OnClickListener() {
+        plusBtn.setOnTouchListener(new RepeatListener(400, 100, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 temperature++;
@@ -46,7 +46,7 @@ public class ChooseBrewingTemperature_frag extends Fragment implements View.OnCl
                 tv.setText("Temperatur i celcius (" + temperature + ")");
             }
         }));
-        knap2.setOnTouchListener(new RepeatListener(400, 100, new View.OnClickListener() {
+        minusBtn.setOnTouchListener(new RepeatListener(400, 100, new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -57,9 +57,9 @@ public class ChooseBrewingTemperature_frag extends Fragment implements View.OnCl
         }));
 
 
-        return rod;
+        updateText();
 
-
+        return root;
     }
 
     @Override
@@ -67,18 +67,15 @@ public class ChooseBrewingTemperature_frag extends Fragment implements View.OnCl
 
 
 
-        if (ButtonClick == knap1) {
+        if (ButtonClick == plusBtn) {
             temperature++;
-            TextView tv = rod.findViewById(R.id.temperature);
-            tv.setText("Temperatur i celcius (" +temperature + ")");
+            updateText();
 
-        } else if (ButtonClick == knap2){
+        } else if (ButtonClick == minusBtn){
             temperature--;
-            TextView tv = rod.findViewById(R.id.temperature);
-            tv.setText("Temperatur i celcius (" +temperature + ")");
+            updateText();
 
-        } else if (ButtonClick == knap3){
-
+        } else if (ButtonClick == saveBtn){
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
             SharedPreferences.Editor prefsEditor = preferences.edit();
             Gson gson = new Gson();
@@ -89,5 +86,10 @@ public class ChooseBrewingTemperature_frag extends Fragment implements View.OnCl
             getActivity().onBackPressed();
         }
 
+    }
+
+    private void updateText() {
+        TextView tv = root.findViewById(R.id.temperature);
+        tv.setText("Bryggetemperatur i grader celcius (" + temperature + ")");
     }
 }

@@ -1,4 +1,4 @@
-package views;
+package views.activities;
 
 import android.content.Context;
 import android.content.SharedPreferences;

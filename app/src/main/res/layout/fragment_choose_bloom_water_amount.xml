@@ -7,27 +7,27 @@
     android:background="@drawable/background_brown"
     android:clickable="true"
     android:elevation="40dp"
-    tools:context="views.ChooseBloomWaterAmount_frag">
+    tools:context="views.fragments.ChooseBloomWaterAmount_frag">
 
     <TextView
         android:id="@+id/amountWater"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
         android:layout_marginTop="301dp"
         android:text="ml"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/ArrowUp_BloomAmount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="121dp"
         android:layout_marginBottom="36dp"
         android:text="PILOP"
         app:layout_constraintBottom_toTopOf="@+id/amountWater"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
     <Button
         android:id="@+id/ArrowDown_BloomAmount"
@@ -35,7 +35,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="21dp"
         android:text="PILNED"
-        app:layout_constraintStart_toStartOf="@+id/ArrowUp_BloomAmount"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/amountWater" />
 
     <Button
@@ -45,6 +46,6 @@
         android:layout_marginBottom="111dp"
         android:text="Save"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/ArrowDown_BloomAmount"
-        app:layout_constraintStart_toStartOf="@+id/ArrowDown_BloomAmount" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,7 +1,6 @@
 package views.fragments;
 
 import android.app.Fragment;
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -25,12 +24,12 @@ public class ChooseGrindSize_frag extends Fragment implements View.OnClickListen
 
     @Override
     public View onCreateView(LayoutInflater i, ViewGroup container, Bundle savedInstanceState) {
-        View rod = i.inflate(R.layout.fragment_choose_grind_size, container, false);
+        View root = i.inflate(R.layout.fragment_choose_grind_size, container, false);
 
-        fineBtn = rod.findViewById(R.id.Fine);
-        mediumBtn = rod.findViewById(R.id.Medium);
-        coarseBtn = rod.findViewById(R.id.Coarse);
-        saveBtn = rod.findViewById(R.id.Save_GrindSize);
+        fineBtn = root.findViewById(R.id.Fine);
+        mediumBtn = root.findViewById(R.id.Medium);
+        coarseBtn = root.findViewById(R.id.Coarse);
+        saveBtn = root.findViewById(R.id.Save_GrindSize);
 
         fineBtn.setOnClickListener(this);
         mediumBtn.setOnClickListener(this);
@@ -38,7 +37,7 @@ public class ChooseGrindSize_frag extends Fragment implements View.OnClickListen
         saveBtn.setOnClickListener(this);
 
 
-        return rod;
+        return root;
     }
 
     @Override

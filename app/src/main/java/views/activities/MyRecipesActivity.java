@@ -14,6 +14,8 @@ import java.util.ArrayList;
 
 import dk.dtu.gruppeb3.broeg.app.R;
 import helpers.PreferenceHelper;
+import models.Brew;
+import views.fragments.NameRecipe_frag;
 
 
 public class MyRecipesActivity extends AppCompatActivity {
@@ -24,7 +26,7 @@ public class MyRecipesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_myrecipes);
 
-        ArrayList<MyRecipesActivity> brews = new ArrayList<MyRecipesActivity>();
+        ArrayList<Brew> brews = new ArrayList<Brew>();
 
 
         SharedPreferences preferences = getSharedPreferences("pref", Context.MODE_PRIVATE);
@@ -36,7 +38,7 @@ public class MyRecipesActivity extends AppCompatActivity {
 
         Gson gson = new Gson();
         String json = preferences.getString("recipeName", "defaultStringIfNothingFound");
-        //String brewName = gson.fromJson(json, nameRecipe_frag.class);
-        //brews.add(brewName);
+        NameRecipe_frag brewName = gson.fromJson(json, NameRecipe_frag.class);
+        brews.add(brewName);
     }
 }

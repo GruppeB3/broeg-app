@@ -44,9 +44,11 @@ public class NameRecipe_frag extends Fragment implements View.OnClickListener {
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
             SharedPreferences.Editor prefsEditor = preferences.edit();
             Gson gson = new Gson();
-//            String json = gson.toJson(this.opskriftNavn);
+            String json = gson.toJson(this.recipeName);
             prefsEditor.putString("recipeName", "");
             prefsEditor.commit();
+
+            // Gem alle parametre som gson her!!
 
 
             Intent intent = new Intent(getActivity(), MyRecipesActivity.class);

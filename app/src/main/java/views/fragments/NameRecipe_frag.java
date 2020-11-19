@@ -13,9 +13,6 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import dk.dtu.gruppeb3.broeg.app.R;
 import views.activities.MyRecipesActivity;
 
@@ -47,8 +44,8 @@ public class NameRecipe_frag extends Fragment implements View.OnClickListener {
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
             SharedPreferences.Editor prefsEditor = preferences.edit();
             Gson gson = new Gson();
-            String json = gson.toJson(this.opskriftNavn);
-            prefsEditor.putString("recipeName", json);
+//            String json = gson.toJson(this.opskriftNavn);
+            prefsEditor.putString("recipeName", "");
             prefsEditor.commit();
 
 

@@ -1,6 +1,7 @@
 package views.fragments;
 
 import android.app.Fragment;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -14,6 +15,7 @@ import com.google.gson.Gson;
 
 import dk.dtu.gruppeb3.broeg.app.R;
 import helpers.PreferenceHelper;
+import views.RepeatListener;
 
 public class ChooseBloomTime_frag extends Fragment implements View.OnClickListener {
 

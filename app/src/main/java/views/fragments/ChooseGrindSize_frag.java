@@ -29,7 +29,7 @@ public class ChooseGrindSize_frag extends Fragment implements View.OnClickListen
         fineBtn = root.findViewById(R.id.Fine);
         mediumBtn = root.findViewById(R.id.Medium);
         coarseBtn = root.findViewById(R.id.Coarse);
-        saveBtn = root.findViewById(R.id.Save_GrindSize);
+//        saveBtn = root.findViewById(R.id.Save_GrindSize);
 
         fineBtn.setOnClickListener(this);
         mediumBtn.setOnClickListener(this);

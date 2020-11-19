@@ -14,6 +14,7 @@ import com.google.gson.Gson;
 
 import dk.dtu.gruppeb3.broeg.app.R;
 import helpers.PreferenceHelper;
+import views.RepeatListener;
 
 public class ChooseBloomWaterAmount_frag extends Fragment implements View.OnClickListener {
 

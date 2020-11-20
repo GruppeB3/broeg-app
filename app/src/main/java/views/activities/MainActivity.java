@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else if (v == myrecipesButton){
 
             Intent i = new Intent(this, MyRecipesActivity.class);
+            startActivity(i);
 
         }
 

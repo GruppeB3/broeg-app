@@ -17,6 +17,7 @@ public class Brew {
     private double coffeeWaterRatio;
     private int bloomTime;
     private int totalBrewTime;
+    private String name;
 
     // we provide an empty constructor in case somebody wants to use the setters
     public Brew() {}
@@ -46,6 +47,9 @@ public class Brew {
 
     public void setCoffeeWaterRatio(double coffeeWaterRatio) {
         this.coffeeWaterRatio = coffeeWaterRatio;
+    }
+    public void setName(String name){
+        this.name = name;
     }
 
     public void setGrindSize(GrindSize grindSize) {
@@ -88,4 +92,6 @@ public class Brew {
     public double getCoffeeWaterRatio() {
         return coffeeWaterRatio;
     }
+
+    public String getName() { return name; }
 }

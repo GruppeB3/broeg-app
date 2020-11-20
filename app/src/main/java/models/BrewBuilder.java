@@ -59,6 +59,11 @@ public class BrewBuilder {
         return this;
     }
 
+    public BrewBuilder name(String name){
+        this.brew.setName(name);
+        return this;
+    }
+
     public Brew get() {
         return this.brew;
     }

@@ -11,6 +11,11 @@ public class BrewBuilder {
         this.brew = new Brew();
     }
 
+    public static void reset(){
+        instance = new BrewBuilder();
+
+    }
+
     public static BrewBuilder getInstance() {
         if (instance == null) {
             instance = new BrewBuilder();

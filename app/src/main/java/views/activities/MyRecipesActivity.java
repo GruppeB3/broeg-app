@@ -3,6 +3,8 @@ package views.activities;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -42,8 +44,17 @@ public class MyRecipesActivity extends AppCompatActivity {
         }
 
         ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, brews);
+
         listView.setAdapter(arrayAdapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+            }
+        });
     }
+
+
     private Brew getBrewFromIntent (){
         String json = this.getIntent().getStringExtra("brew");
         if(json == null|| json.equals("")){
@@ -52,5 +63,4 @@ public class MyRecipesActivity extends AppCompatActivity {
         return (new Gson()).fromJson(json, Brew.class);
 
     }
-
 }

@@ -15,13 +15,14 @@ import com.google.gson.Gson;
 
 import dk.dtu.gruppeb3.broeg.app.R;
 import helpers.PreferenceHelper;
+import models.BrewBuilder;
 import views.RepeatListener;
 
 public class ChooseBloomTime_frag extends Fragment implements View.OnClickListener {
 
     Button plusBtn, minusBtn, saveBtn;
     private View root;
-    double amountBloomTime = 45;
+    int amountBloomTime = 45;
 
     @Override
     public View onCreateView(LayoutInflater i, ViewGroup container, Bundle savedInstanceState) {
@@ -35,8 +36,6 @@ public class ChooseBloomTime_frag extends Fragment implements View.OnClickListen
         minusBtn.setOnClickListener(this);
         saveBtn.setOnClickListener(this);
 
-        SharedPreferences preferences = this.getActivity().getSharedPreferences("pref", Context.MODE_PRIVATE);
-        this.amountBloomTime = PreferenceHelper.getDouble(preferences, "amountBloomTime", "45");
         plusBtn.setOnTouchListener(new RepeatListener(400, 100, new View.OnClickListener(){
 
             @Override
@@ -72,12 +71,7 @@ public class ChooseBloomTime_frag extends Fragment implements View.OnClickListen
             updateText();
 
         } else if (ButtonClick == saveBtn){
-            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-            SharedPreferences.Editor prefsEditor = preferences.edit();
-            Gson gson = new Gson();
-            String json = gson.toJson(this.amountBloomTime);
-            PreferenceHelper.putDouble("amountBloomTime", json);
-            prefsEditor.commit();
+            BrewBuilder.getInstance().bloomTime(amountBloomTime);
 
             getActivity().onBackPressed();
         }

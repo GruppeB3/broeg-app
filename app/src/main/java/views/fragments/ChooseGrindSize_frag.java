@@ -12,6 +12,8 @@ import android.widget.Button;
 import com.google.gson.Gson;
 
 import dk.dtu.gruppeb3.broeg.app.R;
+import models.BrewBuilder;
+import models.enums.GrindSize;
 
 /**
  * This fragment gives the user the opportunity to choose between 3 types af grind size.
@@ -20,7 +22,7 @@ import dk.dtu.gruppeb3.broeg.app.R;
 public class ChooseGrindSize_frag extends Fragment implements View.OnClickListener {
 
     Button fineBtn, mediumBtn, coarseBtn, saveBtn;
-    String grindSize;
+
 
     @Override
     public View onCreateView(LayoutInflater i, ViewGroup container, Bundle savedInstanceState) {
@@ -29,12 +31,12 @@ public class ChooseGrindSize_frag extends Fragment implements View.OnClickListen
         fineBtn = root.findViewById(R.id.Fine);
         mediumBtn = root.findViewById(R.id.Medium);
         coarseBtn = root.findViewById(R.id.Coarse);
-//        saveBtn = root.findViewById(R.id.Save_GrindSize);
+
 
         fineBtn.setOnClickListener(this);
         mediumBtn.setOnClickListener(this);
         coarseBtn.setOnClickListener(this);
-        saveBtn.setOnClickListener(this);
+
 
 
         return root;
@@ -44,39 +46,21 @@ public class ChooseGrindSize_frag extends Fragment implements View.OnClickListen
     public void onClick(View ButtonClick) {
 
         if (ButtonClick == fineBtn) {
-            grindSize="Fine";
-            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-            SharedPreferences.Editor prefsEditor = preferences.edit();
-            Gson gson = new Gson();
-            String json = gson.toJson(this.grindSize);
-            prefsEditor.putString("grindSize", json);
-            prefsEditor.commit();
+            BrewBuilder.getInstance().grindSize(GrindSize.FINE);
+
 
             getActivity().onBackPressed();
 
         } else if (ButtonClick == mediumBtn) {
-            grindSize="Medium";
-            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-            SharedPreferences.Editor prefsEditor = preferences.edit();
-            Gson gson = new Gson();
-            String json = gson.toJson(this.grindSize);
-            prefsEditor.putString("grindSize", json);
-            prefsEditor.commit();
+            BrewBuilder.getInstance().grindSize(GrindSize.MEDIUM);
 
             getActivity().onBackPressed();
 
         } else if (ButtonClick == coarseBtn) {
-            grindSize="Coarse";
-
-        } else if (ButtonClick == saveBtn) {
-            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-            SharedPreferences.Editor prefsEditor = preferences.edit();
-            Gson gson = new Gson();
-            String json = gson.toJson(this.grindSize);
-            prefsEditor.putString("grindSize", json);
-            prefsEditor.commit();
+            BrewBuilder.getInstance().grindSize(GrindSize.COARSE);
 
             getActivity().onBackPressed();
+
         }
     }
 }

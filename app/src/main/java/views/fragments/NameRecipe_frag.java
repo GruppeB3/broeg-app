@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 
 import dk.dtu.gruppeb3.broeg.app.R;
+import models.BrewBuilder;
 import views.activities.MyRecipesActivity;
 
 public class NameRecipe_frag extends Fragment implements View.OnClickListener {
@@ -38,20 +39,15 @@ public class NameRecipe_frag extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View ButtonClick) {
         if (ButtonClick == saveBtn) {
-            et= root.findViewById(R.id.nameRecipe);
+            et = root.findViewById(R.id.nameRecipe);
             recipeName =et.getText().toString();
 
-            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-            SharedPreferences.Editor prefsEditor = preferences.edit();
-            Gson gson = new Gson();
-            String json = gson.toJson(this.recipeName);
-            prefsEditor.putString("recipeName", "");
-            prefsEditor.commit();
-
-            // Gem alle parametre som gson her!!
+           String json = (new Gson()).toJson(BrewBuilder.getInstance().get());
 
 
             Intent intent = new Intent(getActivity(), MyRecipesActivity.class);
+            intent.putExtra("brew", json);
+            getActivity().finishAffinity(); //Need to clear backstack.
             startActivity(intent);
         }
     }

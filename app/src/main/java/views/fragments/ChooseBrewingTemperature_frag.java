@@ -14,6 +14,7 @@ import com.google.gson.Gson;
 
 import dk.dtu.gruppeb3.broeg.app.R;
 import helpers.PreferenceHelper;
+import models.BrewBuilder;
 import views.RepeatListener;
 
 /**
@@ -76,12 +77,7 @@ public class ChooseBrewingTemperature_frag extends Fragment implements View.OnCl
             updateText();
 
         } else if (ButtonClick == saveBtn){
-            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-            SharedPreferences.Editor prefsEditor = preferences.edit();
-            Gson gson = new Gson();
-            String json = gson.toJson(this.temperature);
-            PreferenceHelper.putDouble("temperature", json);
-            prefsEditor.commit();
+            BrewBuilder.getInstance().brewingTemperature(temperature);
 
             getActivity().onBackPressed();
         }

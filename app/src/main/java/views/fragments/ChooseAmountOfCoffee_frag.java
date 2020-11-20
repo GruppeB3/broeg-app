@@ -14,6 +14,7 @@ import com.google.gson.Gson;
 
 import dk.dtu.gruppeb3.broeg.app.R;
 import helpers.PreferenceHelper;
+import models.BrewBuilder;
 import views.RepeatListener;
 
 /**
@@ -75,12 +76,7 @@ public class ChooseAmountOfCoffee_frag extends Fragment implements View.OnClickL
             updateText();
 
         } else if (ButtonClick == saveBtn){
-            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-            SharedPreferences.Editor prefsEditor = preferences.edit();
-            Gson gson = new Gson();
-            String json = gson.toJson(this.amountOfCoffee);
-            PreferenceHelper.putDouble("amountCoffee", json);
-            prefsEditor.commit();
+            BrewBuilder.getInstance().groundCoffeeAmount(amountOfCoffee);
 
             getActivity().onBackPressed();
         }

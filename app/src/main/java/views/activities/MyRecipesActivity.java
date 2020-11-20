@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import java.util.ArrayList;
 
@@ -26,19 +27,23 @@ public class MyRecipesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_myrecipes);
 
-        ArrayList<Brew> brews = new ArrayList<Brew>();
-
-
-        SharedPreferences preferences = getSharedPreferences("pref", Context.MODE_PRIVATE);
-        double coffeeAmount = PreferenceHelper.getDouble(preferences, "amountOfCoffee", "0");
-        double bloomTime = PreferenceHelper.getDouble(preferences, "amountBloomTime", "0");
-        double waterAmount = PreferenceHelper.getDouble(preferences, "amountBloomWater", "0");
-        double brewingTemperature = PreferenceHelper.getDouble(preferences, "temperature", "0");
-        String grindSize = PreferenceManager.getDefaultSharedPreferences(this).getString("grindSize", "defaultStringIfNothingFound");
-
+        SharedPreferences prefs = getSharedPreferences("pref", Context.MODE_PRIVATE);
         Gson gson = new Gson();
-        String json = preferences.getString("recipeName", "defaultStringIfNothingFound");
-        NameRecipe_frag brewName = gson.fromJson(json, NameRecipe_frag.class);
-        brews.add(brewName);
+
+        ArrayList<Brew> brews = gson.fromJson(prefs.getString("brews", "[]"), new TypeToken<ArrayList<Brew>>(){}.getType());
+
+        if(getBrewFromIntent()!= null){
+            brews.add(getBrewFromIntent());
+            prefs.edit().putString("brews", gson.toJson(brews)).apply();
+        }
     }
+    private Brew getBrewFromIntent (){
+        String json = this.getIntent().getStringExtra("brew");
+        if(json == null|| json.equals("")){
+            return null;
+        }
+        return (new Gson()).fromJson(json, Brew.class);
+
+    }
+
 }

@@ -14,12 +14,13 @@ import com.google.gson.Gson;
 
 import dk.dtu.gruppeb3.broeg.app.R;
 import helpers.PreferenceHelper;
+import models.BrewBuilder;
 import views.RepeatListener;
 
 public class ChooseBloomWaterAmount_frag extends Fragment implements View.OnClickListener {
 
     Button plusBtn, minusBtn, saveBtn;
-    double amountBloomWater = 45;
+    int amountBloomWater = 45;
     private View root;
 
 
@@ -70,12 +71,7 @@ public class ChooseBloomWaterAmount_frag extends Fragment implements View.OnClic
             updateText();
 
         } else if (ButtonClick == saveBtn){
-            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-            SharedPreferences.Editor prefsEditor = preferences.edit();
-            Gson gson = new Gson();
-            String json = gson.toJson(this.amountBloomWater);
-            PreferenceHelper.putDouble("amountBloomWater", json);
-            prefsEditor.commit();
+            BrewBuilder.getInstance().bloomAmount(amountBloomWater);
 
             getActivity().onBackPressed();
         }

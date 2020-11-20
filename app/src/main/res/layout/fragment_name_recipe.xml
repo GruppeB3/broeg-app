@@ -23,11 +23,11 @@
         android:id="@+id/nameRecipe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="290dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Indtast navn på opskrift"
+        android:layout_marginTop="309dp"
+        android:text="Indtast navn her"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

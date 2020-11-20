@@ -6,9 +6,11 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -17,10 +19,10 @@ import dk.dtu.gruppeb3.broeg.app.R;
 import models.BrewBuilder;
 import views.activities.MyRecipesActivity;
 
-public class NameRecipe_frag extends Fragment implements View.OnClickListener {
+public class NameRecipe_frag extends Fragment implements View.OnClickListener, View.OnTouchListener {
 
     private View root;
-    TextView et;
+    EditText et;
     String recipeName;
     Button saveBtn;
 
@@ -30,8 +32,10 @@ public class NameRecipe_frag extends Fragment implements View.OnClickListener {
         this.root = i.inflate(R.layout.fragment_name_recipe, container, false);
 
         saveBtn = root.findViewById(R.id.Save_Recipe);
+        et = root.findViewById(R.id.nameRecipe);
 
         saveBtn.setOnClickListener(this);
+        et.setOnTouchListener(this);
 
         return root;
     }
@@ -50,5 +54,13 @@ public class NameRecipe_frag extends Fragment implements View.OnClickListener {
             getActivity().finishAffinity(); //Need to clear backstack.
             startActivity(intent);
         }
+    }
+
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        if(v == et){
+            et.setText("");
+        }
+        return false;
     }
 }

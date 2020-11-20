@@ -3,8 +3,9 @@ package views.activities;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
-import android.widget.TextView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,18 +15,21 @@ import com.google.gson.reflect.TypeToken;
 import java.util.ArrayList;
 
 import dk.dtu.gruppeb3.broeg.app.R;
-import helpers.PreferenceHelper;
+
 import models.Brew;
-import views.fragments.NameRecipe_frag;
+
 
 
 public class MyRecipesActivity extends AppCompatActivity {
 
+    ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_myrecipes);
+
+        listView=(ListView)findViewById(R.id.brewList);
 
         SharedPreferences prefs = getSharedPreferences("pref", Context.MODE_PRIVATE);
         Gson gson = new Gson();
@@ -36,6 +40,9 @@ public class MyRecipesActivity extends AppCompatActivity {
             brews.add(getBrewFromIntent());
             prefs.edit().putString("brews", gson.toJson(brews)).apply();
         }
+
+        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, brews);
+        listView.setAdapter(arrayAdapter);
     }
     private Brew getBrewFromIntent (){
         String json = this.getIntent().getStringExtra("brew");

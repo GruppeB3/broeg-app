@@ -4,11 +4,15 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.gson.Gson;
@@ -24,34 +28,38 @@ import models.Brew;
 
 public class MyRecipesActivity extends AppCompatActivity {
 
-    ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_myrecipes);
-
-        listView=(ListView)findViewById(R.id.brewList);
 
         SharedPreferences prefs = getSharedPreferences("pref", Context.MODE_PRIVATE);
         Gson gson = new Gson();
 
-        ArrayList<Brew> brews = gson.fromJson(prefs.getString("brews", "[]"), new TypeToken<ArrayList<Brew>>(){}.getType());
+        final ArrayList<Brew> brews = gson.fromJson(prefs.getString("brews", "[]"), new TypeToken<ArrayList<Brew>>(){}.getType());
 
         if(getBrewFromIntent()!= null){
             brews.add(getBrewFromIntent());
             prefs.edit().putString("brews", gson.toJson(brews)).apply();
         }
 
-        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, brews);
-
-        listView.setAdapter(arrayAdapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        ArrayAdapter arrayAdapter = new ArrayAdapter(this, R.layout.activity_myrecipes, R.id.listelement, brews){
+            @NonNull
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+                View view = super.getView(position, convertView, parent);
+                Brew brew = brews.get(position);
+                TextView textview = view.findViewById(R.id.listelement);
+                textview.setText(brew.getName());
+                return view;
 
             }
-        });
+        };
+
+        ListView lv = new ListView(this);
+        lv.setAdapter(arrayAdapter);
+        setContentView(lv);
+
     }
 
 

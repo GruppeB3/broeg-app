@@ -64,10 +64,10 @@ public class BluetoothConnectionsController {
      * @param ssid
      * @param pwd
      */
-    public void sendWifiCredentialsToDevice(Context context, BluetoothDevice device, String ssid, String pwd, ProvisionListener listener) {
+    public void sendWifiCredentialsToDevice(Context context, BluetoothDevice device, String uuid, String ssid, String pwd, ProvisionListener listener) {
         ESPDevice esp = ESPProvisionManager.getInstance(context)
                 .createESPDevice(ESPConstants.TransportType.TRANSPORT_BLE, ESPConstants.SecurityType.SECURITY_1);
-        esp.connectBLEDevice(device, device.getUuids()[0].toString());
+        esp.connectBLEDevice(device, uuid);
         esp.provision(ssid, pwd, listener);
     }
 

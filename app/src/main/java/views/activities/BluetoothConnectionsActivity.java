@@ -1,16 +1,21 @@
 package views.activities;
 
 import android.Manifest;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.le.ScanResult;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,7 +27,9 @@ import com.espressif.provisioning.ESPConstants;
 import com.espressif.provisioning.listeners.BleScanListener;
 import com.espressif.provisioning.listeners.ProvisionListener;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import controllers.BluetoothConnectionsController;
@@ -31,11 +38,12 @@ import models.exceptions.BluetoothNotAvailableException;
 import models.exceptions.BluetoothNotEnabledException;
 import views.adapters.BluetoothDeviceListAdapter;
 
-public class BluetoothConnectionsActivity extends AppCompatActivity implements View.OnClickListener, BleScanListener, ProvisionListener {
+public class BluetoothConnectionsActivity extends AppCompatActivity implements View.OnClickListener, BluetoothDeviceListAdapter.OnItemClickListener, BleScanListener, ProvisionListener {
 
     private BluetoothConnectionsController controller;
     private Button searchNewDevicesBtn;
     private ProgressDialog spinnerDialog;
+    private Map<BluetoothDevice, String> uuids = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,11 +81,9 @@ public class BluetoothConnectionsActivity extends AppCompatActivity implements V
                 }
 
                 this.controller.startScanForNewDevices(this, this);
-
+                this.controller.getDevices().clear();
                 spinnerDialog = ProgressDialog.show(this, "", "Søger efter enheder...");
             }
-        } else if (v == findViewById(R.id.deviceListElement)) {
-            // TODO: Fill in code to provision device
         }
     }
 
@@ -90,6 +96,9 @@ public class BluetoothConnectionsActivity extends AppCompatActivity implements V
     @Override
     public void onPeripheralFound(BluetoothDevice device, ScanResult scanResult) {
         this.controller.addDevice(device);
+
+        if (scanResult.getScanRecord().getServiceUuids() != null && scanResult.getScanRecord().getServiceUuids().size() > 0)
+            this.uuids.put(device, scanResult.getScanRecord().getServiceUuids().get(0).toString());
 
         // NOTE: Debug step
         Log.d("espBleDeviceFound", "Name: " + device.getName());
@@ -116,42 +125,48 @@ public class BluetoothConnectionsActivity extends AppCompatActivity implements V
         Toast.makeText(this, "An error occured while trying to scan for new devices", Toast.LENGTH_SHORT).show();
     }
 
-/*
+
     @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        BluetoothDevice device = this.controller.getDevices().get(position);
+    public void onItemClick(View view, int position) {
+        final BluetoothDevice device = this.controller.getDevices().get(position);
         final Map<String, String> credentials = new HashMap<>();
+        final Context context = this;
+        final ProvisionListener provisionListener = this;
 
 
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
-        alert.setTitle("SSID");
-        final EditText input = new EditText(this);
-        alert.setView(input);
+        alert.setTitle("WiFi Credentials");
+        LinearLayout ll = new LinearLayout(this);
+        final EditText ssidField = new EditText(this);
+        final EditText pwdField = new EditText(this);
+
+        ll.setOrientation(LinearLayout.VERTICAL);
+
+        ssidField.setHint("SSID");
+        pwdField.setHint("Password");
+
+        ll.addView(ssidField);
+        ll.addView(pwdField);
+
+        alert.setView(ll);
 
         alert.setNeutralButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                credentials.put("ssid", input.getText().toString());
+                credentials.put("ssid", ssidField.getText().toString());
+                credentials.put("pwd", pwdField.getText().toString());
+
+                controller.sendWifiCredentialsToDevice(context,
+                        device,
+                        uuids.get(device),
+                        credentials.get("ssid"),
+                        credentials.get("pwd"),
+                        provisionListener);
             }
         });
 
         alert.show();
-
-        input.setText("");
-        alert.setNeutralButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                credentials.put("pwd", input.getText().toString());
-            }
-        });
-
-        this.controller.sendWifiCredentialsToDevice(this,
-                device,
-                credentials.get("ssid"),
-                credentials.get("pwd"),
-                this);
     }
-*/
 
     @Override
     public void createSessionFailed(Exception e) {

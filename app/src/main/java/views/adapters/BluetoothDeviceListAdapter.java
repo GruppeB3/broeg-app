@@ -18,11 +18,11 @@ public class BluetoothDeviceListAdapter extends RecyclerView.Adapter {
 
     List<BluetoothDevice> devices;
     Context context;
-    View.OnClickListener onClickListener;
+    OnItemClickListener listener;
 
-    public BluetoothDeviceListAdapter(List<BluetoothDevice> devices, View.OnClickListener listener, Context context) {
+    public BluetoothDeviceListAdapter(List<BluetoothDevice> devices, OnItemClickListener listener, Context context) {
         this.devices = devices;
-        this.onClickListener = listener;
+        this.listener = listener;
         this.context = context;
     }
 
@@ -34,11 +34,16 @@ public class BluetoothDeviceListAdapter extends RecyclerView.Adapter {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, final int position) {
         if (holder instanceof ViewHolder) {
             ViewHolder vh = (ViewHolder) holder;
             vh.name.setText(devices.get(position).getName());
-            vh.itemView.setOnClickListener(this.onClickListener);
+            vh.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.onItemClick(v, position);
+                }
+            });
         }
     }
 
@@ -54,6 +59,10 @@ public class BluetoothDeviceListAdapter extends RecyclerView.Adapter {
 
             name = itemView.findViewById(R.id.deviceText);
         }
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(View view, int position);
     }
 
 }

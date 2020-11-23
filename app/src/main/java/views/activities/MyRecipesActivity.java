@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import androidx.annotation.NonNull;
@@ -62,7 +63,7 @@ public class MyRecipesActivity extends AppCompatActivity implements AdapterView.
 
     }
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-       Brew brew = (Brew) lv.getItemAtPosition(position);
+        //Hvad skal der ske når der klikkes på et bryg??
 
 
     }

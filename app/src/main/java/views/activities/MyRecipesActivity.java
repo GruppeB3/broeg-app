@@ -1,12 +1,16 @@
 package views.activities;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -61,11 +65,25 @@ public class MyRecipesActivity extends AppCompatActivity implements AdapterView.
         lv.setAdapter(arrayAdapter);
         setContentView(lv);
 
+        lv.setOnItemClickListener(this);
+
     }
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        //Hvad skal der ske når der klikkes på et bryg??
 
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        Brew brew = brews;
+        alert.setTitle(brew.getName());
+        final EditText input = new EditText(this);
+        alert.setView(input);
 
+        alert.setNeutralButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        alert.show();
     }
 
 

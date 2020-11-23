@@ -1,50 +1,41 @@
 package views.activities;
 
 import android.Manifest;
+import android.app.ProgressDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.le.ScanResult;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.espressif.provisioning.ESPConstants;
 import com.espressif.provisioning.listeners.BleScanListener;
 import com.espressif.provisioning.listeners.ProvisionListener;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Random;
 
 import controllers.BluetoothConnectionsController;
 import dk.dtu.gruppeb3.broeg.app.R;
 import models.exceptions.BluetoothNotAvailableException;
 import models.exceptions.BluetoothNotEnabledException;
+import views.adapters.BluetoothDeviceListAdapter;
 
-public class BluetoothConnectionsActivity extends AppCompatActivity implements View.OnClickListener, BleScanListener, AdapterView.OnItemClickListener, ProvisionListener {
+public class BluetoothConnectionsActivity extends AppCompatActivity implements View.OnClickListener, BleScanListener, ProvisionListener {
 
     private BluetoothConnectionsController controller;
     private Button searchNewDevicesBtn;
+    private ProgressDialog spinnerDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,51 +73,50 @@ public class BluetoothConnectionsActivity extends AppCompatActivity implements V
                 }
 
                 this.controller.startScanForNewDevices(this, this);
+
+                spinnerDialog = ProgressDialog.show(this, "", "Søger efter enheder...");
             }
+        } else if (v == findViewById(R.id.deviceListElement)) {
+            // TODO: Fill in code to provision device
         }
     }
 
     @Override
     public void scanStartFailed() {
+        spinnerDialog.cancel();
         Toast.makeText(this, "An error occurred while trying to scan for new devices", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onPeripheralFound(BluetoothDevice device, ScanResult scanResult) {
         this.controller.addDevice(device);
+
+        // NOTE: Debug step
+        Log.d("espBleDeviceFound", "Name: " + device.getName());
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.R)
     @Override
     public void scanCompleted() {
-        Toast.makeText(this, "Scan for new devices completed", Toast.LENGTH_SHORT).show();
+        spinnerDialog.cancel();
 
-        final List<BluetoothDevice> devices = this.controller.getDevices();
-        ArrayAdapter adapter = new ArrayAdapter(this, R.layout.activity_bluetooth_connections, R.id.devicesList, devices) {
-            @NonNull
-            @Override
-            public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-                View view = super.getView(position, convertView, parent);
-                BluetoothDevice device = devices.get(position);
-                Log.d("espBleDeviceFound", "Name: " + device.getName() + ", Alias: " + device.getAlias());
+        List<BluetoothDevice> devices = this.controller.getDevices();
 
-                TextView description = findViewById(R.id.searchNewDevice);
-                description.setText("Enhed: " + device.getName());
+        RecyclerView listView = this.findViewById(R.id.devicesList);
+        listView.setLayoutManager(new LinearLayoutManager(this));
+        listView.scrollToPosition(0);
 
-                return view;
-            }
-        };
+        BluetoothDeviceListAdapter recyclerViewAdapter = new BluetoothDeviceListAdapter(devices, this, this);
 
-        ListView listView = new ListView(this);
-        listView.setOnItemClickListener(this);
-        listView.setAdapter(adapter);
+        listView.setAdapter(recyclerViewAdapter);
     }
 
     @Override
     public void onFailure(Exception e) {
+        spinnerDialog.cancel();
         Toast.makeText(this, "An error occured while trying to scan for new devices", Toast.LENGTH_SHORT).show();
     }
 
+/*
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         BluetoothDevice device = this.controller.getDevices().get(position);
@@ -161,6 +151,7 @@ public class BluetoothConnectionsActivity extends AppCompatActivity implements V
                 credentials.get("pwd"),
                 this);
     }
+*/
 
     @Override
     public void createSessionFailed(Exception e) {

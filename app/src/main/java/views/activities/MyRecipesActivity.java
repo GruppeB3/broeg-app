@@ -19,6 +19,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import dk.dtu.gruppeb3.broeg.app.R;
 
@@ -26,7 +27,7 @@ import models.Brew;
 
 
 
-public class MyRecipesActivity extends AppCompatActivity {
+public class MyRecipesActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
 
     @Override
@@ -52,7 +53,6 @@ public class MyRecipesActivity extends AppCompatActivity {
                 TextView textview = view.findViewById(R.id.listelement);
                 textview.setText(brew.getName());
                 return view;
-
             }
         };
 
@@ -61,6 +61,12 @@ public class MyRecipesActivity extends AppCompatActivity {
         setContentView(lv);
 
     }
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+       Brew brew = (Brew) lv.getItemAtPosition(position);
+
+
+    }
+
 
 
     private Brew getBrewFromIntent (){

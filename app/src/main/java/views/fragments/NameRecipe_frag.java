@@ -46,6 +46,7 @@ public class NameRecipe_frag extends Fragment implements View.OnClickListener, V
             et = root.findViewById(R.id.nameRecipe);
             recipeName =et.getText().toString();
 
+            BrewBuilder.getInstance().name(recipeName);
            String json = (new Gson()).toJson(BrewBuilder.getInstance().get());
 
 

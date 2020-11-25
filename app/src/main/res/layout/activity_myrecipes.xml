@@ -52,7 +52,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/imageView16"
-        tools:layout_editor_absoluteY="596dp" />
+        tools:layout_editor_absoluteY="555dp" />
 
     <ImageView
         android:id="@+id/imageView5"

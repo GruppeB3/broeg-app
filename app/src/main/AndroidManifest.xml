@@ -15,7 +15,8 @@
         <activity android:name="views.activities.CleaningActivity" />
         <activity android:name="views.activities.BrewingActivity" />
         <activity android:name="views.activities.MyRecipesActivity" />
-        <activity android:name="views.activities.NewRecipeActivity" />
+        <activity android:name="views.activities.NewRecipeActivity"
+            android:theme="@style/AppTheme.CustumTheme" />
         <activity android:name="views.activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

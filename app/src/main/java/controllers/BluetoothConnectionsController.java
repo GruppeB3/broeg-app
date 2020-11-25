@@ -9,7 +9,6 @@ import android.content.pm.PackageManager;
 import androidx.core.app.ActivityCompat;
 
 import com.espressif.provisioning.ESPConstants;
-import com.espressif.provisioning.ESPDevice;
 import com.espressif.provisioning.ESPProvisionManager;
 import com.espressif.provisioning.listeners.BleScanListener;
 import com.espressif.provisioning.listeners.ProvisionListener;
@@ -57,18 +56,35 @@ public class BluetoothConnectionsController {
     }
 
     /**
-     * Send WiFi credentials to an ESP device.
+     * Connect to an BLE device
      *
      * @param context
      * @param device
+     * @param uuid
+     */
+    public void connectToBleDevice(Context context, BluetoothDevice device, String uuid) {
+        ESPProvisionManager manager = ESPProvisionManager.getInstance(context);
+
+        if (manager.getEspDevice() != null)
+            manager.getEspDevice().disconnectDevice();
+
+        manager.createESPDevice(ESPConstants.TransportType.TRANSPORT_BLE, ESPConstants.SecurityType.SECURITY_1);
+        manager.getEspDevice().connectBLEDevice(device, uuid);
+    }
+
+    /**
+     * Send WiFi credentials to an ESP device.
+     *
+     * @param context
      * @param ssid
      * @param pwd
      */
-    public void sendWifiCredentialsToDevice(Context context, BluetoothDevice device, String uuid, String ssid, String pwd, ProvisionListener listener) {
-        ESPDevice esp = ESPProvisionManager.getInstance(context)
-                .createESPDevice(ESPConstants.TransportType.TRANSPORT_BLE, ESPConstants.SecurityType.SECURITY_1);
-        esp.connectBLEDevice(device, uuid);
-        esp.provision(ssid, pwd, listener);
+    public void sendWifiCredentialsToDevice(Context context, String ssid, String pwd, ProvisionListener listener) {
+        ESPProvisionManager manager = ESPProvisionManager.getInstance(context);
+
+        // Hard coded not to have POP
+        manager.getEspDevice().setProofOfPossession("");
+        manager.getEspDevice().provision(ssid, pwd, listener);
     }
 
     /**

@@ -52,6 +52,7 @@ public class BluetoothConnectionsActivity extends AppCompatActivity implements V
     private static final int EVENT_DEVICE_CONNECTED = 1;
     private static final int EVENT_DEVICE_CONNECTION_FAILED = 2;
     private static final int EVENT_DEVICE_DISCONNECTED = 3;
+    private static final String TAG = BluetoothConnectionsActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -204,41 +205,41 @@ public class BluetoothConnectionsActivity extends AppCompatActivity implements V
 
     @Override
     public void createSessionFailed(Exception e) {
-        Log.d(this.getClass().getName(), "Failed to create session");
+        Log.d(TAG, "Failed to create session");
     }
 
     @Override
     public void wifiConfigSent() {
-        Log.d(this.getClass().getName(), "Wifi config sent");
+        Log.d(TAG, "Wifi config sent");
     }
 
     @Override
     public void wifiConfigFailed(Exception e) {
-        Log.d(this.getClass().getName(), "Wifi config failed");
+        Log.d(TAG, "Wifi config failed");
     }
 
     @Override
     public void wifiConfigApplied() {
-        Log.d(this.getClass().getName(), "Wifi config applied");
+        Log.d(TAG, "Wifi config applied");
     }
 
     @Override
     public void wifiConfigApplyFailed(Exception e) {
-        Log.d(this.getClass().getName(), "Wifi config apply failed");
+        Log.d(TAG, "Wifi config apply failed");
     }
 
     @Override
     public void provisioningFailedFromDevice(ESPConstants.ProvisionFailureReason failureReason) {
-        Log.d(this.getClass().getName(), "Provision failed from device " + failureReason.toString());
+        Log.d(TAG, "Provision failed from device " + failureReason.toString());
     }
 
     @Override
     public void deviceProvisioningSuccess() {
-        Log.d(this.getClass().getName(), "Provision succeeded");
+        Log.d(TAG, "Provision succeeded");
     }
 
     @Override
     public void onProvisioningFailed(Exception e) {
-        Log.d(this.getClass().getName(), "Provisioning failed");
+        Log.d(TAG, "Provisioning failed");
     }
 }

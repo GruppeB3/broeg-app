@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,25 +9,60 @@
     android:elevation="40dp"
     tools:context="views.fragments.NameRecipe_frag">
 
+    <androidx.cardview.widget.CardView
+        android:layout_width="233dp"
+        android:layout_height="307dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="85dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginRight="85dp"
+        app:cardBackgroundColor="#8B5A39"
+        app:cardCornerRadius="15dp"
+        tools:ignore="MissingConstraints">
+
     <Button
         android:id="@+id/Save_Recipe"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="77dp"
-        android:text="Save"
+        android:layout_width="163dp"
+        android:layout_height="46dp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="140dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/savegiveitaname"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameRecipe" />
 
-    <EditText
-        android:id="@+id/nameRecipe"
-        android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/nameRecipe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="180dp"
+            android:layout_marginBottom="120dp"
+            android:ems="10"
+            android:layout_gravity="center"
+            android:inputType="textPersonName"
+            android:text="Indtast navn på opskrift"
+            app:layout_constraintBottom_toTopOf="@+id/Save_Recipe"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+        android:id="@+id/imageView11"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="309dp"
-        android:text="Indtast navn her"
-        android:textSize="20sp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:src="@drawable/giveitaname"
+        app:layout_constraintBottom_toTopOf="@+id/nameRecipe"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

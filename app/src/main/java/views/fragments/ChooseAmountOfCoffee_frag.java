@@ -1,19 +1,26 @@
 package views.fragments;
 
 import android.app.Fragment;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AlertDialog.Builder;
+
 import com.google.gson.Gson;
 
 import dk.dtu.gruppeb3.broeg.app.R;
 import helpers.PreferenceHelper;
+import views.activities.NewRecipeActivity;
 import models.BrewBuilder;
 import views.RepeatListener;
 
@@ -22,6 +29,9 @@ import views.RepeatListener;
  */
 
 public class ChooseAmountOfCoffee_frag extends Fragment implements View.OnClickListener {
+
+    private AlertDialog.Builder dialogBuilder;
+    private AlertDialog dialog;
 
     Button plusBtn, minusBtn, saveBtn;
     private View root;

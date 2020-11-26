@@ -79,17 +79,16 @@ public class MyRecipesActivity extends AppCompatActivity implements AdapterView.
         });
 
         alert.show();
-
-
     }
 
     private Brew getBrewFromIntent (){
         String json = this.getIntent().getStringExtra("brew");
-        if(json == null|| json.equals("")){
+
+        if (json == null|| json.equals("")) {
             return null;
         }
-        return (new Gson()).fromJson(json, Brew.class);
 
+        return (new Gson()).fromJson(json, Brew.class);
     }
 
     private void updateListOfBrews() {

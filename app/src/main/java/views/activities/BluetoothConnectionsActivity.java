@@ -119,7 +119,7 @@ public class BluetoothConnectionsActivity extends AppCompatActivity implements V
         }
 
         // NOTE: Debug step
-        Log.d("espBleDeviceFound", "Name: " + device.getName());
+        Log.d(this.getClass().getSimpleName(), "Name: " + device.getName());
     }
 
     @Override

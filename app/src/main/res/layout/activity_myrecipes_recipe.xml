@@ -19,13 +19,13 @@
             android:layout_width="0dp"
             android:layout_height="25dp"
             android:layout_weight="0.10"
-            android:src="@drawable/delete_button" />
+            android:src="@drawable/edit" />
 
     <ImageView
             android:id="@+id/deleteBtn"
             android:layout_width="0dp"
             android:layout_height="25dp"
             android:layout_weight="0.10"
-            android:src="@drawable/edit_button" />
+            android:src="@drawable/delete" />
 
 </LinearLayout>

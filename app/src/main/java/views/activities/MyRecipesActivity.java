@@ -1,23 +1,17 @@
 package views.activities;
 
 import android.app.AlertDialog;
-
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.ListView;
-import android.widget.TextView;
 
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -25,9 +19,8 @@ import com.google.gson.reflect.TypeToken;
 import java.util.ArrayList;
 
 import dk.dtu.gruppeb3.broeg.app.R;
-
 import models.Brew;
-import models.enums.GrindSize;
+import views.adapters.MyRecipeListAdapter;
 
 
 public class MyRecipesActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
@@ -40,36 +33,32 @@ public class MyRecipesActivity extends AppCompatActivity implements AdapterView.
 
         SharedPreferences prefs = getSharedPreferences("pref", Context.MODE_PRIVATE);
         Gson gson = new Gson();
-        this.brews = gson.fromJson(prefs.getString("brews", "[]"), new TypeToken<ArrayList<Brew>>(){}.getType());
+
+        updateListOfBrews();
 
         if(getBrewFromIntent()!= null){
             brews.add(getBrewFromIntent());
             prefs.edit().putString("brews", gson.toJson(brews)).apply();
         }
 
-        /*ArrayAdapter arrayAdapter = new ArrayAdapter(this, R.layout.activity_myrecipes, R.id.listelement, brews){
-            @NonNull
-            @Override
-            public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-                View view = super.getView(position, convertView, parent);
-                Brew brew = brews.get(position);
-                TextView textview = view.findViewById(R.id.listelement);
-                textview.setText(brew.getName());
-                return view;
-            }
+        setContentView(R.layout.activity_myrecipes);
 
+        RecyclerView listView = this.findViewById(R.id.myrecipes_List);
+        listView.setLayoutManager(new LinearLayoutManager(this));
+        listView.scrollToPosition(0);
 
-        };
+        MyRecipeListAdapter recyclerViewAdapter = new MyRecipeListAdapter(brews);
 
-        ListView lv = new ListView(this);
-        lv.setAdapter(arrayAdapter);
-        setContentView(lv);
-
-        lv.setOnItemClickListener(this);
-
-         */
-
+        listView.setAdapter(recyclerViewAdapter);
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        updateListOfBrews();
+    }
+
+    // TODO: Re-introduce on item click
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
@@ -101,5 +90,11 @@ public class MyRecipesActivity extends AppCompatActivity implements AdapterView.
         }
         return (new Gson()).fromJson(json, Brew.class);
 
+    }
+
+    private void updateListOfBrews() {
+        SharedPreferences prefs = getSharedPreferences("pref", Context.MODE_PRIVATE);
+        Gson gson = new Gson();
+        this.brews = gson.fromJson(prefs.getString("brews", "[]"), new TypeToken<ArrayList<Brew>>(){}.getType());
     }
 }

@@ -99,34 +99,34 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView14" />
 
     <ImageView
-        android:id="@+id/imageView9"
+        android:id="@+id/myrecipes_Headline"
         android:layout_width="479dp"
         android:layout_height="47dp"
         app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView11"
+        app:layout_constraintTop_toBottomOf="@+id/myrecipes_Broeg_Logo"
         app:srcCompat="@drawable/myrecipes" />
 
     <ImageView
-        android:id="@+id/imageView10"
+        android:id="@+id/myreceipes_Burger_Menu_Icon"
         android:layout_width="25dp"
         android:layout_height="16dp"
         android:src="@drawable/menuicon_button"
-        app:layout_constraintBottom_toTopOf="@+id/imageView9"
+        app:layout_constraintBottom_toTopOf="@+id/myrecipes_Headline"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="15dp" />
 
     <ImageView
-        android:id="@+id/imageView11"
+        android:id="@+id/myrecipes_Broeg_Logo"
         android:layout_width="55dp"
         android:layout_height="24dp"
         android:src="@drawable/broegblack"
-        app:layout_constraintBottom_toTopOf="@+id/imageView9"
+        app:layout_constraintBottom_toTopOf="@+id/myrecipes_Headline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/imageView10"
+        app:layout_constraintStart_toEndOf="@+id/myreceipes_Burger_Menu_Icon"
         app:layout_constraintTop_toTopOf="parent" />
 
 
@@ -139,7 +139,7 @@
         app:layout_constraintEnd_toStartOf="@+id/imageView2"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/imageView9" />
+        app:layout_constraintTop_toBottomOf="@+id/myrecipes_Headline" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -151,7 +151,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/imageView3"
-        app:layout_constraintTop_toBottomOf="@+id/imageView9" />
+        app:layout_constraintTop_toBottomOf="@+id/myrecipes_Headline" />
 
     <TextView
         android:id="@+id/textView2"
@@ -162,7 +162,7 @@
         app:layout_constraintEnd_toStartOf="@+id/imageView3"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView9" />
+        app:layout_constraintTop_toBottomOf="@+id/myrecipes_Headline" />
 
     <TextView
         android:id="@+id/textView6"

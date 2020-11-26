@@ -1,7 +1,6 @@
 package views.fragments;
 
 import android.app.Fragment;
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -11,8 +10,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+
 import dk.dtu.gruppeb3.broeg.app.R;
 import helpers.PreferenceHelper;
+import models.BrewBuilder;
+import views.RepeatListener;
 
 /**
  * This fragment gives the user the opportunity to choose the amount of coffee they want to brew.
@@ -36,8 +39,24 @@ public class ChooseBrewingTemperature_frag extends Fragment implements View.OnCl
         minusBtn.setOnClickListener(this);
         saveBtn.setOnClickListener(this);
 
-        SharedPreferences preferences = this.getActivity().getSharedPreferences("pref", Context.MODE_PRIVATE);
-        this.temperature = PreferenceHelper.getDouble(preferences, "temperature", "0");
+        plusBtn.setOnTouchListener(new RepeatListener(400, 100, new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                temperature++;
+                TextView tv = root.findViewById(R.id.temperature);
+                tv.setText("Temperatur i celcius (" + temperature + ")");
+            }
+        }));
+        minusBtn.setOnTouchListener(new RepeatListener(400, 100, new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                temperature--;
+                TextView tv = root.findViewById(R.id.temperature);
+                tv.setText("Temperatur i celcius (" + temperature + ")");
+            }
+        }));
+
 
         updateText();
 
@@ -58,8 +77,7 @@ public class ChooseBrewingTemperature_frag extends Fragment implements View.OnCl
             updateText();
 
         } else if (ButtonClick == saveBtn){
-            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-            PreferenceHelper.putDouble(preferences, "temperature", this.temperature);
+            BrewBuilder.getInstance().brewingTemperature(temperature);
 
             getActivity().onBackPressed();
         }

@@ -34,4 +34,6 @@ public class PreferenceHelper {
         return Double.parseDouble(pf.getString(key, defValue));
     }
 
+    public static void putDouble(String recipeName, String json) {
+    }
 }

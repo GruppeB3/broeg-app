@@ -1,7 +1,6 @@
 package views.fragments;
 
 import android.app.Fragment;
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -10,7 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.google.gson.Gson;
+
 import dk.dtu.gruppeb3.broeg.app.R;
+import models.BrewBuilder;
+import models.enums.GrindSize;
 
 /**
  * This fragment gives the user the opportunity to choose between 3 types af grind size.
@@ -18,44 +21,46 @@ import dk.dtu.gruppeb3.broeg.app.R;
 
 public class ChooseGrindSize_frag extends Fragment implements View.OnClickListener {
 
-    Button fineBtn, mediumBtn, coarseBtn, saveBtn;
-    String grindSize;
+    Button fineBtn, mediumBtn, coarseBtn;
+
 
     @Override
     public View onCreateView(LayoutInflater i, ViewGroup container, Bundle savedInstanceState) {
-        View rod = i.inflate(R.layout.fragment_choose_grind_size, container, false);
+        View root = i.inflate(R.layout.fragment_choose_grind_size, container, false);
 
-        fineBtn = rod.findViewById(R.id.Fine);
-        mediumBtn = rod.findViewById(R.id.Medium);
-        coarseBtn = rod.findViewById(R.id.Coarse);
-        saveBtn = rod.findViewById(R.id.Save_GrindSize);
+        fineBtn = root.findViewById(R.id.Fine);
+        mediumBtn = root.findViewById(R.id.Medium);
+        coarseBtn = root.findViewById(R.id.Coarse);
+
 
         fineBtn.setOnClickListener(this);
         mediumBtn.setOnClickListener(this);
         coarseBtn.setOnClickListener(this);
-        saveBtn.setOnClickListener(this);
 
-        SharedPreferences preferences = this.getActivity().getSharedPreferences("pref", Context.MODE_PRIVATE);
 
-        return rod;
+
+        return root;
     }
 
     @Override
     public void onClick(View ButtonClick) {
 
         if (ButtonClick == fineBtn) {
-            grindSize="Fine";
+            BrewBuilder.getInstance().grindSize(GrindSize.FINE);
+
+
+            getActivity().onBackPressed();
 
         } else if (ButtonClick == mediumBtn) {
-            grindSize="Medium";
+            BrewBuilder.getInstance().grindSize(GrindSize.MEDIUM);
+
+            getActivity().onBackPressed();
 
         } else if (ButtonClick == coarseBtn) {
-            grindSize="Coarse";
+            BrewBuilder.getInstance().grindSize(GrindSize.COARSE);
 
-        } else if (ButtonClick == saveBtn) {
-            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-            preferences.edit().putString("GrindSize", this.grindSize).apply();
             getActivity().onBackPressed();
+
         }
     }
 }

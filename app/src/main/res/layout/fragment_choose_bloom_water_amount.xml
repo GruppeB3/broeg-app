@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,11 +9,25 @@
     android:elevation="40dp"
     tools:context="views.fragments.ChooseBloomWaterAmount_frag">
 
+    <androidx.cardview.widget.CardView
+        android:layout_width="233dp"
+        android:layout_height="307dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="85dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginRight="85dp"
+        app:cardBackgroundColor="#8B5A39"
+        app:cardCornerRadius="15dp"
+        tools:ignore="MissingConstraints">
+
     <TextView
         android:id="@+id/amountWater"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="301dp"
+        android:layout_marginTop="120dp"
+        android:layout_marginBottom="20dp"
+        android:textAlignment="center"
         android:text="ml"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -21,31 +35,53 @@
 
     <Button
         android:id="@+id/ArrowUp_BloomAmount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="36dp"
-        android:text="PILOP"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="60dp"
+        android:background="@drawable/scrollup_button"
         app:layout_constraintBottom_toTopOf="@+id/amountWater"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
 
     <Button
         android:id="@+id/ArrowDown_BloomAmount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="21dp"
-        android:text="PILNED"
+        android:layout_width="44dp"
+        android:layout_height="37.5dp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="75dp"
+        android:layout_marginRight="100dp"
+        android:layout_marginBottom="46dp"
+        android:background="@drawable/scrollnedtrekant_button"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/amountWater" />
 
     <Button
         android:id="@+id/Save_BloomAmount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="111dp"
-        android:text="Save"
+        android:layout_width="163dp"
+        android:layout_height="46dp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="140dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/savesetting"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageView
+            android:id="@+id/imageView10"
+            android:layout_width="wrap_content"
+            android:layout_height="81dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:src="@drawable/chooseamountofbloomwater"
+            android:textAlignment="center"
+            tools:layout_editor_absoluteX="55dp"
+            tools:layout_editor_absoluteY="81dp" />
+
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

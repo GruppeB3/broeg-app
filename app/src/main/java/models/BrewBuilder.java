@@ -4,10 +4,24 @@ import models.enums.GrindSize;
 
 public class BrewBuilder {
 
+    private static BrewBuilder instance;
     private final Brew brew;
 
-    public BrewBuilder() {
+    private BrewBuilder() {
         this.brew = new Brew();
+    }
+
+    public static void reset(){
+        instance = new BrewBuilder();
+
+    }
+
+    public static BrewBuilder getInstance() {
+        if (instance == null) {
+            instance = new BrewBuilder();
+        }
+
+        return instance;
     }
 
     public BrewBuilder grindSize(GrindSize size) {
@@ -42,6 +56,11 @@ public class BrewBuilder {
 
     public BrewBuilder totalBrewTime(int time) {
         this.brew.setTotalBrewTime(time);
+        return this;
+    }
+
+    public BrewBuilder name(String name){
+        this.brew.setName(name);
         return this;
     }
 

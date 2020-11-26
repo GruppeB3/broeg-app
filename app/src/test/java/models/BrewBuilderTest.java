@@ -15,7 +15,7 @@ public class BrewBuilderTest {
 
     @Before
     public void setUp() throws Exception {
-        this.builder = new BrewBuilder();
+        this.builder = BrewBuilder.getInstance();
         this.brew = this.builder.get();
 
         this.rand = new Random();
@@ -50,7 +50,7 @@ public class BrewBuilderTest {
 
     @Test
     public void brewIsNotNull() {
-        BrewBuilder builder = new BrewBuilder();
+        BrewBuilder builder = BrewBuilder.getInstance();
         Assert.assertNotNull(builder.get());
     }
 }

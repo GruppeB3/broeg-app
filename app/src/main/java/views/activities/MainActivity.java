@@ -11,7 +11,7 @@ import dk.dtu.gruppeb3.broeg.app.R;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button newBrewButton, cleaningButton;
+    Button newBrewButton, cleaningButton, myrecipesButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,10 +20,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         newBrewButton = findViewById(R.id.broeg_frontpagebutton);
         cleaningButton = findViewById(R.id.cleaning_button);
+        myrecipesButton = findViewById(R.id.myrecipes_button);
 
         newBrewButton.setOnClickListener(this);
         cleaningButton.setOnClickListener(this);
-        findViewById(R.id.button4).setOnClickListener(this);
+        myrecipesButton.setOnClickListener(this);
     }
 
     @Override
@@ -38,9 +39,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             startActivity(new Intent(this, CleaningActivity.class));
 
-        } else if (v == findViewById(R.id.button4)) {
+        } else if (v == myrecipesButton){
 
-            startActivity(new Intent(this, BluetoothConnectionsActivity.class));
+            Intent i = new Intent(this, MyRecipesActivity.class);
+            startActivity(i);
 
         }
 

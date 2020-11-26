@@ -3,13 +3,17 @@ package views.activities;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import dk.dtu.gruppeb3.broeg.app.R;
+import models.BrewBuilder;
 import views.fragments.ChooseAmountOfCoffee_frag;
 import views.fragments.ChooseBloomTime_frag;
 import views.fragments.ChooseBloomWaterAmount_frag;
@@ -18,6 +22,8 @@ import views.fragments.ChooseGrindSize_frag;
 import views.fragments.NameRecipe_frag;
 
 public class NewRecipeActivity extends AppCompatActivity implements View.OnClickListener {
+
+
     private ImageView groundCoffeeAmtImgView, grindSizeImgView, brewTempImgView, bloomWaterAmtImgView, bloomTimeImgView;
     private Button groundCoffeeAmtBtn, grindSizeBtn, brewTempBtn, bloomWaterAmtBtn, bloomTimeBtn, saveBtn;
     SharedPreferences prefs;
@@ -57,9 +63,15 @@ public class NewRecipeActivity extends AppCompatActivity implements View.OnClick
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+        BrewBuilder.reset();
+    }
+
+    @Override
     public void onClick(View ClickButton) {
         if (ClickButton == groundCoffeeAmtImgView || ClickButton == groundCoffeeAmtBtn) {
-            getFragmentManager().beginTransaction()
+                    getFragmentManager().beginTransaction()
                     .setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
                     .replace(R.id.fragment_contents, new ChooseAmountOfCoffee_frag())
                     .addToBackStack(null)
@@ -88,7 +100,7 @@ public class NewRecipeActivity extends AppCompatActivity implements View.OnClick
                     .replace(R.id.fragment_contents, new ChooseBloomTime_frag())
                     .addToBackStack(null)
                     .commit();
-        } else if (ClickButton == saveBtn){
+        } else if (ClickButton == saveBtn) {
             getFragmentManager().beginTransaction()
                     .setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
                     .replace(R.id.fragment_contents, new NameRecipe_frag())
@@ -98,4 +110,5 @@ public class NewRecipeActivity extends AppCompatActivity implements View.OnClick
         }
 
     }
+
 }

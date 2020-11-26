@@ -38,19 +38,20 @@
         app:layout_constraintTop_toBottomOf="@+id/nameRecipe" />
 
         <EditText
-            android:id="@+id/nameRecipe"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="180dp"
-            android:layout_marginBottom="120dp"
-            android:ems="10"
-            android:layout_gravity="center"
-            android:inputType="textPersonName"
-            android:text="Indtast navn på opskrift"
-            app:layout_constraintBottom_toTopOf="@+id/Save_Recipe"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+                android:id="@+id/nameRecipe"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="180dp"
+                android:layout_marginBottom="120dp"
+                android:ems="10"
+                android:layout_gravity="center"
+                android:inputType="textPersonName"
+                app:layout_constraintBottom_toTopOf="@+id/Save_Recipe"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:hint="Indtast navn på opskrift"
+                android:textAlignment="center" />
 
         <ImageView
         android:id="@+id/imageView11"

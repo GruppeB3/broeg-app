@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp" >
+
+    <TextView
+            android:id="@+id/recipe_Name"
+            android:layout_width="0dp"
+            android:layout_height="41dp"
+            android:layout_weight="0.80"
+            android:text="@android:string/unknownName" />
+
+    <ImageView
+            android:id="@+id/editBtn"
+            android:layout_width="0dp"
+            android:layout_height="25dp"
+            android:layout_weight="0.10"
+            android:src="@drawable/delete_button" />
+
+    <ImageView
+            android:id="@+id/deleteBtn"
+            android:layout_width="0dp"
+            android:layout_height="25dp"
+            android:layout_weight="0.10"
+            android:src="@drawable/edit_button" />
+
+</LinearLayout>

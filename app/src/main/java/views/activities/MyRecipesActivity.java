@@ -47,7 +47,7 @@ public class MyRecipesActivity extends AppCompatActivity implements AdapterView.
             prefs.edit().putString("brews", gson.toJson(brews)).apply();
         }
 
-        ArrayAdapter arrayAdapter = new ArrayAdapter(this, R.layout.activity_myrecipes, R.id.listelement, brews){
+        /*ArrayAdapter arrayAdapter = new ArrayAdapter(this, R.layout.activity_myrecipes, R.id.listelement, brews){
             @NonNull
             @Override
             public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
@@ -57,6 +57,8 @@ public class MyRecipesActivity extends AppCompatActivity implements AdapterView.
                 textview.setText(brew.getName());
                 return view;
             }
+
+
         };
 
         ListView lv = new ListView(this);
@@ -64,6 +66,8 @@ public class MyRecipesActivity extends AppCompatActivity implements AdapterView.
         setContentView(lv);
 
         lv.setOnItemClickListener(this);
+
+         */
 
     }
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

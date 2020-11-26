@@ -1,7 +1,7 @@
 package views.activities;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
+
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
@@ -13,7 +13,6 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 import androidx.annotation.NonNull;
@@ -24,7 +23,6 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import dk.dtu.gruppeb3.broeg.app.R;
 
@@ -34,6 +32,7 @@ import models.enums.GrindSize;
 
 public class MyRecipesActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
+    private ArrayList<Brew> brews;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,8 +40,7 @@ public class MyRecipesActivity extends AppCompatActivity implements AdapterView.
 
         SharedPreferences prefs = getSharedPreferences("pref", Context.MODE_PRIVATE);
         Gson gson = new Gson();
-
-        final ArrayList<Brew> brews = gson.fromJson(prefs.getString("brews", "[]"), new TypeToken<ArrayList<Brew>>(){}.getType());
+        this.brews = gson.fromJson(prefs.getString("brews", "[]"), new TypeToken<ArrayList<Brew>>(){}.getType());
 
         if(getBrewFromIntent()!= null){
             brews.add(getBrewFromIntent());
@@ -77,7 +75,6 @@ public class MyRecipesActivity extends AppCompatActivity implements AdapterView.
         alert.setMessage((int) brew.getBloomAmount());
         alert.setMessage((int) brew.getBrewingTemperature());
         alert.setMessage((int) brew.getGroundCoffeeAmount());
-        alert.setMessage((GrindSize) brew.getGrindSize());
         final EditText input = new EditText(this);
         alert.setView(input);
 
@@ -89,9 +86,9 @@ public class MyRecipesActivity extends AppCompatActivity implements AdapterView.
         });
 
         alert.show();
+
+
     }
-
-
 
     private Brew getBrewFromIntent (){
         String json = this.getIntent().getStringExtra("brew");

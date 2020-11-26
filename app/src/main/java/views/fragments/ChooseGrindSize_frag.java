@@ -21,7 +21,7 @@ import models.enums.GrindSize;
 
 public class ChooseGrindSize_frag extends Fragment implements View.OnClickListener {
 
-    Button fineBtn, mediumBtn, coarseBtn, saveBtn;
+    Button fineBtn, mediumBtn, coarseBtn;
 
 
     @Override

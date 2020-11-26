@@ -39,6 +39,7 @@
             app:srcCompat="@drawable/myrecipes" />
 
     <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/myrecipes_List"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/myrecipes_Headline"

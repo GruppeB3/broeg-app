@@ -1,52 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:layout_gravity="center"
     android:background="@drawable/background_brown"
     android:clickable="true"
     android:elevation="40dp"
     tools:context="views.fragments.ChooseAmountOfCoffee_frag">
 
-    <Button
-        android:id="@+id/ArrowUp_CoffeAmount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="44dp"
-        android:text="PilOp"
-        app:layout_constraintBottom_toTopOf="@+id/CoffeeAmount"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+    <androidx.cardview.widget.CardView
+        android:layout_width="233dp"
+        android:layout_height="307dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="85dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginRight="85dp"
+        app:cardBackgroundColor="#8B5A39"
+        app:cardCornerRadius="15dp"
+        tools:ignore="MissingConstraints">
 
-    <Button
-        android:id="@+id/ArrowDown_CoffeAmount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:text="PilNed"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CoffeeAmount" />
+        <Button
+            android:id="@+id/ArrowUp_CoffeAmount"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="60dp"
+            android:background="@drawable/scrollup_button"
+            app:layout_constraintBottom_toTopOf="@+id/CoffeeAmount"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
 
-    <Button
-        android:id="@+id/Save_AmountCoffee"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="103dp"
-        android:text="Save"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        <Button
+            android:id="@+id/ArrowDown_CoffeAmount"
+            android:layout_width="44dp"
+            android:layout_height="37.5dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="75dp"
+            android:layout_marginRight="100dp"
+            android:layout_marginBottom="46dp"
+            android:background="@drawable/scrollnedtrekant_button"
+            app:layout_constraintBottom_toTopOf="@+id/Save_AmountCoffee"
+            app:layout_constraintHorizontal_bias="0.506"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/CoffeeAmount" />
 
-    <TextView
-        android:id="@+id/CoffeeAmount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="286dp"
-        android:background="@drawable/my_border"
-        android:text="Mængde kaffe i gram"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/Save_AmountCoffee"
+            android:layout_width="163dp"
+            android:layout_height="46dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="140dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/savesetting"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ArrowDown_CoffeAmount" />
+
+        <TextView
+            android:id="@+id/CoffeeAmount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="120dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/my_border"
+            android:text="Mængde kaffe i gram"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toTopOf="@+id/ArrowDown_CoffeAmount"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:src="@drawable/chooseamountofcoffee"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toTopOf="@+id/ArrowUp_CoffeAmount"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>
+

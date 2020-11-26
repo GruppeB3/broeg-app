@@ -24,3 +24,4 @@ public class ExampleInstrumentedTest {
         assertEquals("dk.dtu.gruppeb3.broeg.app", appContext.getPackageName());
     }
 }
+

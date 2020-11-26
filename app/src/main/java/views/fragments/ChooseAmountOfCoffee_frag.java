@@ -5,14 +5,20 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AlertDialog.Builder;
+
 import dk.dtu.gruppeb3.broeg.app.R;
 import helpers.PreferenceHelper;
+import views.activities.NewRecipeActivity;
 
 /**
  * This fragment gives the user the opportunity to choose the amount of coffee they want to brew.
@@ -20,13 +26,26 @@ import helpers.PreferenceHelper;
 
 public class ChooseAmountOfCoffee_frag extends Fragment implements View.OnClickListener {
 
+    private AlertDialog.Builder dialogBuilder;
+    private AlertDialog dialog;
+
     Button plusBtn, minusBtn, saveBtn;
     private View rod;
     double amountOfCoffee;
 
     @Override
-    public View onCreateView(LayoutInflater i, ViewGroup container, Bundle savedInstanceState){
+    public View onCreateView(LayoutInflater i, ViewGroup container, Bundle savedInstanceState) {
         this.rod= i.inflate(R.layout.fragment_choose_amount_of_coffee, container, false);
+
+        /**DisplayMetrics dm = new DisplayMetrics();
+
+        getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
+
+        int width = dm.widthPixels;
+        int height = dm.heightPixels;
+
+        getActivity().getWindow().setLayout((int)(width*.5),(int)(height*.5));*/
+
 
         plusBtn = rod.findViewById(R.id.ArrowUp_CoffeAmount);
         minusBtn = rod.findViewById(R.id.ArrowDown_CoffeAmount);
@@ -42,7 +61,10 @@ public class ChooseAmountOfCoffee_frag extends Fragment implements View.OnClickL
         updateText();
 
         return rod;
+
     }
+
+
 
     @Override
     public void onClick(View ButtonClick) {
@@ -64,7 +86,7 @@ public class ChooseAmountOfCoffee_frag extends Fragment implements View.OnClickL
 
     }
 
-    private void updateText() {
+        private void updateText() {
         TextView tv = rod.findViewById(R.id.CoffeeAmount);
         tv.setText("Mængde kaffe i gram (" + amountOfCoffee + ")");
     }

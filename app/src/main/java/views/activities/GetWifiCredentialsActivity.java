@@ -11,21 +11,21 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.espressif.provisioning.ESPDevice;
 
-import controllers.BluetoothConnectionsController;
+import controllers.EspBluetoothConnectionsController;
 import dk.dtu.gruppeb3.broeg.app.R;
 
 public class GetWifiCredentialsActivity extends AppCompatActivity implements View.OnClickListener {
 
     EditText ssidField, pwdField;
     Button continueBtn;
-    BluetoothConnectionsController controller;
+    EspBluetoothConnectionsController controller;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_get_wifi_credentials);
 
-        controller = BluetoothConnectionsController.getInstance();
+        controller = EspBluetoothConnectionsController.getInstance();
 
         ssidField = findViewById(R.id.ssidText);
         pwdField = findViewById(R.id.pwdText);

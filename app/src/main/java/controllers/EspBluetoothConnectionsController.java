@@ -20,14 +20,14 @@ import java.util.List;
 import models.exceptions.BluetoothNotAvailableException;
 import models.exceptions.BluetoothNotEnabledException;
 
-public class BluetoothConnectionsController {
+public class EspBluetoothConnectionsController {
 
     private static final BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
     private final List<BluetoothDevice> devices = new ArrayList<>();
 
-    private static BluetoothConnectionsController instance;
+    private static EspBluetoothConnectionsController instance;
 
-    private BluetoothConnectionsController() {}
+    private EspBluetoothConnectionsController() {}
 
     /**
      * Get singleton instance
@@ -36,10 +36,10 @@ public class BluetoothConnectionsController {
      * @throws BluetoothNotEnabledException
      * @throws BluetoothNotAvailableException
      */
-    public static BluetoothConnectionsController getInstance() {
+    public static EspBluetoothConnectionsController getInstance() {
 
         if (instance == null) {
-            instance = new BluetoothConnectionsController();
+            instance = new EspBluetoothConnectionsController();
         }
 
         return instance;

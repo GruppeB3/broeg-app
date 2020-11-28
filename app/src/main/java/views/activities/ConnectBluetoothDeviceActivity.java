@@ -31,7 +31,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-import controllers.BluetoothConnectionsController;
+import controllers.EspBluetoothConnectionsController;
 import dk.dtu.gruppeb3.broeg.app.R;
 import models.exceptions.BluetoothNotAvailableException;
 import models.exceptions.BluetoothNotEnabledException;
@@ -39,7 +39,7 @@ import views.adapters.BluetoothDeviceListAdapter;
 
 public class ConnectBluetoothDeviceActivity extends AppCompatActivity implements View.OnClickListener, BluetoothDeviceListAdapter.OnItemClickListener, BleScanListener {
 
-    private BluetoothConnectionsController controller;
+    private EspBluetoothConnectionsController controller;
     private Button searchNewDevicesBtn;
     private ProgressDialog spinnerDialog;
     private Map<BluetoothDevice, String> uuids = new HashMap<>();
@@ -59,10 +59,10 @@ public class ConnectBluetoothDeviceActivity extends AppCompatActivity implements
         searchNewDevicesBtn.setOnClickListener(this);
 
         EventBus.getDefault().register(this);
-        this.controller = BluetoothConnectionsController.getInstance();
+        this.controller = EspBluetoothConnectionsController.getInstance();
 
         try {
-            BluetoothConnectionsController.checkBluetoothComponents();
+            EspBluetoothConnectionsController.checkBluetoothComponents();
         } catch (BluetoothNotAvailableException e) {
             Toast.makeText(this,
                     "It doesn't seem like we can connect to the Bluetooth interface on your device." +

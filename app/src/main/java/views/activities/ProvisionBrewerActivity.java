@@ -12,7 +12,7 @@ import com.airbnb.lottie.LottieAnimationView;
 import com.espressif.provisioning.ESPConstants;
 import com.espressif.provisioning.listeners.ProvisionListener;
 
-import controllers.BluetoothConnectionsController;
+import controllers.EspBluetoothConnectionsController;
 import dk.dtu.gruppeb3.broeg.app.R;
 
 public class ProvisionBrewerActivity extends AppCompatActivity implements View.OnClickListener, ProvisionListener {
@@ -23,7 +23,7 @@ public class ProvisionBrewerActivity extends AppCompatActivity implements View.O
     private static final String TAG = ProvisionBrewerActivity.class.getSimpleName();
 
     Button doneBtn;
-    BluetoothConnectionsController controller;
+    EspBluetoothConnectionsController controller;
 
     LottieAnimationView tick1, tick2, tick3;
     ContentLoadingProgressBar prog1, prog2, prog3;
@@ -33,7 +33,7 @@ public class ProvisionBrewerActivity extends AppCompatActivity implements View.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_provision_brewer);
 
-        controller = BluetoothConnectionsController.getInstance();
+        controller = EspBluetoothConnectionsController.getInstance();
 
         doneBtn = findViewById(R.id.doneBtn);
         doneBtn.setOnClickListener(this);

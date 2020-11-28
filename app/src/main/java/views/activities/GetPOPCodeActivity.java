@@ -11,21 +11,21 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.espressif.provisioning.ESPDevice;
 
-import controllers.BluetoothConnectionsController;
+import controllers.EspBluetoothConnectionsController;
 import dk.dtu.gruppeb3.broeg.app.R;
 
 public class GetPOPCodeActivity extends AppCompatActivity implements View.OnClickListener{
 
     EditText popField;
     Button continueBtn;
-    BluetoothConnectionsController controller;
+    EspBluetoothConnectionsController controller;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_get_pop_code);
 
-        controller = BluetoothConnectionsController.getInstance();
+        controller = EspBluetoothConnectionsController.getInstance();
 
         popField = findViewById(R.id.editPOPText);
         continueBtn = findViewById(R.id.setPopBtn);

@@ -172,7 +172,6 @@ public class BluetoothConnectionsActivity extends AppCompatActivity implements V
     }
 
     private void connectDeviceToWifi() {
-        final Map<String, String> credentials = new HashMap<>();
         final ProvisionListener provisionListener = this;
 
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
@@ -194,10 +193,13 @@ public class BluetoothConnectionsActivity extends AppCompatActivity implements V
         alert.setNeutralButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                credentials.put("ssid", ssidField.getText().toString());
-                credentials.put("pwd", pwdField.getText().toString());
+                String ssid = ssidField.getText().toString();
+                String pwd = pwdField.getText().toString();
 
-                controller.sendWifiCredentialsToDevice(getApplicationContext(),credentials.get("ssid"), credentials.get("pwd"), provisionListener);
+                controller.sendWifiCredentialsToDevice(getApplicationContext(),
+                        ssid,
+                        pwd,
+                        provisionListener);
             }
         });
 

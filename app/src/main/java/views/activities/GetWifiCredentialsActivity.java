@@ -46,7 +46,7 @@ public class GetWifiCredentialsActivity extends AppCompatActivity implements Vie
             String ssid = ssidField.getText().toString();
             String password = pwdField.getText().toString();
 
-            if (ssid == null || ssid.equals(""))
+            if (ssid.equals(""))
                 return;
 
             Intent i = new Intent(this, ProvisionBrewerActivity.class);

@@ -13,8 +13,6 @@ import com.espressif.provisioning.ESPDevice;
 
 import controllers.BluetoothConnectionsController;
 import dk.dtu.gruppeb3.broeg.app.R;
-import models.exceptions.BluetoothNotAvailableException;
-import models.exceptions.BluetoothNotEnabledException;
 
 public class GetPOPCodeActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -27,11 +25,7 @@ public class GetPOPCodeActivity extends AppCompatActivity implements View.OnClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_get_pop_code);
 
-        try {
-            controller = BluetoothConnectionsController.getInstance();
-        } catch (BluetoothNotEnabledException | BluetoothNotAvailableException e) {
-            e.printStackTrace();
-        }
+        controller = BluetoothConnectionsController.getInstance();
 
         popField = findViewById(R.id.editPOPText);
         continueBtn = findViewById(R.id.setPopBtn);

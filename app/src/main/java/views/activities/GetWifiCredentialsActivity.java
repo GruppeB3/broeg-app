@@ -12,8 +12,6 @@ import com.espressif.provisioning.ESPDevice;
 
 import controllers.BluetoothConnectionsController;
 import dk.dtu.gruppeb3.broeg.app.R;
-import models.exceptions.BluetoothNotAvailableException;
-import models.exceptions.BluetoothNotEnabledException;
 
 public class GetWifiCredentialsActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -26,11 +24,7 @@ public class GetWifiCredentialsActivity extends AppCompatActivity implements Vie
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_get_wifi_credentials);
 
-        try {
-            controller = BluetoothConnectionsController.getInstance();
-        } catch (BluetoothNotEnabledException | BluetoothNotAvailableException e) {
-            e.printStackTrace();
-        }
+        controller = BluetoothConnectionsController.getInstance();
 
         ssidField = findViewById(R.id.ssidText);
         pwdField = findViewById(R.id.pwdText);

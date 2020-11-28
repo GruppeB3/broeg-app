@@ -1,20 +1,16 @@
 package views.activities;
 
 import android.Manifest;
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.le.ScanResult;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -24,9 +20,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.espressif.provisioning.DeviceConnectionEvent;
-import com.espressif.provisioning.ESPConstants;
 import com.espressif.provisioning.listeners.BleScanListener;
-import com.espressif.provisioning.listeners.ProvisionListener;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -43,7 +37,7 @@ import models.exceptions.BluetoothNotAvailableException;
 import models.exceptions.BluetoothNotEnabledException;
 import views.adapters.BluetoothDeviceListAdapter;
 
-public class ConnectBluetoothDeviceActivity extends AppCompatActivity implements View.OnClickListener, BluetoothDeviceListAdapter.OnItemClickListener, BleScanListener, ProvisionListener {
+public class ConnectBluetoothDeviceActivity extends AppCompatActivity implements View.OnClickListener, BluetoothDeviceListAdapter.OnItemClickListener, BleScanListener {
 
     private BluetoothConnectionsController controller;
     private Button searchNewDevicesBtn;
@@ -65,9 +59,10 @@ public class ConnectBluetoothDeviceActivity extends AppCompatActivity implements
         searchNewDevicesBtn.setOnClickListener(this);
 
         EventBus.getDefault().register(this);
+        this.controller = BluetoothConnectionsController.getInstance();
 
         try {
-            this.controller = BluetoothConnectionsController.getInstance();
+            BluetoothConnectionsController.checkBluetoothComponents();
         } catch (BluetoothNotAvailableException e) {
             Toast.makeText(this,
                     "It doesn't seem like we can connect to the Bluetooth interface on your device." +
@@ -164,7 +159,13 @@ public class ConnectBluetoothDeviceActivity extends AppCompatActivity implements
     @Override
     public void onItemClick(View view, int position) {
         final BluetoothDevice device = this.controller.getDevices().get(position);
-        controller.connectToBleDevice(getApplicationContext(), device, uuids.get(device));
+
+        try {
+            controller.connectToBleDevice(getApplicationContext(), device, uuids.get(device));
+        } catch (BluetoothNotEnabledException | BluetoothNotAvailableException e) {
+            // We really never should hit this point
+            e.printStackTrace();
+        }
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
@@ -188,80 +189,5 @@ public class ConnectBluetoothDeviceActivity extends AppCompatActivity implements
                 Toast.makeText(this, "Device disconnected", Toast.LENGTH_SHORT).show();
                 break;
         }
-    }
-
-    private void connectDeviceToWifi() {
-        final ProvisionListener provisionListener = this;
-
-        AlertDialog.Builder alert = new AlertDialog.Builder(this);
-        alert.setTitle("WiFi Credentials");
-        LinearLayout ll = new LinearLayout(this);
-        final EditText ssidField = new EditText(this);
-        final EditText pwdField = new EditText(this);
-
-        ll.setOrientation(LinearLayout.VERTICAL);
-
-        ssidField.setHint("SSID");
-        pwdField.setHint("Password");
-
-        ll.addView(ssidField);
-        ll.addView(pwdField);
-
-        alert.setView(ll);
-
-        alert.setNeutralButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                String ssid = ssidField.getText().toString();
-                String pwd = pwdField.getText().toString();
-
-                controller.sendWifiCredentialsToDevice(getApplicationContext(),
-                        ssid,
-                        pwd,
-                        provisionListener);
-            }
-        });
-
-        alert.show();
-    }
-
-    @Override
-    public void createSessionFailed(Exception e) {
-        Log.d(TAG, "Failed to create session");
-    }
-
-    @Override
-    public void wifiConfigSent() {
-        Log.d(TAG, "Wifi config sent");
-    }
-
-    @Override
-    public void wifiConfigFailed(Exception e) {
-        Log.d(TAG, "Wifi config failed");
-    }
-
-    @Override
-    public void wifiConfigApplied() {
-        Log.d(TAG, "Wifi config applied");
-    }
-
-    @Override
-    public void wifiConfigApplyFailed(Exception e) {
-        Log.d(TAG, "Wifi config apply failed");
-    }
-
-    @Override
-    public void provisioningFailedFromDevice(ESPConstants.ProvisionFailureReason failureReason) {
-        Log.d(TAG, "Provision failed from device " + failureReason.toString());
-    }
-
-    @Override
-    public void deviceProvisioningSuccess() {
-        Log.d(TAG, "Provision succeeded");
-    }
-
-    @Override
-    public void onProvisioningFailed(Exception e) {
-        Log.d(TAG, "Provisioning failed");
     }
 }

@@ -23,23 +23,11 @@ import models.exceptions.BluetoothNotEnabledException;
 public class BluetoothConnectionsController {
 
     private static final BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
-    private static final List<BluetoothDevice> devices = new ArrayList<>();
+    private final List<BluetoothDevice> devices = new ArrayList<>();
 
     private static BluetoothConnectionsController instance;
 
-    private BluetoothConnectionsController() throws BluetoothNotAvailableException, BluetoothNotEnabledException {
-
-        if (adapter == null) {
-            // Device doesn't support Bluetooth.
-            throw new BluetoothNotAvailableException();
-        }
-
-        if (!bluetoothIsEnabled()) {
-            // Bluetooth is not enabled for the adapter provided
-            throw new BluetoothNotEnabledException();
-        }
-
-    }
+    private BluetoothConnectionsController() {}
 
     /**
      * Get singleton instance
@@ -48,7 +36,7 @@ public class BluetoothConnectionsController {
      * @throws BluetoothNotEnabledException
      * @throws BluetoothNotAvailableException
      */
-    public static BluetoothConnectionsController getInstance() throws BluetoothNotEnabledException, BluetoothNotAvailableException {
+    public static BluetoothConnectionsController getInstance() {
 
         if (instance == null) {
             instance = new BluetoothConnectionsController();
@@ -79,7 +67,9 @@ public class BluetoothConnectionsController {
      * @param device
      * @param uuid
      */
-    public void connectToBleDevice(Context context, BluetoothDevice device, String uuid) {
+    public void connectToBleDevice(Context context, BluetoothDevice device, String uuid) throws BluetoothNotEnabledException, BluetoothNotAvailableException {
+        checkBluetoothComponents();
+
         ESPProvisionManager manager = ESPProvisionManager.getInstance(context);
 
         if (manager.getEspDevice() != null)
@@ -149,12 +139,30 @@ public class BluetoothConnectionsController {
     }
 
     /**
+     * Check if all required Bluetooth components are good to go.
+     *
+     * @throws BluetoothNotAvailableException
+     * @throws BluetoothNotEnabledException
+     */
+    public static void checkBluetoothComponents() throws BluetoothNotAvailableException, BluetoothNotEnabledException {
+        if (adapter == null) {
+            // Device doesn't support Bluetooth.
+            throw new BluetoothNotAvailableException();
+        }
+
+        if (!bluetoothIsEnabled()) {
+            // Bluetooth is not enabled for the adapter provided
+            throw new BluetoothNotEnabledException();
+        }
+    }
+
+    /**
      * Aux method the check if Bluetooth is enabled for the acquired adapter.
      * If the adapter is `null` the method will return `false`
      *
      * @return boolean
      */
-    public boolean bluetoothIsEnabled() {
+    public static boolean bluetoothIsEnabled() {
         if (adapter != null) {
             return adapter.isEnabled();
         }

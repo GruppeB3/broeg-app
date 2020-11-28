@@ -33,7 +33,4 @@ public class PreferenceHelper {
     public static double getDouble(SharedPreferences pf, String key, String defValue) {
         return Double.parseDouble(pf.getString(key, defValue));
     }
-
-    public static void putDouble(String recipeName, String json) {
-    }
 }

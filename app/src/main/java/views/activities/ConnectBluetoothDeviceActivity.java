@@ -43,7 +43,7 @@ import models.exceptions.BluetoothNotAvailableException;
 import models.exceptions.BluetoothNotEnabledException;
 import views.adapters.BluetoothDeviceListAdapter;
 
-public class BluetoothConnectionsActivity extends AppCompatActivity implements View.OnClickListener, BluetoothDeviceListAdapter.OnItemClickListener, BleScanListener, ProvisionListener {
+public class ConnectBluetoothDeviceActivity extends AppCompatActivity implements View.OnClickListener, BluetoothDeviceListAdapter.OnItemClickListener, BleScanListener, ProvisionListener {
 
     private BluetoothConnectionsController controller;
     private Button searchNewDevicesBtn;
@@ -54,7 +54,7 @@ public class BluetoothConnectionsActivity extends AppCompatActivity implements V
     private static final int EVENT_DEVICE_CONNECTION_FAILED = 2;
     private static final int EVENT_DEVICE_DISCONNECTED = 3;
     private static final int REQ_BLUETOOTH_PERMISSIONS_CODE = 1000;
-    private static final String TAG = BluetoothConnectionsActivity.class.getSimpleName();
+    private static final String TAG = ConnectBluetoothDeviceActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

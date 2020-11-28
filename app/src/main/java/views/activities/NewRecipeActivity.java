@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import dk.dtu.gruppeb3.broeg.app.R;
 import helpers.PreferenceHelper;
+import models.BrewBuilder;
 import views.fragments.ChooseAmountOfCoffee_frag;
 import views.fragments.ChooseBloomTime_frag;
 import views.fragments.ChooseBloomWaterAmount_frag;
@@ -56,6 +57,7 @@ public class NewRecipeActivity extends AppCompatActivity implements View.OnClick
 
         prefs = PreferenceHelper.getApplicationPreferences(this);
 
+        BrewBuilder.reset();
     }
 
     @Override

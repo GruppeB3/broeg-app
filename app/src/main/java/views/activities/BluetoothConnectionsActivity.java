@@ -99,7 +99,7 @@ public class BluetoothConnectionsActivity extends AppCompatActivity implements V
 
                 this.controller.startScanForNewDevices(getApplicationContext(), this);
                 this.controller.getDevices().clear();
-                spinnerDialog = ProgressDialog.show(this, "", "Søger efter enheder...");
+                spinnerDialog = ProgressDialog.show(this, "", "Searching for devices...");
             }
         }
     }
@@ -119,8 +119,7 @@ public class BluetoothConnectionsActivity extends AppCompatActivity implements V
                 this.uuids.put(device, scanResult.getScanRecord().getServiceUuids().get(0).toString());
         }
 
-        // NOTE: Debug step
-        Log.d(this.getClass().getSimpleName(), "Name: " + device.getName());
+        Log.d(TAG, "Name: " + device.getName());
     }
 
     @Override
@@ -156,17 +155,19 @@ public class BluetoothConnectionsActivity extends AppCompatActivity implements V
         switch (event.getEventType()) {
 
             case EVENT_DEVICE_CONNECTED:
-                // NOTE: Debug step
-                Log.d(this.getClass().getSimpleName(), "Device connected");
+                Log.d(TAG, "Device connected");
                 connectDeviceToWifi();
                 break;
 
             case EVENT_DEVICE_CONNECTION_FAILED:
+                Log.d(TAG, "Received Bluetooth device connection failed event");
                 Toast.makeText(this, "An error occurred while trying to connect to the device", Toast.LENGTH_SHORT).show();
                 break;
 
             case EVENT_DEVICE_DISCONNECTED:
+                Log.d(TAG, "Received Bluetooth device disconnected event");
                 Toast.makeText(this, "Device disconnected", Toast.LENGTH_SHORT).show();
+                break;
         }
     }
 

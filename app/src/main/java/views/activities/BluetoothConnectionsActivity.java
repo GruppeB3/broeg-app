@@ -17,6 +17,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -52,6 +53,7 @@ public class BluetoothConnectionsActivity extends AppCompatActivity implements V
     private static final int EVENT_DEVICE_CONNECTED = 1;
     private static final int EVENT_DEVICE_CONNECTION_FAILED = 2;
     private static final int EVENT_DEVICE_DISCONNECTED = 3;
+    private static final int REQ_BLUETOOTH_PERMISSIONS_CODE = 1000;
     private static final String TAG = BluetoothConnectionsActivity.class.getSimpleName();
 
     @Override
@@ -87,21 +89,36 @@ public class BluetoothConnectionsActivity extends AppCompatActivity implements V
     }
 
     @Override
-    public void onClick(View v) {
-        if (v == searchNewDevicesBtn) {
-            if (this.controller != null) {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
-                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                    // Permissions have not been given for us to access Bluetooth on the device.
-                    String[] permissions = {Manifest.permission.ACCESS_FINE_LOCATION};
-                    ActivityCompat.requestPermissions(this, permissions, 1);
-                }
-
-                this.controller.startScanForNewDevices(getApplicationContext(), this);
-                this.controller.getDevices().clear();
-                spinnerDialog = ProgressDialog.show(this, "", "Searching for devices...");
+        if (requestCode == REQ_BLUETOOTH_PERMISSIONS_CODE) {
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                startBleScan();
             }
         }
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (v == searchNewDevicesBtn && this.controller != null) {
+
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                // Permissions have not been given for us to access Bluetooth on the device.
+                String[] permissions = {Manifest.permission.ACCESS_FINE_LOCATION};
+                ActivityCompat.requestPermissions(this, permissions, REQ_BLUETOOTH_PERMISSIONS_CODE);
+
+                return;
+            }
+
+            startBleScan();
+        }
+    }
+
+    private void startBleScan() {
+        this.controller.startScanForNewDevices(getApplicationContext(), this);
+        this.controller.getDevices().clear();
+        spinnerDialog = ProgressDialog.show(this, "", "Searching for devices...");
     }
 
     @Override

@@ -5,7 +5,7 @@ import models.enums.GrindSize;
 public class BrewBuilder {
 
     private static BrewBuilder instance;
-    private final Brew brew;
+    private Brew brew;
 
     private BrewBuilder() {
         this.brew = new Brew();
@@ -13,7 +13,6 @@ public class BrewBuilder {
 
     public static void reset(){
         instance = new BrewBuilder();
-
     }
 
     public static BrewBuilder getInstance() {
@@ -66,6 +65,10 @@ public class BrewBuilder {
 
     public Brew get() {
         return this.brew;
+    }
+
+    public void set(Brew brew) {
+        this.brew = brew;
     }
 
 }

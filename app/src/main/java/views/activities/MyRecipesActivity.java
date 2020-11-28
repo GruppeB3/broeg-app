@@ -1,7 +1,6 @@
 package views.activities;
 
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -19,6 +18,7 @@ import java.util.ArrayList;
 
 import controllers.BrewsController;
 import dk.dtu.gruppeb3.broeg.app.R;
+import helpers.PreferenceHelper;
 import models.Brew;
 import views.adapters.MyRecipeListAdapter;
 
@@ -33,7 +33,7 @@ public class MyRecipesActivity extends AppCompatActivity implements AdapterView.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_myrecipes);
 
-        prefs = getSharedPreferences("pref", Context.MODE_PRIVATE);
+        prefs = PreferenceHelper.getApplicationPreferences(this);
         updateListOfBrews();
 
         if (getBrewFromIntent() != null) {

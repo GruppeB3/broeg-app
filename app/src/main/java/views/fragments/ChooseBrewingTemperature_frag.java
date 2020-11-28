@@ -1,19 +1,14 @@
 package views.fragments;
 
 import android.app.Fragment;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.google.gson.Gson;
-
 import dk.dtu.gruppeb3.broeg.app.R;
-import helpers.PreferenceHelper;
 import models.BrewBuilder;
 import views.RepeatListener;
 
@@ -25,11 +20,13 @@ public class ChooseBrewingTemperature_frag extends Fragment implements View.OnCl
 
     Button plusBtn, minusBtn, saveBtn;
     private View root;
-    double temperature = 80;
+    double temperature;
 
     @Override
     public View onCreateView(LayoutInflater i, ViewGroup container, Bundle savedInstanceState){
         this.root = i.inflate(R.layout.fragment_brewing_temperature, container, false);
+
+        temperature = BrewBuilder.getInstance().get().getBrewingTemperature();
 
         plusBtn = root.findViewById(R.id.ArrowUp_Temp);
         minusBtn = root.findViewById(R.id.ArrowDown_Temp);

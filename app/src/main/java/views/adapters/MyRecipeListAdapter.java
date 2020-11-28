@@ -17,9 +17,11 @@ import models.Brew;
 public class MyRecipeListAdapter extends RecyclerView.Adapter {
 
     List<Brew> recipes;
+    MyRecipeListButtonListener listener;
 
-    public MyRecipeListAdapter(List<Brew> recipes) {
+    public MyRecipeListAdapter(List<Brew> recipes, MyRecipeListButtonListener listener) {
         this.recipes = recipes;
+        this.listener = listener;
     }
 
     @NonNull
@@ -30,10 +32,24 @@ public class MyRecipeListAdapter extends RecyclerView.Adapter {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, final int position) {
         if (holder instanceof ViewHolder) {
             ViewHolder vh = (ViewHolder) holder;
             vh.name.setText(recipes.get(position).getName());
+
+            vh.editBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.onMyRecipeListButtonClick(Mode.EDIT, position);
+                }
+            });
+
+            vh.deleteBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.onMyRecipeListButtonClick(Mode.DELETE, position);
+                }
+            });
         }
     }
 
@@ -54,5 +70,13 @@ public class MyRecipeListAdapter extends RecyclerView.Adapter {
             editBtn = itemView.findViewById(R.id.editBtn);
             deleteBtn = itemView.findViewById(R.id.deleteBtn);
         }
+    }
+
+    public enum Mode {
+        EDIT, DELETE;
+    }
+
+    public interface MyRecipeListButtonListener {
+        void onMyRecipeListButtonClick(Mode mode, int position);
     }
 }

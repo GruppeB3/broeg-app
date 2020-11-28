@@ -1,11 +1,14 @@
 package helpers;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 
 /**
  * Helper class to clean up the general code a little
  */
 public class PreferenceHelper {
+
+    public static final String PREFERENCE_KEY = "prefs";
 
     /**
      * Put a double to the preferences
@@ -34,6 +37,25 @@ public class PreferenceHelper {
         return Double.parseDouble(pf.getString(key, defValue));
     }
 
-    public static void putDouble(String recipeName, String json) {
+
+    /**
+     * Get the shared preferences with default mode (Context.MODE_PRIVATE)
+     *
+     * @param context
+     * @return
+     */
+    public static SharedPreferences getApplicationPreferences(Context context) {
+        return context.getSharedPreferences(PREFERENCE_KEY, Context.MODE_PRIVATE);
+    }
+
+    /**
+     * Get the shared preferences with a given mode
+     *
+     * @param context
+     * @param mode
+     * @return
+     */
+    public static SharedPreferences getApplicationPreferences(Context context, int mode) {
+        return context.getSharedPreferences(PREFERENCE_KEY, mode);
     }
 }

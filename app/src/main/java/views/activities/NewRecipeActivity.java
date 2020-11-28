@@ -2,18 +2,14 @@ package views.activities;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
-import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import dk.dtu.gruppeb3.broeg.app.R;
-import models.BrewBuilder;
+import helpers.PreferenceHelper;
 import views.fragments.ChooseAmountOfCoffee_frag;
 import views.fragments.ChooseBloomTime_frag;
 import views.fragments.ChooseBloomWaterAmount_frag;
@@ -58,14 +54,8 @@ public class NewRecipeActivity extends AppCompatActivity implements View.OnClick
         bloomTimeBtn.setOnClickListener(this);
         saveBtn.setOnClickListener(this);
 
-        prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        prefs = PreferenceHelper.getApplicationPreferences(this);
 
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        BrewBuilder.reset();
     }
 
     @Override

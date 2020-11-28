@@ -1,32 +1,29 @@
 package views.fragments;
 
 import android.app.Fragment;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.google.gson.Gson;
-
 import dk.dtu.gruppeb3.broeg.app.R;
-import helpers.PreferenceHelper;
 import models.BrewBuilder;
 import views.RepeatListener;
 
 public class ChooseBloomWaterAmount_frag extends Fragment implements View.OnClickListener {
 
     Button plusBtn, minusBtn, saveBtn;
-    int amountBloomWater = 45;
+    int amountBloomWater;
     private View root;
 
 
     @Override
     public View onCreateView(LayoutInflater i, ViewGroup container, Bundle savedInstanceState) {
         this.root = i.inflate(R.layout.fragment_choose_bloom_water_amount, container, false);
+
+        amountBloomWater = (int) BrewBuilder.getInstance().get().getBloomAmount();
 
         plusBtn = root.findViewById(R.id.ArrowUp_BloomAmount);
         minusBtn = root.findViewById(R.id.ArrowDown_BloomAmount);

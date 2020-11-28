@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         newBrewButton.setOnClickListener(this);
         cleaningButton.setOnClickListener(this);
         myrecipesButton.setOnClickListener(this);
+        findViewById(R.id.button4).setOnClickListener(this);
     }
 
     @Override
@@ -42,6 +43,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else if (v == myrecipesButton){
 
             Intent i = new Intent(this, MyRecipesActivity.class);
+            startActivity(i);
+
+        } else if (v == findViewById(R.id.button4)) {
+
+            Intent i = new Intent(this, ConnectBluetoothDeviceActivity.class);
             startActivity(i);
 
         }

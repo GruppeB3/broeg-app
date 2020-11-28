@@ -1,5 +1,6 @@
 package views.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -45,7 +46,13 @@ public class GetWifiCredentialsActivity extends AppCompatActivity implements Vie
             String ssid = ssidField.getText().toString();
             String password = pwdField.getText().toString();
 
-            // TODO: Move to connect intent
+            if (ssid == null || ssid.equals(""))
+                return;
+
+            Intent i = new Intent(this, ProvisionBrewerActivity.class);
+            i.putExtra(ProvisionBrewerActivity.SSID_STRING_ID, ssid);
+            i.putExtra(ProvisionBrewerActivity.PASSWORD_STRING_ID, password);
+            startActivity(i);
 
             finish();
         }

@@ -28,6 +28,7 @@ public class MyRecipesActivity extends AppCompatActivity implements AdapterView.
 
     private ArrayList<Brew> brews;
     private SharedPreferences prefs;
+    MyRecipeListAdapter recyclerViewAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +47,7 @@ public class MyRecipesActivity extends AppCompatActivity implements AdapterView.
         listView.setLayoutManager(new LinearLayoutManager(this));
         listView.scrollToPosition(0);
 
-        MyRecipeListAdapter recyclerViewAdapter = new MyRecipeListAdapter(brews, this);
+        recyclerViewAdapter = new MyRecipeListAdapter(brews, this);
 
         listView.setAdapter(recyclerViewAdapter);
     }
@@ -101,7 +102,10 @@ public class MyRecipesActivity extends AppCompatActivity implements AdapterView.
             i.putExtra(EditRecipeActivity.BREW_POSITION_KEY, position);
             startActivity(i);
         } else if (mode == MyRecipeListAdapter.Mode.DELETE) {
-            // ...
+            ArrayList<Brew> brews = BrewsController.getBrewsFromLocalStorage(prefs);
+            brews.remove(position);
+            recyclerViewAdapter.setRecipes(brews);
+            BrewsController.saveBrewsToLocalStorage(prefs, brews);
         }
     }
 }

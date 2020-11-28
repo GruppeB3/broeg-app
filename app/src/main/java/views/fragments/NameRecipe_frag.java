@@ -31,6 +31,10 @@ public class NameRecipe_frag extends Fragment implements View.OnClickListener, V
         saveBtn = root.findViewById(R.id.Save_Recipe);
         et = root.findViewById(R.id.nameRecipe);
 
+        recipeName = BrewBuilder.getInstance().get().getName();
+        if (recipeName != null && !recipeName.equals(""))
+            et.setText(recipeName);
+
         saveBtn.setOnClickListener(this);
         et.setOnTouchListener(this);
 
@@ -44,7 +48,7 @@ public class NameRecipe_frag extends Fragment implements View.OnClickListener, V
             recipeName =et.getText().toString();
 
             BrewBuilder.getInstance().name(recipeName);
-           String json = (new Gson()).toJson(BrewBuilder.getInstance().get());
+            String json = (new Gson()).toJson(BrewBuilder.getInstance().get());
 
 
             Intent intent = new Intent(getActivity(), MyRecipesActivity.class);

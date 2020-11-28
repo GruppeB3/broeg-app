@@ -1,20 +1,14 @@
 package views.fragments;
 
 import android.app.Fragment;
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.google.gson.Gson;
-
 import dk.dtu.gruppeb3.broeg.app.R;
-import helpers.PreferenceHelper;
 import models.BrewBuilder;
 import views.RepeatListener;
 
@@ -22,11 +16,13 @@ public class ChooseBloomTime_frag extends Fragment implements View.OnClickListen
 
     Button plusBtn, minusBtn, saveBtn;
     private View root;
-    int amountBloomTime = 45;
+    int amountBloomTime;
 
     @Override
     public View onCreateView(LayoutInflater i, ViewGroup container, Bundle savedInstanceState) {
         this.root = i.inflate(R.layout.fragment_choose_bloom_time, container, false);
+
+        amountBloomTime = BrewBuilder.getInstance().get().getBloomTime();
 
         plusBtn = root.findViewById(R.id.ArrowUp_BloomTime);
         minusBtn = root.findViewById(R.id.ArrowDown_BloomTime);

@@ -1,4 +1,4 @@
-package views.activities;
+package views.activities.espble;
 
 import android.Manifest;
 import android.app.ProgressDialog;

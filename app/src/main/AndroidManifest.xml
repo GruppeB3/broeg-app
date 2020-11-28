@@ -15,9 +15,9 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
         <activity android:name="views.activities.ProvisionBrewerActivity" />
-        <activity android:name="views.activities.GetWifiCredentialsActivity" />
-        <activity android:name="views.activities.GetPOPCodeActivity" />
-        <activity android:name="views.activities.ConnectBluetoothDeviceActivity" />
+        <activity android:name="views.activities.espble.GetWifiCredentialsActivity" />
+        <activity android:name="views.activities.espble.GetPOPCodeActivity" />
+        <activity android:name="views.activities.espble.ConnectBluetoothDeviceActivity" />
         <activity android:name="views.activities.CleaningActivity" />
         <activity android:name="views.activities.BrewingActivity" />
         <activity android:name="views.activities.MyRecipesActivity" />

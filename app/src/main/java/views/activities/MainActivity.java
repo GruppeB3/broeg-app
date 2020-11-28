@@ -8,6 +8,7 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import dk.dtu.gruppeb3.broeg.app.R;
+import views.activities.espble.ConnectBluetoothDeviceActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 

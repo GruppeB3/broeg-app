@@ -67,7 +67,7 @@ public class ConnectBluetoothDeviceActivity extends AppCompatActivity implements
         EventBus.getDefault().register(this);
 
         try {
-            this.controller = new BluetoothConnectionsController();
+            this.controller = BluetoothConnectionsController.getInstance();
         } catch (BluetoothNotAvailableException e) {
             Toast.makeText(this,
                     "It doesn't seem like we can connect to the Bluetooth interface on your device." +
@@ -173,7 +173,9 @@ public class ConnectBluetoothDeviceActivity extends AppCompatActivity implements
 
             case EVENT_DEVICE_CONNECTED:
                 Log.d(TAG, "Device connected");
-                connectDeviceToWifi();
+                Intent i = new Intent(this, GetPOPCodeActivity.class);
+                startActivity(i);
+                finish();
                 break;
 
             case EVENT_DEVICE_CONNECTION_FAILED:

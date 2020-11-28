@@ -9,6 +9,7 @@ import android.content.pm.PackageManager;
 import androidx.core.app.ActivityCompat;
 
 import com.espressif.provisioning.ESPConstants;
+import com.espressif.provisioning.ESPDevice;
 import com.espressif.provisioning.ESPProvisionManager;
 import com.espressif.provisioning.listeners.BleScanListener;
 import com.espressif.provisioning.listeners.ProvisionListener;
@@ -21,14 +22,14 @@ import models.exceptions.BluetoothNotEnabledException;
 
 public class BluetoothConnectionsController {
 
-    private final BluetoothAdapter adapter;
-    private List<BluetoothDevice> devices = new ArrayList<>();
+    private static final BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
+    private static final List<BluetoothDevice> devices = new ArrayList<>();
 
-    public BluetoothConnectionsController() throws BluetoothNotAvailableException, BluetoothNotEnabledException {
+    private static BluetoothConnectionsController instance;
 
-        this.adapter = BluetoothAdapter.getDefaultAdapter();
+    private BluetoothConnectionsController() throws BluetoothNotAvailableException, BluetoothNotEnabledException {
 
-        if (this.adapter == null) {
+        if (adapter == null) {
             // Device doesn't support Bluetooth.
             throw new BluetoothNotAvailableException();
         }
@@ -38,6 +39,22 @@ public class BluetoothConnectionsController {
             throw new BluetoothNotEnabledException();
         }
 
+    }
+
+    /**
+     * Get singleton instance
+     *
+     * @return
+     * @throws BluetoothNotEnabledException
+     * @throws BluetoothNotAvailableException
+     */
+    public static BluetoothConnectionsController getInstance() throws BluetoothNotEnabledException, BluetoothNotAvailableException {
+
+        if (instance == null) {
+            instance = new BluetoothConnectionsController();
+        }
+
+        return instance;
     }
 
     /**
@@ -73,6 +90,20 @@ public class BluetoothConnectionsController {
     }
 
     /**
+     * Set proof of possession for device
+     *
+     * @param context
+     * @param pop
+     */
+    public void setProofOfPossession(Context context, String pop) {
+        ESPProvisionManager manager = ESPProvisionManager.getInstance(context);
+
+        if (manager.getEspDevice() != null) {
+            manager.getEspDevice().setProofOfPossession(pop);
+        }
+    }
+
+    /**
      * Send WiFi credentials to an ESP device.
      *
      * @param context
@@ -82,9 +113,9 @@ public class BluetoothConnectionsController {
     public void sendWifiCredentialsToDevice(Context context, String ssid, String pwd, ProvisionListener listener) {
         ESPProvisionManager manager = ESPProvisionManager.getInstance(context);
 
-        // Hard coded not to have POP
-        manager.getEspDevice().setProofOfPossession("");
-        manager.getEspDevice().provision(ssid, pwd, listener);
+        if (manager.getEspDevice() != null) {
+            manager.getEspDevice().provision(ssid, pwd, listener);
+        }
     }
 
     /**
@@ -93,8 +124,8 @@ public class BluetoothConnectionsController {
      * @param device
      */
     public void addDevice(BluetoothDevice device) {
-        if (!this.devices.contains(device))
-            this.devices.add(device);
+        if (!devices.contains(device))
+            devices.add(device);
     }
 
     /**
@@ -107,13 +138,24 @@ public class BluetoothConnectionsController {
     }
 
     /**
+     * Get the connected device.<br>Returns null if a device is not connected
+     *
+     * @param context
+     * @return
+     */
+    public ESPDevice getConnectedDevice(Context context) {
+        ESPProvisionManager manager = ESPProvisionManager.getInstance(context);
+        return manager.getEspDevice();
+    }
+
+    /**
      * Aux method the check if Bluetooth is enabled for the acquired adapter.
      * If the adapter is `null` the method will return `false`
      *
      * @return boolean
      */
     public boolean bluetoothIsEnabled() {
-        if (this.adapter != null) {
+        if (adapter != null) {
             return adapter.isEnabled();
         }
 

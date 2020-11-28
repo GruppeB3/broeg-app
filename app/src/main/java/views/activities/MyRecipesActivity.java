@@ -14,10 +14,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
 import java.util.ArrayList;
 
+import controllers.BrewsController;
 import dk.dtu.gruppeb3.broeg.app.R;
 import models.Brew;
 import views.adapters.MyRecipeListAdapter;
@@ -26,22 +26,20 @@ import views.adapters.MyRecipeListAdapter;
 public class MyRecipesActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
     private ArrayList<Brew> brews;
+    private SharedPreferences prefs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_myrecipes);
 
-        SharedPreferences prefs = getSharedPreferences("pref", Context.MODE_PRIVATE);
-        Gson gson = new Gson();
-
+        prefs = getSharedPreferences("pref", Context.MODE_PRIVATE);
         updateListOfBrews();
 
         if (getBrewFromIntent() != null) {
             brews.add(getBrewFromIntent());
-            prefs.edit().putString("brews", gson.toJson(brews)).apply();
+            BrewsController.saveBrewsToLocalStorage(prefs, brews);
         }
-
-        setContentView(R.layout.activity_myrecipes);
 
         RecyclerView listView = this.findViewById(R.id.myrecipes_List);
         listView.setLayoutManager(new LinearLayoutManager(this));
@@ -92,8 +90,6 @@ public class MyRecipesActivity extends AppCompatActivity implements AdapterView.
     }
 
     private void updateListOfBrews() {
-        SharedPreferences prefs = getSharedPreferences("pref", Context.MODE_PRIVATE);
-        Gson gson = new Gson();
-        this.brews = gson.fromJson(prefs.getString("brews", "[]"), new TypeToken<ArrayList<Brew>>(){}.getType());
+        this.brews = BrewsController.getBrewsFromLocalStorage(prefs);
     }
 }

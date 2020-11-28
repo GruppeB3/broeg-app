@@ -1,6 +1,5 @@
 package views.activities;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -16,16 +15,16 @@ import dk.dtu.gruppeb3.broeg.app.R;
 import models.exceptions.BluetoothNotAvailableException;
 import models.exceptions.BluetoothNotEnabledException;
 
-public class GetPOPCodeActivity extends AppCompatActivity implements View.OnClickListener{
+public class GetWifiCredentialsActivity extends AppCompatActivity implements View.OnClickListener {
 
-    EditText popField;
+    EditText ssidField, pwdField;
     Button continueBtn;
     BluetoothConnectionsController controller;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_get_pop_code);
+        setContentView(R.layout.activity_get_wifi_credentials);
 
         try {
             controller = BluetoothConnectionsController.getInstance();
@@ -33,8 +32,9 @@ public class GetPOPCodeActivity extends AppCompatActivity implements View.OnClic
             e.printStackTrace();
         }
 
-        popField = findViewById(R.id.editPOPText);
-        continueBtn = findViewById(R.id.setPopBtn);
+        ssidField = findViewById(R.id.ssidText);
+        pwdField = findViewById(R.id.pwdText);
+        continueBtn = findViewById(R.id.connectBtn);
 
         continueBtn.setOnClickListener(this);
 
@@ -45,15 +45,14 @@ public class GetPOPCodeActivity extends AppCompatActivity implements View.OnClic
             deviceNameField.setText(device.getDeviceName());
     }
 
-
     @Override
     public void onClick(View v) {
         if (v == continueBtn) {
-            String pop = popField.getText().toString();
-            controller.setProofOfPossession(getApplicationContext(), pop);
+            String ssid = ssidField.getText().toString();
+            String password = pwdField.getText().toString();
 
-            Intent i = new Intent(this, GetWifiCredentialsActivity.class);
-            startActivity(i);
+            // TODO: Move to connect intent
+
             finish();
         }
     }

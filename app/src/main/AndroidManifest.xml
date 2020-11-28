@@ -16,7 +16,6 @@
             android:theme="@style/AppTheme">
         <activity android:name="views.activities.BluetoothConnectionsActivity" />
         <activity android:name="views.activities.CleaningActivity" />
-        <activity android:name="views.activities.BluetoothActivity" />
         <activity android:name="views.activities.BrewingActivity" />
         <activity android:name="views.activities.MyRecipesActivity" />
         <activity android:name="views.activities.NewRecipeActivity" />

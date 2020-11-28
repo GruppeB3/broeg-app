@@ -1,4 +1,4 @@
-package views.activities;
+package views.activities.espble;
 
 import android.os.Bundle;
 import android.util.Log;

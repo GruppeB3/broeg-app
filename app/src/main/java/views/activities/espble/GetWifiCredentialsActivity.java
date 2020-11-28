@@ -13,7 +13,6 @@ import com.espressif.provisioning.ESPDevice;
 
 import controllers.EspBluetoothConnectionsController;
 import dk.dtu.gruppeb3.broeg.app.R;
-import views.activities.ProvisionBrewerActivity;
 
 public class GetWifiCredentialsActivity extends AppCompatActivity implements View.OnClickListener {
 

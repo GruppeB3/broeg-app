@@ -2,6 +2,6 @@
 <ripple xmlns:android="http://schemas.android.com/apk/res/android" android:color="@color/colorPrimary">
 
 
-    <item android:drawable="@drawable/connect"/>
+    <item android:drawable="@drawable/connect_button_v2"/>
 
 </ripple>

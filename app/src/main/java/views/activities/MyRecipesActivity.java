@@ -36,7 +36,7 @@ public class MyRecipesActivity extends AppCompatActivity implements AdapterView.
 
         updateListOfBrews();
 
-        if(getBrewFromIntent()!= null){
+        if (getBrewFromIntent() != null) {
             brews.add(getBrewFromIntent());
             prefs.edit().putString("brews", gson.toJson(brews)).apply();
         }
@@ -81,7 +81,7 @@ public class MyRecipesActivity extends AppCompatActivity implements AdapterView.
         alert.show();
     }
 
-    private Brew getBrewFromIntent (){
+    private Brew getBrewFromIntent() {
         String json = this.getIntent().getStringExtra("brew");
 
         if (json == null|| json.equals("")) {

@@ -14,7 +14,7 @@ import java.util.List;
 
 import dk.dtu.gruppeb3.broeg.app.R;
 
-public class BluetoothDeviceListAdapter extends RecyclerView.Adapter {
+public class BluetoothDeviceListAdapter extends RecyclerView.Adapter<BluetoothDeviceListAdapter.ViewHolder> {
 
     List<BluetoothDevice> devices;
     Context context;
@@ -28,23 +28,20 @@ public class BluetoothDeviceListAdapter extends RecyclerView.Adapter {
 
     @NonNull
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_bluetooth_connection_device, parent, false);
         return new ViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, final int position) {
-        if (holder instanceof ViewHolder) {
-            ViewHolder vh = (ViewHolder) holder;
-            vh.name.setText(devices.get(position).getName());
-            vh.itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    listener.onItemClick(v, position);
-                }
-            });
-        }
+    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
+        holder.name.setText(devices.get(position).getName());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.onItemClick(v, position);
+            }
+        });
     }
 
     @Override

@@ -24,6 +24,11 @@ public class MyRecipeListAdapter extends RecyclerView.Adapter {
         this.listener = listener;
     }
 
+    public void setRecipes(List<Brew> recipes) {
+        this.recipes = recipes;
+        notifyDataSetChanged();
+    }
+
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

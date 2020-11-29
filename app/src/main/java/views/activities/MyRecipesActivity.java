@@ -28,6 +28,7 @@ public class MyRecipesActivity extends AppCompatActivity implements AdapterView.
 
     private ArrayList<Brew> brews;
     private SharedPreferences prefs;
+    MyRecipeListAdapter recyclerViewAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +47,7 @@ public class MyRecipesActivity extends AppCompatActivity implements AdapterView.
         listView.setLayoutManager(new LinearLayoutManager(this));
         listView.scrollToPosition(0);
 
-        MyRecipeListAdapter recyclerViewAdapter = new MyRecipeListAdapter(brews, this);
+        recyclerViewAdapter = new MyRecipeListAdapter(brews, this);
 
         listView.setAdapter(recyclerViewAdapter);
     }
@@ -97,11 +98,37 @@ public class MyRecipesActivity extends AppCompatActivity implements AdapterView.
     @Override
     public void onMyRecipeListButtonClick(MyRecipeListAdapter.Mode mode, int position) {
         if (mode == MyRecipeListAdapter.Mode.EDIT) {
+
             Intent i = new Intent(this, EditRecipeActivity.class);
             i.putExtra(EditRecipeActivity.BREW_POSITION_KEY, position);
             startActivity(i);
+
         } else if (mode == MyRecipeListAdapter.Mode.DELETE) {
-            // ...
+
+            final ArrayList<Brew> brews = BrewsController.getBrewsFromLocalStorage(prefs);
+            final Brew brew = brews.get(position);
+
+            AlertDialog.Builder alert = new AlertDialog.Builder(this);
+            alert.setTitle("Delete brew");
+            alert.setMessage("Are you sure you want to delete brew \"" + brew.getName() + "\"?");
+
+            alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    brews.remove(brew);
+                    recyclerViewAdapter.setRecipes(brews);
+                    BrewsController.saveBrewsToLocalStorage(prefs, brews);
+                }
+            });
+
+            alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    return;
+                }
+            });
+
+            alert.show();
         }
     }
 }

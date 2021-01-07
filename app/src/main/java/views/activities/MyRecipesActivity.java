@@ -129,6 +129,17 @@ public class MyRecipesActivity extends AppCompatActivity implements AdapterView.
             });
 
             alert.show();
+
+        } else if (mode == MyRecipeListAdapter.Mode.NONE) {
+
+            // TODO: @Gustav det er her du skal lave det om til en dialog.
+            // Slet onItemClick metoden længere oppe.
+            String json = (new Gson()).toJson(this.brews.get(position));
+            Intent i = new Intent(this, BrewingActivity.class);
+            i.putExtra(BrewingActivity.SELECTED_BREW_IDENTIFIER, json);
+            startActivity(i);
+            finish();
+
         }
     }
 }

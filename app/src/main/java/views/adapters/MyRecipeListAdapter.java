@@ -40,6 +40,13 @@ public class MyRecipeListAdapter extends RecyclerView.Adapter<MyRecipeListAdapte
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         holder.name.setText(recipes.get(position).getName());
 
+        holder.name.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.onMyRecipeListButtonClick(Mode.NONE, position);
+            }
+        });
+
         holder.editBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,7 +82,7 @@ public class MyRecipeListAdapter extends RecyclerView.Adapter<MyRecipeListAdapte
     }
 
     public enum Mode {
-        EDIT, DELETE;
+        NONE, EDIT, DELETE;
     }
 
     public interface MyRecipeListButtonListener {

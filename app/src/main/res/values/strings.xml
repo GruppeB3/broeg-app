@@ -40,4 +40,8 @@
     <string name="coarse">Coarse</string>
     <string name="enter_name_for_recipe">Enter name for recipe</string>
     <!-- <string name="">Indtast navn på opskrift</string> -->
+
+    <!-- Select brewer -->
+    <string name="select_brewer">Select brewer</string>
+    <string name="add_new_device">Add new device</string>
 </resources>

@@ -1,9 +1,43 @@
 <resources>
     <string name="app_name">B3 BRØG</string>
     <string name="title_activity_brewing_temperature_frag">BrewingTemperature_frag</string>
-    <!--
-    This string is used for square devices and overridden by hello_world in
-    values-round/strings.xml for round devices.
-    -->
-    <string name="hello_world">Hello Square World!</string>
+
+    <!-- Generic -->
+    <string name="continue_text">Continue</string>
+    <string name="done">Done</string>
+    <string name="ok">OK</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+
+    <!-- Brew administration -->
+    <string name="delete_brew">Delete brew</string>
+    <string name="sure_to_delete_brew">Are you sure you want to delete brew "%1s"?</string>
+
+    <!-- Esp BLE provision -->
+    <string name="search_for_new_devices">Search for new devices</string>
+    <string name="proof_of_possession">Proof of Possession</string>
+    <string name="ssid">SSID</string>
+    <string name="password">Password</string>
+    <string name="sending_wifi_creds">Sending Wi-Fi credentials</string>
+    <string name="applying_wifi_creds">Applying Wi-Fi connection</string>
+    <string name="checking_provision_status">Checking provision status</string>
+    <string name="missing_bt_access">It doesn\'t seem like we can connect to the Bluetooth interface on your device.\nPlease make sure your device supports Bluetooth!</string>
+    <string name="searching_for_devices">Searching for devices...</string>
+    <string name="err_occurred_during_device_scan">An error occurred while trying to scan for new devices</string>
+    <string name="device_name">Name: %1$s</string>
+    <string name="device_connected">Device connected</string>
+    <string name="device_disconnected">Device disconnected</string>
+
+    <string name="time_in_minutes">Time in minutes</string>
+
+    <!-- Brew creation -->
+    <string name="temperature_in_celsius">Temperature in degrees celsius</string>
+    <string name="amount_of_coffee_in_grams">Amount of coffee in grams</string>
+    <string name="bloom_time_seconds">Bloom time in seconds</string>
+    <string name="bloom_water_ml">Bloom water in mL</string>
+    <string name="fine">Fine</string>
+    <string name="medium">Medium</string>
+    <string name="coarse">Coarse</string>
+    <string name="enter_name_for_recipe">Enter name for recipe</string>
+    <!-- <string name="">Indtast navn på opskrift</string> -->
 </resources>

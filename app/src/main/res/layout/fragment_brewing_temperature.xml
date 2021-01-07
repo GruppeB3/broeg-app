@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="120dp"
             android:layout_marginBottom="20dp"
-            android:text="Temperatur i grader celsius"
+            android:text="@string/temperature_in_celsius"
             android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

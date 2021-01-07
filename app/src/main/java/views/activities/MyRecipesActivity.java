@@ -71,7 +71,7 @@ public class MyRecipesActivity extends AppCompatActivity implements AdapterView.
         final EditText input = new EditText(this);
         alert.setView(input);
 
-        alert.setNeutralButton("OK", new DialogInterface.OnClickListener() {
+        alert.setNeutralButton(getText(R.string.ok), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();
@@ -109,10 +109,10 @@ public class MyRecipesActivity extends AppCompatActivity implements AdapterView.
             final Brew brew = brews.get(position);
 
             AlertDialog.Builder alert = new AlertDialog.Builder(this);
-            alert.setTitle("Delete brew");
-            alert.setMessage("Are you sure you want to delete brew \"" + brew.getName() + "\"?");
+            alert.setTitle(getString(R.string.delete_brew));
+            alert.setMessage(getString(R.string.sure_to_delete_brew, brew.getName()));
 
-            alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            alert.setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     brews.remove(brew);
@@ -121,7 +121,7 @@ public class MyRecipesActivity extends AppCompatActivity implements AdapterView.
                 }
             });
 
-            alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            alert.setNegativeButton(getString(R.string.no), new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     return;

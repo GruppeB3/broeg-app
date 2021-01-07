@@ -46,7 +46,7 @@
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="104dp"
+        android:layout_width="wrap_content"
         android:layout_height="35dp"
         android:text="@string/time_in_minutes"
         android:textColor="#FFFFFF"
@@ -72,16 +72,15 @@
         tools:layout_editor_absoluteX="45dp"
         tools:layout_editor_absoluteY="519dp" />
 
-    <ImageView
-        android:id="@+id/imageView8"
-        android:layout_width="169dp"
-        android:layout_height="31dp"
-        app:srcCompat="@drawable/current_recipe"
-        tools:layout_editor_absoluteX="118dp"
-        app:layout_constraintTop_toBottomOf="@+id/imageView7"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="20dp"
-            />
+    <TextView
+            android:id="@+id/current_recipe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            app:layout_constraintTop_toBottomOf="@+id/imageView7"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="20dp"
+            android:text="@string/current_recipe" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

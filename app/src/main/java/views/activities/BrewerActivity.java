@@ -12,6 +12,14 @@ import java.util.Random;
 
 import models.Brewer;
 
+/**
+ * All activities that relies on the selection of a brewer
+ * should extend this activity. Upon creation of the activity during
+ * runtime this class will take care of prompting the user for
+ * a brewer and save that in the `<code>brewer</code>` attribute.
+ * <br>
+ * This attribute can be accessed from all classes that extend this one.
+ */
 public abstract class BrewerActivity extends AppCompatActivity {
 
     Brewer brewer;
@@ -25,7 +33,7 @@ public abstract class BrewerActivity extends AppCompatActivity {
         getBrewer();
     }
 
-    void getBrewer() {
+    private void getBrewer() {
         Intent i = new Intent(this, SelectBrewerActivity.class);
         startActivityForResult(i, SELECT_BREWER_REQUEST_CODE);
     }
@@ -38,7 +46,7 @@ public abstract class BrewerActivity extends AppCompatActivity {
             String brewerJson = data.getStringExtra(SelectBrewerActivity.SELECTED_BREWER_IDENTIFIER);
 
             if (brewerJson.equals(""))
-                return;
+                throw new IllegalStateException("A brewer was not properly selected. How on earth did you end up here!?");
 
             this.brewer = gson.fromJson(brewerJson, Brewer.class);
         }

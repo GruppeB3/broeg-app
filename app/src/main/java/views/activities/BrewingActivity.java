@@ -13,13 +13,4 @@ public class BrewingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_brewing);
     }
-
-    public static class CleaningActivity extends AppCompatActivity {
-
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_cleaning);
-        }
-    }
 }

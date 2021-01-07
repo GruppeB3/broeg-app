@@ -7,12 +7,15 @@ import android.os.Looper;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.gson.Gson;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.Random;
 
 import dk.dtu.gruppeb3.broeg.app.R;
@@ -28,10 +31,13 @@ public class BrewingActivity extends AppCompatActivity implements View.OnClickLi
     private Button startBtn;
     private Button cancelBtn;
     private ProgressBar progressBar;
+    private TextView minutesLeftView;
+    private TextView currentRecipeView;
 
     private int SELECT_BREWER_REQUEST_CODE = (new Random()).nextInt(16);
     private Brewer brewer;
     private Brew brew;
+    private int totalTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +47,8 @@ public class BrewingActivity extends AppCompatActivity implements View.OnClickLi
         startBtn = findViewById(R.id.button2);
         cancelBtn = findViewById(R.id.button10);
         progressBar = findViewById(R.id.progressBar);
+        minutesLeftView = findViewById(R.id.textView3);
+        currentRecipeView = findViewById(R.id.current_recipe);
 
         startBtn.setOnClickListener(this);
         cancelBtn.setOnClickListener(this);
@@ -49,6 +57,10 @@ public class BrewingActivity extends AppCompatActivity implements View.OnClickLi
 
         if (this.brew == null)
             throw new IllegalStateException("A brew was not provided. Cannot proceed!");
+
+        this.totalTime = this.brew.getTotalBrewTime();
+        minutesLeftView.setText(getString(R.string.time_in_minutes, String.valueOf(Math.round((this.totalTime) / 60))));
+        currentRecipeView.setText(getString(R.string.current_recipe, this.brew.getName()));
 
         getBrewer();
     }
@@ -63,6 +75,7 @@ public class BrewingActivity extends AppCompatActivity implements View.OnClickLi
 
     private void startBrewingWithMockBrewer() {
         progressBar.setProgress(0);
+        final int totalTime = this.totalTime;
 
         final Handler mainThread = new Handler(Looper.getMainLooper());
 
@@ -77,11 +90,16 @@ public class BrewingActivity extends AppCompatActivity implements View.OnClickLi
                         @Override
                         public void run() {
                             progressBar.setProgress(progress);
+                            DecimalFormat df = new DecimalFormat("#");
+                            df.setRoundingMode(RoundingMode.HALF_EVEN);
+                            double value = (totalTime - (totalTime * (progress / 100.0))) / 60;
+                            String number = df.format(value);
+                            minutesLeftView.setText(getString(R.string.time_in_minutes, number));
                         }
                     });
 
                     try {
-                        Thread.sleep(1000);
+                        Thread.sleep((totalTime / 10) * 1000);
                     } catch (Exception ignored) {}
                 }
             }

@@ -9,16 +9,15 @@
         android:id="@+id/dialog_amountCoffee"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="88dp"
         android:text="amount of coffee"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="@+id/dialog_name"
+        app:layout_constraintTop_toBottomOf="@+id/dialog_name" />
 
     <TextView
         android:id="@+id/dialog_bloomTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="1dp"
+        android:layout_marginTop="2dp"
         android:text="bloom time"
         app:layout_constraintStart_toStartOf="@+id/dialog_amountCoffee"
         app:layout_constraintTop_toBottomOf="@+id/dialog_amountCoffee" />
@@ -43,6 +42,7 @@
         android:id="@+id/dialog_grindSize"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
         android:text="grind size"
         app:layout_constraintStart_toStartOf="@+id/dialog_temperature"
         app:layout_constraintTop_toBottomOf="@+id/dialog_temperature" />
@@ -51,7 +51,9 @@
         android:id="@+id/dialog_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="69dp"
         android:text="name of brew"
-        app:layout_constraintStart_toStartOf="@+id/dialog_grindSize"
-        app:layout_constraintTop_toBottomOf="@+id/dialog_grindSize" />
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

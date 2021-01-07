@@ -2,11 +2,9 @@ package views.activities;
 
 import android.os.Bundle;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import dk.dtu.gruppeb3.broeg.app.R;
 
-public class CleaningActivity extends AppCompatActivity {
+public class CleaningActivity extends BrewerActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

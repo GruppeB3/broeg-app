@@ -48,7 +48,7 @@
         android:id="@+id/textView3"
         android:layout_width="104dp"
         android:layout_height="35dp"
-        android:text="Tid i minutter"
+        android:text="@string/time_in_minutes"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@id/progressBar"
         app:layout_constraintLeft_toLeftOf="parent"

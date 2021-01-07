@@ -28,7 +28,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-            android:text="Search for new devices"
+            android:text="@string/search_for_new_devices"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/searchNewDevicesBtn"

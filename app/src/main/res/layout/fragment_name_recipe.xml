@@ -50,7 +50,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:hint="Indtast navn på opskrift"
+                android:hint="@string/enter_name_for_recipe"
                 android:textAlignment="center" />
 
         <ImageView

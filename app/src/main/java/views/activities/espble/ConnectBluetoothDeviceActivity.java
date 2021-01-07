@@ -64,10 +64,7 @@ public class ConnectBluetoothDeviceActivity extends AppCompatActivity implements
         try {
             EspBluetoothConnectionsController.checkBluetoothComponents();
         } catch (BluetoothNotAvailableException e) {
-            Toast.makeText(this,
-                    "It doesn't seem like we can connect to the Bluetooth interface on your device." +
-                            "\nPlease make sure your device supports Bluetooth!",
-                    Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getText(R.string.missing_bt_access), Toast.LENGTH_SHORT).show();
 
         } catch (BluetoothNotEnabledException e) {
             int requestCode = (new Random()).nextInt();
@@ -113,13 +110,13 @@ public class ConnectBluetoothDeviceActivity extends AppCompatActivity implements
     private void startBleScan() {
         this.controller.startScanForNewDevices(getApplicationContext(), this);
         this.controller.getDevices().clear();
-        spinnerDialog = ProgressDialog.show(this, "", "Searching for devices...");
+        spinnerDialog = ProgressDialog.show(this, "", getString(R.string.searching_for_devices));
     }
 
     @Override
     public void scanStartFailed() {
         spinnerDialog.cancel();
-        Toast.makeText(this, "An error occurred while trying to scan for new devices", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, getString(R.string.err_occurred_during_device_scan), Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -131,7 +128,7 @@ public class ConnectBluetoothDeviceActivity extends AppCompatActivity implements
                 this.uuids.put(device, scanResult.getScanRecord().getServiceUuids().get(0).toString());
         }
 
-        Log.d(TAG, "Name: " + device.getName());
+        Log.d(TAG, getString(R.string.device_name, device.getName()));
     }
 
     @Override
@@ -152,7 +149,7 @@ public class ConnectBluetoothDeviceActivity extends AppCompatActivity implements
     @Override
     public void onFailure(Exception e) {
         spinnerDialog.cancel();
-        Toast.makeText(this, "An error occured while trying to scan for new devices", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, getString(R.string.err_occurred_during_device_scan), Toast.LENGTH_SHORT).show();
     }
 
 
@@ -173,7 +170,7 @@ public class ConnectBluetoothDeviceActivity extends AppCompatActivity implements
         switch (event.getEventType()) {
 
             case EVENT_DEVICE_CONNECTED:
-                Log.d(TAG, "Device connected");
+                Log.d(TAG, getString(R.string.device_connected));
                 Intent i = new Intent(this, GetPOPCodeActivity.class);
                 startActivity(i);
                 finish();
@@ -181,12 +178,12 @@ public class ConnectBluetoothDeviceActivity extends AppCompatActivity implements
 
             case EVENT_DEVICE_CONNECTION_FAILED:
                 Log.d(TAG, "Received Bluetooth device connection failed event");
-                Toast.makeText(this, "An error occurred while trying to connect to the device", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.err_occurred_during_device_scan), Toast.LENGTH_SHORT).show();
                 break;
 
             case EVENT_DEVICE_DISCONNECTED:
                 Log.d(TAG, "Received Bluetooth device disconnected event");
-                Toast.makeText(this, "Device disconnected", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.device_disconnected), Toast.LENGTH_SHORT).show();
                 break;
         }
     }

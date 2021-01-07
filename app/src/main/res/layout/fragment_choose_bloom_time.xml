@@ -28,7 +28,7 @@
       android:layout_marginTop="120dp"
       android:layout_marginBottom="20dp"
       android:textAlignment="center"
-      android:text="Vælg bloom tid i sekunder"
+      android:text="@string/bloom_time_seconds"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent" />

@@ -28,7 +28,7 @@
         android:layout_marginTop="40dp"
         android:layout_weight="1"
         android:layout_gravity="center"
-        android:text="Coarse"
+        android:text="@string/coarse"
         app:layout_constraintStart_toStartOf="@+id/Medium"
         app:layout_constraintTop_toBottomOf="@+id/Medium" />
 
@@ -54,22 +54,22 @@
         android:layout_marginBottom="20dp"
         android:layout_weight="1"
         android:layout_gravity="center"
-        android:text="Medium"
+        android:text="@string/medium"
         app:layout_constraintStart_toStartOf="@+id/Fine"
         app:layout_constraintTop_toBottomOf="@+id/Fine" />
 
-        <Button
-            android:id="@+id/Fine"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="0dp"
-            android:layout_marginBottom="60dp"
-            android:layout_weight="1"
-            android:text="Fine"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <Button
+        android:id="@+id/Fine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="60dp"
+        android:layout_weight="1"
+        android:text="@string/fine"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.cardview.widget.CardView>
 

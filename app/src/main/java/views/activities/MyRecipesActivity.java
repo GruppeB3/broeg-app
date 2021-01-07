@@ -24,7 +24,7 @@ import models.Brew;
 import views.adapters.MyRecipeListAdapter;
 
 
-public class MyRecipesActivity extends AppCompatActivity implements AdapterView.OnItemClickListener, MyRecipeListAdapter.MyRecipeListButtonListener {
+public class MyRecipesActivity extends AppCompatActivity implements MyRecipeListAdapter.MyRecipeListButtonListener {
 
     private ArrayList<Brew> brews;
     private SharedPreferences prefs;
@@ -58,28 +58,6 @@ public class MyRecipesActivity extends AppCompatActivity implements AdapterView.
         updateListOfBrews();
     }
 
-    // TODO: Re-introduce on item click
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-        AlertDialog.Builder alert = new AlertDialog.Builder(this);
-        Brew brew = brews.get(position);
-        alert.setTitle(brew.getName());
-        alert.setMessage(brew.getBloomTime());
-        alert.setMessage((int) brew.getBloomAmount());
-        alert.setMessage((int) brew.getBrewingTemperature());
-        alert.setMessage((int) brew.getGroundCoffeeAmount());
-        final EditText input = new EditText(this);
-        alert.setView(input);
-
-        alert.setNeutralButton(getText(R.string.ok), new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-            }
-        });
-
-        alert.show();
-    }
 
     private Brew getBrewFromIntent() {
         String json = this.getIntent().getStringExtra("brew");
@@ -132,8 +110,19 @@ public class MyRecipesActivity extends AppCompatActivity implements AdapterView.
 
         } else if (mode == MyRecipeListAdapter.Mode.NONE) {
 
-            // TODO: @Gustav det er her du skal lave det om til en dialog.
-            // Slet onItemClick metoden længere oppe.
+            // TODO: @Gustav det er her du skal lave det om til en dialog.¨
+
+            AlertDialog.Builder alert = new AlertDialog.Builder(this);
+            Brew brew = brews.get(position);
+            alert.setTitle(brew.getName());
+            alert.setMessage(brew.getBloomTime());
+            alert.setMessage((int) brew.getBloomAmount());
+            alert.setMessage((int) brew.getBrewingTemperature());
+            alert.setMessage((int) brew.getGroundCoffeeAmount());
+            //tilføj
+
+
+            //Her starter vi BrewActivirt
             String json = (new Gson()).toJson(this.brews.get(position));
             Intent i = new Intent(this, BrewingActivity.class);
             i.putExtra(BrewingActivity.SELECTED_BREW_IDENTIFIER, json);

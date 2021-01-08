@@ -117,8 +117,12 @@ public class MyRecipesActivity extends AppCompatActivity implements MyRecipeList
             AlertDialog.Builder alert = new AlertDialog.Builder(this);
             Brew brew = brews.get(position);
             alert.setTitle(brew.getName());
+
+            // Jeg har valgt de korrekter valueOf metoder, men det nlgter simpelthen at acceptere.
             alert.setMessage(String.valueOf((brew.getBloomTime()), String.valueOf((brew.getBloomAmount()), String.valueOf((brew.getBrewingTemperature()), String.valueOf((brew.getGroundCoffeeAmount()), String.valueOf((brew.getGroundCoffeeAmount()));
 
+
+            //Har bare kopieret din kode ind her, men den ser ikke ud til at genkende noget.
             alert.setPositiveButton("Bryg", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int i) {

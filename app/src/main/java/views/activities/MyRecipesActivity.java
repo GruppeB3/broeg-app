@@ -110,18 +110,10 @@ public class MyRecipesActivity extends AppCompatActivity implements MyRecipeList
 
         } else if (mode == MyRecipeListAdapter.Mode.NONE) {
 
-            // TODO: @Gustav det er her du skal lave det om til en dialog.¨
+            // TODO: @Gustav det er her du skal lave det om til en dialog.
 
-            AlertDialog.Builder alert = new AlertDialog.Builder(this);
-            Brew brew = brews.get(position);
-            alert.setTitle(brew.getName());
-            alert.setMessage(brew.getBloomTime());
-            alert.setMessage((int) brew.getBloomAmount());
-            alert.setMessage((int) brew.getBrewingTemperature());
-            alert.setMessage((int) brew.getGroundCoffeeAmount());
-            //tilføj
-
-
+            openDialog();
+            }
             //Her starter vi BrewActivirt
             String json = (new Gson()).toJson(this.brews.get(position));
             Intent i = new Intent(this, BrewingActivity.class);
@@ -130,5 +122,9 @@ public class MyRecipesActivity extends AppCompatActivity implements MyRecipeList
             finish();
 
         }
+
+    private void openDialog(){
+        ExampleDialog exampleDialog = new ExampleDialog();
+        exampleDialog.show(getSupportFragmentManager(), "example dialog");
     }
 }

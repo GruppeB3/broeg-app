@@ -17,6 +17,8 @@ import com.google.gson.Gson;
 
 import dk.dtu.gruppeb3.broeg.app.R;
 
+import models.Brew;
+
 public class ExampleDialog extends AppCompatDialogFragment {
 
     private TextView dialogBrewName;
@@ -35,6 +37,7 @@ public class ExampleDialog extends AppCompatDialogFragment {
 
         builder.setView(view)
                 .setTitle(brew.get)
+                .setMessage()
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -61,4 +64,5 @@ public class ExampleDialog extends AppCompatDialogFragment {
 
         return builder.create();
     }
+
 }

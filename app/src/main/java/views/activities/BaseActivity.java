@@ -28,17 +28,19 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    protected void hideMenu() {
+    protected BaseActivity hideMenu() {
         if (menuBtn != null) {
             menuBtn.setVisibility(View.INVISIBLE);
         }
+        return this;
     }
 
-    protected void addContentLayout(int layout) {
+    protected BaseActivity addContentLayout(int layout) {
         LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(layout, null);
         FrameLayout fl = findViewById(R.id.main_content);
         fl.addView(view);
+        return this;
     }
 
     @Override

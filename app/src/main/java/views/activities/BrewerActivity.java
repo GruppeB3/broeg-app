@@ -50,6 +50,10 @@ public abstract class BrewerActivity extends AppCompatActivity {
 
             this.brewer = gson.fromJson(brewerJson, Brewer.class);
         }
+
+        if (resultCode == RESULT_CANCELED) {
+            finish();
+        }
     }
 
 }

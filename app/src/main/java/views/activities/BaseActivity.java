@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import dk.dtu.gruppeb3.broeg.app.R;
+import views.fragments.Menu_frag;
 
 public class BaseActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -43,7 +44,11 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         if (v == menuBtn) {
-            // ...
+            getFragmentManager().beginTransaction()
+                    .setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out, android.R.animator.fade_in, android.R.animator.fade_out)
+                    .replace(R.id.menu_content, new Menu_frag())
+                    .addToBackStack(null)
+                    .commit();
         }
     }
 }

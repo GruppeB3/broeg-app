@@ -9,6 +9,29 @@
 
     <include layout="@layout/custom_top" />
 
+    <LinearLayout
+            android:id="@+id/menu_content_wrapper"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:baselineAligned="false"
+            android:elevation="40dp">
+
+            <RelativeLayout
+                    android:id="@+id/menu_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:layout_width="0dp" />
+
+            <RelativeLayout
+                    android:id="@+id/ignore"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+    </LinearLayout>
+
     <FrameLayout
             android:id="@+id/main_content"
             android:layout_width="match_parent"

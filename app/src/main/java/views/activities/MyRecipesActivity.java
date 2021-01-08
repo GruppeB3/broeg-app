@@ -117,23 +117,25 @@ public class MyRecipesActivity extends AppCompatActivity implements MyRecipeList
             AlertDialog.Builder alert = new AlertDialog.Builder(this);
             Brew brew = brews.get(position);
             alert.setTitle(brew.getName());
-            alert.setMessage(String.valueOf(brew.getBloomTime()), String.valueOf(brew.getBloomAmount()), String.valueOf(brew.getBrewingTemperature()), String.valueOf(brew.getGroundCoffeeAmount()), String. valueOf(brew.getGroundCoffeeAmount()));
+            alert.setMessage(String.valueOf((brew.getBloomTime()), String.valueOf((brew.getBloomAmount()), String.valueOf((brew.getBrewingTemperature()), String.valueOf((brew.getGroundCoffeeAmount()), String.valueOf((brew.getGroundCoffeeAmount()));
 
-            alert.setNegativeButton(getText(R.string.), new DialogInterface.OnClickListener() {
+            alert.setPositiveButton("Bryg", new DialogInterface.OnClickListener() {
                 @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    dialog.cancel();
+                public void onClick(DialogInterface dialog, int i) {
+                    String json = (new Gson()).toJson(this.brews.get(position));
+                    Intent i = new Intent(this, BrewingActivity.class);
+                    i.putExtra(BrewingActivity.SELECTED_BREW_IDENTIFIER, json);
+                    startActivity(i);
+                    finish();
                 }
             });
-            alert.setPositiveButton(getText(R.string.ok)) {
-                String json = (new Gson()).toJson(this.brews.get(position));
-                Intent i = new Intent(this, BrewingActivity.class);
-                i.putExtra(BrewingActivity.SELECTED_BREW_IDENTIFIER, json);
-                startActivity(i);
-                finish();
-            };
+            alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
 
-            alert.show();
+                }
+            });
+            alert.create().show();
 
         }
     }

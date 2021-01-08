@@ -111,8 +111,9 @@ public class MyRecipesActivity extends AppCompatActivity implements MyRecipeList
         } else if (mode == MyRecipeListAdapter.Mode.NONE) {
 
             // TODO: @Gustav det er her du skal lave det om til en dialog.
-
-            openDialog();
+            // Brug normal dialog i en lang streng i stedet for klasse.
+            new AlertDialog.Builder(this)
+                    .setTitle(this.brews.;
             }
             //Her starter vi BrewActivirt
             String json = (new Gson()).toJson(this.brews.get(position));
@@ -123,8 +124,4 @@ public class MyRecipesActivity extends AppCompatActivity implements MyRecipeList
 
         }
 
-    private void openDialog(){
-        ExampleDialog exampleDialog = new ExampleDialog();
-        exampleDialog.show(getSupportFragmentManager(), "example dialog");
-    }
 }

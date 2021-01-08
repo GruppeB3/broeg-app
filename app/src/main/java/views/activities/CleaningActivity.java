@@ -9,6 +9,6 @@ public class CleaningActivity extends BrewerActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cleaning);
+        addContentLayout(R.layout.activity_cleaning).hideMenu();
     }
 }

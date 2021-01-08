@@ -34,7 +34,7 @@ public class BrewingActivity extends BrewerActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_brewing);
+        addContentLayout(R.layout.activity_brewing).hideMenu();
 
         startBtn = findViewById(R.id.button2);
         cancelBtn = findViewById(R.id.button10);
@@ -107,6 +107,7 @@ public class BrewingActivity extends BrewerActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
+        super.onClick(v);
         if (v == startBtn) {
             startBrewing();
         } else if (v == cancelBtn) {

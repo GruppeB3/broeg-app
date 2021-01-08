@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -22,7 +21,7 @@ import views.activities.espble.ConnectBluetoothDeviceActivity;
 import views.adapters.SelectBrewerListAdapter;
 import views.listeners.OnRecyclerViewItemClickListener;
 
-public class SelectBrewerActivity extends AppCompatActivity implements View.OnClickListener, OnRecyclerViewItemClickListener {
+public class SelectBrewerActivity extends BaseActivity implements View.OnClickListener, OnRecyclerViewItemClickListener {
 
     private ArrayList<Brewer> brewers;
     private Button addNewDeviceBtn;
@@ -35,7 +34,8 @@ public class SelectBrewerActivity extends AppCompatActivity implements View.OnCl
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_select_brewer);
+        addContentLayout(R.layout.activity_select_brewer).hideMenu();
+//        setContentView(R.layout.activity_select_brewer);
 
         prefs = PreferenceHelper.getApplicationPreferences(getApplicationContext());
 
@@ -60,6 +60,7 @@ public class SelectBrewerActivity extends AppCompatActivity implements View.OnCl
 
     @Override
     public void onClick(View v) {
+        super.onClick(v);
         if (v == this.addNewDeviceBtn) {
             Intent i = new Intent(this, ConnectBluetoothDeviceActivity.class);
             startActivity(i);

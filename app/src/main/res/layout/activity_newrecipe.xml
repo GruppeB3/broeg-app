@@ -63,7 +63,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="5dp"
         tools:layout_editor_absoluteX="38dp"
         tools:layout_editor_absoluteY="51dp" />
 
@@ -124,16 +124,6 @@
         app:layout_constraintBottom_toBottomOf="@id/bloomTimeBackground"
         tools:layout_editor_absoluteX="141dp"
         tools:layout_editor_absoluteY="434dp" />
-
-    <Button
-        android:id="@+id/menuButton"
-        android:layout_width="25dp"
-        android:layout_height="16dp"
-        android:background="@drawable/menuicon_button"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="15dp"
-        android:layout_marginLeft="15dp" />
 
     <!--
     <ProgressBar

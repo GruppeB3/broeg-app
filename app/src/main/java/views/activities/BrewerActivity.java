@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.gson.Gson;
 
@@ -20,7 +19,7 @@ import models.Brewer;
  * <br>
  * This attribute can be accessed from all classes that extend this one.
  */
-public abstract class BrewerActivity extends AppCompatActivity {
+public abstract class BrewerActivity extends BaseActivity {
 
     Brewer brewer;
     private Gson gson;

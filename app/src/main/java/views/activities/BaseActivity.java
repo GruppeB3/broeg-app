@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import dk.dtu.gruppeb3.broeg.app.R;
 import views.fragments.Menu_frag;
 
-public class BaseActivity extends AppCompatActivity implements View.OnClickListener {
+public abstract class BaseActivity extends AppCompatActivity implements View.OnClickListener {
 
     Button menuBtn;
 
@@ -28,7 +28,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    protected BaseActivity hideMenu() {
+    public BaseActivity hideMenu() {
         if (menuBtn != null) {
             menuBtn.setVisibility(View.INVISIBLE);
         }

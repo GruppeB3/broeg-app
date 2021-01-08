@@ -5,18 +5,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import dk.dtu.gruppeb3.broeg.app.R;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     Button newBrewButton, cleaningButton, myrecipesButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        addContentLayout(R.layout.activity_main);
 
         newBrewButton = findViewById(R.id.broeg_frontpagebutton);
         cleaningButton = findViewById(R.id.cleaning_button);
@@ -29,7 +27,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-
+        super.onClick(v);
         if (v == newBrewButton) {
 
             Intent i = new Intent(this, NewRecipeActivity.class);

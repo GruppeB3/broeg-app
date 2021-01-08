@@ -7,14 +7,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.espressif.provisioning.ESPDevice;
 
 import controllers.EspBluetoothConnectionsController;
 import dk.dtu.gruppeb3.broeg.app.R;
+import views.activities.BaseActivity;
 
-public class GetWifiCredentialsActivity extends AppCompatActivity implements View.OnClickListener {
+public class GetWifiCredentialsActivity extends BaseActivity implements View.OnClickListener {
 
     EditText ssidField, pwdField;
     Button continueBtn;
@@ -23,7 +22,7 @@ public class GetWifiCredentialsActivity extends AppCompatActivity implements Vie
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_get_wifi_credentials);
+        addContentLayout(R.layout.activity_get_wifi_credentials).hideMenu();
 
         controller = EspBluetoothConnectionsController.getInstance();
 
@@ -42,6 +41,7 @@ public class GetWifiCredentialsActivity extends AppCompatActivity implements Vie
 
     @Override
     public void onClick(View v) {
+        super.onClick(v);
         if (v == continueBtn) {
             String ssid = ssidField.getText().toString();
             String password = pwdField.getText().toString();

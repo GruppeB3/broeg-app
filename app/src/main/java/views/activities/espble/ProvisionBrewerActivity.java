@@ -5,7 +5,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.widget.ContentLoadingProgressBar;
 
 import com.airbnb.lottie.LottieAnimationView;
@@ -14,8 +13,9 @@ import com.espressif.provisioning.listeners.ProvisionListener;
 
 import controllers.EspBluetoothConnectionsController;
 import dk.dtu.gruppeb3.broeg.app.R;
+import views.activities.BaseActivity;
 
-public class ProvisionBrewerActivity extends AppCompatActivity implements View.OnClickListener, ProvisionListener {
+public class ProvisionBrewerActivity extends BaseActivity implements View.OnClickListener, ProvisionListener {
 
     public static final String SSID_STRING_ID = "SSID";
     public static final String PASSWORD_STRING_ID = "PASSWORD";
@@ -31,7 +31,7 @@ public class ProvisionBrewerActivity extends AppCompatActivity implements View.O
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_provision_brewer);
+        addContentLayout(R.layout.activity_provision_brewer).hideMenu();
 
         controller = EspBluetoothConnectionsController.getInstance();
 
@@ -51,6 +51,7 @@ public class ProvisionBrewerActivity extends AppCompatActivity implements View.O
 
     @Override
     public void onClick(View v) {
+        super.onClick(v);
         if (v == doneBtn) {
             finish();
         }

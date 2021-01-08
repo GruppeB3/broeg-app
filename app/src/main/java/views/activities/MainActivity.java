@@ -30,8 +30,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         super.onClick(v);
         if (v == newBrewButton) {
 
-            Intent i = new Intent(this, NewRecipeActivity.class);
-            startActivity(i);
+            startActivity(new Intent(this, NewRecipeActivity.class));
 
         } else if (v == cleaningButton) {
 
@@ -39,8 +38,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
         } else if (v == myrecipesButton){
 
-            Intent i = new Intent(this, MyRecipesActivity.class);
-            startActivity(i);
+            startActivity(new Intent(this, MyRecipesActivity.class));
 
         }
     }

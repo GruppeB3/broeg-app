@@ -7,14 +7,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.espressif.provisioning.ESPDevice;
 
 import controllers.EspBluetoothConnectionsController;
 import dk.dtu.gruppeb3.broeg.app.R;
+import views.activities.BaseActivity;
 
-public class GetPOPCodeActivity extends AppCompatActivity implements View.OnClickListener{
+public class GetPOPCodeActivity extends BaseActivity implements View.OnClickListener{
 
     EditText popField;
     Button continueBtn;
@@ -23,7 +22,7 @@ public class GetPOPCodeActivity extends AppCompatActivity implements View.OnClic
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_get_pop_code);
+        addContentLayout(R.layout.activity_get_pop_code).hideMenu();
 
         controller = EspBluetoothConnectionsController.getInstance();
 
@@ -42,6 +41,7 @@ public class GetPOPCodeActivity extends AppCompatActivity implements View.OnClic
 
     @Override
     public void onClick(View v) {
+        super.onClick(v);
         if (v == continueBtn) {
             String pop = popField.getText().toString();
             controller.setProofOfPossession(getApplicationContext(), pop);

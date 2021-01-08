@@ -14,7 +14,6 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -35,9 +34,10 @@ import controllers.EspBluetoothConnectionsController;
 import dk.dtu.gruppeb3.broeg.app.R;
 import models.exceptions.BluetoothNotAvailableException;
 import models.exceptions.BluetoothNotEnabledException;
+import views.activities.BaseActivity;
 import views.adapters.BluetoothDeviceListAdapter;
 
-public class ConnectBluetoothDeviceActivity extends AppCompatActivity implements View.OnClickListener, BluetoothDeviceListAdapter.OnItemClickListener, BleScanListener {
+public class ConnectBluetoothDeviceActivity extends BaseActivity implements View.OnClickListener, BluetoothDeviceListAdapter.OnItemClickListener, BleScanListener {
 
     private EspBluetoothConnectionsController controller;
     private Button searchNewDevicesBtn;
@@ -53,7 +53,7 @@ public class ConnectBluetoothDeviceActivity extends AppCompatActivity implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_bluetooth_connections);
+        addContentLayout(R.layout.activity_bluetooth_connections);
 
         searchNewDevicesBtn = findViewById(R.id.searchNewDevicesBtn);
         searchNewDevicesBtn.setOnClickListener(this);
@@ -93,6 +93,7 @@ public class ConnectBluetoothDeviceActivity extends AppCompatActivity implements
 
     @Override
     public void onClick(View v) {
+        super.onClick(v);
         if (v == searchNewDevicesBtn && this.controller != null) {
 
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {

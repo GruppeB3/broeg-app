@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -24,7 +23,7 @@ import models.Brew;
 import views.adapters.MyRecipeListAdapter;
 
 
-public class MyRecipesActivity extends AppCompatActivity implements AdapterView.OnItemClickListener, MyRecipeListAdapter.MyRecipeListButtonListener {
+public class MyRecipesActivity extends BaseActivity implements AdapterView.OnItemClickListener, MyRecipeListAdapter.MyRecipeListButtonListener {
 
     private ArrayList<Brew> brews;
     private SharedPreferences prefs;
@@ -33,7 +32,7 @@ public class MyRecipesActivity extends AppCompatActivity implements AdapterView.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_myrecipes);
+        addContentLayout(R.layout.activity_myrecipes);
 
         prefs = PreferenceHelper.getApplicationPreferences(this);
         updateListOfBrews();

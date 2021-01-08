@@ -6,8 +6,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import dk.dtu.gruppeb3.broeg.app.R;
 import helpers.PreferenceHelper;
 import models.BrewBuilder;
@@ -18,7 +16,7 @@ import views.fragments.ChooseBrewingTemperature_frag;
 import views.fragments.ChooseGrindSize_frag;
 import views.fragments.NameRecipe_frag;
 
-public class NewRecipeActivity extends AppCompatActivity implements View.OnClickListener {
+public class NewRecipeActivity extends BaseActivity implements View.OnClickListener {
 
 
     private ImageView groundCoffeeAmtImgView, grindSizeImgView, brewTempImgView, bloomWaterAmtImgView, bloomTimeImgView;
@@ -28,7 +26,7 @@ public class NewRecipeActivity extends AppCompatActivity implements View.OnClick
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_newrecipe);
+        addContentLayout(R.layout.activity_newrecipe);
 
         groundCoffeeAmtImgView = findViewById(R.id.groundCoffeeAmtBackground);
         grindSizeImgView = findViewById(R.id.grindSizeBackground);
@@ -62,6 +60,7 @@ public class NewRecipeActivity extends AppCompatActivity implements View.OnClick
 
     @Override
     public void onClick(View ClickButton) {
+        super.onClick(ClickButton);
         if (ClickButton == groundCoffeeAmtImgView || ClickButton == groundCoffeeAmtBtn) {
                     getFragmentManager().beginTransaction()
                     .setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)

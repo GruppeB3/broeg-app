@@ -17,6 +17,6 @@ public class ExampleDialog extends AppCompatDialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         View view = inflater.inflate(R.layout.brew_dialog, null);
 
-        builder.setView(view)
+        builder.setView(view);
     }
 }

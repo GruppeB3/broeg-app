@@ -23,6 +23,8 @@ import helpers.PreferenceHelper;
 import models.Brew;
 import views.adapters.MyRecipeListAdapter;
 
+import static java.lang.String.valueOf;
+
 
 public class MyRecipesActivity extends AppCompatActivity implements MyRecipeListAdapter.MyRecipeListButtonListener {
 
@@ -112,16 +114,27 @@ public class MyRecipesActivity extends AppCompatActivity implements MyRecipeList
 
             // TODO: @Gustav det er her du skal lave det om til en dialog.
             // Brug normal dialog i en lang streng i stedet for klasse.
-            new AlertDialog.Builder(this)
-                    .setTitle(this.brews.;
-            }
-            //Her starter vi BrewActivirt
-            String json = (new Gson()).toJson(this.brews.get(position));
-            Intent i = new Intent(this, BrewingActivity.class);
-            i.putExtra(BrewingActivity.SELECTED_BREW_IDENTIFIER, json);
-            startActivity(i);
-            finish();
+            AlertDialog.Builder alert = new AlertDialog.Builder(this);
+            Brew brew = brews.get(position);
+            alert.setTitle(brew.getName());
+            alert.setMessage(String.valueOf(brew.getBloomTime()), String.valueOf(brew.getBloomAmount()), String.valueOf(brew.getBrewingTemperature()), String.valueOf(brew.getGroundCoffeeAmount()), String. valueOf(brew.getGroundCoffeeAmount()));
+
+            alert.setNegativeButton(getText(R.string.), new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                }
+            });
+            alert.setPositiveButton(getText(R.string.ok)) {
+                String json = (new Gson()).toJson(this.brews.get(position));
+                Intent i = new Intent(this, BrewingActivity.class);
+                i.putExtra(BrewingActivity.SELECTED_BREW_IDENTIFIER, json);
+                startActivity(i);
+                finish();
+            };
+
+            alert.show();
 
         }
-
+    }
 }

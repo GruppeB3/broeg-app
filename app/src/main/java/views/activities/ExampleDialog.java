@@ -19,8 +19,12 @@ import dk.dtu.gruppeb3.broeg.app.R;
 
 public class ExampleDialog extends AppCompatDialogFragment {
 
-    private TextView brewName;
-    private TextView
+    private TextView dialogBrewName;
+    private TextView dialogBloomTime;
+    private TextView dialogAmountCoffee;
+    private TextView dialogBloomWater;
+    private TextView dialogTemperature;
+    private TextView dialogGrindSize;
 
     @NonNull
     @Override
@@ -47,6 +51,14 @@ public class ExampleDialog extends AppCompatDialogFragment {
                         finish();
                     }
                 });
+        dialogBrewName = view.findViewById(R.id.dialog_name);
+        dialogBloomTime = view.findViewById(R.id.dialog_bloomTime);
+        dialogBloomWater = view.findViewById(R.id.dialog_bloomWater);
+        dialogAmountCoffee = view.findViewById(R.id.dialog_amountCoffee);
+        dialogGrindSize = view.findViewById(R.id.dialog_grindSize);
+        dialogTemperature = view.findViewById(R.id.dialog_temperature);
+
+
         return builder.create();
     }
 }

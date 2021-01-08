@@ -132,7 +132,7 @@ public class MyRecipesActivity extends AppCompatActivity implements MyRecipeList
             alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-
+                        return;
                 }
             });
             alert.create().show();

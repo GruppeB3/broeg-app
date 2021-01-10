@@ -1,10 +1,7 @@
 package views.fragments;
 
 import android.app.Fragment;
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +9,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import dk.dtu.gruppeb3.broeg.app.R;
-import helpers.PreferenceHelper;
+import models.BrewBuilder;
+import views.RepeatListener;
 
 /**
  * This fragment gives the user the opportunity to choose the amount of coffee they want to brew.
@@ -22,11 +20,13 @@ public class ChooseBrewingTemperature_frag extends Fragment implements View.OnCl
 
     Button plusBtn, minusBtn, saveBtn;
     private View root;
-    double temperature = 80;
+    double temperature;
 
     @Override
     public View onCreateView(LayoutInflater i, ViewGroup container, Bundle savedInstanceState){
         this.root = i.inflate(R.layout.fragment_brewing_temperature, container, false);
+
+        temperature = BrewBuilder.getInstance().get().getBrewingTemperature();
 
         plusBtn = root.findViewById(R.id.ArrowUp_Temp);
         minusBtn = root.findViewById(R.id.ArrowDown_Temp);
@@ -36,8 +36,24 @@ public class ChooseBrewingTemperature_frag extends Fragment implements View.OnCl
         minusBtn.setOnClickListener(this);
         saveBtn.setOnClickListener(this);
 
-        SharedPreferences preferences = this.getActivity().getSharedPreferences("pref", Context.MODE_PRIVATE);
-        this.temperature = PreferenceHelper.getDouble(preferences, "temperature", "0");
+        plusBtn.setOnTouchListener(new RepeatListener(400, 100, new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                temperature++;
+                TextView tv = root.findViewById(R.id.temperature);
+                tv.setText("Temperatur i celcius (" + temperature + ")");
+            }
+        }));
+        minusBtn.setOnTouchListener(new RepeatListener(400, 100, new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                temperature--;
+                TextView tv = root.findViewById(R.id.temperature);
+                tv.setText("Temperatur i celcius (" + temperature + ")");
+            }
+        }));
+
 
         updateText();
 
@@ -58,8 +74,7 @@ public class ChooseBrewingTemperature_frag extends Fragment implements View.OnCl
             updateText();
 
         } else if (ButtonClick == saveBtn){
-            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-            PreferenceHelper.putDouble(preferences, "temperature", this.temperature);
+            BrewBuilder.getInstance().brewingTemperature(temperature);
 
             getActivity().onBackPressed();
         }

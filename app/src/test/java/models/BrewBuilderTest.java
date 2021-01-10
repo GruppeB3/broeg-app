@@ -42,10 +42,6 @@ public class BrewBuilderTest {
         int bloomTime = rand.nextInt();
         builder.bloomTime(bloomTime);
         Assert.assertEquals(brew.getBloomTime(), bloomTime, 0);
-
-        int totalBrewTime = rand.nextInt();
-        builder.totalBrewTime(totalBrewTime);
-        Assert.assertEquals(brew.getTotalBrewTime(), totalBrewTime, 0);
     }
 
     @Test

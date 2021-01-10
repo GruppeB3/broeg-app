@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:clickable="true"
+        android:elevation="40dp"
+        tools:context="views.fragments.Menu_frag">
+
+    <androidx.cardview.widget.CardView
+            android:id="@+id/menu_card_view"
+            android:layout_width="233dp"
+            android:layout_height="307dp"
+            app:cardBackgroundColor="#8B5A39"
+            app:cardCornerRadius="15dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <Button
+                    android:id="@+id/menu_settings_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:textSize="20sp"
+                    android:text="@string/settings"
+                    android:background="@android:color/transparent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    />
+
+            <Button
+                    android:id="@+id/menu_connect_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:textSize="20sp"
+                    android:text="@string/connect"
+                    android:background="@android:color/transparent"
+                    app:layout_constraintTop_toBottomOf="@+id/menu_settings_btn" />
+
+            <Button
+                    android:id="@+id/menu_help_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:textSize="20sp"
+                    android:text="@string/help"
+                    android:background="@android:color/transparent"
+                    app:layout_constraintTop_toBottomOf="@+id/menu_connect_btn" />
+
+            <Button
+                    android:id="@+id/menu_sign_out_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:textSize="20sp"
+                    android:text="@string/sign_out"
+                    android:background="@android:color/transparent"
+                    app:layout_constraintTop_toBottomOf="@+id/menu_help_btn" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

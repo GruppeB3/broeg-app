@@ -2,14 +2,13 @@ package views.activities;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import dk.dtu.gruppeb3.broeg.app.R;
+import helpers.PreferenceHelper;
+import models.BrewBuilder;
 import views.fragments.ChooseAmountOfCoffee_frag;
 import views.fragments.ChooseBloomTime_frag;
 import views.fragments.ChooseBloomWaterAmount_frag;
@@ -17,7 +16,9 @@ import views.fragments.ChooseBrewingTemperature_frag;
 import views.fragments.ChooseGrindSize_frag;
 import views.fragments.NameRecipe_frag;
 
-public class NewRecipeActivity extends AppCompatActivity implements View.OnClickListener {
+public class NewRecipeActivity extends BaseActivity implements View.OnClickListener {
+
+
     private ImageView groundCoffeeAmtImgView, grindSizeImgView, brewTempImgView, bloomWaterAmtImgView, bloomTimeImgView;
     private Button groundCoffeeAmtBtn, grindSizeBtn, brewTempBtn, bloomWaterAmtBtn, bloomTimeBtn, saveBtn;
     SharedPreferences prefs;
@@ -25,7 +26,7 @@ public class NewRecipeActivity extends AppCompatActivity implements View.OnClick
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_newrecipe);
+        addContentLayout(R.layout.activity_newrecipe);
 
         groundCoffeeAmtImgView = findViewById(R.id.groundCoffeeAmtBackground);
         grindSizeImgView = findViewById(R.id.grindSizeBackground);
@@ -52,14 +53,16 @@ public class NewRecipeActivity extends AppCompatActivity implements View.OnClick
         bloomTimeBtn.setOnClickListener(this);
         saveBtn.setOnClickListener(this);
 
-        prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        prefs = PreferenceHelper.getApplicationPreferences(this);
 
+        BrewBuilder.reset();
     }
 
     @Override
     public void onClick(View ClickButton) {
+        super.onClick(ClickButton);
         if (ClickButton == groundCoffeeAmtImgView || ClickButton == groundCoffeeAmtBtn) {
-            getFragmentManager().beginTransaction()
+                    getFragmentManager().beginTransaction()
                     .setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
                     .replace(R.id.fragment_contents, new ChooseAmountOfCoffee_frag())
                     .addToBackStack(null)
@@ -88,7 +91,7 @@ public class NewRecipeActivity extends AppCompatActivity implements View.OnClick
                     .replace(R.id.fragment_contents, new ChooseBloomTime_frag())
                     .addToBackStack(null)
                     .commit();
-        } else if (ClickButton == saveBtn){
+        } else if (ClickButton == saveBtn) {
             getFragmentManager().beginTransaction()
                     .setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
                     .replace(R.id.fragment_contents, new NameRecipe_frag())
@@ -98,4 +101,5 @@ public class NewRecipeActivity extends AppCompatActivity implements View.OnClick
         }
 
     }
+
 }

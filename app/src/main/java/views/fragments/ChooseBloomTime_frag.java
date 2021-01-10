@@ -1,10 +1,7 @@
 package views.fragments;
 
 import android.app.Fragment;
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,17 +9,20 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import dk.dtu.gruppeb3.broeg.app.R;
-import helpers.PreferenceHelper;
+import models.BrewBuilder;
+import views.RepeatListener;
 
 public class ChooseBloomTime_frag extends Fragment implements View.OnClickListener {
 
     Button plusBtn, minusBtn, saveBtn;
     private View root;
-    double amountBloomTime = 45;
+    int amountBloomTime;
 
     @Override
     public View onCreateView(LayoutInflater i, ViewGroup container, Bundle savedInstanceState) {
         this.root = i.inflate(R.layout.fragment_choose_bloom_time, container, false);
+
+        amountBloomTime = BrewBuilder.getInstance().get().getBloomTime();
 
         plusBtn = root.findViewById(R.id.ArrowUp_BloomTime);
         minusBtn = root.findViewById(R.id.ArrowDown_BloomTime);
@@ -32,8 +32,24 @@ public class ChooseBloomTime_frag extends Fragment implements View.OnClickListen
         minusBtn.setOnClickListener(this);
         saveBtn.setOnClickListener(this);
 
-        SharedPreferences preferences = this.getActivity().getSharedPreferences("pref", Context.MODE_PRIVATE);
-        this.amountBloomTime = PreferenceHelper.getDouble(preferences, "amountBloomTime", "45");
+        plusBtn.setOnTouchListener(new RepeatListener(400, 100, new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                amountBloomTime++;
+                TextView tv = root.findViewById(R.id.bloomTime);
+                tv.setText("Bloomtid i sekunder (" +amountBloomTime + ")");
+            }
+        }));
+        minusBtn.setOnTouchListener(new RepeatListener(400, 100, new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                amountBloomTime--;
+                TextView tv = root.findViewById(R.id.bloomTime);
+                tv.setText("Bloomtid i sekunder (" + amountBloomTime + ")");
+            }
+        }));
 
         updateText();
 
@@ -51,8 +67,7 @@ public class ChooseBloomTime_frag extends Fragment implements View.OnClickListen
             updateText();
 
         } else if (ButtonClick == saveBtn){
-            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-            PreferenceHelper.putDouble(preferences, "amountBloomTime", this.amountBloomTime);
+            BrewBuilder.getInstance().bloomTime(amountBloomTime);
 
             getActivity().onBackPressed();
         }

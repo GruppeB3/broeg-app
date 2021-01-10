@@ -23,20 +23,18 @@
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="264dp"
         android:layout_height="52dp"
-        android:background="#95761B"
-        android:progressTint="#3F51B5"
         tools:layout_editor_absoluteX="73dp"
-        app:layout_constraintBottom_toTopOf="@+id/button18"
+        app:layout_constraintBottom_toTopOf="@+id/cleaning_start_button"
         android:layout_marginBottom="40dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
 
     <Button
-        android:id="@+id/button18"
+        android:id="@+id/cleaning_start_button"
         android:layout_width="163dp"
         android:layout_height="46dp"
         android:background="@drawable/startknap_button"
-        app:layout_constraintBottom_toTopOf="@id/button19"
+        app:layout_constraintBottom_toTopOf="@id/cleaning_cancel_button"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginBottom="30dp"
@@ -44,7 +42,7 @@
         tools:layout_editor_absoluteY="514dp" />
 
     <Button
-        android:id="@+id/button19"
+        android:id="@+id/cleaning_cancel_button"
         android:layout_width="163dp"
         android:layout_height="46dp"
         android:background="@drawable/cancel_button"

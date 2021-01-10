@@ -27,7 +27,7 @@ public class App extends Application {
         return instance;
     }
 
-    public void saveData() {
+    public void saveUserData() {
         Gson gson = new Gson();
         SharedPreferences prefs = PreferenceHelper.getApplicationPreferences(getApplicationContext());
         prefs.edit().putString("user", gson.toJson(this.user)).apply();

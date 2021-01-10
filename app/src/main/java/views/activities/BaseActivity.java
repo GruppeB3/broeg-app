@@ -32,7 +32,7 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     @Override
     protected void onPause() {
         super.onPause();
-        App.getInstance().saveData();
+        App.getInstance().saveUserData();
     }
 
     public BaseActivity hideMenu() {

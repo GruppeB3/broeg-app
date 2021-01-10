@@ -44,8 +44,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
         } else if (v == profileButton){
 
-            Intent i = new Intent(this, MyProfile.class);
-            startActivity(i);
+            startActivity(new Intent(this, MyProfile.class));
+
         }
     }
 }

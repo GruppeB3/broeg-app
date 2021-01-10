@@ -11,6 +11,7 @@ import android.widget.Button;
 import androidx.annotation.Nullable;
 
 import dk.dtu.gruppeb3.broeg.app.R;
+import models.App;
 import views.activities.espble.ConnectBluetoothDeviceActivity;
 
 public class Menu_frag extends Fragment implements View.OnClickListener {
@@ -46,7 +47,8 @@ public class Menu_frag extends Fragment implements View.OnClickListener {
             Intent i = new Intent(getActivity(), ConnectBluetoothDeviceActivity.class);
             startActivity(i);
         } else if (v == signOutBtn) {
-            // Do nothing for now
+            App.getInstance().getUser().setApiToken(null);
+            App.getInstance().getUser().setCommunityId(0);
         }
         getActivity().onBackPressed();
     }

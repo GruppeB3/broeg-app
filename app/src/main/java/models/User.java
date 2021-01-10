@@ -4,8 +4,9 @@ import java.util.ArrayList;
 
 public class User {
 
-    // we set a default name here since the user might never get to changing the username.
-    private String username = "local user";
+    private String username;
+    private int communityId = 0;
+    private String apiToken = null;
     private ArrayList<Brew> brewPresets;
     private ArrayList<Brewer> brewers;
 
@@ -27,6 +28,14 @@ public class User {
         return username;
     }
 
+    public int getCommunityId() {
+        return communityId;
+    }
+
+    public String getApiToken() {
+        return apiToken;
+    }
+
     // Setters
     public void setBrewPresets(ArrayList<Brew> brewPresets) {
         this.brewPresets = brewPresets;
@@ -38,5 +47,19 @@ public class User {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public void setCommunityId(int communityId) {
+        this.communityId = communityId;
+    }
+
+    public void setApiToken(String apiToken) {
+        this.apiToken = apiToken;
+    }
+
+    // Aux
+
+    public boolean hasApiTokenSet() {
+        return this.apiToken != null;
     }
 }

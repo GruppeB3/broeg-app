@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import dk.dtu.gruppeb3.broeg.app.R;
+import models.App;
 import views.fragments.Menu_frag;
 
 public abstract class BaseActivity extends AppCompatActivity implements View.OnClickListener {
@@ -26,6 +27,12 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         if (menuBtn != null) {
             menuBtn.setOnClickListener(this);
         }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        App.getInstance().saveData();
     }
 
     public BaseActivity hideMenu() {

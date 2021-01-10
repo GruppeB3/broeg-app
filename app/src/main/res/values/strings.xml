@@ -53,4 +53,9 @@
     <string name="connect">Connect</string>
     <string name="help">Help</string>
     <string name="sign_out">Sign out</string>
+
+    <!-- Login -->
+    <string name="login_parameters_not_ok">Username and password must both have a length of 1 or greater</string>
+    <string name="email">E-mail</string>
+    <string name="login">Login</string>
 </resources>

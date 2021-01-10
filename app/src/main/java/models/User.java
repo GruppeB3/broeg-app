@@ -4,15 +4,16 @@ import java.util.ArrayList;
 
 public class User {
 
-    private String username;
+    private String email;
+    private String name;
     private int communityId = 0;
     private String apiToken = null;
     private ArrayList<Brew> brewPresets;
     private ArrayList<Brewer> brewers;
 
     // Constructor
-    public User(String username) {
-        this.username = username;
+    public User(String name) {
+        this.name = name;
     }
 
     // Getters
@@ -24,8 +25,8 @@ public class User {
         return brewers;
     }
 
-    public String getUsername() {
-        return username;
+    public String getEmail() {
+        return email;
     }
 
     public int getCommunityId() {
@@ -34,6 +35,10 @@ public class User {
 
     public String getApiToken() {
         return apiToken;
+    }
+
+    public String getName() {
+        return name;
     }
 
     // Setters
@@ -45,8 +50,8 @@ public class User {
         this.brewers = brewers;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public void setCommunityId(int communityId) {

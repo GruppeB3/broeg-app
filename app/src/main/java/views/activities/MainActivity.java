@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.Button;
 
 import dk.dtu.gruppeb3.broeg.app.R;
-import views.activities.community.profile.MyProfile;
+import views.activities.community.profile.MyProfileActivity;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
 
@@ -45,7 +45,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
         } else if (v == profileButton){
 
-            startActivity(new Intent(this, MyProfile.class));
+            startActivity(new Intent(this, MyProfileActivity.class));
 
         }
     }

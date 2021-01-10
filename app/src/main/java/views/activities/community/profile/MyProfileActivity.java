@@ -5,7 +5,7 @@ import android.os.Bundle;
 import dk.dtu.gruppeb3.broeg.app.R;
 import views.activities.BaseActivity;
 
-public class MyProfile extends BaseActivity {
+public class MyProfileActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

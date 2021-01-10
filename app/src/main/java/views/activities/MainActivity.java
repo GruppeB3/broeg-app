@@ -32,11 +32,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
             startActivity(new Intent(this, NewRecipeActivity.class));
 
-        } else if (v == cleaningButton) {
+        } /*else if (v == cleaningButton) {
 
             startActivity(new Intent(this, CleaningActivity.class));
 
-        } else if (v == myrecipesButton){
+        } */
+         else if (v == myrecipesButton){
 
             startActivity(new Intent(this, MyRecipesActivity.class));
 

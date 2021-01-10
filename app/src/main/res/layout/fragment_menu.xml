@@ -10,56 +10,75 @@
         tools:context="views.fragments.Menu_frag">
 
     <androidx.cardview.widget.CardView
-            android:id="@+id/menu_card_view"
-            android:layout_width="233dp"
-            android:layout_height="307dp"
-            app:cardBackgroundColor="#8B5A39"
-            app:cardCornerRadius="15dp">
+        android:id="@+id/menu_card_view"
+        android:layout_width="219dp"
+        android:layout_height="342dp"
+        app:cardBackgroundColor="#8B5A39"
+        app:cardCornerRadius="15dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/menu_myprofile_button"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@android:color/transparent"
+                android:text="@string/my_profile"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@+id/menu_sign_out_btn"
+                app:layout_constraintTop_toBottomOf="@+id/menu_help_btn"
+                tools:layout_editor_absoluteX="0dp" />
 
             <Button
-                    android:id="@+id/menu_settings_btn"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:textSize="20sp"
-                    android:text="@string/settings"
-                    android:background="@android:color/transparent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    />
+                android:id="@+id/menu_settings_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:background="@android:color/transparent"
+                android:text="@string/settings"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@+id/menu_connect_btn"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_editor_absoluteX="0dp" />
 
             <Button
-                    android:id="@+id/menu_connect_btn"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:textSize="20sp"
-                    android:text="@string/connect"
-                    android:background="@android:color/transparent"
-                    app:layout_constraintTop_toBottomOf="@+id/menu_settings_btn" />
+                android:id="@+id/menu_connect_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@android:color/transparent"
+                android:text="@string/connect"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@+id/menu_help_btn"
+                app:layout_constraintTop_toBottomOf="@+id/menu_settings_btn"
+                tools:layout_editor_absoluteX="0dp" />
 
             <Button
-                    android:id="@+id/menu_help_btn"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:textSize="20sp"
-                    android:text="@string/help"
-                    android:background="@android:color/transparent"
-                    app:layout_constraintTop_toBottomOf="@+id/menu_connect_btn" />
+                android:id="@+id/menu_help_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@android:color/transparent"
+                android:text="@string/help"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@+id/menu_myprofile_button"
+                app:layout_constraintTop_toBottomOf="@+id/menu_connect_btn" />
 
             <Button
-                    android:id="@+id/menu_sign_out_btn"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:textSize="20sp"
-                    android:text="@string/sign_out"
-                    android:background="@android:color/transparent"
-                    app:layout_constraintTop_toBottomOf="@+id/menu_help_btn" />
+                android:id="@+id/menu_sign_out_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="17dp"
+                android:background="@android:color/transparent"
+                android:text="@string/sign_out"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/menu_myprofile_button"
+                tools:layout_editor_absoluteX="0dp" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

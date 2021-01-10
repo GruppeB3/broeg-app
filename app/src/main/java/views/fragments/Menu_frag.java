@@ -48,5 +48,6 @@ public class Menu_frag extends Fragment implements View.OnClickListener {
         } else if (v == signOutBtn) {
             // Do nothing for now
         }
+        getActivity().onBackPressed();
     }
 }

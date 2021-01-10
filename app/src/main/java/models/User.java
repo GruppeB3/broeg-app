@@ -62,6 +62,10 @@ public class User {
         this.apiToken = apiToken;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     // Aux
 
     public boolean hasApiTokenSet() {

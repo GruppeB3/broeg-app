@@ -58,4 +58,9 @@
     <string name="login_parameters_not_ok">Username and password must both have a length of 1 or greater</string>
     <string name="email">E-mail</string>
     <string name="login">Login</string>
+
+    <!-- My profile -->
+    <string name="my_profile_title">My Profile</string>
+    <string name="my_profile_name">Name: %1$s</string>
+    <string name="my_profile_email">E-mail: %1$s</string>
 </resources>

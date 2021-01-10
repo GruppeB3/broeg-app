@@ -41,6 +41,10 @@ public class App extends Application {
         return user;
     }
 
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     public boolean userIsLoggedIn() {
         return getUser().getApiToken() != null;
     }

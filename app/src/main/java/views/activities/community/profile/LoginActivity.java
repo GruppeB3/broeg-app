@@ -1,6 +1,5 @@
 package views.activities.community.profile;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -20,8 +19,9 @@ import views.activities.BaseActivity;
 
 public class LoginActivity extends BaseActivity implements Response.ErrorListener, Response.Listener<JSONObject> {
 
-    EditText username, password;
-    Button loginBtn;
+    private EditText username, password;
+    private Button loginBtn;
+    private int requestProgress = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,8 +49,8 @@ public class LoginActivity extends BaseActivity implements Response.ErrorListene
     }
 
     private void handleUserIsLoggedIn() {
-        startActivity(new Intent(this, MyProfileActivity.class));
-        finish();
+        requestProgress = 1;
+        getUserData();
     }
 
     private void logInUser() {
@@ -84,15 +84,40 @@ public class LoginActivity extends BaseActivity implements Response.ErrorListene
 
     @Override
     public void onResponse(JSONObject response) {
-        String token = null;
 
-        try {
-            token = response.getString("data");
-        } catch (JSONException ignored) {}
+        if (requestProgress == 0) {
+            String token = null;
 
-        App.getInstance().getUser().setApiToken(token);
-        System.out.println(response);
+            try {
+                token = response.getString("data");
+            } catch (JSONException ignored) {}
 
-        finish();
+            if (token != null) App.getInstance().getUser().setApiToken(token);
+
+            getUserData();
+            requestProgress = 1;
+        } else if (requestProgress == 1) {
+            int communityId = 0;
+            String name = null;
+            String email = null;
+            try {
+                communityId = response.getInt("id");
+                name = response.getString("name");
+                email = response.getString("email");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            if (email != null) App.getInstance().getUser().setEmail(email);
+            if (communityId > 0) App.getInstance().getUser().setCommunityId(communityId);
+            if (name != null) App.getInstance().getUser().setName(name);
+
+            finish();
+        }
+    }
+
+    private void getUserData() {
+        String apiUrl = ApiController.getApiBaseUrl() + "user";
+        ApiController.makeHttpGetRequest(apiUrl, null, this, this);
     }
 }

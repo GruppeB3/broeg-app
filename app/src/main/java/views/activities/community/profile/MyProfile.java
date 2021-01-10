@@ -1,12 +1,11 @@
-package views.activities;
+package views.activities.community.profile;
 
 import android.os.Bundle;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import dk.dtu.gruppeb3.broeg.app.R;
+import views.activities.BaseActivity;
 
-public class MyProfile extends AppCompatActivity {
+public class MyProfile extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

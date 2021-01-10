@@ -23,7 +23,7 @@
         <activity android:name="views.activities.CleaningActivity" />
         <activity android:name="views.activities.BrewingActivity" />
         <activity android:name="views.activities.MyRecipesActivity" />
-        <activity android:name="views.activities.MyProfile" />
+        <activity android:name="views.activities.community.profile.MyProfile" />
         <activity android:name="views.activities.NewRecipeActivity" />
         <activity android:name="views.activities.MainActivity">
             <intent-filter>

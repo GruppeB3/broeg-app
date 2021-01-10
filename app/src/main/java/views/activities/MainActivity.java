@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 
 import dk.dtu.gruppeb3.broeg.app.R;
+import views.activities.community.profile.MyProfile;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
 

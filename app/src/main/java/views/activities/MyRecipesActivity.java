@@ -127,7 +127,7 @@ public class MyRecipesActivity extends AppCompatActivity implements MyRecipeList
                     brew.getBloomAmount() + "Brewing Temperature " +
                     brew.getBrewingTemperature() + "Ground Coffee Amount " +
                     brew.getGroundCoffeeAmount() + "Grind Size " +
-                    brew.getGrindSize()));
+                    String.valueOf(brew.getGrindSize())));
 
             alert.setPositiveButton("Bryg", new DialogInterface.OnClickListener() {
                 @Override

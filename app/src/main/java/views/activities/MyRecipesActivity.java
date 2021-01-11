@@ -123,11 +123,11 @@ public class MyRecipesActivity extends AppCompatActivity implements MyRecipeList
             Brew brew = brews.get(position);
             alert.setTitle(brew.getName());
 
-            alert.setMessage("Bloom Time: "+(brew.getBloomTime() + "Bloom Amount: " +
-                    brew.getBloomAmount() + "Brewing Temperature " +
-                    brew.getBrewingTemperature() + "Ground Coffee Amount " +
-                    brew.getGroundCoffeeAmount() + "Grind Size " +
-                    String.valueOf(brew.getGrindSize())));
+            alert.setMessage("Bloom Time: "+(brew.getBloomTime() + "Bloom Amount:" + " " +
+                    brew.getBloomAmount() + "Brewing Temperature " + " " +
+                    brew.getBrewingTemperature() + "Ground Coffee Amount " + " " +
+                    brew.getGroundCoffeeAmount() + "Grind Size " + " " +
+                    (brew.getGrindSize())));
 
             alert.setPositiveButton("Bryg", new DialogInterface.OnClickListener() {
                 @Override

@@ -5,9 +5,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -75,7 +72,7 @@ public class MyRecipesActivity extends AppCompatActivity implements MyRecipeList
         this.brews = BrewsController.getBrewsFromLocalStorage(prefs);
     }
 
-    public void startBrew(){
+    public void startBrew(int position){
         String json = (new Gson()).toJson(this.brews.get(position));
         Intent i = new Intent(this, BrewingActivity.class);
         i.putExtra(BrewingActivity.SELECTED_BREW_IDENTIFIER, json);
@@ -85,7 +82,7 @@ public class MyRecipesActivity extends AppCompatActivity implements MyRecipeList
 
 
     @Override
-    public void onMyRecipeListButtonClick(MyRecipeListAdapter.Mode mode, int position) {
+    public void onMyRecipeListButtonClick(MyRecipeListAdapter.Mode mode, final int position) {
 
         if (mode == MyRecipeListAdapter.Mode.EDIT) {
 
@@ -122,25 +119,20 @@ public class MyRecipesActivity extends AppCompatActivity implements MyRecipeList
 
         } else if (mode == MyRecipeListAdapter.Mode.NONE) {
 
-            // TODO: @Gustav det er her du skal lave det om til en dialog.
-            // Brug normal dialog i en lang streng i stedet for klasse.
             AlertDialog.Builder alert = new AlertDialog.Builder(this);
             Brew brew = brews.get(position);
             alert.setTitle(brew.getName());
 
-            // Jeg har valgt de korrekter valueOf metoder, men det nlgter simpelthen at acceptere.
-            alert.setMessage(brew.getBloomTime() + " " +
-                    brew.getBloomAmount() + " " +
-                    brew.getBrewingTemperature() + " " +
-                    brew.getGroundCoffeeAmount() + " " +
-                    brew.getGroundCoffeeAmount());
+            alert.setMessage("Bloom Time: "+(brew.getBloomTime() + "Bloom Amount: " +
+                    brew.getBloomAmount() + "Brewing Temperature " +
+                    brew.getBrewingTemperature() + "Ground Coffee Amount " +
+                    brew.getGroundCoffeeAmount() + "Grind Size " +
+                    brew.getGrindSize()));
 
-
-            //Har bare kopieret din kode ind her, men den ser ikke ud til at genkende noget.
             alert.setPositiveButton("Bryg", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int i) {
-                   startBrew();
+                   startBrew(position);
                 }
             });
             alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {

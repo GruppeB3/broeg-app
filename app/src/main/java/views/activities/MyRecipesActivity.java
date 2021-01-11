@@ -75,8 +75,18 @@ public class MyRecipesActivity extends AppCompatActivity implements MyRecipeList
         this.brews = BrewsController.getBrewsFromLocalStorage(prefs);
     }
 
+    public void startBrew(){
+        String json = (new Gson()).toJson(this.brews.get(position));
+        Intent i = new Intent(this, BrewingActivity.class);
+        i.putExtra(BrewingActivity.SELECTED_BREW_IDENTIFIER, json);
+        startActivity(i);
+        finish();
+    }
+
+
     @Override
     public void onMyRecipeListButtonClick(MyRecipeListAdapter.Mode mode, int position) {
+
         if (mode == MyRecipeListAdapter.Mode.EDIT) {
 
             Intent i = new Intent(this, EditRecipeActivity.class);
@@ -145,12 +155,6 @@ public class MyRecipesActivity extends AppCompatActivity implements MyRecipeList
 
 
     }
-    public void startBrew(){
-        String json = (new Gson()).toJson(this.brews.get(position));
-        Intent i = new Intent(this, BrewingActivity.class);
-        i.putExtra(BrewingActivity.SELECTED_BREW_IDENTIFIER, json);
-        startActivity(i);
-        finish();
-    }
+
 
 }

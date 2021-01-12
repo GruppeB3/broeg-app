@@ -63,4 +63,5 @@
     <string name="my_profile_title">My Profile</string>
     <string name="my_profile_name">Name: %1$s</string>
     <string name="my_profile_email">E-mail: %1$s</string>
+    <string name="my_profile">My profile</string>
 </resources>

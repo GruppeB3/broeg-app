@@ -22,8 +22,9 @@ import helpers.PreferenceHelper;
 import models.Brew;
 import views.adapters.MyRecipeListAdapter;
 
+import static java.lang.String.valueOf;
 
-public class MyRecipesActivity extends BaseActivity implements AdapterView.OnItemClickListener, MyRecipeListAdapter.MyRecipeListButtonListener {
+public class MyRecipesActivity extends BaseActivity implements MyRecipeListAdapter.MyRecipeListButtonListener {
 
     private ArrayList<Brew> brews;
     private SharedPreferences prefs;
@@ -57,28 +58,6 @@ public class MyRecipesActivity extends BaseActivity implements AdapterView.OnIte
         updateListOfBrews();
     }
 
-    // TODO: Re-introduce on item click
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-        AlertDialog.Builder alert = new AlertDialog.Builder(this);
-        Brew brew = brews.get(position);
-        alert.setTitle(brew.getName());
-        alert.setMessage(brew.getBloomTime());
-        alert.setMessage((int) brew.getBloomAmount());
-        alert.setMessage((int) brew.getBrewingTemperature());
-        alert.setMessage((int) brew.getGroundCoffeeAmount());
-        final EditText input = new EditText(this);
-        alert.setView(input);
-
-        alert.setNeutralButton(getText(R.string.ok), new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-            }
-        });
-
-        alert.show();
-    }
 
     private Brew getBrewFromIntent() {
         String json = this.getIntent().getStringExtra("brew");
@@ -94,8 +73,18 @@ public class MyRecipesActivity extends BaseActivity implements AdapterView.OnIte
         this.brews = BrewsController.getBrewsFromLocalStorage(prefs);
     }
 
+    public void startBrew(int position){
+        String json = (new Gson()).toJson(this.brews.get(position));
+        Intent i = new Intent(this, BrewingActivity.class);
+        i.putExtra(BrewingActivity.SELECTED_BREW_IDENTIFIER, json);
+        startActivity(i);
+        finish();
+    }
+
+
     @Override
-    public void onMyRecipeListButtonClick(MyRecipeListAdapter.Mode mode, int position) {
+    public void onMyRecipeListButtonClick(MyRecipeListAdapter.Mode mode, final int position) {
+
         if (mode == MyRecipeListAdapter.Mode.EDIT) {
 
             Intent i = new Intent(this, EditRecipeActivity.class);
@@ -131,13 +120,29 @@ public class MyRecipesActivity extends BaseActivity implements AdapterView.OnIte
 
         } else if (mode == MyRecipeListAdapter.Mode.NONE) {
 
-            // TODO: @Gustav det er her du skal lave det om til en dialog.
-            // Slet onItemClick metoden længere oppe.
-            String json = (new Gson()).toJson(this.brews.get(position));
-            Intent i = new Intent(this, BrewingActivity.class);
-            i.putExtra(BrewingActivity.SELECTED_BREW_IDENTIFIER, json);
-            startActivity(i);
-            finish();
+            AlertDialog.Builder alert = new AlertDialog.Builder(this);
+            Brew brew = brews.get(position);
+            alert.setTitle(brew.getName());
+
+            alert.setMessage("Bloom Time:  "+(brew.getBloomTime() + " - " + "Bloom Amount:  " +
+                    brew.getBloomAmount() + " - " + "Brewing Temperature  " +
+                    brew.getBrewingTemperature() + " - " + "Ground Coffee Amount  " +
+                    brew.getGroundCoffeeAmount() + " - " + "Grind Size  " +
+                    (brew.getGrindSize())));
+
+            alert.setPositiveButton("Bryg", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int i) {
+                   startBrew(position);
+                }
+            });
+            alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                        return;
+                }
+            });
+            alert.create().show();
 
         }
     }

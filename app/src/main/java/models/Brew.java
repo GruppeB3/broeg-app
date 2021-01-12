@@ -24,7 +24,7 @@ public class Brew {
 
     public Brew(GrindSize grindSize, double brewingTemperature, double groundCoffeeAmount, double coffeeWaterRatio, double bloomAmount, int totalBrewTime, int bloomTime) {
         this.grindSize = grindSize;
-        this.brewingTemperature = Precision.round(brewingTemperature, 1, );
+        this.brewingTemperature = Precision.round(brewingTemperature, 1);
         this.groundCoffeeAmount = Precision.round(groundCoffeeAmount, 1);
         this.bloomAmount = Precision.round(bloomAmount, 1);
         this.coffeeWaterRatio = Precision.round(coffeeWaterRatio, 1);

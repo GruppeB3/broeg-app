@@ -53,7 +53,8 @@ public class ChooseAmountOfCoffee_frag extends Fragment implements View.OnClickL
                 amountOfCoffee--;
                 TextView tv = root.findViewById(R.id.CoffeeAmount);
                 tv.setText(amountOfCoffee + "(g)");
-            }
+                }
+
         }));
 
         updateText();

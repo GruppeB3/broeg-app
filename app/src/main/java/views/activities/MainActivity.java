@@ -17,12 +17,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         addContentLayout(R.layout.activity_main);
 
-        profileButton = findViewById(R.id.profile_button);
+//        profileButton = findViewById(R.id.profile_button);
         newBrewButton = findViewById(R.id.broeg_frontpagebutton);
         cleaningButton = findViewById(R.id.cleaning_button);
         myrecipesButton = findViewById(R.id.myrecipes_button);
 
-        profileButton.setOnClickListener(this);
+//        profileButton.setOnClickListener(this);
         newBrewButton.setOnClickListener(this);
         cleaningButton.setOnClickListener(this);
         myrecipesButton.setOnClickListener(this);

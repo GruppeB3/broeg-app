@@ -14,14 +14,15 @@ import views.fragments.ChooseBloomTime_frag;
 import views.fragments.ChooseBloomWaterAmount_frag;
 import views.fragments.ChooseBrewingTemperature_frag;
 import views.fragments.ChooseGrindSize_frag;
+import views.fragments.ChooseRatio_frag;
 import views.fragments.ChooseTotalBrewTime_frag;
 import views.fragments.NameRecipe_frag;
 
 public class NewRecipeActivity extends BaseActivity implements View.OnClickListener {
 
 
-    private ImageView groundCoffeeAmtImgView, grindSizeImgView, brewTempImgView, bloomWaterAmtImgView, bloomTimeImgView, totalTimeImgView;
-    private Button groundCoffeeAmtBtn, grindSizeBtn, brewTempBtn, bloomWaterAmtBtn, bloomTimeBtn, totalTimeBtn, saveBtn;
+    private ImageView groundCoffeeAmtImgView, grindSizeImgView, brewTempImgView, bloomWaterAmtImgView, bloomTimeImgView, totalTimeImgView, ratioImgView;
+    private Button groundCoffeeAmtBtn, grindSizeBtn, brewTempBtn, bloomWaterAmtBtn, bloomTimeBtn, totalTimeBtn, ratioBtn, saveBtn;
     SharedPreferences prefs;
 
     @Override
@@ -35,6 +36,7 @@ public class NewRecipeActivity extends BaseActivity implements View.OnClickListe
         bloomWaterAmtImgView = findViewById(R.id.bloomWaterBackground);
         bloomTimeImgView = findViewById(R.id.bloomTimeBackground);
         totalTimeImgView = findViewById(R.id.totalBrewTimeBackground);
+        ratioImgView = findViewById(R.id.coffeeWaterRatioBackground);
 
         groundCoffeeAmtBtn = findViewById(R.id.groundCoffeAmtText);
         grindSizeBtn = findViewById(R.id.grindSizeText);
@@ -42,6 +44,7 @@ public class NewRecipeActivity extends BaseActivity implements View.OnClickListe
         bloomWaterAmtBtn = findViewById(R.id.bloomWaterText);
         bloomTimeBtn = findViewById(R.id.bloomTimeText);
         totalTimeBtn = findViewById(R.id.totalBrewTimeText);
+        ratioBtn = findViewById(R.id.coffeeWaterRatioText);
         saveBtn = findViewById(R.id.saveButton);
 
         groundCoffeeAmtImgView.setOnClickListener(this);
@@ -55,6 +58,7 @@ public class NewRecipeActivity extends BaseActivity implements View.OnClickListe
         bloomWaterAmtBtn.setOnClickListener(this);
         bloomTimeBtn.setOnClickListener(this);
         totalTimeBtn.setOnClickListener(this);
+        ratioBtn.setOnClickListener(this);
         saveBtn.setOnClickListener(this);
 
         prefs = PreferenceHelper.getApplicationPreferences(this);
@@ -99,6 +103,12 @@ public class NewRecipeActivity extends BaseActivity implements View.OnClickListe
             getFragmentManager().beginTransaction()
                     .setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
                     .replace(R.id.fragment_contents, new ChooseTotalBrewTime_frag())
+                    .addToBackStack(null)
+                    .commit();
+        } else if (ClickButton == ratioImgView || ClickButton == ratioBtn) {
+            getFragmentManager().beginTransaction()
+                    .setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
+                    .replace(R.id.fragment_contents, new ChooseRatio_frag())
                     .addToBackStack(null)
                     .commit();
         } else if (ClickButton == saveBtn) {

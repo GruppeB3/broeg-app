@@ -43,7 +43,7 @@ public class ChooseAmountOfCoffee_frag extends Fragment implements View.OnClickL
             public void onClick(View v) {
                 amountOfCoffee++;
                 TextView tv = root.findViewById(R.id.CoffeeAmount);
-                tv.setText("Mængde kaffe i gram (" + amountOfCoffee + ")");
+                tv.setText(amountOfCoffee + "(g)");
             }
         }));
         minusBtn.setOnTouchListener(new RepeatListener(400, 100, new View.OnClickListener() {
@@ -52,7 +52,7 @@ public class ChooseAmountOfCoffee_frag extends Fragment implements View.OnClickL
             public void onClick(View v) {
                 amountOfCoffee--;
                 TextView tv = root.findViewById(R.id.CoffeeAmount);
-                tv.setText("Mængde kaffe i gram (" + amountOfCoffee + ")");
+                tv.setText(amountOfCoffee + "(g)");
             }
         }));
 
@@ -84,6 +84,6 @@ public class ChooseAmountOfCoffee_frag extends Fragment implements View.OnClickL
 
     private void updateText() {
         TextView tv = root.findViewById(R.id.CoffeeAmount);
-        tv.setText("Mængde kaffe i gram (" + amountOfCoffee + ")");
+        tv.setText(+ amountOfCoffee + "(g)");
     }
 }

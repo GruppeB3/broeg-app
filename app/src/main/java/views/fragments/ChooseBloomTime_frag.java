@@ -38,7 +38,7 @@ public class ChooseBloomTime_frag extends Fragment implements View.OnClickListen
             public void onClick(View v) {
                 amountBloomTime++;
                 TextView tv = root.findViewById(R.id.bloomTime);
-                tv.setText("Bloomtid i sekunder (" +amountBloomTime + ")");
+                tv.setText(amountBloomTime + "(s)");
             }
         }));
         minusBtn.setOnTouchListener(new RepeatListener(400, 100, new View.OnClickListener() {
@@ -47,7 +47,7 @@ public class ChooseBloomTime_frag extends Fragment implements View.OnClickListen
             public void onClick(View v) {
                 amountBloomTime--;
                 TextView tv = root.findViewById(R.id.bloomTime);
-                tv.setText("Bloomtid i sekunder (" + amountBloomTime + ")");
+                tv.setText(amountBloomTime + "(s)");
             }
         }));
 
@@ -76,6 +76,6 @@ public class ChooseBloomTime_frag extends Fragment implements View.OnClickListen
 
     private void updateText() {
         TextView tv = root.findViewById(R.id.bloomTime);
-        tv.setText("Bloomtid i sekunder (" + amountBloomTime + ")");
+        tv.setText(amountBloomTime + "(s)");
     }
 }

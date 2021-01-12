@@ -41,7 +41,7 @@ public class ChooseBrewingTemperature_frag extends Fragment implements View.OnCl
             public void onClick(View v) {
                 temperature++;
                 TextView tv = root.findViewById(R.id.totalTime);
-                tv.setText("Temperatur i celcius (" + temperature + ")");
+                tv.setText(temperature + "(C)");
             }
         }));
         minusBtn.setOnTouchListener(new RepeatListener(400, 100, new View.OnClickListener() {
@@ -50,7 +50,7 @@ public class ChooseBrewingTemperature_frag extends Fragment implements View.OnCl
             public void onClick(View v) {
                 temperature--;
                 TextView tv = root.findViewById(R.id.totalTime);
-                tv.setText("Temperatur i celcius (" + temperature + ")");
+                tv.setText(temperature + "(C)");
             }
         }));
 
@@ -83,6 +83,6 @@ public class ChooseBrewingTemperature_frag extends Fragment implements View.OnCl
 
     private void updateText() {
         TextView tv = root.findViewById(R.id.totalTime);
-        tv.setText("Bryggetemperatur i grader celcius (" + temperature + ")");
+        tv.setText(temperature + "(C)");
     }
 }

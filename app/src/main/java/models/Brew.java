@@ -58,13 +58,12 @@ public class Brew {
 
     public void setBloomTime(int bloomTime) {
         this.bloomTime = bloomTime;
-        calculateTotalTime();
     }
-/*
+
     public void setTotalBrewTime(int totalBrewTime) {
         this.totalBrewTime = totalBrewTime;
     }
-*/
+
     // Getters
     public GrindSize getGrindSize() {
         return grindSize;
@@ -87,7 +86,6 @@ public class Brew {
     }
 
     public int getTotalBrewTime() {
-        calculateTotalTime();
         return totalBrewTime;
     }
 
@@ -96,9 +94,4 @@ public class Brew {
     }
 
     public String getName() { return name; }
-
-    private void calculateTotalTime() {
-        // TODO add additional calculation about total time.
-        this.totalBrewTime = this.bloomTime;
-    }
 }

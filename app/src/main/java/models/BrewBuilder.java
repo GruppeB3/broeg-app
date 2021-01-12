@@ -52,12 +52,12 @@ public class BrewBuilder {
         this.brew.setCoffeeWaterRatio(ratio);
         return this;
     }
-/*
+
     public BrewBuilder totalBrewTime(int time) {
         this.brew.setTotalBrewTime(time);
         return this;
     }
-*/
+
     public BrewBuilder name(String name){
         this.brew.setName(name);
         return this;

@@ -46,6 +46,7 @@
     <string name="bloom_water_amount">Bloom Water Amount</string>
     <string name="bloom_time">Bloom Time</string>
     <string name="coffee_water_ratio">Coffee Water Ratio</string>
+    <string name="total_brew_time">Total Brew Time</string>
 
     <!-- Select brewer -->
     <string name="select_brewer">Select brewer</string>

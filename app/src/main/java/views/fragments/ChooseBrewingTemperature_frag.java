@@ -28,9 +28,9 @@ public class ChooseBrewingTemperature_frag extends Fragment implements View.OnCl
 
         temperature = BrewBuilder.getInstance().get().getBrewingTemperature();
 
-        plusBtn = root.findViewById(R.id.ArrowUp_Temp);
-        minusBtn = root.findViewById(R.id.ArrowDown_Temp);
-        saveBtn = root.findViewById(R.id.Save_Temp);
+        plusBtn = root.findViewById(R.id.ArrowUp_Total);
+        minusBtn = root.findViewById(R.id.ArrowDown_Total);
+        saveBtn = root.findViewById(R.id.Save_Total);
 
         plusBtn.setOnClickListener(this);
         minusBtn.setOnClickListener(this);
@@ -40,7 +40,7 @@ public class ChooseBrewingTemperature_frag extends Fragment implements View.OnCl
             @Override
             public void onClick(View v) {
                 temperature++;
-                TextView tv = root.findViewById(R.id.temperature);
+                TextView tv = root.findViewById(R.id.totalTime);
                 tv.setText("Temperatur i celcius (" + temperature + ")");
             }
         }));
@@ -49,7 +49,7 @@ public class ChooseBrewingTemperature_frag extends Fragment implements View.OnCl
             @Override
             public void onClick(View v) {
                 temperature--;
-                TextView tv = root.findViewById(R.id.temperature);
+                TextView tv = root.findViewById(R.id.totalTime);
                 tv.setText("Temperatur i celcius (" + temperature + ")");
             }
         }));
@@ -82,7 +82,7 @@ public class ChooseBrewingTemperature_frag extends Fragment implements View.OnCl
     }
 
     private void updateText() {
-        TextView tv = root.findViewById(R.id.temperature);
+        TextView tv = root.findViewById(R.id.totalTime);
         tv.setText("Bryggetemperatur i grader celcius (" + temperature + ")");
     }
 }

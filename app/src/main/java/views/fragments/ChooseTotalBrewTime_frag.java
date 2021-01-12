@@ -8,8 +8,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AlertDialog;
-
 import dk.dtu.gruppeb3.broeg.app.R;
 import models.BrewBuilder;
 import views.RepeatListener;
@@ -18,21 +16,22 @@ import views.RepeatListener;
  * This fragment gives the user the opportunity to choose the amount of coffee they want to brew.
  */
 
-public class ChooseAmountOfCoffee_frag extends Fragment implements View.OnClickListener {
+public class ChooseTotalBrewTime_frag extends Fragment implements View.OnClickListener {
+
 
     Button plusBtn, minusBtn, saveBtn;
     private View root;
-    double amountOfCoffee;
+    double totalBrewingTime;
 
     @Override
     public View onCreateView(LayoutInflater i, ViewGroup container, Bundle savedInstanceState){
-        this.root = i.inflate(R.layout.fragment_choose_amount_of_coffee, container, false);
+        this.root = i.inflate(R.layout.fragment_total_brewing_time, container, false);
 
-        amountOfCoffee = BrewBuilder.getInstance().get().getGroundCoffeeAmount();
+        totalBrewingTime = BrewBuilder.getInstance().get().getTotalBrewTime();
 
-        plusBtn = root.findViewById(R.id.ArrowUp_CoffeAmount);
-        minusBtn = root.findViewById(R.id.ArrowDown_CoffeAmount);
-        saveBtn = root.findViewById(R.id.Save_AmountCoffee);
+        plusBtn = root.findViewById(R.id.ArrowUp_Total);
+        minusBtn = root.findViewById(R.id.ArrowDown_Total);
+        saveBtn = root.findViewById(R.id.Save_Total);
 
         plusBtn.setOnClickListener(this);
         minusBtn.setOnClickListener(this);
@@ -41,18 +40,18 @@ public class ChooseAmountOfCoffee_frag extends Fragment implements View.OnClickL
         plusBtn.setOnTouchListener(new RepeatListener(400, 100, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                amountOfCoffee++;
-                TextView tv = root.findViewById(R.id.CoffeeAmount);
-                tv.setText("Mængde kaffe i gram (" + amountOfCoffee + ")");
+                totalBrewingTime++;
+                TextView tv = root.findViewById(R.id.totalTime);
+                tv.setText(totalBrewingTime + "(s)");
             }
         }));
         minusBtn.setOnTouchListener(new RepeatListener(400, 100, new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                amountOfCoffee--;
-                TextView tv = root.findViewById(R.id.CoffeeAmount);
-                tv.setText("Mængde kaffe i gram (" + amountOfCoffee + ")");
+                totalBrewingTime--;
+                TextView tv = root.findViewById(R.id.totalTime);
+                tv.setText(totalBrewingTime + "(s)");
             }
         }));
 
@@ -67,15 +66,15 @@ public class ChooseAmountOfCoffee_frag extends Fragment implements View.OnClickL
     public void onClick(View ButtonClick) {
 
         if (ButtonClick == plusBtn) {
-            amountOfCoffee++;
+            totalBrewingTime++;
             updateText();
 
         } else if (ButtonClick == minusBtn){
-            amountOfCoffee--;
+            totalBrewingTime--;
             updateText();
 
         } else if (ButtonClick == saveBtn){
-            BrewBuilder.getInstance().groundCoffeeAmount(amountOfCoffee);
+            BrewBuilder.getInstance().groundCoffeeAmount(totalBrewingTime);
 
             getActivity().onBackPressed();
         }
@@ -83,7 +82,7 @@ public class ChooseAmountOfCoffee_frag extends Fragment implements View.OnClickL
     }
 
     private void updateText() {
-        TextView tv = root.findViewById(R.id.CoffeeAmount);
-        tv.setText("Mængde kaffe i gram (" + amountOfCoffee + ")");
+        TextView tv = root.findViewById(R.id.totalTime);
+        tv.setText(totalBrewingTime + "(s)");
     }
 }

@@ -11,7 +11,7 @@
 
     <!-- Brew administration -->
     <string name="delete_brew">Delete brew</string>
-    <string name="sure_to_delete_brew">Are you sure you want to delete brew "%1s"?</string>
+    <string name="sure_to_delete_brew">Are you sure you want to delete brew "%1$s"?</string>
 
     <!-- Esp BLE provision -->
     <string name="search_for_new_devices">Search for new devices</string>
@@ -28,7 +28,7 @@
     <string name="device_connected">Device connected</string>
     <string name="device_disconnected">Device disconnected</string>
 
-    <string name="time_in_minutes">Time in minutes</string>
+    <string name="time_in_minutes">Time left: %1$s minute(s)</string>
 
     <!-- Brew creation -->
     <string name="temperature_in_celsius">Temperature in degrees celsius</string>
@@ -44,4 +44,13 @@
     <!-- Select brewer -->
     <string name="select_brewer">Select brewer</string>
     <string name="add_new_device">Add new device</string>
+
+    <!-- Brew process -->
+    <string name="current_recipe">Current recipe: %1$s</string>
+    
+    <!-- Menu -->
+    <string name="settings">Settings</string>
+    <string name="connect">Connect</string>
+    <string name="help">Help</string>
+    <string name="sign_out">Sign out</string>
 </resources>

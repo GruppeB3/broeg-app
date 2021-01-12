@@ -5,8 +5,10 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.EditText;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -22,8 +24,7 @@ import views.adapters.MyRecipeListAdapter;
 
 import static java.lang.String.valueOf;
 
-
-public class MyRecipesActivity extends AppCompatActivity implements MyRecipeListAdapter.MyRecipeListButtonListener {
+public class MyRecipesActivity extends BaseActivity implements AdapterView.OnItemClickListener, MyRecipeListAdapter.MyRecipeListButtonListener {
 
     private ArrayList<Brew> brews;
     private SharedPreferences prefs;
@@ -32,7 +33,7 @@ public class MyRecipesActivity extends AppCompatActivity implements MyRecipeList
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_myrecipes);
+        addContentLayout(R.layout.activity_myrecipes);
 
         prefs = PreferenceHelper.getApplicationPreferences(this);
         updateListOfBrews();
@@ -144,9 +145,5 @@ public class MyRecipesActivity extends AppCompatActivity implements MyRecipeList
             alert.create().show();
 
         }
-
-
     }
-
-
 }

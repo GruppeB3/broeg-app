@@ -40,8 +40,7 @@ public class BrewTest {
         brew.setBloomTime(bloomTime);
         Assert.assertEquals(brew.getBloomTime(), bloomTime, 0);
 
-        int totalBrewTime = rand.nextInt();
-        brew.setTotalBrewTime(totalBrewTime);
-        Assert.assertEquals(brew.getTotalBrewTime(), totalBrewTime, 0);
+        // For now total time = bloom time
+        Assert.assertEquals(brew.getTotalBrewTime(), bloomTime, 0);
     }
 }

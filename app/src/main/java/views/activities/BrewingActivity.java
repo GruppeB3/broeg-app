@@ -1,25 +1,22 @@
 package views.activities;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
-
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 
-import java.util.Random;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 
 import dk.dtu.gruppeb3.broeg.app.R;
 import models.Brew;
-import models.Brewer;
 
-public class BrewingActivity extends AppCompatActivity implements View.OnClickListener {
+public class BrewingActivity extends BrewerActivity implements View.OnClickListener {
 
     public static final String SELECTED_BREW_IDENTIFIER = "selectedBrew";
 
@@ -28,19 +25,22 @@ public class BrewingActivity extends AppCompatActivity implements View.OnClickLi
     private Button startBtn;
     private Button cancelBtn;
     private ProgressBar progressBar;
+    private TextView minutesLeftView;
+    private TextView currentRecipeView;
 
-    private int SELECT_BREWER_REQUEST_CODE = (new Random()).nextInt(16);
-    private Brewer brewer;
     private Brew brew;
+    private int totalTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_brewing);
+        addContentLayout(R.layout.activity_brewing).hideMenu();
 
         startBtn = findViewById(R.id.button2);
         cancelBtn = findViewById(R.id.button10);
         progressBar = findViewById(R.id.progressBar);
+        minutesLeftView = findViewById(R.id.textView3);
+        currentRecipeView = findViewById(R.id.current_recipe);
 
         startBtn.setOnClickListener(this);
         cancelBtn.setOnClickListener(this);
@@ -50,7 +50,9 @@ public class BrewingActivity extends AppCompatActivity implements View.OnClickLi
         if (this.brew == null)
             throw new IllegalStateException("A brew was not provided. Cannot proceed!");
 
-        getBrewer();
+        this.totalTime = this.brew.getTotalBrewTime();
+        minutesLeftView.setText(getString(R.string.time_in_minutes, String.valueOf(Math.round((this.totalTime) / 60))));
+        currentRecipeView.setText(getString(R.string.current_recipe, this.brew.getName()));
     }
 
     private void startBrewing() {
@@ -63,6 +65,7 @@ public class BrewingActivity extends AppCompatActivity implements View.OnClickLi
 
     private void startBrewingWithMockBrewer() {
         progressBar.setProgress(0);
+        final int totalTime = this.totalTime;
 
         final Handler mainThread = new Handler(Looper.getMainLooper());
 
@@ -77,11 +80,16 @@ public class BrewingActivity extends AppCompatActivity implements View.OnClickLi
                         @Override
                         public void run() {
                             progressBar.setProgress(progress);
+                            DecimalFormat df = new DecimalFormat("#");
+                            df.setRoundingMode(RoundingMode.HALF_EVEN);
+                            double value = (totalTime - (totalTime * (progress / 100.0))) / 60;
+                            String number = df.format(value);
+                            minutesLeftView.setText(getString(R.string.time_in_minutes, number));
                         }
                     });
 
                     try {
-                        Thread.sleep(1000);
+                        Thread.sleep((totalTime / 10) * 1000);
                     } catch (Exception ignored) {}
                 }
             }
@@ -97,27 +105,9 @@ public class BrewingActivity extends AppCompatActivity implements View.OnClickLi
         this.brew = gson.fromJson(json, Brew.class);
     }
 
-    private void getBrewer() {
-        Intent i = new Intent(this, SelectBrewerActivity.class);
-        startActivityForResult(i, SELECT_BREWER_REQUEST_CODE);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == SELECT_BREWER_REQUEST_CODE && resultCode == RESULT_OK) {
-            String brewerJson = data.getStringExtra(SelectBrewerActivity.SELECTED_BREWER_IDENTIFIER);
-
-            if (brewerJson.equals(""))
-                return;
-
-            this.brewer = gson.fromJson(brewerJson, Brewer.class);
-        }
-    }
-
     @Override
     public void onClick(View v) {
+        super.onClick(v);
         if (v == startBtn) {
             startBrewing();
         } else if (v == cancelBtn) {

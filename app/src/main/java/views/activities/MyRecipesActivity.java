@@ -24,7 +24,7 @@ import views.adapters.MyRecipeListAdapter;
 
 import static java.lang.String.valueOf;
 
-public class MyRecipesActivity extends BaseActivity implements AdapterView.OnItemClickListener, MyRecipeListAdapter.MyRecipeListButtonListener {
+public class MyRecipesActivity extends BaseActivity implements MyRecipeListAdapter.MyRecipeListButtonListener {
 
     private ArrayList<Brew> brews;
     private SharedPreferences prefs;

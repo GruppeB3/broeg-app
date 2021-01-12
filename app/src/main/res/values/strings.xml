@@ -53,4 +53,5 @@
     <string name="connect">Connect</string>
     <string name="help">Help</string>
     <string name="sign_out">Sign out</string>
+    <string name="my_profile">My profile</string>
 </resources>

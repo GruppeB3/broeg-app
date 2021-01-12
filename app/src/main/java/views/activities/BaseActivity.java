@@ -1,5 +1,6 @@
 package views.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +15,7 @@ import views.fragments.Menu_frag;
 
 public abstract class BaseActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button menuBtn;
+    Button menuBtn, cleaningBtn;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -22,11 +23,20 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         setContentView(R.layout.activity_base);
 
         menuBtn = findViewById(R.id.menu_button);
+        cleaningBtn = findViewById(R.id.cleaning_button);
 
         if (menuBtn != null) {
             menuBtn.setOnClickListener(this);
         }
-    }
+
+        if (cleaningBtn != null) {
+          cleaningBtn.setOnClickListener(this);
+
+        }
+
+
+        }
+
 
     public BaseActivity hideMenu() {
         if (menuBtn != null) {
@@ -51,6 +61,11 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
                     .replace(R.id.menu_content, new Menu_frag())
                     .addToBackStack(null)
                     .commit();
+        }
+
+        else if (v == cleaningBtn){
+
+            startActivity(new Intent(this, CleaningActivity.class));
         }
     }
 }

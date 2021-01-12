@@ -34,7 +34,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/ArrowUp_Total"
+            android:id="@+id/ArrowUp_Ratio"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
@@ -46,7 +46,7 @@
             app:layout_constraintRight_toRightOf="parent" />
 
         <Button
-            android:id="@+id/ArrowDown_Total"
+            android:id="@+id/ArrowDown_Ratio"
             android:layout_width="44dp"
             android:layout_height="37.5dp"
             android:layout_gravity="center"
@@ -60,7 +60,7 @@
             app:layout_constraintTop_toBottomOf="@+id/totalTime" />
 
         <Button
-            android:id="@+id/Save_Total"
+            android:id="@+id/Save_Ratio"
             android:layout_width="163dp"
             android:layout_height="46dp"
             android:layout_gravity="center"
@@ -72,7 +72,7 @@
             app:layout_constraintHorizontal_bias="0.502"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ArrowDown_Total" />
+            app:layout_constraintTop_toBottomOf="@+id/ArrowDown_Ratio" />
 
         <ImageView
             android:id="@+id/imageView5"

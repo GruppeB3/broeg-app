@@ -16,17 +16,18 @@ import views.RepeatListener;
  * This fragment gives the user the opportunity to choose the amount of coffee they want to brew.
  */
 
-public class ChooseBrewingTemperature_frag extends Fragment implements View.OnClickListener {
+public class ChooseRatio_frag extends Fragment implements View.OnClickListener {
+
 
     Button plusBtn, minusBtn, saveBtn;
     private View root;
-    double temperature;
+    double coffeeWaterRatio;
 
     @Override
     public View onCreateView(LayoutInflater i, ViewGroup container, Bundle savedInstanceState){
-        this.root = i.inflate(R.layout.fragment_brewing_temperature, container, false);
+        this.root = i.inflate(R.layout.fragment_total_brewing_time, container, false);
 
-        temperature = BrewBuilder.getInstance().get().getBrewingTemperature();
+        coffeeWaterRatio = BrewBuilder.getInstance().get().getCoffeeWaterRatio();
 
         plusBtn = root.findViewById(R.id.ArrowUp_Ratio);
         minusBtn = root.findViewById(R.id.ArrowDown_Ratio);
@@ -39,42 +40,41 @@ public class ChooseBrewingTemperature_frag extends Fragment implements View.OnCl
         plusBtn.setOnTouchListener(new RepeatListener(400, 100, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                temperature++;
+                coffeeWaterRatio++;
                 TextView tv = root.findViewById(R.id.totalTime);
-                tv.setText("Temperatur i celcius (" + temperature + ")");
+                tv.setText(coffeeWaterRatio + "(g/L)");
             }
         }));
         minusBtn.setOnTouchListener(new RepeatListener(400, 100, new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                temperature--;
+                coffeeWaterRatio--;
                 TextView tv = root.findViewById(R.id.totalTime);
-                tv.setText("Temperatur i celcius (" + temperature + ")");
+                tv.setText(coffeeWaterRatio + "(g/L)");
             }
         }));
-
 
         updateText();
 
         return root;
+
+
     }
 
     @Override
     public void onClick(View ButtonClick) {
 
-
-
         if (ButtonClick == plusBtn) {
-            temperature++;
+            coffeeWaterRatio++;
             updateText();
 
         } else if (ButtonClick == minusBtn){
-            temperature--;
+            coffeeWaterRatio--;
             updateText();
 
         } else if (ButtonClick == saveBtn){
-            BrewBuilder.getInstance().brewingTemperature(temperature);
+            BrewBuilder.getInstance().coffeeWaterRatio(coffeeWaterRatio);
 
             getActivity().onBackPressed();
         }
@@ -83,6 +83,6 @@ public class ChooseBrewingTemperature_frag extends Fragment implements View.OnCl
 
     private void updateText() {
         TextView tv = root.findViewById(R.id.totalTime);
-        tv.setText("Bryggetemperatur i grader celcius (" + temperature + ")");
+        tv.setText(coffeeWaterRatio + "(g/L)");
     }
 }

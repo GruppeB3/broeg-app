@@ -27,8 +27,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="120dp"
             android:layout_marginBottom="20dp"
-            android:text="s"
-            android:gravity ="center"
+            android:gravity="center"
+            android:text="g/L"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -78,7 +78,7 @@
             android:id="@+id/txtRatio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="     Choose total brewing time"
+            android:text="   Choose water/coffee ratio"
             android:textAlignment="center"
             android:textSize="18sp"
             android:textStyle="bold" />

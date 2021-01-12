@@ -21,7 +21,7 @@ public class ChooseTotalBrewTime_frag extends Fragment implements View.OnClickLi
 
     Button plusBtn, minusBtn, saveBtn;
     private View root;
-    double totalBrewingTime;
+    int totalBrewingTime;
 
     @Override
     public View onCreateView(LayoutInflater i, ViewGroup container, Bundle savedInstanceState){
@@ -29,9 +29,9 @@ public class ChooseTotalBrewTime_frag extends Fragment implements View.OnClickLi
 
         totalBrewingTime = BrewBuilder.getInstance().get().getTotalBrewTime();
 
-        plusBtn = root.findViewById(R.id.ArrowUp_Total);
-        minusBtn = root.findViewById(R.id.ArrowDown_Total);
-        saveBtn = root.findViewById(R.id.Save_Total);
+        plusBtn = root.findViewById(R.id.ArrowUp_Ratio);
+        minusBtn = root.findViewById(R.id.ArrowDown_Ratio);
+        saveBtn = root.findViewById(R.id.Save_Ratio);
 
         plusBtn.setOnClickListener(this);
         minusBtn.setOnClickListener(this);
@@ -74,7 +74,7 @@ public class ChooseTotalBrewTime_frag extends Fragment implements View.OnClickLi
             updateText();
 
         } else if (ButtonClick == saveBtn){
-            BrewBuilder.getInstance().groundCoffeeAmount(totalBrewingTime);
+            BrewBuilder.getInstance().totalBrewTime(totalBrewingTime);
 
             getActivity().onBackPressed();
         }

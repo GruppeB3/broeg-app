@@ -10,13 +10,13 @@ import models.enums.GrindSize;
  */
 public class Brew {
 
-    private GrindSize grindSize;
-    private double brewingTemperature;
-    private double groundCoffeeAmount;
-    private double bloomAmount;
-    private double coffeeWaterRatio;
-    private int bloomTime;
-    private int totalBrewTime;
+    private GrindSize grindSize = GrindSize.MEDIUM;
+    private double brewingTemperature = 93;
+    private double groundCoffeeAmount = 60;
+    private double bloomAmount = 150;
+    private double coffeeWaterRatio = 6;
+    private int bloomTime = 30;
+    private int totalBrewTime = 180;
     private String name;
 
     // we provide an empty constructor in case somebody wants to use the setters
@@ -24,7 +24,7 @@ public class Brew {
 
     public Brew(GrindSize grindSize, double brewingTemperature, double groundCoffeeAmount, double coffeeWaterRatio, double bloomAmount, int totalBrewTime, int bloomTime) {
         this.grindSize = grindSize;
-        this.brewingTemperature = Precision.round(brewingTemperature, 1);
+        this.brewingTemperature = Precision.round(brewingTemperature, 1, );
         this.groundCoffeeAmount = Precision.round(groundCoffeeAmount, 1);
         this.bloomAmount = Precision.round(bloomAmount, 1);
         this.coffeeWaterRatio = Precision.round(coffeeWaterRatio, 1);

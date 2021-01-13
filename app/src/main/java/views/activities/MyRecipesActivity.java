@@ -21,9 +21,6 @@ import dk.dtu.gruppeb3.broeg.app.R;
 import helpers.PreferenceHelper;
 import models.Brew;
 import views.adapters.MyRecipeListAdapter;
-
-import static java.lang.String.valueOf;
-
 public class MyRecipesActivity extends BaseActivity implements MyRecipeListAdapter.MyRecipeListButtonListener {
 
     private ArrayList<Brew> brews;

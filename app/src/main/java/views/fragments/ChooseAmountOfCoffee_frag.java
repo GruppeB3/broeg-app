@@ -8,8 +8,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AlertDialog;
-
 import dk.dtu.gruppeb3.broeg.app.R;
 import models.BrewBuilder;
 import views.RepeatListener;

@@ -18,6 +18,8 @@ import views.fragments.ChooseRatio_frag;
 import views.fragments.ChooseTotalBrewTime_frag;
 import views.fragments.NameRecipe_frag;
 
+import models.Brew;
+
 public class NewRecipeActivity extends BaseActivity implements View.OnClickListener {
 
 
@@ -46,6 +48,7 @@ public class NewRecipeActivity extends BaseActivity implements View.OnClickListe
         totalTimeBtn = findViewById(R.id.totalBrewTimeText);
         ratioBtn = findViewById(R.id.coffeeWaterRatioText);
         saveBtn = findViewById(R.id.saveButton);
+
 
         groundCoffeeAmtImgView.setOnClickListener(this);
         grindSizeImgView.setOnClickListener(this);

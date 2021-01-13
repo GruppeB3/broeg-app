@@ -32,7 +32,7 @@ public class NewRecipeActivity extends BaseActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         addContentLayout(R.layout.activity_newrecipe);
 
-        Brew brew = BrewBuilder.getInstance().get();
+        Brew brew = new Brew();
 
         groundCoffeeAmtImgView = findViewById(R.id.groundCoffeeAmtBackground);
         grindSizeImgView = findViewById(R.id.grindSizeBackground);

@@ -123,9 +123,9 @@ public class MyRecipesActivity extends BaseActivity implements MyRecipeListAdapt
             Brew brew = brews.get(position);
             alert.setTitle(brew.getName());
 
-            alert.setMessage("Bloom Time:  "+(brew.getBloomTime() + " - " + "Bloom Amount:  " +
-                    brew.getBloomAmount() + " - " + "Brewing Temperature  " + "Total Time" + brew.getTotalBrewTime() + " - "
-                    + "Coffee Water Ratio" + brew.getCoffeeWaterRatio() + " - " +
+            alert.setMessage("Bloom Time: "+(brew.getBloomTime() + "-" + "Bloom Amount: " +
+                    brew.getBloomAmount() + "-" + "Total Time" + brew.getTotalBrewTime() + " "
+                    + "Coffee Water Ratio" + brew.getCoffeeWaterRatio() + " - " + "Brewing Temperatur: " +
                     brew.getBrewingTemperature() + " - " + "Ground Coffee Amount  " +
                     brew.getGroundCoffeeAmount() + " - " + "Grind Size  " +
                     (brew.getGrindSize())));

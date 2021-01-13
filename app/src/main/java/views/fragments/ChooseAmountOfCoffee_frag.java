@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import dk.dtu.gruppeb3.broeg.app.R;
+import models.Brew;
 import models.BrewBuilder;
 import views.RepeatListener;
 
@@ -75,7 +76,6 @@ public class ChooseAmountOfCoffee_frag extends Fragment implements View.OnClickL
 
         } else if (ButtonClick == saveBtn){
             BrewBuilder.getInstance().groundCoffeeAmount(amountOfCoffee);
-
             getActivity().onBackPressed();
         }
 

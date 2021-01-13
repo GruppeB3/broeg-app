@@ -32,6 +32,8 @@ public class NewRecipeActivity extends BaseActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         addContentLayout(R.layout.activity_newrecipe);
 
+        Brew brew = BrewBuilder.getInstance().get();
+
         groundCoffeeAmtImgView = findViewById(R.id.groundCoffeeAmtBackground);
         grindSizeImgView = findViewById(R.id.grindSizeBackground);
         brewTempImgView = findViewById(R.id.brewingTempBackground);
@@ -41,6 +43,7 @@ public class NewRecipeActivity extends BaseActivity implements View.OnClickListe
         ratioImgView = findViewById(R.id.coffeeWaterRatioBackground);
 
         groundCoffeeAmtBtn = findViewById(R.id.groundCoffeAmtText);
+        groundCoffeeAmtBtn.setText("Ground Coffee Amount" + " ( " + (brew.getGroundCoffeeAmount() + ")"));
         grindSizeBtn = findViewById(R.id.grindSizeText);
         brewTempBtn = findViewById(R.id.brewingTempText);
         bloomWaterAmtBtn = findViewById(R.id.bloomWaterText);
@@ -48,6 +51,7 @@ public class NewRecipeActivity extends BaseActivity implements View.OnClickListe
         totalTimeBtn = findViewById(R.id.totalBrewTimeText);
         ratioBtn = findViewById(R.id.coffeeWaterRatioText);
         saveBtn = findViewById(R.id.saveButton);
+
 
 
         groundCoffeeAmtImgView.setOnClickListener(this);
@@ -67,6 +71,17 @@ public class NewRecipeActivity extends BaseActivity implements View.OnClickListe
         prefs = PreferenceHelper.getApplicationPreferences(this);
 
         BrewBuilder.reset();
+    }
+
+    @Override
+    protected void onResume() {
+
+        Brew brew = BrewBuilder.getInstance().get();
+
+        super.onResume();
+        groundCoffeeAmtBtn.setText("Ground Coffee Amount" +(brew.getGroundCoffeeAmount()));
+
+
     }
 
     @Override

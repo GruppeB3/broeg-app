@@ -21,6 +21,7 @@ import dk.dtu.gruppeb3.broeg.app.R;
 import helpers.PreferenceHelper;
 import models.Brew;
 import views.adapters.MyRecipeListAdapter;
+
 public class MyRecipesActivity extends BaseActivity implements MyRecipeListAdapter.MyRecipeListButtonListener {
 
     private ArrayList<Brew> brews;
@@ -53,6 +54,7 @@ public class MyRecipesActivity extends BaseActivity implements MyRecipeListAdapt
     protected void onResume() {
         super.onResume();
         updateListOfBrews();
+
     }
 
 

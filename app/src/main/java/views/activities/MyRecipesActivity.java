@@ -22,8 +22,6 @@ import helpers.PreferenceHelper;
 import models.Brew;
 import views.adapters.MyRecipeListAdapter;
 
-import static java.lang.String.valueOf;
-
 public class MyRecipesActivity extends BaseActivity implements MyRecipeListAdapter.MyRecipeListButtonListener {
 
     private ArrayList<Brew> brews;
@@ -56,6 +54,7 @@ public class MyRecipesActivity extends BaseActivity implements MyRecipeListAdapt
     protected void onResume() {
         super.onResume();
         updateListOfBrews();
+
     }
 
 
@@ -124,10 +123,11 @@ public class MyRecipesActivity extends BaseActivity implements MyRecipeListAdapt
             Brew brew = brews.get(position);
             alert.setTitle(brew.getName());
 
-            alert.setMessage("Bloom Time:  "+(brew.getBloomTime() + " - " + "Bloom Amount:  " +
-                    brew.getBloomAmount() + " - " + "Brewing Temperature  " +
-                    brew.getBrewingTemperature() + " - " + "Ground Coffee Amount  " +
-                    brew.getGroundCoffeeAmount() + " - " + "Grind Size  " +
+            alert.setMessage("Bloom Time: " + (brew.getBloomTime() + "(s)" + " - " + "Bloom Amount: " +
+                    brew.getBloomAmount() + "(ml)" + " - " + "Total Time: " + brew.getTotalBrewTime() + "(s)" + " - "
+                    + "Coffee Water Ratio: " + brew.getCoffeeWaterRatio() + " - " + "Brewing Temperature: " +
+                    brew.getBrewingTemperature() + "(C)" + " - " + "Ground Coffee Amount: " +
+                    brew.getGroundCoffeeAmount() + "(g)" + " - " + "Grind Size: " +
                     (brew.getGrindSize())));
 
             alert.setPositiveButton("Bryg", new DialogInterface.OnClickListener() {

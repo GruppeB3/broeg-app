@@ -10,13 +10,13 @@ import models.enums.GrindSize;
  */
 public class Brew {
 
-    private GrindSize grindSize;
-    private double brewingTemperature;
-    private double groundCoffeeAmount;
-    private double bloomAmount;
-    private double coffeeWaterRatio;
-    private int bloomTime;
-    private int totalBrewTime;
+    private GrindSize grindSize = GrindSize.MEDIUM;
+    private double brewingTemperature = 93;
+    private double groundCoffeeAmount = 60;
+    private double bloomAmount = 150;
+    private double coffeeWaterRatio = 6;
+    private int bloomTime = 30;
+    private int totalBrewTime = 180;
     private String name;
 
     // we provide an empty constructor in case somebody wants to use the setters
@@ -58,13 +58,12 @@ public class Brew {
 
     public void setBloomTime(int bloomTime) {
         this.bloomTime = bloomTime;
-        calculateTotalTime();
     }
-/*
+
     public void setTotalBrewTime(int totalBrewTime) {
         this.totalBrewTime = totalBrewTime;
     }
-*/
+
     // Getters
     public GrindSize getGrindSize() {
         return grindSize;
@@ -87,7 +86,6 @@ public class Brew {
     }
 
     public int getTotalBrewTime() {
-        calculateTotalTime();
         return totalBrewTime;
     }
 
@@ -96,9 +94,4 @@ public class Brew {
     }
 
     public String getName() { return name; }
-
-    private void calculateTotalTime() {
-        // TODO add additional calculation about total time.
-        this.totalBrewTime = this.bloomTime;
-    }
 }

@@ -59,11 +59,19 @@ public class ApiController {
         rq.add(request);
     }
 
+    public static void makeHttpPatchRequest(String url, JSONObject body, Response.Listener<JSONObject> okListener, Response.ErrorListener errorListener) {
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.PATCH, url, body, okListener, errorListener) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                return addApiHeaders(super.getHeaders());
+            }
+        };
+
+        rq.add(request);
+    }
+
     private static Map<String, String> addApiHeaders(Map<String, String> existingHeaders) {
-        Map<String, String> headers = new HashMap<>();
-        for (Map.Entry<String, String> entry : existingHeaders.entrySet()) {
-            headers.put(entry.getKey(), entry.getValue());
-        }
+        Map<String, String> headers = new HashMap<>(existingHeaders);
 
         String apiToken = App.getInstance().getUser().getApiToken();
         if (apiToken != null) {

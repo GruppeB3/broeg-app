@@ -129,7 +129,23 @@ public class Brew {
         brew.setGroundCoffeeAmount(json.getDouble("ground_coffee_amount"));
         brew.setCoffeeWaterRatio(json.getDouble("coffee_water_ratio"));
         brew.setBloomTime(json.getInt("bloom_time"));
+        brew.setBloomAmount(json.getDouble("bloom_water_amount"));
         brew.setTotalBrewTime(json.getInt("total_brew_time"));
         return brew;
+    }
+
+    public JSONObject toApiJson() throws JSONException {
+        JSONObject json = new JSONObject();
+
+        json.put("name", this.getName());
+        json.put("grind_size", this.getGrindSize().toString());
+        json.put("brewing_temperature", this.getBrewingTemperature());
+        json.put("ground_coffee_amount", this.getGroundCoffeeAmount());
+        json.put("coffee_water_ratio", this.getCoffeeWaterRatio());
+        json.put("bloom_time", this.getBloomTime());
+        json.put("bloom_water_amount", this.getBloomAmount());
+        json.put("total_brew_time", this.getTotalBrewTime());
+
+        return json;
     }
 }

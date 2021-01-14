@@ -72,4 +72,7 @@
     <string name="my_profile_name">Name: %1$s</string>
     <string name="my_profile_email">E-mail: %1$s</string>
     <string name="my_profile">My profile</string>
+
+    <!-- Errors -->
+    <string name="error_updating_brew">An error occurred while trying to update your brew in the cloud</string>
 </resources>

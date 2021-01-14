@@ -40,6 +40,8 @@ public class MyRecipesActivity extends BaseActivity implements MyRecipeListAdapt
     Date lastUpdatedAt;
     Date lastUpdateStartedAt;
 
+    RequestMode requestMode;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -92,6 +94,8 @@ public class MyRecipesActivity extends BaseActivity implements MyRecipeListAdapt
         if (!App.getInstance().userIsLoggedIn())
             return;
 
+        requestMode = RequestMode.UPDATE;
+
         progressDialog = ProgressDialog.show(this, "", getString(R.string.updating_brews));
         String apiUrl = ApiController.getApiBaseUrl() + "user/brews";
         ApiController.makeHttpGetRequest(apiUrl, new JSONObject(), this, this);
@@ -130,6 +134,12 @@ public class MyRecipesActivity extends BaseActivity implements MyRecipeListAdapt
                     brews.remove(brew);
                     recyclerViewAdapter.setRecipes(brews);
                     BrewsController.saveBrewsToLocalStorage(prefs, brews);
+
+                    if (brew.getCommunityId() > 0 && App.getInstance().userIsLoggedIn()) {
+                        // Brew was added in the cloud
+                        requestMode = RequestMode.DELETE;
+                        deleteBrewFromCloud(brew.getCommunityId());
+                    }
                 }
             });
 
@@ -172,6 +182,13 @@ public class MyRecipesActivity extends BaseActivity implements MyRecipeListAdapt
         }
     }
 
+    private void deleteBrewFromCloud(int communityId) {
+        progressDialog = ProgressDialog.show(this, "", "Deleting brew...");
+
+        String apiUrl = ApiController.getApiBaseUrl() + "user/brew/" + communityId;
+        ApiController.makeHttpDeleteRequest(apiUrl, new JSONObject(), this, this);
+    }
+
     @Override
     public void onErrorResponse(VolleyError error) {
         // We got an error from the API
@@ -189,24 +206,31 @@ public class MyRecipesActivity extends BaseActivity implements MyRecipeListAdapt
     @Override
     public void onResponse(JSONObject response) {
         // We got response from the API
-        try {
-            JSONArray array = response.getJSONArray("data");
-            ArrayList<Brew> brewsFromApi = new ArrayList<>();
 
-            for (int i = 0; i < array.length(); i++) {
-                brewsFromApi.add(Brew.fromApi(array.getJSONObject(i)));
+        if (requestMode == RequestMode.UPDATE) {
+            try {
+                JSONArray array = response.getJSONArray("data");
+                ArrayList<Brew> brewsFromApi = new ArrayList<>();
+
+                for (int i = 0; i < array.length(); i++) {
+                    brewsFromApi.add(Brew.fromApi(array.getJSONObject(i)));
+                }
+
+                BrewsController.upsertBrewsFromApi(prefs, brewsFromApi);
+                recyclerViewAdapter.setRecipes(BrewsController.getBrewsFromLocalStorage(prefs));
+                lastUpdatedAt = new Date();
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
-
-            BrewsController.upsertBrewsFromApi(prefs, brewsFromApi);
-            recyclerViewAdapter.setRecipes(BrewsController.getBrewsFromLocalStorage(prefs));
-            lastUpdatedAt = new Date();
-        } catch (JSONException e) {
-            e.printStackTrace();
         }
 
         if (progressDialog != null) {
             progressDialog.cancel();
             progressDialog.hide();
         }
+    }
+
+    private enum RequestMode {
+        DELETE, UPDATE;
     }
 }

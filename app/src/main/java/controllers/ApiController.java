@@ -70,6 +70,28 @@ public class ApiController {
         rq.add(request);
     }
 
+    public static void makeHttpDeleteRequest(String url, Response.Listener<String> okListener, Response.ErrorListener errorListener) {
+        StringRequest request = new StringRequest(Request.Method.DELETE, url, okListener, errorListener) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                return addApiHeaders(super.getHeaders());
+            }
+        };
+
+        rq.add(request);
+    }
+
+    public static void makeHttpDeleteRequest(String url, JSONObject body, Response.Listener<JSONObject> okListener, Response.ErrorListener errorListener) {
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.DELETE, url, body, okListener, errorListener) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                return addApiHeaders(super.getHeaders());
+            }
+        };
+
+        rq.add(request);
+    }
+
     private static Map<String, String> addApiHeaders(Map<String, String> existingHeaders) {
         Map<String, String> headers = new HashMap<>(existingHeaders);
 

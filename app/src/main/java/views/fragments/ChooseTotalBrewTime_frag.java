@@ -11,6 +11,7 @@ import android.widget.TextView;
 import dk.dtu.gruppeb3.broeg.app.R;
 import models.BrewBuilder;
 import views.RepeatListener;
+import views.activities.NewRecipeActivity;
 
 /**
  * This fragment gives the user the opportunity to choose the amount of coffee they want to brew.
@@ -42,7 +43,7 @@ public class ChooseTotalBrewTime_frag extends Fragment implements View.OnClickLi
             public void onClick(View v) {
                 totalBrewingTime++;
                 TextView tv = root.findViewById(R.id.totalTime);
-                tv.setText(totalBrewingTime + "(s)");
+                tv.setText(totalBrewingTime + "(min/s)");
             }
         }));
         minusBtn.setOnTouchListener(new RepeatListener(400, 100, new View.OnClickListener() {
@@ -51,7 +52,7 @@ public class ChooseTotalBrewTime_frag extends Fragment implements View.OnClickLi
             public void onClick(View v) {
                 totalBrewingTime--;
                 TextView tv = root.findViewById(R.id.totalTime);
-                tv.setText(totalBrewingTime + "(s)");
+                tv.setText(totalBrewingTime + "(min/s)");
             }
         }));
 
@@ -75,7 +76,7 @@ public class ChooseTotalBrewTime_frag extends Fragment implements View.OnClickLi
 
         } else if (ButtonClick == saveBtn){
             BrewBuilder.getInstance().totalBrewTime(totalBrewingTime);
-
+            ((NewRecipeActivity)getActivity()).updateTextActivity();
             getActivity().onBackPressed();
         }
 
@@ -83,6 +84,6 @@ public class ChooseTotalBrewTime_frag extends Fragment implements View.OnClickLi
 
     private void updateText() {
         TextView tv = root.findViewById(R.id.totalTime);
-        tv.setText(totalBrewingTime + "(s)");
+        tv.setText(totalBrewingTime + "(min/s)");
     }
 }

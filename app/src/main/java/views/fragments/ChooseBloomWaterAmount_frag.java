@@ -11,6 +11,7 @@ import android.widget.TextView;
 import dk.dtu.gruppeb3.broeg.app.R;
 import models.BrewBuilder;
 import views.RepeatListener;
+import views.activities.NewRecipeActivity;
 
 public class ChooseBloomWaterAmount_frag extends Fragment implements View.OnClickListener {
 
@@ -69,7 +70,7 @@ public class ChooseBloomWaterAmount_frag extends Fragment implements View.OnClic
 
         } else if (ButtonClick == saveBtn){
             BrewBuilder.getInstance().bloomAmount(amountBloomWater);
-
+            ((NewRecipeActivity)getActivity()).updateTextActivity();
             getActivity().onBackPressed();
         }
 

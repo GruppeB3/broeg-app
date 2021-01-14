@@ -11,6 +11,7 @@ import android.widget.TextView;
 import dk.dtu.gruppeb3.broeg.app.R;
 import models.BrewBuilder;
 import views.RepeatListener;
+import views.activities.NewRecipeActivity;
 
 /**
  * This fragment gives the user the opportunity to choose the amount of coffee they want to brew.
@@ -75,7 +76,7 @@ public class ChooseRatio_frag extends Fragment implements View.OnClickListener {
 
         } else if (ButtonClick == saveBtn){
             BrewBuilder.getInstance().coffeeWaterRatio(coffeeWaterRatio);
-
+            ((NewRecipeActivity)getActivity()).updateTextActivity();
             getActivity().onBackPressed();
         }
 

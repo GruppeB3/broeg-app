@@ -12,6 +12,7 @@ import dk.dtu.gruppeb3.broeg.app.R;
 import models.Brew;
 import models.BrewBuilder;
 import views.RepeatListener;
+import views.activities.NewRecipeActivity;
 
 /**
  * This fragment gives the user the opportunity to choose the amount of coffee they want to brew.
@@ -76,6 +77,7 @@ public class ChooseAmountOfCoffee_frag extends Fragment implements View.OnClickL
 
         } else if (ButtonClick == saveBtn){
             BrewBuilder.getInstance().groundCoffeeAmount(amountOfCoffee);
+            ((NewRecipeActivity)getActivity()).updateTextActivity();
             getActivity().onBackPressed();
         }
 

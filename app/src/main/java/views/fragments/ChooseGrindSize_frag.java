@@ -14,6 +14,7 @@ import com.google.gson.Gson;
 import dk.dtu.gruppeb3.broeg.app.R;
 import models.BrewBuilder;
 import models.enums.GrindSize;
+import views.activities.NewRecipeActivity;
 
 /**
  * This fragment gives the user the opportunity to choose between 3 types af grind size.
@@ -47,18 +48,17 @@ public class ChooseGrindSize_frag extends Fragment implements View.OnClickListen
 
         if (ButtonClick == fineBtn) {
             BrewBuilder.getInstance().grindSize(GrindSize.FINE);
-
-
+            ((NewRecipeActivity)getActivity()).updateTextActivity();
             getActivity().onBackPressed();
 
         } else if (ButtonClick == mediumBtn) {
             BrewBuilder.getInstance().grindSize(GrindSize.MEDIUM);
-
+            ((NewRecipeActivity)getActivity()).updateTextActivity();
             getActivity().onBackPressed();
 
         } else if (ButtonClick == coarseBtn) {
             BrewBuilder.getInstance().grindSize(GrindSize.COARSE);
-
+            ((NewRecipeActivity)getActivity()).updateTextActivity();
             getActivity().onBackPressed();
 
         }

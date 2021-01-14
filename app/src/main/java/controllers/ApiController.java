@@ -65,7 +65,11 @@ public class ApiController {
             headers.put(entry.getKey(), entry.getValue());
         }
 
-        headers.put("Authorization", "Bearer " + App.getInstance().getUser().getApiToken());
+        String apiToken = App.getInstance().getUser().getApiToken();
+        if (apiToken != null) {
+            headers.put("Authorization", "Bearer " + App.getInstance().getUser().getApiToken());
+        }
+
         headers.put("Accept", "application/json"); // Always have to be json response
 
         return headers;

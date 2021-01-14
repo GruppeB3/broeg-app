@@ -13,11 +13,12 @@ import androidx.annotation.Nullable;
 import dk.dtu.gruppeb3.broeg.app.R;
 import models.App;
 import models.User;
+import views.activities.community.profile.MyProfileActivity;
 import views.activities.espble.ConnectBluetoothDeviceActivity;
 
 public class Menu_frag extends Fragment implements View.OnClickListener {
 
-    Button settingsBtn, helpBtn, connectBtn, signOutBtn;
+    Button settingsBtn, helpBtn, connectBtn, signOutBtn, profileBtn;
 
     @Nullable
     @Override
@@ -29,11 +30,13 @@ public class Menu_frag extends Fragment implements View.OnClickListener {
         helpBtn = root.findViewById(R.id.menu_help_btn);
         connectBtn = root.findViewById(R.id.menu_connect_btn);
         signOutBtn = root.findViewById(R.id.menu_sign_out_btn);
+        profileBtn = root.findViewById(R.id.menu_myprofile_button);
 
         settingsBtn.setOnClickListener(this);
         helpBtn.setOnClickListener(this);
         connectBtn.setOnClickListener(this);
         signOutBtn.setOnClickListener(this);
+        profileBtn.setOnClickListener(this);
 
         return root;
     }
@@ -49,6 +52,9 @@ public class Menu_frag extends Fragment implements View.OnClickListener {
             startActivity(i);
         } else if (v == signOutBtn) {
             App.getInstance().setUser(new User("Local user"));
+        } else if (v == profileBtn) {
+            Intent i = new Intent(getActivity(), MyProfileActivity.class);
+            startActivity(i);
         }
         getActivity().onBackPressed();
     }

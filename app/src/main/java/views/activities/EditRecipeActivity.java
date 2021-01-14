@@ -93,7 +93,7 @@ public class EditRecipeActivity extends NewRecipeActivity implements Response.Li
     @Override
     public void onResponse(JSONObject response) {
         if (progressDialog != null) {
-            progressDialog.hide();
+            progressDialog.cancel();
         }
 
         finish();
@@ -102,7 +102,7 @@ public class EditRecipeActivity extends NewRecipeActivity implements Response.Li
     @Override
     public void onErrorResponse(VolleyError error) {
         if (progressDialog != null) {
-            progressDialog.hide();
+            progressDialog.cancel();
             Toast.makeText(this, getString(R.string.error_updating_brew), Toast.LENGTH_SHORT).show();
         }
 

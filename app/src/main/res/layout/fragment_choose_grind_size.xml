@@ -21,55 +21,49 @@
         app:cardCornerRadius="15dp"
         tools:ignore="MissingConstraints">
 
-    <Button
-        android:id="@+id/Coarse"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_weight="1"
-        android:layout_gravity="center"
-        android:text="@string/coarse"
-        app:layout_constraintStart_toStartOf="@+id/Medium"
-        app:layout_constraintTop_toBottomOf="@+id/Medium" />
+        <Button
+            android:id="@+id/Fine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="60dp"
+            android:layout_weight="1"
+            android:text="@string/fine"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/Save_GrindSize"
-        android:layout_width="163dp"
-        android:layout_height="46dp"
-        android:layout_gravity="center"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="140dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/savesetting"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        <Button
+            android:id="@+id/Coarse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="40dp"
+            android:layout_weight="1"
+            android:text="@string/coarse"
+            app:layout_constraintStart_toStartOf="@+id/Medium"
+            app:layout_constraintTop_toBottomOf="@+id/Medium" />
 
-    <Button
-        android:id="@+id/Medium"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="20dp"
-        android:layout_weight="1"
-        android:layout_gravity="center"
-        android:text="@string/medium"
-        app:layout_constraintStart_toStartOf="@+id/Fine"
-        app:layout_constraintTop_toBottomOf="@+id/Fine" />
+        <Button
+            android:id="@+id/Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:layout_weight="1"
+            android:text="@string/medium"
+            app:layout_constraintStart_toStartOf="@+id/Fine"
+            app:layout_constraintTop_toBottomOf="@+id/Fine" />
 
-    <Button
-        android:id="@+id/Fine"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="0dp"
-        android:layout_marginBottom="60dp"
-        android:layout_weight="1"
-        android:text="@string/fine"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/grindsizetxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="         Choose grind size"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
     </androidx.cardview.widget.CardView>
 

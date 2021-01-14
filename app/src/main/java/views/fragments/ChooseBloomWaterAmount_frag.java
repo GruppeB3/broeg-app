@@ -11,6 +11,7 @@ import android.widget.TextView;
 import dk.dtu.gruppeb3.broeg.app.R;
 import models.BrewBuilder;
 import views.RepeatListener;
+import views.activities.NewRecipeActivity;
 
 public class ChooseBloomWaterAmount_frag extends Fragment implements View.OnClickListener {
 
@@ -39,7 +40,7 @@ public class ChooseBloomWaterAmount_frag extends Fragment implements View.OnClic
             public void onClick(View v) {
                 amountBloomWater++;
                 TextView tv = root.findViewById(R.id.amountWater);
-                tv.setText("Mængde af vand i ml (" +amountBloomWater + ")");
+                tv.setText(amountBloomWater + "(ml)");
             }
         }));
         minusBtn.setOnTouchListener(new RepeatListener(400, 100, new View.OnClickListener() {
@@ -48,7 +49,7 @@ public class ChooseBloomWaterAmount_frag extends Fragment implements View.OnClic
             public void onClick(View v) {
                 amountBloomWater--;
                 TextView tv = root.findViewById(R.id.amountWater);
-                tv.setText("Mængde af vand i ml (" + amountBloomWater + ")");
+                tv.setText(amountBloomWater + "(ml)");
             }
         }));
 
@@ -69,7 +70,7 @@ public class ChooseBloomWaterAmount_frag extends Fragment implements View.OnClic
 
         } else if (ButtonClick == saveBtn){
             BrewBuilder.getInstance().bloomAmount(amountBloomWater);
-
+            ((NewRecipeActivity)getActivity()).updateTextActivity();
             getActivity().onBackPressed();
         }
 
@@ -77,6 +78,6 @@ public class ChooseBloomWaterAmount_frag extends Fragment implements View.OnClic
 
     private void updateText() {
         TextView tv = root.findViewById(R.id.amountWater);
-        tv.setText("Mængde af vand i ml (" + amountBloomWater + ")");
+        tv.setText(amountBloomWater + "(ml)");
     }
 }

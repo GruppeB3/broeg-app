@@ -12,13 +12,13 @@ import models.enums.GrindSize;
  */
 public class Brew {
 
-    private GrindSize grindSize;
-    private double brewingTemperature;
-    private double groundCoffeeAmount;
-    private double bloomAmount;
-    private double coffeeWaterRatio;
-    private int bloomTime;
-    private int totalBrewTime;
+    private GrindSize grindSize = GrindSize.MEDIUM;
+    private double brewingTemperature = 93;
+    private double groundCoffeeAmount = 60;
+    private double bloomAmount = 150;
+    private double coffeeWaterRatio = 6;
+    private int bloomTime = 30;
+    private int totalBrewTime = 180;
 
     private String name;
     private int communityId = 0;
@@ -62,7 +62,6 @@ public class Brew {
 
     public void setBloomTime(int bloomTime) {
         this.bloomTime = bloomTime;
-        calculateTotalTime();
     }
 
     public void setTotalBrewTime(int totalBrewTime) {
@@ -95,7 +94,6 @@ public class Brew {
     }
 
     public int getTotalBrewTime() {
-        calculateTotalTime();
         return totalBrewTime;
     }
 
@@ -107,11 +105,6 @@ public class Brew {
 
     public int getCommunityId() {
         return communityId;
-    }
-
-    private void calculateTotalTime() {
-        // TODO add additional calculation about total time.
-        this.totalBrewTime = this.bloomTime;
     }
 
     public void update(Brew brew) {
@@ -136,8 +129,7 @@ public class Brew {
         brew.setGroundCoffeeAmount(json.getDouble("ground_coffee_amount"));
         brew.setCoffeeWaterRatio(json.getDouble("coffee_water_ratio"));
         brew.setBloomTime(json.getInt("bloom_time"));
-        // TODO: Add set total brewing time once that has been finalized
-        // brew.setTotalBrewTime(json.getInt("total_brew_time"));
+        brew.setTotalBrewTime(json.getInt("total_brew_time"));
         return brew;
     }
 }

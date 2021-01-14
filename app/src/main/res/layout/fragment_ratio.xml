@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/background_brown"
-        android:clickable="true"
-        android:elevation="40dp">
+    android:layout_height="match_parent"
+    android:background="@drawable/background_brown"
+    android:clickable="true"
+    android:elevation="40dp">
 
     <androidx.cardview.widget.CardView
         android:layout_width="233dp"
@@ -27,8 +27,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="120dp"
             android:layout_marginBottom="20dp"
-            android:text="@string/temperature_in_celsius"
-            android:textAlignment="center"
+            android:gravity="center"
+            android:text="g/L"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -74,16 +74,15 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ArrowDown_Ratio" />
 
-        <ImageView
-            android:id="@+id/imageView5"
+        <TextView
+            android:id="@+id/txtRatio"
             android:layout_width="wrap_content"
-            android:layout_height="79dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/choosebrewingtemperature" />
+            android:layout_height="wrap_content"
+            android:text="   Choose water/coffee ratio"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
     </androidx.cardview.widget.CardView>
+
 </RelativeLayout>

@@ -17,17 +17,18 @@ import views.activities.NewRecipeActivity;
  * This fragment gives the user the opportunity to choose the amount of coffee they want to brew.
  */
 
-public class ChooseBrewingTemperature_frag extends Fragment implements View.OnClickListener {
+public class ChooseTotalBrewTime_frag extends Fragment implements View.OnClickListener {
+
 
     Button plusBtn, minusBtn, saveBtn;
     private View root;
-    double temperature;
+    int totalBrewingTime;
 
     @Override
     public View onCreateView(LayoutInflater i, ViewGroup container, Bundle savedInstanceState){
-        this.root = i.inflate(R.layout.fragment_brewing_temperature, container, false);
+        this.root = i.inflate(R.layout.fragment_total_brewing_time, container, false);
 
-        temperature = BrewBuilder.getInstance().get().getBrewingTemperature();
+        totalBrewingTime = BrewBuilder.getInstance().get().getTotalBrewTime();
 
         plusBtn = root.findViewById(R.id.ArrowUp_Ratio);
         minusBtn = root.findViewById(R.id.ArrowDown_Ratio);
@@ -40,42 +41,41 @@ public class ChooseBrewingTemperature_frag extends Fragment implements View.OnCl
         plusBtn.setOnTouchListener(new RepeatListener(400, 100, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                temperature++;
+                totalBrewingTime++;
                 TextView tv = root.findViewById(R.id.totalTime);
-                tv.setText(temperature + "(C)");
+                tv.setText(totalBrewingTime/60 + "(min)" + totalBrewingTime%60 + "(s)");
             }
         }));
         minusBtn.setOnTouchListener(new RepeatListener(400, 100, new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                temperature--;
+                totalBrewingTime--;
                 TextView tv = root.findViewById(R.id.totalTime);
-                tv.setText(temperature + "(C)");
+                tv.setText(totalBrewingTime/60 +"(min)" + totalBrewingTime%60 + "(s)");
             }
         }));
-
 
         updateText();
 
         return root;
+
+
     }
 
     @Override
     public void onClick(View ButtonClick) {
 
-
-
         if (ButtonClick == plusBtn) {
-            temperature++;
+            totalBrewingTime++;
             updateText();
 
         } else if (ButtonClick == minusBtn){
-            temperature--;
+            totalBrewingTime--;
             updateText();
 
         } else if (ButtonClick == saveBtn){
-            BrewBuilder.getInstance().brewingTemperature(temperature);
+            BrewBuilder.getInstance().totalBrewTime(totalBrewingTime);
             ((NewRecipeActivity)getActivity()).updateTextActivity();
             getActivity().onBackPressed();
         }
@@ -84,6 +84,6 @@ public class ChooseBrewingTemperature_frag extends Fragment implements View.OnCl
 
     private void updateText() {
         TextView tv = root.findViewById(R.id.totalTime);
-        tv.setText(temperature + "(C)");
+        tv.setText(totalBrewingTime/60 + "(min)"  +totalBrewingTime%60 + "(s)");
     }
 }

@@ -8,20 +8,17 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AlertDialog;
-
 import dk.dtu.gruppeb3.broeg.app.R;
+import models.Brew;
 import models.BrewBuilder;
 import views.RepeatListener;
+import views.activities.NewRecipeActivity;
 
 /**
  * This fragment gives the user the opportunity to choose the amount of coffee they want to brew.
  */
 
 public class ChooseAmountOfCoffee_frag extends Fragment implements View.OnClickListener {
-
-    private AlertDialog.Builder dialogBuilder;
-    private AlertDialog dialog;
 
     Button plusBtn, minusBtn, saveBtn;
     private View root;
@@ -46,7 +43,7 @@ public class ChooseAmountOfCoffee_frag extends Fragment implements View.OnClickL
             public void onClick(View v) {
                 amountOfCoffee++;
                 TextView tv = root.findViewById(R.id.CoffeeAmount);
-                tv.setText("Mængde kaffe i gram (" + amountOfCoffee + ")");
+                tv.setText(amountOfCoffee + "(g)");
             }
         }));
         minusBtn.setOnTouchListener(new RepeatListener(400, 100, new View.OnClickListener() {
@@ -55,8 +52,9 @@ public class ChooseAmountOfCoffee_frag extends Fragment implements View.OnClickL
             public void onClick(View v) {
                 amountOfCoffee--;
                 TextView tv = root.findViewById(R.id.CoffeeAmount);
-                tv.setText("Mængde kaffe i gram (" + amountOfCoffee + ")");
-            }
+                tv.setText(amountOfCoffee + "(g)");
+                }
+
         }));
 
         updateText();
@@ -79,7 +77,7 @@ public class ChooseAmountOfCoffee_frag extends Fragment implements View.OnClickL
 
         } else if (ButtonClick == saveBtn){
             BrewBuilder.getInstance().groundCoffeeAmount(amountOfCoffee);
-
+            ((NewRecipeActivity)getActivity()).updateTextActivity();
             getActivity().onBackPressed();
         }
 
@@ -87,6 +85,6 @@ public class ChooseAmountOfCoffee_frag extends Fragment implements View.OnClickL
 
     private void updateText() {
         TextView tv = root.findViewById(R.id.CoffeeAmount);
-        tv.setText("Mængde kaffe i gram (" + amountOfCoffee + ")");
+        tv.setText(+ amountOfCoffee + "(g)");
     }
 }

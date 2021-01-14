@@ -12,6 +12,7 @@
     <!-- Brew administration -->
     <string name="delete_brew">Delete brew</string>
     <string name="sure_to_delete_brew">Are you sure you want to delete brew "%1$s"?</string>
+    <string name="updating_brews">Updating list of brews...</string>
 
     <!-- Esp BLE provision -->
     <string name="search_for_new_devices">Search for new devices</string>

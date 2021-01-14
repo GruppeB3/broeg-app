@@ -1,6 +1,8 @@
 package models;
 
 import org.apache.commons.math3.util.Precision;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import models.enums.GrindSize;
 
@@ -17,7 +19,9 @@ public class Brew {
     private double coffeeWaterRatio;
     private int bloomTime;
     private int totalBrewTime;
+
     private String name;
+    private int communityId = 0;
 
     // we provide an empty constructor in case somebody wants to use the setters
     public Brew() {}
@@ -60,11 +64,15 @@ public class Brew {
         this.bloomTime = bloomTime;
         calculateTotalTime();
     }
-/*
+
     public void setTotalBrewTime(int totalBrewTime) {
         this.totalBrewTime = totalBrewTime;
     }
-*/
+
+    public void setCommunityId(int id) {
+        this.communityId = id;
+    }
+
     // Getters
     public GrindSize getGrindSize() {
         return grindSize;
@@ -97,8 +105,39 @@ public class Brew {
 
     public String getName() { return name; }
 
+    public int getCommunityId() {
+        return communityId;
+    }
+
     private void calculateTotalTime() {
         // TODO add additional calculation about total time.
         this.totalBrewTime = this.bloomTime;
+    }
+
+    public void update(Brew brew) {
+        this.setBloomTime(brew.getBloomTime());
+        this.setBloomAmount(brew.getBloomAmount());
+        this.setBrewingTemperature(brew.getBrewingTemperature());
+        this.setGroundCoffeeAmount(brew.getGroundCoffeeAmount());
+        this.setGrindSize(brew.getGrindSize());
+        this.setCoffeeWaterRatio(brew.getCoffeeWaterRatio());
+        this.setTotalBrewTime(brew.getTotalBrewTime());
+
+        this.setName(brew.getName());
+        this.setCommunityId(brew.getCommunityId());
+    }
+
+    public static Brew fromApi(JSONObject json) throws JSONException {
+        Brew brew = new Brew();
+        brew.setCommunityId(json.getInt("id"));
+        brew.setName(json.getString("name"));
+        brew.setGrindSize(GrindSize.valueOf(json.getString("grind_size")));
+        brew.setBrewingTemperature(json.getDouble("brewing_temperature"));
+        brew.setGroundCoffeeAmount(json.getDouble("ground_coffee_amount"));
+        brew.setCoffeeWaterRatio(json.getDouble("coffee_water_ratio"));
+        brew.setBloomTime(json.getInt("bloom_time"));
+        // TODO: Add set total brewing time once that has been finalized
+        // brew.setTotalBrewTime(json.getInt("total_brew_time"));
+        return brew;
     }
 }

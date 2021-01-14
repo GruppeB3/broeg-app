@@ -1,34 +1,44 @@
 package views.activities;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.EditText;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.google.gson.Gson;
 
-import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.Date;
+
+import controllers.ApiController;
 import controllers.BrewsController;
 import dk.dtu.gruppeb3.broeg.app.R;
 import helpers.PreferenceHelper;
+import models.App;
 import models.Brew;
+import views.activities.community.profile.LoginActivity;
 import views.adapters.MyRecipeListAdapter;
 
-import static java.lang.String.valueOf;
-
-public class MyRecipesActivity extends BaseActivity implements MyRecipeListAdapter.MyRecipeListButtonListener {
+public class MyRecipesActivity extends BaseActivity implements MyRecipeListAdapter.MyRecipeListButtonListener, Response.Listener<JSONObject>, Response.ErrorListener {
 
     private ArrayList<Brew> brews;
     private SharedPreferences prefs;
     MyRecipeListAdapter recyclerViewAdapter;
+    ProgressDialog progressDialog;
+    Date lastUpdatedAt;
+    Date lastUpdateStartedAt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +81,20 @@ public class MyRecipesActivity extends BaseActivity implements MyRecipeListAdapt
 
     private void updateListOfBrews() {
         this.brews = BrewsController.getBrewsFromLocalStorage(prefs);
+
+        if (lastUpdateStartedAt != null && lastUpdateStartedAt.getTime() > (new Date()).getTime() - (5 * 60 * 1000)) {
+            // Data update was started within the last 5 minutes
+            return;
+        }
+
+        lastUpdateStartedAt = new Date();
+
+        if (!App.getInstance().userIsLoggedIn())
+            return;
+
+        progressDialog = ProgressDialog.show(this, "", getString(R.string.updating_brews));
+        String apiUrl = ApiController.getApiBaseUrl() + "user/brews";
+        ApiController.makeHttpGetRequest(apiUrl, new JSONObject(), this, this);
     }
 
     public void startBrew(int position){
@@ -144,6 +168,44 @@ public class MyRecipesActivity extends BaseActivity implements MyRecipeListAdapt
             });
             alert.create().show();
 
+        }
+    }
+
+    @Override
+    public void onErrorResponse(VolleyError error) {
+        // We got an error from the API
+        if (progressDialog != null) {
+            progressDialog.cancel();
+        }
+
+        if (error instanceof AuthFailureError) {
+            // error was an auth failure
+            // send to log in
+            startActivity(new Intent(this, LoginActivity.class));
+        }
+    }
+
+    @Override
+    public void onResponse(JSONObject response) {
+        // We got response from the API
+        try {
+            JSONArray array = response.getJSONArray("data");
+            ArrayList<Brew> brewsFromApi = new ArrayList<>();
+
+            for (int i = 0; i < array.length(); i++) {
+                brewsFromApi.add(Brew.fromApi(array.getJSONObject(i)));
+            }
+
+            BrewsController.upsertBrewsFromApi(prefs, brewsFromApi);
+            recyclerViewAdapter.setRecipes(BrewsController.getBrewsFromLocalStorage(prefs));
+            lastUpdatedAt = new Date();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        if (progressDialog != null) {
+            progressDialog.cancel();
+            progressDialog.hide();
         }
     }
 }

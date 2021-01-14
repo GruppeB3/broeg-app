@@ -1,9 +1,11 @@
 package views.activities.community.profile;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Response;
@@ -19,7 +21,11 @@ import views.activities.BaseActivity;
 
 public class LoginActivity extends BaseActivity implements Response.ErrorListener, Response.Listener<JSONObject> {
 
+    public static final String EMAIL_IDENTIFIER = "email";
+    public static final String PASSWORD_IDENTIFIER = "password";
+
     private EditText username, password;
+    private TextView newAccount;
     private Button loginBtn;
     private int requestProgress = 0;
 
@@ -32,11 +38,15 @@ public class LoginActivity extends BaseActivity implements Response.ErrorListene
             handleUserIsLoggedIn();
         }
 
+        handleUserDetailsFromIntent();
+
         username = findViewById(R.id.username);
         password = findViewById(R.id.password);
+        newAccount = findViewById(R.id.login_new_account_view);
         loginBtn = findViewById(R.id.login);
 
         loginBtn.setOnClickListener(this);
+        newAccount.setOnClickListener(this);
     }
 
     @Override
@@ -45,12 +55,26 @@ public class LoginActivity extends BaseActivity implements Response.ErrorListene
         if (v == loginBtn) {
             loginBtn.setEnabled(false);
             logInUser();
+        } else if (v == newAccount) {
+            startActivity(new Intent(this, SignUpActivity.class));
+            finish();
         }
     }
 
     private void handleUserIsLoggedIn() {
         requestProgress = 1;
         getUserData();
+    }
+
+    private void handleUserDetailsFromIntent() {
+        Intent i = getIntent();
+
+        String email = i.getStringExtra(EMAIL_IDENTIFIER);
+        String password = i.getStringExtra(PASSWORD_IDENTIFIER);
+
+        if (email != null && password != null && email.length() > 0 && password.length() > 0) {
+            sendLogInRequest(email, password);
+        }
     }
 
     private void logInUser() {
@@ -61,7 +85,10 @@ public class LoginActivity extends BaseActivity implements Response.ErrorListene
             Toast.makeText(this, getString(R.string.login_parameters_not_ok), Toast.LENGTH_SHORT).show();
         }
 
+        sendLogInRequest(email, password);
+    }
 
+    private void sendLogInRequest(String email, String password) {
         JSONObject params = new JSONObject();
         try {
             params.put("email", email);

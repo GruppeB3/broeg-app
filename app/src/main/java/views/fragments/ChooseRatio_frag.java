@@ -23,12 +23,16 @@ public class ChooseRatio_frag extends Fragment implements View.OnClickListener {
     Button plusBtn, minusBtn, saveBtn;
     private View root;
     double coffeeWaterRatio;
+    TextView ratio;
 
     @Override
     public View onCreateView(LayoutInflater i, ViewGroup container, Bundle savedInstanceState){
         this.root = i.inflate(R.layout.fragment_total_brewing_time, container, false);
 
         coffeeWaterRatio = BrewBuilder.getInstance().get().getCoffeeWaterRatio();
+
+        ratio = root.findViewById(R.id.txtRatio);
+        ratio.setText("Choose water/coffee ratio");
 
         plusBtn = root.findViewById(R.id.ArrowUp_Ratio);
         minusBtn = root.findViewById(R.id.ArrowDown_Ratio);

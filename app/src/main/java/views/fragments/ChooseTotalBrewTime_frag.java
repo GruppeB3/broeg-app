@@ -43,7 +43,7 @@ public class ChooseTotalBrewTime_frag extends Fragment implements View.OnClickLi
             public void onClick(View v) {
                 totalBrewingTime++;
                 TextView tv = root.findViewById(R.id.totalTime);
-                tv.setText(totalBrewingTime + "(min/s)");
+                tv.setText(totalBrewingTime/60 + "(min)" + totalBrewingTime%60 + "(s)");
             }
         }));
         minusBtn.setOnTouchListener(new RepeatListener(400, 100, new View.OnClickListener() {
@@ -52,7 +52,7 @@ public class ChooseTotalBrewTime_frag extends Fragment implements View.OnClickLi
             public void onClick(View v) {
                 totalBrewingTime--;
                 TextView tv = root.findViewById(R.id.totalTime);
-                tv.setText(totalBrewingTime + "(min/s)");
+                tv.setText(totalBrewingTime/60 +"(min)" + totalBrewingTime%60 + "(s)");
             }
         }));
 
@@ -84,6 +84,6 @@ public class ChooseTotalBrewTime_frag extends Fragment implements View.OnClickLi
 
     private void updateText() {
         TextView tv = root.findViewById(R.id.totalTime);
-        tv.setText(totalBrewingTime + "(min/s)");
+        tv.setText(totalBrewingTime/60 + "(min)"  +totalBrewingTime%60 + "(s)");
     }
 }

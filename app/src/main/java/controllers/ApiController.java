@@ -35,16 +35,7 @@ public class ApiController {
             request = new StringRequest(Request.Method.GET, url, okListener, errorListener) {
                 @Override
                 public Map<String, String> getHeaders() throws AuthFailureError {
-                    Map<String, String> map = new HashMap<>();
-
-                    for (Map.Entry<String, String> entry : super.getHeaders().entrySet()) {
-                        map.put(entry.getKey(), entry.getValue());
-                    }
-
-                    map.put("Authorization", "Bearer " + App.getInstance().getUser().getApiToken());
-                    map.put("Accept", "application/json"); // Always have to be json response
-
-                    return map;
+                    return addApiHeaders(super.getHeaders());
                 }
             };
         }
@@ -60,21 +51,24 @@ public class ApiController {
             request = new JsonObjectRequest(Request.Method.GET, url, body, okListener, errorListener) {
                 @Override
                 public Map<String, String> getHeaders() throws AuthFailureError {
-                    Map<String, String> map = new HashMap<>();
-
-                    for (Map.Entry<String, String> entry : super.getHeaders().entrySet()) {
-                        map.put(entry.getKey(), entry.getValue());
-                    }
-
-                    map.put("Authorization", "Bearer " + App.getInstance().getUser().getApiToken());
-                    map.put("Accept", "application/json"); // Always have to be json response
-
-                    return map;
+                    return addApiHeaders(super.getHeaders());
                 }
             };
         }
 
         rq.add(request);
+    }
+
+    private static Map<String, String> addApiHeaders(Map<String, String> existingHeaders) {
+        Map<String, String> headers = new HashMap<>();
+        for (Map.Entry<String, String> entry : existingHeaders.entrySet()) {
+            headers.put(entry.getKey(), entry.getValue());
+        }
+
+        headers.put("Authorization", "Bearer " + App.getInstance().getUser().getApiToken());
+        headers.put("Accept", "application/json"); // Always have to be json response
+
+        return headers;
     }
 
 }

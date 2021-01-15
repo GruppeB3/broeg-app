@@ -8,6 +8,8 @@ import com.google.gson.reflect.TypeToken;
 import java.util.ArrayList;
 import java.util.List;
 
+import database.BroegDB;
+import models.App;
 import models.Brew;
 
 public class BrewsController {
@@ -16,7 +18,18 @@ public class BrewsController {
 
     public static ArrayList<Brew> getBrewsFromLocalStorage(SharedPreferences preferences) {
         Gson gson = new Gson();
-        return gson.fromJson(preferences.getString("brews", "[]"), new TypeToken<ArrayList<Brew>>(){}.getType());
+        ArrayList<Brew> gsonBrews = gson.fromJson(preferences.getString("brews", "[]"), new TypeToken<ArrayList<Brew>>(){}.getType());
+
+        BroegDB broegDB = new BroegDB(App.getInstance().getApplicationContext());
+        ArrayList<Brew> dbBrews = broegDB.getBrews();
+
+        if (dbBrews.size() == 0 && gsonBrews.size() > 0) {
+            // we had brews saved in preferences...
+            saveBrewsToLocalStorage(gsonBrews);
+            preferences.edit().remove("brews").apply();
+        }
+
+        return broegDB.getBrews();
     }
 
     public static Brew getBrewFromLocalStorage(SharedPreferences preferences, int position) {
@@ -29,8 +42,27 @@ public class BrewsController {
     }
 
     public static void saveBrewsToLocalStorage(SharedPreferences preferences, ArrayList<Brew> brews) {
-        Gson gson = new Gson();
-        preferences.edit().putString("brews", gson.toJson(brews)).apply();
+//        Gson gson = new Gson();
+//        preferences.edit().putString("brews", gson.toJson(brews)).apply();
+        saveBrewsToLocalStorage(brews);
+    }
+
+    public static void saveBrewsToLocalStorage(ArrayList<Brew> brews) {
+        BroegDB broegDB = new BroegDB(App.getInstance().getApplicationContext());
+        broegDB.saveBrews(brews);
+    }
+
+    public static long saveBrewToLocalStorage(Brew brew) {
+        BroegDB broegDB = new BroegDB(App.getInstance().getApplicationContext());
+        return broegDB.insertBrew(brew);
+    }
+
+    public static void deleteBrewFromLocalStorage(Brew brew) {
+        if (brew.getCommunityId() == 0)
+            return;
+
+        BroegDB broegDB = new BroegDB(App.getInstance().getApplicationContext());
+        broegDB.deleteBrew(brew);
     }
 
     public static void upsertBrewsFromApi(SharedPreferences prefs, List<Brew> brews) {

@@ -22,6 +22,7 @@ public class Brew {
 
     private String name;
     private int communityId = 0;
+    private boolean isSystem = false;
 
     // we provide an empty constructor in case somebody wants to use the setters
     public Brew() {}
@@ -72,6 +73,10 @@ public class Brew {
         this.communityId = id;
     }
 
+    public void isSystem(boolean isSystem) {
+        this.isSystem = isSystem;
+    }
+
     // Getters
     public GrindSize getGrindSize() {
         return grindSize;
@@ -105,6 +110,10 @@ public class Brew {
 
     public int getCommunityId() {
         return communityId;
+    }
+
+    public boolean isSystem() {
+        return isSystem;
     }
 
     public void update(Brew brew) {

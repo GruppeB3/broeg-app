@@ -133,7 +133,7 @@ public class MyRecipesActivity extends BaseActivity implements MyRecipeListAdapt
                 public void onClick(DialogInterface dialog, int which) {
                     brews.remove(brew);
                     recyclerViewAdapter.setRecipes(brews);
-                    BrewsController.saveBrewsToLocalStorage(prefs, brews);
+                    BrewsController.deleteBrewFromLocalStorage(brew);
 
                     if (brew.getCommunityId() > 0 && App.getInstance().userIsLoggedIn()) {
                         // Brew was added in the cloud

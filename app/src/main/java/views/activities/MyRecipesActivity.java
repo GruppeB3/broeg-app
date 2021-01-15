@@ -50,9 +50,21 @@ public class MyRecipesActivity extends BaseActivity implements MyRecipeListAdapt
         prefs = PreferenceHelper.getApplicationPreferences(this);
         updateListOfBrews();
 
-        if (getBrewFromIntent() != null) {
-            brews.add(getBrewFromIntent());
-            BrewsController.saveBrewsToLocalStorage(prefs, brews);
+        Brew brewFromIntent = getBrewFromIntent();
+        if (brewFromIntent != null) {
+            brews.add(brewFromIntent);
+            long id = BrewsController.saveBrewToLocalStorage(brewFromIntent);
+            brewFromIntent.setCommunityId((int) id);
+
+            if (App.getInstance().userIsLoggedIn()) {
+                try {
+                    String apiUrl = ApiController.getApiBaseUrl() + "user/brews";
+                    requestMode = RequestMode.ADD;
+                    ApiController.makeHttpPostRequest(apiUrl, brewFromIntent.toApiJson(), this, this);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
         }
 
         RecyclerView listView = this.findViewById(R.id.myrecipes_List);
@@ -196,6 +208,8 @@ public class MyRecipesActivity extends BaseActivity implements MyRecipeListAdapt
             progressDialog.cancel();
         }
 
+        error.printStackTrace();
+
         if (error instanceof AuthFailureError) {
             // error was an auth failure
             // send to log in
@@ -231,6 +245,6 @@ public class MyRecipesActivity extends BaseActivity implements MyRecipeListAdapt
     }
 
     private enum RequestMode {
-        DELETE, UPDATE;
+        ADD, DELETE, UPDATE;
     }
 }

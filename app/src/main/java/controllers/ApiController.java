@@ -24,7 +24,12 @@ public class ApiController {
     }
 
     public static void makeHttpPostRequest(String url, JSONObject body, Response.Listener<JSONObject> okListener, Response.ErrorListener errorListener) {
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, body, okListener, errorListener);
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, body, okListener, errorListener) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                return addApiHeaders(super.getHeaders());
+            }
+        };
         rq.add(request);
     }
 

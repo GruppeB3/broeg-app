@@ -147,6 +147,7 @@ public class Brew {
         JSONObject json = new JSONObject();
 
         json.put("name", this.getName());
+        json.put("local_id", this.getCommunityId());
         json.put("grind_size", this.getGrindSize().toString());
         json.put("brewing_temperature", this.getBrewingTemperature());
         json.put("ground_coffee_amount", this.getGroundCoffeeAmount());

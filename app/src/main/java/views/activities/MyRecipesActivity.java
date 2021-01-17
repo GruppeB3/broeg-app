@@ -28,7 +28,7 @@ import dk.dtu.gruppeb3.broeg.app.R;
 import helpers.PreferenceHelper;
 import models.App;
 import models.Brew;
-import views.activities.community.profile.LoginActivity;
+import views.activities.community.login.LoginActivity;
 import views.adapters.MyRecipeListAdapter;
 
 public class MyRecipesActivity extends BaseActivity implements MyRecipeListAdapter.MyRecipeListButtonListener, Response.Listener<JSONObject>, Response.ErrorListener {

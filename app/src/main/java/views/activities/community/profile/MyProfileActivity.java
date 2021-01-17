@@ -7,6 +7,7 @@ import android.widget.TextView;
 import dk.dtu.gruppeb3.broeg.app.R;
 import models.App;
 import views.activities.BaseActivity;
+import views.activities.community.login.LoginActivity;
 
 public class MyProfileActivity extends BaseActivity {
 

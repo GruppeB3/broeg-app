@@ -18,7 +18,7 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name="views.activities.community.profile.SignUpActivity" />
+        <activity android:name="views.activities.community.login.SignUpActivity" />
         <activity android:name="views.activities.SelectBrewerActivity" />
         <activity android:name="views.activities.EditRecipeActivity" />
         <activity android:name="views.activities.espble.ProvisionBrewerActivity" />
@@ -29,7 +29,7 @@
         <activity android:name="views.activities.BrewingActivity" />
         <activity android:name="views.activities.MyRecipesActivity" />
         <activity android:name="views.activities.community.profile.MyProfileActivity" />
-        <activity android:name="views.activities.community.profile.LoginActivity" />
+        <activity android:name="views.activities.community.login.LoginActivity" />
         <activity android:name="views.activities.NewRecipeActivity" />
         <activity android:name="views.activities.MainActivity">
             <intent-filter>

@@ -1,4 +1,4 @@
-package views.activities.community.profile;
+package views.activities.community.login;
 
 import android.app.ProgressDialog;
 import android.content.Intent;

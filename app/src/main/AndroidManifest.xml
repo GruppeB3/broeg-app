@@ -31,6 +31,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <meta-data android:name="https://6c16f6a55ee34d9e8837467884c273b9@o506357.ingest.sentry.io/5595954" android:value="https://36f2f09adfda4a378eee67fa16377fa4@o506357.ingest.sentry.io/5595946" />
     </application>
 
 </manifest>

@@ -2,6 +2,7 @@ package views.fragments;
 
 import android.app.Fragment;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import android.widget.Button;
 import com.google.gson.Gson;
 
 import dk.dtu.gruppeb3.broeg.app.R;
+import io.sentry.Sentry;
 import models.BrewBuilder;
 import models.enums.GrindSize;
 import views.activities.NewRecipeActivity;
@@ -28,6 +30,11 @@ public class ChooseGrindSize_frag extends Fragment implements View.OnClickListen
     @Override
     public View onCreateView(LayoutInflater i, ViewGroup container, Bundle savedInstanceState) {
         View root = i.inflate(R.layout.fragment_choose_grind_size, container, false);
+
+        boolean EMULATOR = Build.PRODUCT.contains("sdk") || Build.MODEL.contains("Emulator");
+        if (!EMULATOR) {
+            Sentry.init("https://6c16f6a55ee34d9e8837467884c273b9@o506357.ingest.sentry.io/5595954");
+        }
 
         fineBtn = root.findViewById(R.id.Fine);
         mediumBtn = root.findViewById(R.id.Medium);

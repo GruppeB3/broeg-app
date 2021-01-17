@@ -1,11 +1,13 @@
 package models;
 
 import android.app.Application;
+import android.content.Intent;
 import android.content.SharedPreferences;
 
 import com.google.gson.Gson;
 
 import helpers.PreferenceHelper;
+import services.UpdateSystemBrewsService;
 
 public class App extends Application {
 
@@ -21,6 +23,8 @@ public class App extends Application {
         SharedPreferences prefs = PreferenceHelper.getApplicationPreferences(getApplicationContext());
         Gson gson = new Gson();
         this.user = gson.fromJson(prefs.getString("user", gson.toJson(new User("Local user"))), User.class);
+
+        startService(new Intent(this, UpdateSystemBrewsService.class));
     }
 
     public static App getInstance() {

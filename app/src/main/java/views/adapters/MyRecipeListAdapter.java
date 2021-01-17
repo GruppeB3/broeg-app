@@ -60,6 +60,12 @@ public class MyRecipeListAdapter extends RecyclerView.Adapter<MyRecipeListAdapte
                 listener.onMyRecipeListButtonClick(Mode.DELETE, position);
             }
         });
+
+        if (recipes.get(position).isSystem()) {
+            // Hide action buttons if it's a system brew
+            holder.editBtn.setVisibility(View.GONE);
+            holder.deleteBtn.setVisibility(View.GONE);
+        }
     }
 
     @Override

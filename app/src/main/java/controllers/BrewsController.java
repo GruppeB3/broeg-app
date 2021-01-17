@@ -16,6 +16,17 @@ public class BrewsController {
 
     public BrewsController() {}
 
+    public static ArrayList<Brew> getSystemBrews(SharedPreferences preferences) {
+        Gson gson = new Gson();
+        ArrayList<Brew> systemBrews = gson.fromJson(preferences.getString("systemBrews", "[]"), new TypeToken<ArrayList<Brew>>(){}.getType());
+
+        for (Brew brew : systemBrews) {
+            brew.isSystem(true);
+        }
+
+        return systemBrews;
+    }
+
     public static ArrayList<Brew> getBrewsFromLocalStorage(SharedPreferences preferences) {
         Gson gson = new Gson();
         ArrayList<Brew> gsonBrews = gson.fromJson(preferences.getString("brews", "[]"), new TypeToken<ArrayList<Brew>>(){}.getType());

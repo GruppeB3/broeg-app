@@ -94,7 +94,8 @@ public class MyRecipesActivity extends BaseActivity implements MyRecipeListAdapt
     }
 
     private void updateListOfBrews() {
-        this.brews = BrewsController.getBrewsFromLocalStorage(prefs);
+        this.brews = BrewsController.getSystemBrews(prefs);
+        this.brews.addAll(BrewsController.getBrewsFromLocalStorage(prefs));
 
         if (lastUpdateStartedAt != null && lastUpdateStartedAt.getTime() > (new Date()).getTime() - (5 * 60 * 1000)) {
             // Data update was started within the last 5 minutes
@@ -231,7 +232,9 @@ public class MyRecipesActivity extends BaseActivity implements MyRecipeListAdapt
                 }
 
                 BrewsController.upsertBrewsFromApi(prefs, brewsFromApi);
-                recyclerViewAdapter.setRecipes(BrewsController.getBrewsFromLocalStorage(prefs));
+                this.brews = BrewsController.getSystemBrews(prefs);
+                this.brews.addAll(BrewsController.getBrewsFromLocalStorage(prefs));
+                recyclerViewAdapter.setRecipes(this.brews);
                 lastUpdatedAt = new Date();
             } catch (JSONException e) {
                 e.printStackTrace();

@@ -78,6 +78,10 @@
     <string name="my_profile_email">E-mail: %1$s</string>
     <string name="my_profile">My profile</string>
     <string name="missing_add_account">Missing an account? Click here to register!</string>
+    <string name="forgot_password">Forgot password? Click here to reset!</string>
+
+    <!-- Reset password -->
+    <string name="reset_password">Reset Password</string>
 
     <!-- Errors -->
     <string name="error_updating_brew">An error occurred while trying to update your brew in the cloud</string>

@@ -25,7 +25,7 @@ public class LoginActivity extends BaseActivity implements Response.ErrorListene
     public static final String PASSWORD_IDENTIFIER = "password";
 
     private EditText username, password;
-    private TextView newAccount;
+    private TextView newAccount, forgotPassword;
     private Button loginBtn;
     private int requestProgress = 0;
 
@@ -44,9 +44,11 @@ public class LoginActivity extends BaseActivity implements Response.ErrorListene
         password = findViewById(R.id.password);
         newAccount = findViewById(R.id.login_new_account_view);
         loginBtn = findViewById(R.id.login);
+        forgotPassword = findViewById(R.id.login_forgot_password);
 
         loginBtn.setOnClickListener(this);
         newAccount.setOnClickListener(this);
+        forgotPassword.setOnClickListener(this);
     }
 
     @Override
@@ -57,6 +59,9 @@ public class LoginActivity extends BaseActivity implements Response.ErrorListene
             logInUser();
         } else if (v == newAccount) {
             startActivity(new Intent(this, SignUpActivity.class));
+            finish();
+        } else if (v == forgotPassword) {
+            startActivity(new Intent(this, ResetPasswordActivity.class));
             finish();
         }
     }

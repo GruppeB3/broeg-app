@@ -75,4 +75,14 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             android:layout_marginTop="15dp" />
+
+    <TextView
+            android:id="@+id/login_forgot_password"
+            android:text="@string/forgot_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/login_new_account_view"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="10dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

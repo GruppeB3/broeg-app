@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
         package="dk.dtu.gruppeb3.broeg.app">
-
     <!-- Permissions -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
@@ -18,6 +17,7 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+        <activity android:name="views.activities.community.login.ResetPasswordActivity"></activity>
         <activity android:name="views.activities.community.login.SignUpActivity" />
         <activity android:name="views.activities.SelectBrewerActivity" />
         <activity android:name="views.activities.EditRecipeActivity" />
@@ -40,7 +40,10 @@
         </activity>
 
         <service android:name="services.UpdateSystemBrewsService" />
-        <meta-data android:name="https://6c16f6a55ee34d9e8837467884c273b9@o506357.ingest.sentry.io/5595954" android:value="https://36f2f09adfda4a378eee67fa16377fa4@o506357.ingest.sentry.io/5595946" />
+
+        <meta-data
+                android:name="https://6c16f6a55ee34d9e8837467884c273b9@o506357.ingest.sentry.io/5595954"
+                android:value="https://36f2f09adfda4a378eee67fa16377fa4@o506357.ingest.sentry.io/5595946" />
     </application>
 
 </manifest>

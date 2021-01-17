@@ -8,6 +8,7 @@ import android.widget.ImageView;
 
 import dk.dtu.gruppeb3.broeg.app.R;
 import helpers.PreferenceHelper;
+import io.sentry.Sentry;
 import models.BrewBuilder;
 import views.fragments.ChooseAmountOfCoffee_frag;
 import views.fragments.ChooseBloomTime_frag;

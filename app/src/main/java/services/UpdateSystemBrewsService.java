@@ -48,7 +48,7 @@ public class UpdateSystemBrewsService extends Service implements Response.Listen
                     updateBrews();
 
                     try {
-                        Thread.sleep(1000);
+                        Thread.sleep(10 * 60 * 1000);
                     } catch (InterruptedException ignored) {}
                 }
             }

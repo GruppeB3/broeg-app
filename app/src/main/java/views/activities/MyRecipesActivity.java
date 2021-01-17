@@ -1,32 +1,46 @@
 package views.activities;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.EditText;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.google.gson.Gson;
 
-import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.Date;
+
+import controllers.ApiController;
 import controllers.BrewsController;
 import dk.dtu.gruppeb3.broeg.app.R;
 import helpers.PreferenceHelper;
+import models.App;
 import models.Brew;
+import views.activities.community.login.LoginActivity;
 import views.adapters.MyRecipeListAdapter;
 
-public class MyRecipesActivity extends BaseActivity implements MyRecipeListAdapter.MyRecipeListButtonListener {
+public class MyRecipesActivity extends BaseActivity implements MyRecipeListAdapter.MyRecipeListButtonListener, Response.Listener<JSONObject>, Response.ErrorListener {
 
     private ArrayList<Brew> brews;
     private SharedPreferences prefs;
     MyRecipeListAdapter recyclerViewAdapter;
+    ProgressDialog progressDialog;
+    Date lastUpdatedAt;
+    Date lastUpdateStartedAt;
+
+    RequestMode requestMode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,9 +50,21 @@ public class MyRecipesActivity extends BaseActivity implements MyRecipeListAdapt
         prefs = PreferenceHelper.getApplicationPreferences(this);
         updateListOfBrews();
 
-        if (getBrewFromIntent() != null) {
-            brews.add(getBrewFromIntent());
-            BrewsController.saveBrewsToLocalStorage(prefs, brews);
+        Brew brewFromIntent = getBrewFromIntent();
+        if (brewFromIntent != null) {
+            brews.add(brewFromIntent);
+            long id = BrewsController.saveBrewToLocalStorage(brewFromIntent);
+            brewFromIntent.setCommunityId((int) id);
+
+            if (App.getInstance().userIsLoggedIn()) {
+                try {
+                    String apiUrl = ApiController.getApiBaseUrl() + "user/brews";
+                    requestMode = RequestMode.ADD;
+                    ApiController.makeHttpPostRequest(apiUrl, brewFromIntent.toApiJson(), this, this);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
         }
 
         RecyclerView listView = this.findViewById(R.id.myrecipes_List);
@@ -54,7 +80,6 @@ public class MyRecipesActivity extends BaseActivity implements MyRecipeListAdapt
     protected void onResume() {
         super.onResume();
         updateListOfBrews();
-
     }
 
 
@@ -69,7 +94,24 @@ public class MyRecipesActivity extends BaseActivity implements MyRecipeListAdapt
     }
 
     private void updateListOfBrews() {
-        this.brews = BrewsController.getBrewsFromLocalStorage(prefs);
+        this.brews = BrewsController.getSystemBrews(prefs);
+        this.brews.addAll(BrewsController.getBrewsFromLocalStorage(prefs));
+
+        if (lastUpdateStartedAt != null && lastUpdateStartedAt.getTime() > (new Date()).getTime() - (5 * 60 * 1000)) {
+            // Data update was started within the last 5 minutes
+            return;
+        }
+
+        lastUpdateStartedAt = new Date();
+
+        if (!App.getInstance().userIsLoggedIn())
+            return;
+
+        requestMode = RequestMode.UPDATE;
+
+        progressDialog = ProgressDialog.show(this, "", getString(R.string.updating_brews));
+        String apiUrl = ApiController.getApiBaseUrl() + "user/brews";
+        ApiController.makeHttpGetRequest(apiUrl, new JSONObject(), this, this);
     }
 
     public void startBrew(int position){
@@ -104,7 +146,13 @@ public class MyRecipesActivity extends BaseActivity implements MyRecipeListAdapt
                 public void onClick(DialogInterface dialog, int which) {
                     brews.remove(brew);
                     recyclerViewAdapter.setRecipes(brews);
-                    BrewsController.saveBrewsToLocalStorage(prefs, brews);
+                    BrewsController.deleteBrewFromLocalStorage(brew);
+
+                    if (brew.getCommunityId() > 0 && App.getInstance().userIsLoggedIn()) {
+                        // Brew was added in the cloud
+                        requestMode = RequestMode.DELETE;
+                        deleteBrewFromCloud(brew.getCommunityId());
+                    }
                 }
             });
 
@@ -145,5 +193,61 @@ public class MyRecipesActivity extends BaseActivity implements MyRecipeListAdapt
             alert.create().show();
 
         }
+    }
+
+    private void deleteBrewFromCloud(int communityId) {
+        progressDialog = ProgressDialog.show(this, "", "Deleting brew...");
+
+        String apiUrl = ApiController.getApiBaseUrl() + "user/brew/" + communityId;
+        ApiController.makeHttpDeleteRequest(apiUrl, new JSONObject(), this, this);
+    }
+
+    @Override
+    public void onErrorResponse(VolleyError error) {
+        // We got an error from the API
+        if (progressDialog != null) {
+            progressDialog.cancel();
+        }
+
+        error.printStackTrace();
+
+        if (error instanceof AuthFailureError) {
+            // error was an auth failure
+            // send to log in
+            startActivity(new Intent(this, LoginActivity.class));
+        }
+    }
+
+    @Override
+    public void onResponse(JSONObject response) {
+        // We got response from the API
+
+        if (requestMode == RequestMode.UPDATE) {
+            try {
+                JSONArray array = response.getJSONArray("data");
+                ArrayList<Brew> brewsFromApi = new ArrayList<>();
+
+                for (int i = 0; i < array.length(); i++) {
+                    brewsFromApi.add(Brew.fromApi(array.getJSONObject(i)));
+                }
+
+                BrewsController.upsertBrewsFromApi(prefs, brewsFromApi);
+                this.brews = BrewsController.getSystemBrews(prefs);
+                this.brews.addAll(BrewsController.getBrewsFromLocalStorage(prefs));
+                recyclerViewAdapter.setRecipes(this.brews);
+                lastUpdatedAt = new Date();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+        if (progressDialog != null) {
+            progressDialog.cancel();
+            progressDialog.hide();
+        }
+    }
+
+    private enum RequestMode {
+        ADD, DELETE, UPDATE;
     }
 }

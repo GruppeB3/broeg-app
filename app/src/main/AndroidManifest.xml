@@ -2,11 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
         package="dk.dtu.gruppeb3.broeg.app">
     <!-- Permissions -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+            android:name="models.App"
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
             android:label="@string/app_name"
@@ -14,6 +17,8 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+        <activity android:name="views.activities.community.login.ResetPasswordActivity"></activity>
+        <activity android:name="views.activities.community.login.SignUpActivity" />
         <activity android:name="views.activities.SelectBrewerActivity" />
         <activity android:name="views.activities.EditRecipeActivity" />
         <activity android:name="views.activities.espble.ProvisionBrewerActivity" />
@@ -23,6 +28,8 @@
         <activity android:name="views.activities.CleaningActivity" />
         <activity android:name="views.activities.BrewingActivity" />
         <activity android:name="views.activities.MyRecipesActivity" />
+        <activity android:name="views.activities.community.profile.MyProfileActivity" />
+        <activity android:name="views.activities.community.login.LoginActivity" />
         <activity android:name="views.activities.NewRecipeActivity" />
         <activity android:name="views.activities.MainActivity">
             <intent-filter>
@@ -31,7 +38,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <meta-data android:name="https://6c16f6a55ee34d9e8837467884c273b9@o506357.ingest.sentry.io/5595954" android:value="https://36f2f09adfda4a378eee67fa16377fa4@o506357.ingest.sentry.io/5595946" />
+
+        <service android:name="services.UpdateSystemBrewsService" />
+
+        <meta-data
+                android:name="https://6c16f6a55ee34d9e8837467884c273b9@o506357.ingest.sentry.io/5595954"
+                android:value="https://36f2f09adfda4a378eee67fa16377fa4@o506357.ingest.sentry.io/5595946" />
     </application>
 
 </manifest>

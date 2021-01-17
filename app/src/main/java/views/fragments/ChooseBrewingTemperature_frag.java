@@ -1,6 +1,7 @@
 package views.fragments;
 
 import android.app.Fragment;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import dk.dtu.gruppeb3.broeg.app.R;
+import io.sentry.Sentry;
 import models.BrewBuilder;
 import views.RepeatListener;
 import views.activities.NewRecipeActivity;
@@ -26,6 +28,11 @@ public class ChooseBrewingTemperature_frag extends Fragment implements View.OnCl
     @Override
     public View onCreateView(LayoutInflater i, ViewGroup container, Bundle savedInstanceState){
         this.root = i.inflate(R.layout.fragment_brewing_temperature, container, false);
+
+        boolean EMULATOR = Build.PRODUCT.contains("sdk") || Build.MODEL.contains("Emulator");
+        if (!EMULATOR) {
+            Sentry.init("https://6c16f6a55ee34d9e8837467884c273b9@o506357.ingest.sentry.io/5595954");
+        }
 
         temperature = BrewBuilder.getInstance().get().getBrewingTemperature();
 

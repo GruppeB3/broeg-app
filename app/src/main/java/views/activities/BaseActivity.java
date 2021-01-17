@@ -1,6 +1,7 @@
 package views.activities;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import dk.dtu.gruppeb3.broeg.app.R;
 import models.App;
+import io.sentry.Sentry;
 import views.fragments.Menu_frag;
 
 public abstract class BaseActivity extends AppCompatActivity implements View.OnClickListener {
@@ -22,6 +24,11 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_base);
+
+        boolean EMULATOR = Build.PRODUCT.contains("sdk") || Build.MODEL.contains("Emulator");
+        if (!EMULATOR) {
+            Sentry.init("https://6c16f6a55ee34d9e8837467884c273b9@o506357.ingest.sentry.io/5595954");
+        }
 
         menuBtn = findViewById(R.id.menu_button);
         cleaningBtn = findViewById(R.id.cleaning_button);

@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.gson.Gson;
+
 import java.util.ArrayList;
 
 import controllers.BrewsController;
@@ -70,7 +72,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
         } else if (v == quickButton){
             Intent i = new Intent(this, BrewingActivity.class);
-            i.putExtra(BrewingActivity.brew);
+            i.putExtra(BrewingActivity.SELECTED_BREW_IDENTIFIER,(new Gson()).toJson(brew));
             startActivity(i);
             finish();
         }

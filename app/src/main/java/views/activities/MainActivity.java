@@ -1,21 +1,39 @@
 package views.activities;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import java.util.ArrayList;
+
+import controllers.BrewsController;
 import dk.dtu.gruppeb3.broeg.app.R;
+import helpers.PreferenceHelper;
+import models.Brew;
+import models.BrewBuilder;
 import views.activities.community.profile.MyProfileActivity;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     Button newBrewButton, cleaningButton, profileButton, myrecipesButton, quickButton;
+    private SharedPreferences prefs;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addContentLayout(R.layout.activity_main);
+
+        prefs = PreferenceHelper.getApplicationPreferences(this);
+
+        ArrayList<Brew> brews = BrewsController.getSystemBrews(prefs);
+        if(brews.size() > 0){
+            Brew brew = brews.get(0);
+        } else {
+            Brew brew = new Brew();
+        }
 
 //        profileButton = findViewById(R.id.profile_button);
         newBrewButton = findViewById(R.id.broeg_frontpagebutton);
@@ -51,7 +69,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             startActivity(new Intent(this, MyProfileActivity.class));
 
         } else if (v == quickButton){
-
+            Intent i = new Intent(this, BrewingActivity.class);
+            i.putExtra(BrewingActivity.brew);
+            startActivity(i);
+            finish();
         }
 
     }

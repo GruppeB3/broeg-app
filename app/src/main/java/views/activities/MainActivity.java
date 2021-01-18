@@ -28,14 +28,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         addContentLayout(R.layout.activity_main);
 
-        prefs = PreferenceHelper.getApplicationPreferences(this);
-
-        ArrayList<Brew> brews = BrewsController.getSystemBrews(prefs);
-        if(brews.size() > 0){
-            Brew brew = brews.get(0);
-        } else {
-            Brew brew = new Brew();
-        }
 
 //        profileButton = findViewById(R.id.profile_button);
         newBrewButton = findViewById(R.id.broeg_frontpagebutton);
@@ -71,8 +63,17 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             startActivity(new Intent(this, MyProfileActivity.class));
 
         } else if (v == quickButton){
+
+            prefs = PreferenceHelper.getApplicationPreferences(this);
+
+            ArrayList<Brew> brews = BrewsController.getSystemBrews(prefs);
+            if(brews.size() > 0){
+                Brew brew = brews.get(0);
+            } else {
+                Brew brew = new Brew();
+            }
             Intent i = new Intent(this, BrewingActivity.class);
-            i.putExtra(BrewingActivity.SELECTED_BREW_IDENTIFIER,(new Gson()).toJson(brew));
+            i.putExtra(BrewingActivity.SELECTED_BREW_IDENTIFIER,(new Gson()).toJson(brews));
             startActivity(i);
             finish();
         }

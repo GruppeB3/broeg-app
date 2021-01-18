@@ -67,15 +67,15 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             prefs = PreferenceHelper.getApplicationPreferences(this);
 
             ArrayList<Brew> brews = BrewsController.getSystemBrews(prefs);
+            Brew brew = null;
             if(brews.size() > 0){
-                Brew brew = brews.get(0);
+                brew = brews.get(0);
             } else {
-                Brew brew = new Brew();
+                brew = new Brew();
             }
             Intent i = new Intent(this, BrewingActivity.class);
-            i.putExtra(BrewingActivity.SELECTED_BREW_IDENTIFIER,(new Gson()).toJson(brews));
+            i.putExtra(BrewingActivity.SELECTED_BREW_IDENTIFIER,(new Gson()).toJson(brew));
             startActivity(i);
-            finish();
         }
 
     }

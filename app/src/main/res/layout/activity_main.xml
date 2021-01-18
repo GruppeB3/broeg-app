@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="14dp"
         android:text="New Recipe"
-        android:textSize="30sp"
+        android:textSize="25sp"
         app:layout_constraintBottom_toTopOf="@+id/myrecipes_button"
         app:layout_constraintEnd_toEndOf="@+id/myrecipes_button" />
 
@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="78dp"
         android:text="My Recipes"
-        android:textSize="30sp"
+        android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -43,7 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="15dp"
         android:text="Quick Brew"
-        android:textSize="30sp"
+        android:textSize="25sp"
         app:layout_constraintBottom_toTopOf="@+id/broeg_frontpagebutton"
         app:layout_constraintStart_toStartOf="@+id/broeg_frontpagebutton" />
 

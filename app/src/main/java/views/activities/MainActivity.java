@@ -10,7 +10,7 @@ import views.activities.community.profile.MyProfileActivity;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
 
-    Button newBrewButton, cleaningButton, profileButton, myrecipesButton;
+    Button newBrewButton, cleaningButton, profileButton, myrecipesButton, quickButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,11 +21,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         newBrewButton = findViewById(R.id.broeg_frontpagebutton);
         cleaningButton = findViewById(R.id.cleaning_button);
         myrecipesButton = findViewById(R.id.myrecipes_button);
+        quickButton = findViewById(R.id.quickbrew_button);
 
 //        profileButton.setOnClickListener(this);
         newBrewButton.setOnClickListener(this);
         cleaningButton.setOnClickListener(this);
         myrecipesButton.setOnClickListener(this);
+        quickButton.setOnClickListener(this);
     }
 
     @Override
@@ -48,6 +50,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
             startActivity(new Intent(this, MyProfileActivity.class));
 
+        } else if (v == quickButton){
+
         }
+
     }
 }

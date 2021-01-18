@@ -6,38 +6,45 @@
     android:layout_height="match_parent"
     tools:context="views.activities.MainActivity">
 
-    <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="136dp"
-            android:layout_height="294dp"
-            android:layout_marginTop="129dp"
-            android:layout_marginBottom="40dp"
-            app:layout_constraintBottom_toTopOf="@+id/broeg_frontpagebutton"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/broeg_whitelogo" />
-
     <Button
         android:id="@+id/broeg_frontpagebutton"
-        android:layout_width="100dp"
-        android:layout_height="51dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/broeg_frontpagebutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="14dp"
+        android:text="New Recipe"
+        android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/myrecipes_button"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/myrecipes_button" />
 
     <Button
         android:id="@+id/myrecipes_button"
-        android:layout_width="240dp"
-        android:layout_height="47dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="80dp"
-        android:background="@drawable/recipes_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="78dp"
+        android:text="My Recipes"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="136dp"
+        android:layout_height="294dp"
+        android:layout_marginTop="129dp"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/broeg_whitelogo" />
+
+    <Button
+        android:id="@+id/quickbrew_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:text="Quick Brew"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/broeg_frontpagebutton"
+        app:layout_constraintStart_toStartOf="@+id/broeg_frontpagebutton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

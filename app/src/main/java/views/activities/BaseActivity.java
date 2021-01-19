@@ -12,8 +12,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import dk.dtu.gruppeb3.broeg.app.R;
-import models.App;
 import io.sentry.Sentry;
+import models.App;
 import views.fragments.Menu_frag;
 
 public abstract class BaseActivity extends AppCompatActivity implements View.OnClickListener {
@@ -41,9 +41,7 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
           cleaningBtn.setOnClickListener(this);
 
         }
-
-
-        }
+    }
 
 
     @Override

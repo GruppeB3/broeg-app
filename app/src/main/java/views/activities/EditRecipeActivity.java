@@ -21,6 +21,7 @@ import controllers.ApiController;
 import controllers.BrewsController;
 import dk.dtu.gruppeb3.broeg.app.R;
 import io.sentry.Sentry;
+import models.App;
 import models.Brew;
 import models.BrewBuilder;
 
@@ -83,7 +84,7 @@ public class EditRecipeActivity extends NewRecipeActivity implements Response.Li
         brews.set(position, brew);
         BrewsController.saveBrewsToLocalStorage(preferences, brews);
 
-        if (brew.getCommunityId() > 0) {
+        if (brew.getCommunityId() > 0 && App.getInstance().userIsLoggedIn()) {
             // Brew is a community brew.
             progressDialog = ProgressDialog.show(this, "", "Saving update brew in cloud");
 

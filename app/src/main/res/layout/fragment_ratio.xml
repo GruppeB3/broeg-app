@@ -78,8 +78,11 @@
             android:id="@+id/txtRatio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/geo"
+            android:layout_marginTop="20dp"
             android:text="   Choose water/coffee ratio"
             android:textAlignment="center"
+            android:textColor="@color/white"
             android:textSize="18sp"
             android:textStyle="bold" />
 

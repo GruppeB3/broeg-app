@@ -76,10 +76,13 @@
 
         <TextView
             android:id="@+id/txtRatio"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="     Choose total brewing time"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/geo"
+            android:text="Choose total brewing time"
             android:textAlignment="center"
+            android:textColor="@color/white"
             android:textSize="18sp"
             android:textStyle="bold" />
 

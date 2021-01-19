@@ -59,10 +59,14 @@
 
         <TextView
             android:id="@+id/grindsizetxt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="         Choose grind size"
-            android:textSize="20sp"
+            android:layout_width="match_parent"
+            android:layout_height="39dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/geo"
+            android:text="Choose grind size"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
     </androidx.cardview.widget.CardView>

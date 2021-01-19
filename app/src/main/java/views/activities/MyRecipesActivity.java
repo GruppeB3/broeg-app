@@ -34,6 +34,7 @@ import views.adapters.MyRecipeListAdapter;
 public class MyRecipesActivity extends BaseActivity implements MyRecipeListAdapter.MyRecipeListButtonListener, Response.Listener<JSONObject>, Response.ErrorListener {
 
     private ArrayList<Brew> brews;
+    private ArrayList<Brew> systemBrews;
     private SharedPreferences prefs;
     MyRecipeListAdapter recyclerViewAdapter;
     ProgressDialog progressDialog;
@@ -94,7 +95,8 @@ public class MyRecipesActivity extends BaseActivity implements MyRecipeListAdapt
     }
 
     private void updateListOfBrews() {
-        this.brews = BrewsController.getSystemBrews(prefs);
+        this.systemBrews = BrewsController.getSystemBrews(prefs);
+        this.brews = new ArrayList<>(this.systemBrews);
         this.brews.addAll(BrewsController.getBrewsFromLocalStorage(prefs));
 
         if (lastUpdateStartedAt != null && lastUpdateStartedAt.getTime() > (new Date()).getTime() - (5 * 60 * 1000)) {
@@ -129,13 +131,13 @@ public class MyRecipesActivity extends BaseActivity implements MyRecipeListAdapt
         if (mode == MyRecipeListAdapter.Mode.EDIT) {
 
             Intent i = new Intent(this, EditRecipeActivity.class);
-            i.putExtra(EditRecipeActivity.BREW_POSITION_KEY, position);
+            i.putExtra(EditRecipeActivity.BREW_POSITION_KEY, position - this.systemBrews.size());
             startActivity(i);
 
         } else if (mode == MyRecipeListAdapter.Mode.DELETE) {
 
             final ArrayList<Brew> brews = BrewsController.getBrewsFromLocalStorage(prefs);
-            final Brew brew = brews.get(position);
+            final Brew brew = brews.get(position - this.systemBrews.size());
 
             AlertDialog.Builder alert = new AlertDialog.Builder(this);
             alert.setTitle(getString(R.string.delete_brew));
@@ -145,8 +147,11 @@ public class MyRecipesActivity extends BaseActivity implements MyRecipeListAdapt
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     brews.remove(brew);
-                    recyclerViewAdapter.setRecipes(brews);
                     BrewsController.deleteBrewFromLocalStorage(brew);
+
+                    ArrayList<Brew> brews = new ArrayList<>(systemBrews);
+                    brews.addAll(BrewsController.getBrewsFromLocalStorage(prefs));
+                    recyclerViewAdapter.setRecipes(brews);
 
                     if (brew.getCommunityId() > 0 && App.getInstance().userIsLoggedIn()) {
                         // Brew was added in the cloud

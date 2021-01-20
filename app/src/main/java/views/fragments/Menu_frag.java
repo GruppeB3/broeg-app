@@ -12,15 +12,16 @@ import android.widget.Button;
 import androidx.annotation.Nullable;
 
 import dk.dtu.gruppeb3.broeg.app.R;
+import io.sentry.Sentry;
 import models.App;
 import models.User;
+import views.activities.GroupMembersActivity;
 import views.activities.community.profile.MyProfileActivity;
-import io.sentry.Sentry;
 import views.activities.espble.ConnectBluetoothDeviceActivity;
 
 public class Menu_frag extends Fragment implements View.OnClickListener {
 
-    Button settingsBtn, helpBtn, connectBtn, signOutBtn, profileBtn;
+    Button settingsBtn, helpBtn, connectBtn, signOutBtn, profileBtn, groupMembersBtn;
 
     @Nullable
     @Override
@@ -38,12 +39,14 @@ public class Menu_frag extends Fragment implements View.OnClickListener {
         connectBtn = root.findViewById(R.id.menu_connect_btn);
         signOutBtn = root.findViewById(R.id.menu_sign_out_btn);
         profileBtn = root.findViewById(R.id.menu_myprofile_button);
+        groupMembersBtn = root.findViewById(R.id.menu_group_members);
 
         settingsBtn.setOnClickListener(this);
         helpBtn.setOnClickListener(this);
         connectBtn.setOnClickListener(this);
         signOutBtn.setOnClickListener(this);
         profileBtn.setOnClickListener(this);
+        groupMembersBtn.setOnClickListener(this);
 
         return root;
     }
@@ -61,6 +64,9 @@ public class Menu_frag extends Fragment implements View.OnClickListener {
             App.getInstance().setUser(new User("Local user"));
         } else if (v == profileBtn) {
             Intent i = new Intent(getActivity(), MyProfileActivity.class);
+            startActivity(i);
+        } else if (v == groupMembersBtn) {
+            Intent i = new Intent(getActivity(), GroupMembersActivity.class);
             startActivity(i);
         }
         getActivity().onBackPressed();

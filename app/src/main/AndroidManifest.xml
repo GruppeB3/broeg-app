@@ -17,7 +17,8 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name="views.activities.community.login.ResetPasswordActivity"></activity>
+        <activity android:name="views.activities.GroupMembersActivity"></activity>
+        <activity android:name="views.activities.community.login.ResetPasswordActivity" />
         <activity android:name="views.activities.community.login.SignUpActivity" />
         <activity android:name="views.activities.SelectBrewerActivity" />
         <activity android:name="views.activities.EditRecipeActivity" />

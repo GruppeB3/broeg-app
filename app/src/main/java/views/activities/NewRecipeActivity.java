@@ -80,9 +80,15 @@ public class NewRecipeActivity extends BaseActivity implements View.OnClickListe
         BrewBuilder.reset();
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        BrewBuilder.reset();
+    }
+
     public void updateTextActivity(){
         Brew brew = BrewBuilder.getInstance().get();
-        groundCoffeeAmtBtn.setText("Ground Coffee Amount" +(brew.getGroundCoffeeAmount()));
+        groundCoffeeAmtBtn.setText("Ground Coffee Amount" + " " + "(" +(brew.getGroundCoffeeAmount() + "g)"));
         grindSizeBtn.setText("Grind Size" + " " + "(" + (brew.getGrindSize() + ")"));
         brewTempBtn.setText("Brewing Temperature" + " " + "(" + (brew.getBrewingTemperature() + "C)"));
         bloomWaterAmtBtn.setText("Bloom Water Amount" + " " + "(" + (brew.getBloomAmount() + "ml)"));

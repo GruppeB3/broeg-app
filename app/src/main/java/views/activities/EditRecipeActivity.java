@@ -59,6 +59,8 @@ public class EditRecipeActivity extends NewRecipeActivity implements Response.Li
         builder.set(brew);
 
         saveBtn = findViewById(R.id.saveButton);
+
+        updateTextActivity();
     }
 
     @Override
